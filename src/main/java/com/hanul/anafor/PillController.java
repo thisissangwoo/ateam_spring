@@ -48,8 +48,8 @@ public class PillController {
 		String select = req.getParameter("select");
 		List<PillVO> list = sql.selectList("pill.mapper.select", select);
 
-		System.out.println(list.get(0).getHp_code());
-
+		System.out.println(gson.toJson(list));
+		
 		return gson.toJson(list);
 	}
 

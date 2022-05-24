@@ -1,29 +1,59 @@
 package com.hanul.anafor;
 
 import java.sql.Clob;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import common.CommonService;
 import drug.DrugVO;
+import pill.PillDAO;
+import pill.PillVO;
 
 @Controller
 public class DrugController {
 
-	@Autowired
-	private SqlSession sql;
+	
 	@Autowired
 	private CommonService common;
+	
+	Gson gson = new Gson();
+	@Autowired
+	@Qualifier("ateam")
+	private SqlSession sql;
 
 	// api 키값
 	private String serviceKey = "8webo47a2JOvabAucuP3Bb23Tf8FxCKFxwYumcU%2Fe4N4g2ZyvD2AlGXb6eRev3xbWpua0iT3lYXBTnpVeNlVtw%3D%3D";
 
+	
+	
+	//처방전 조회하기
+		@ResponseBody
+		@RequestMapping(value = "/drug", produces = "application/json;charset=UTF-8")
+		public String select(HttpServletRequest req) {
+
+			String select = req.getParameter("drug");
+			List<DrugVO> list = sql.selectList("drug.mapper.select", select);
+
+			System.out.println(gson.toJson(list));
+			
+			return gson.toJson(list);
+		}
+	
+	
+	
 	// 약 정보 데이터베이스에 insert
 	@RequestMapping("/drug_insert")
 	public String drug_insert() {
