@@ -8,3 +8,6 @@ target/**
 src/test/
 /Servers/
 .metadata/
+.classpath
+.project
+.springBeans
