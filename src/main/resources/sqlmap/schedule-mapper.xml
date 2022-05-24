@@ -18,5 +18,10 @@
 	  	update schedule set sc_title = #{sc_title}, sc_memo = #{sc_memo}
 	  	where sc_code = #{sc_code}
 	</update>
-  
+	
+	<delete id="delete">
+		delete from schedule
+		where sc_code = #{sc_code}
+	</delete>
+
 </mapper>
