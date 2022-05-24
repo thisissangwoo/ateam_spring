@@ -1,7 +1,7 @@
 app/build
 .idea/
 .gradle/
-*/target/*
+*/target/**
 /bin/
 /test.exe
 .settings/
