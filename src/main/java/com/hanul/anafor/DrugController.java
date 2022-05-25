@@ -39,17 +39,27 @@ public class DrugController {
 
 	
 	
+	
+	
+	
 	//처방전 조회하기
 		@ResponseBody
 		@RequestMapping(value = "/drug", produces = "application/json;charset=UTF-8")
 		public String select(HttpServletRequest req) {
-
-			String select = req.getParameter("drug");
-			List<DrugVO> list = sql.selectList("drug.mapper.select", select);
+			PillVO vo = new PillVO();
+			vo.setPill_code1(Integer.parseInt(req.getParameter("drug1")));
+			vo.setPill_code2(Integer.parseInt(req.getParameter("drug2")));
+			vo.setPill_code3(Integer.parseInt(req.getParameter("drug3")));
+			
+			System.out.println(req.getParameter("drug3"));
+			
+			List<DrugVO> list = sql.selectList("drug.mapper.select", vo);
 
 			System.out.println(gson.toJson(list));
 			
 			return gson.toJson(list);
+			
+			
 		}
 	
 	
