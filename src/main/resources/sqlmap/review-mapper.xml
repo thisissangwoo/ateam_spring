@@ -3,12 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review.mapper">
 
-
+<!-- 리뷰 등록 -->
 <insert id="insert">
 	insert into review(user_id,hp_code,rev_grade,rev_text1,rev_text2,rev_text3,rev_text4,rev_date)
 	 values(#{user_id},#{hp_code},#{rev_grade},#{rev_text1}, #{rev_text2}, #{rev_text3}, #{rev_text4}, #{rev_date})
 
 </insert>
 
+<!-- 리뷰 전체 조회 -->
+<select id="selectAll" resultType= "review.ReviewVO">
+	select * from review where hp_code = #{hp_code}
+</select>
 
+<!-- 해당 회원 리뷰 조회 -->
+<select id="selectMy" resultType= "review.ReviewVO">
+	select * from review where user_id = #{user_id}
+</select>
 </mapper>
