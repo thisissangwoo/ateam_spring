@@ -23,7 +23,7 @@ public class ReviewController {
 	@RequestMapping(value="/insert.review", produces = "application/json;charset=UTF-8")
 	public String insertReview(HttpServletRequest req) {
 		ReviewVO vo = gson.fromJson(req.getParameter("vo"), ReviewVO.class );
-		System.out.println(vo.getHp_code());
+		dao.insertReview(vo);
 		return "";
 	}
 }
