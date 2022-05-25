@@ -26,5 +26,11 @@
 		where user_id = #{select}
 	
 	</select>
+	
+	<delete id="delete">
+		delete from pill
+		where pill_code = #{pill_code}
+	</delete>
+	
 
 </mapper>
