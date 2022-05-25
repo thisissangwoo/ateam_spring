@@ -45,7 +45,7 @@ public class PillController {
 	@RequestMapping(value = "/select", produces = "application/json;charset=UTF-8")
 	public String select(HttpServletRequest req) {
 
-		String select = req.getParameter("select");
+		String select = req.getParameter("user_id");
 		List<PillVO> list = sql.selectList("pill.mapper.select", select);
 
 		System.out.println(gson.toJson(list));
