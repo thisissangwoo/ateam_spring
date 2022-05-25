@@ -1,12 +1,19 @@
 package review;
 
 public class ReviewVO {
+			//rev_text1 : 청결, rev_text2 : 친절, rev_text3 : 부대시설
 			int rev_num,rev_text1,rev_text2,rev_text3;
 			double rev_grade;
-			String user_id, rev_date;
+			String user_id, rev_date, hp_code;
 			
 			public int getRev_num() {
 				return rev_num;
+			}
+			public String getHp_code() {
+				return hp_code;
+			}
+			public void setHp_code(String hp_code) {
+				this.hp_code = hp_code;
 			}
 			public void setRev_num(int rev_num) {
 				this.rev_num = rev_num;
