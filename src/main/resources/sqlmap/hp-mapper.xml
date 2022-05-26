@@ -4,7 +4,7 @@
 <mapper namespace="hp.mapper">
 	
 	<!-- 병원상세조회(카카오맵) -->
-	<select id="detailmap" resultType="hp.Hp_infoVO">
+<!-- 	<select id="detailmap" resultType="hp.Hp_infoVO">
 		select  hp.* ,START_M,END_M,START_T,END_T,
 		START_W,END_W,START_TH,END_TH,START_F,END_F,
 		START_S,END_S,START_SU,END_SU,
@@ -13,10 +13,25 @@
 		left outer join hp_time 
 		on  hp.hp_code = hp_time.hp_code 
 		where hp_name like '%'||#{place_name}||'%' and hp_tel like '%'||#{phone}||'%'
-	</select>
+	</select> -->
+	<select id="detailmap" resultType="hp.Hp_infoVO">
+		select  hp.hp_code, hp.hp_name, hp.hp_addr, hp.hp_tel, hp.hp_url, hp.hp_x, hp.hp_y, start_m,end_m,start_t,end_t,
+				start_w,end_w,start_th,end_th,start_f,end_f,start_s,end_s,start_su,end_su, lunch_d,lunch_w,close_su,close_ho , 
+        count(rev_num) as totalcnt, count(case when rev_text1 = 1 then 0 end) survey1cnt, count(case when rev_text2 = 1 then 0 end) survey2cnt,
+        count(case when rev_text3 = 1 then 0 end) survey3cnt , 
+        Round(avg(rev_grade),2) totalrate, Round(avg(rev_text1),2) survey1rate, Round(avg(rev_text2),2) survey2rate, Round(avg(rev_text3),2) survey3rate
+		from hp
+		left outer join hp_time 
+		on  hp.hp_code = hp_time.hp_code 
+        left outer join review r
+        on hp.hp_code = r.hp_code
+        group by hp.hp_code, hp.hp_name, hp.hp_addr, hp.hp_tel, hp.hp_url, hp.hp_x, hp.hp_y, START_M, END_M, START_T, 
+                        END_T, START_W, END_W, START_TH, END_TH, START_F, END_F, START_S, END_S, START_SU, END_SU, LUNCH_D, LUNCH_W, CLOSE_SU, CLOSE_HO
+		Having hp_name like '%'||#{place_name}||'%' and hp_tel like '%'||#{phone}||'%'
+		</select>
 	
 	<!-- 병원상세조회 -->
-	<select id="detailhp" resultType="hp.Hp_infoVO">
+<!-- 	<select id="detailhp" resultType="hp.Hp_infoVO">
 		select  hp.* ,START_M,END_M,START_T,END_T,
 		START_W,END_W,START_TH,END_TH,START_F,END_F,
 		START_S,END_S,START_SU,END_SU,
@@ -25,6 +40,22 @@
 		left outer join hp_time 
 		on  hp.hp_code = hp_time.hp_code 
 		where hp.hp_code = #{code}
+	</select> -->
+	
+	<select id="detailhp" resultType="hp.Hp_infoVO">
+		select  hp.hp_code, hp.hp_name, hp.hp_addr, hp.hp_tel, hp.hp_url, hp.hp_x, hp.hp_y, start_m,end_m,start_t,end_t,
+				start_w,end_w,start_th,end_th,start_f,end_f,start_s,end_s,start_su,end_su, lunch_d,lunch_w,close_su,close_ho , 
+        count(rev_num) as totalcnt, count(case when rev_text1 = 1 then 0 end) survey1cnt, count(case when rev_text2 = 1 then 0 end) survey2cnt,
+        count(case when rev_text3 = 1 then 0 end) survey3cnt , 
+        Round(avg(rev_grade),2) totalrate, Round(avg(rev_text1),2) survey1rate, Round(avg(rev_text2),2) survey2rate, Round(avg(rev_text3),2) survey3rate
+		from hp
+		left outer join hp_time 
+		on  hp.hp_code = hp_time.hp_code 
+        left outer join review r
+        on hp.hp_code = r.hp_code
+        group by hp.hp_code, hp.hp_name, hp.hp_addr, hp.hp_tel, hp.hp_url, hp.hp_x, hp.hp_y, START_M, END_M, START_T, 
+                        END_T, START_W, END_W, START_TH, END_TH, START_F, END_F, START_S, END_S, START_SU, END_SU, LUNCH_D, LUNCH_W, CLOSE_SU, CLOSE_HO
+		Having hp.hp_code = #{code}
 	</select>
 	
 	<!-- 병원 찜한 여부 확인 -->

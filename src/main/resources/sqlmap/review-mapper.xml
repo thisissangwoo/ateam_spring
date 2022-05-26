@@ -12,7 +12,11 @@
 
 <!-- 리뷰 전체 조회 -->
 <select id="selectAll" resultType= "review.ReviewVO">
-	select * from review where hp_code = #{hp_code}
+	select  r.rev_num, r.user_id,r.rev_grade,r.hp_code,r.rev_text1, r.rev_text2, r.rev_text3, r.rev_text4, 
+			to_char(r.rev_date, 'YYYY-MM-DD') rev_date, a.user_name
+	from review r inner join anafor_user a 
+	on r.user_id = a.user_id  
+	where hp_code = #{code} order by rev_date 
 </select>
 
 <!-- 해당 회원 리뷰 조회 -->
