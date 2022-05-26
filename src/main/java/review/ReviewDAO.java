@@ -23,7 +23,7 @@ public class ReviewDAO {
 		return sql.selectList("review.mapper.selectAll",code);
 	}
 	//리뷰 조회(해당 회원 조회)
-	public List<ReviewVO> selectMyReview(String code) {
-		return sql.selectList("review.mapper.selectMy",code);
+	public List<ReviewVO> selectMyReview(String user_id) {
+		return sql.selectList("review.mapper.selectMy",user_id);
 	}
 }
