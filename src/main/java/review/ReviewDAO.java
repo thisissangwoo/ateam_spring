@@ -18,10 +18,16 @@ public class ReviewDAO {
 		sql.insert("review.mapper.insert",vo);
 	}
 	
-	//리뷰 조회(전체 조회)
+	//리뷰 조회(해당병원 조회)
 	public List<ReviewVO> selectAllReview(String code) {
 		return sql.selectList("review.mapper.selectAll",code);
 	}
+	
+	//해당 병원 리뷰 
+	public ReviewTotalVO totalReview(String code) {
+		return sql.selectOne("review.mapper.selectTotal",code);
+	}
+
 	//리뷰 조회(해당 회원 조회)
 	public List<ReviewVO> selectMyReview(String user_id) {
 		return sql.selectList("review.mapper.selectMy",user_id);

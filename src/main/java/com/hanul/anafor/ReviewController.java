@@ -21,6 +21,12 @@ public class ReviewController {
 	
 	@Autowired ReviewDAO dao;
 	
+	//병원별 전체 리뷰 수, 별점 등 조회
+	@ResponseBody
+	@RequestMapping(value="/total.review",produces="application/json;charset=UTF-8")
+	public String totalReview(HttpServletRequest req) {
+		return gson.toJson(dao.totalReview(req.getParameter("code")));
+	}
 	//리뷰 등록
 	@ResponseBody
 	@RequestMapping(value="/insert.review", produces = "application/json;charset=UTF-8")
@@ -29,7 +35,7 @@ public class ReviewController {
 		dao.insertReview(vo);
 		return "";
 	}
-	//전체 리뷰 조회
+	//병원별 리뷰 조회
 	@ResponseBody
 	@RequestMapping(value="/selectAll.review",produces="application/json;chartset=UTF-8")
 	public String selectAllReview(HttpServletRequest req) {
