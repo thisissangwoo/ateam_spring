@@ -27,7 +27,12 @@ public class ReviewDAO {
 		return sql.selectList("review.mapper.selectMy",user_id);
 	}
 	//리뷰 수정
-	public void UpdateReview(ReviewVO vo) {
+	public void updateReview(ReviewVO vo) {
 		sql.update("review.mapper.update",vo);
 	}
+
+	//리뷰 삭제
+	public void deleteReview(int rev_num) {
+		sql.delete("review.mapper.delete",rev_num);
+	}	
 }

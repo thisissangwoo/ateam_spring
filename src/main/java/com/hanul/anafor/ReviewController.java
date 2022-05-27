@@ -46,7 +46,15 @@ public class ReviewController {
 	@RequestMapping(value="/update.review", produces = "application/json;charset=UTF-8")
 	public String updateReview(HttpServletRequest req) {
 		ReviewVO vo = gson.fromJson(req.getParameter("vo"), ReviewVO.class );
-		dao.UpdateReview(vo);
+		dao.updateReview(vo);
+		return "";
+	}
+	//해당 회원 리뷰 삭제
+	@ResponseBody
+	@RequestMapping(value="/delete.review", produces = "application/json;charset=UTF-8")
+	public String deleteReview(HttpServletRequest req) {
+		int rev_num = Integer.parseInt(req.getParameter("rev_num"));
+		dao.deleteReview(rev_num);
 		return "";
 	}
 	
