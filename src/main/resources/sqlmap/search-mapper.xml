@@ -22,14 +22,26 @@
    ]]>
 
 	</select>
-	<!-- 리뷰 테이블이 따로 있어서 불러와서 작업  -->
 	
-	<!-- <select id="review" resultType="hp.hpVO">
+	<!-- 리뷰 테이블이 따로 있어서 불러와서 작업  -->
+	<select id="review" resultType="hp.hpVO">
+	
+	SELECT H.* , nvl(r.rv_cnt,0) cnt
+    FROM (
+      SELECT H.* , ROWNUM no
+    	FROM (SELECT ( 6371 * acos( cos( RADIANS(126.8879957) ) * cos( RADIANS(
+      HP_X ) )	* cos( RADIANS( HP_Y) - RADIANS(35.1535583) ) + sin( RADIANS(126.8879957) ) * sin( RADIANS( HP_X) ) ) ) AS distanceXY ,H.*
+		FROM HP H
+		WHERE
+      H.sido_name ='광주'
+		order by 1 asc
+		) H
+    ) H LEFT OUTER JOIN ( SELECT HP_CODE , NVL(COUNT(*) ,0) rv_cnt FROM REVIEW  GROUP BY HP_CODE ) R ON h.hp_code = r.hp_code
+			WHERE
 
-  <![CDATA[
-		select count(*) from HP H
-   ]]>
+     H.sido_name ='광주'
+     order by cnt desc
 
-	</select> -->
+	</select>
 
 </mapper>
