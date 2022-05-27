@@ -13,7 +13,8 @@
 		left outer join hp_time 
 		on  hp.hp_code = hp_time.hp_code 
 		where hp_name like '%'||#{place_name}||'%' and hp_tel like '%'||#{phone}||'%'
-	</select>
+	</select> 
+
 	
 	<!-- 병원상세조회 -->
 	<select id="detailhp" resultType="hp.Hp_infoVO">
@@ -25,8 +26,8 @@
 		left outer join hp_time 
 		on  hp.hp_code = hp_time.hp_code 
 		where hp.hp_code = #{code}
-	</select>
-	
+	</select> 
+
 	<!-- 병원 찜한 여부 확인 -->
 	<select id="checkheart" resultType="user.UserChoiceVO">
 		select * from choice where hp_code = #{hp_code} and user_id = #{user_id} 
@@ -47,7 +48,7 @@
 	
 	<!-- 찜한 병원 전체 조회 -->
 	<select id="selectheart" resultType="user.UserChoiceVO">
-		select choice.hp_code, user_id, hp_addr, hp_name 
+		select choice.hp_code, user_id, hp_addr, hp_name ,hp_tel
 		from choice Left outer join hp 
 		on hp.hp_code = choice.hp_code 
 		where user_id=#{user_id} order by ch_date desc

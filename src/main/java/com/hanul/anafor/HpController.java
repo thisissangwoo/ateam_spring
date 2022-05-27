@@ -24,8 +24,7 @@ import user.UserChoiceVO;
 @Controller
 public class HpController {
 
-	@Autowired
-	hp_infoDAO dao;
+	@Autowired hp_infoDAO dao;
 
 	Gson gson = new Gson();
 	
