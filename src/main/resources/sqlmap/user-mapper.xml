@@ -4,8 +4,7 @@
 <mapper namespace="user.mapper">
 
 	<select id="login" resultType="user.UserVO">
-		select *
-		from ANAFOR_USER
+		select * from anafor_user
 		where user_id = #{user_id}
 		and user_pw = #{user_pw}
 	</select>

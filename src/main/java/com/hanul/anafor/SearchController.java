@@ -29,7 +29,7 @@ public class SearchController {
 
    
    @ResponseBody
-   @RequestMapping(value="/hash", produces = "application/json;charset=UTF-8")
+   @RequestMapping(value="/basic", produces = "application/json;charset=UTF-8")
    public String search(HttpServletRequest req) {
 	   hpVO searchVO = new hpVO();
 	   searchVO.setHp_name( req.getParameter("query") );
@@ -45,17 +45,17 @@ public class SearchController {
 	   return gson.toJson(list); 
    }
    
-//   @ResponseBody
-//   @RequestMapping(value="/review", produces = "application/json;charset=UTF-8")
-//   public String review(HttpServletRequest req) {
-//	   
-//	   hpVO searchVO = new hpVO();
-//	   searchVO.setHp_name( req.getParameter("query") );
-//	   
-//	   List<hpVO> list = sql2.selectList("search.mapper.review",searchVO);
-//	   System.out.println(gson.toJson(list));
-//	   
-//	   return gson.toJson(list); 
-//   }
+   @ResponseBody
+   @RequestMapping(value="/review", produces = "application/json;charset=UTF-8")
+   public String review(HttpServletRequest req) {
+	   
+	   hpVO searchVO = new hpVO();
+	   searchVO.setHp_name( req.getParameter("select") );
+	   
+	   List<hpVO> list = sql2.selectList("search.mapper.review", searchVO);
+	   System.out.println(gson.toJson(list));
+	   
+	   return gson.toJson(list); 
+   }
   
 }
