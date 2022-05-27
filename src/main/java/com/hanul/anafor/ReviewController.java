@@ -41,4 +41,14 @@ public class ReviewController {
 	public String selectMyReview(HttpServletRequest req) {
 		return gson.toJson(dao.selectMyReview(req.getParameter("user_id")));
 	}
+	//해당 회원 리뷰 수정
+	@ResponseBody
+	@RequestMapping(value="/update.review", produces = "application/json;charset=UTF-8")
+	public String updateReview(HttpServletRequest req) {
+		ReviewVO vo = gson.fromJson(req.getParameter("vo"), ReviewVO.class );
+		dao.UpdateReview(vo);
+		return "";
+	}
+	
+
 }

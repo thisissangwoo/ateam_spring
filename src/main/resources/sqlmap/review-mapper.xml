@@ -25,4 +25,19 @@
 			to_char(r.rev_date, 'YYYY-MM-DD') rev_date, hp_name from review r inner join hp 
 			on hp.hp_code = r.hp_code  where user_id = #{user_id}
 </select>
+
+
+<!--해당 회원 리뷰 수정 -->
+<update id="update" >
+	update review 
+	set rev_grade = #{rev_grade}, rev_text1 = #{rev_text1}, rev_text2 = #{rev_text2},
+		rev_text3 = #{rev_text3}, rev_text4 = #{rev_text4}, rev_date = #{rev_date}  
+	where rev_num = #{rev_num}
+</update>
+
+
+<!-- 해당 회원 리뷰 삭제 -->
+
+
+
 </mapper>

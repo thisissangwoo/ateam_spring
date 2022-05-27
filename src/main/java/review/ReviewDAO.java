@@ -26,4 +26,8 @@ public class ReviewDAO {
 	public List<ReviewVO> selectMyReview(String user_id) {
 		return sql.selectList("review.mapper.selectMy",user_id);
 	}
+	//리뷰 수정
+	public void UpdateReview(ReviewVO vo) {
+		sql.update("review.mapper.update",vo);
+	}
 }
