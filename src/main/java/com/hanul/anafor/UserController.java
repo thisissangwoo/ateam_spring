@@ -43,23 +43,6 @@ public class UserController {
       return gson.toJson(vo);    
    }
 
-	/*
-	 * 회원가입 네이버
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value="/join_naver" , produces =
-	 * "application/json;charset=UTF-8") public String join_naver(HttpServletRequest
-	 * req) { UserVO vo = new UserVO();
-	 * 
-	 * vo.setUser_name(req.getParameter("user_name"));
-	 * vo.setUser_id(req.getParameter("user_id"));
-	 * vo.setUser_tel(req.getParameter("user_tel"));
-	 * vo.setUser_naver(req.getParameter("user_naver"));
-	 * 
-	 * dao.join(vo); System.out.println("가입완료:" + vo.getUser_id()); return ""; }
-	 */
-	/* 회원가입 */
 	@ResponseBody
 	@RequestMapping(value = "/join", produces = "application/json;charset=UTF-8")
 	public String join(HttpServletRequest req) {
