@@ -8,7 +8,9 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-body * { font-family: 'Noto Sans KR', sans-serif; }
+body * {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
 a:link, a:visited {
 	text-decoration: none;
@@ -104,8 +106,6 @@ input[type=file], #delete-file { display: none; }
 
 .file-img { width: 20px; height: 18px; cursor: pointer;}
 
-#delete-file { color: #ff0000;}
-
 select:focus, input:focus, textarea:focus { outline: none;}
 
 ul { list-style: none; padding: 0px;}
@@ -125,7 +125,6 @@ select {height: 34px; border: 1px solid #b0b0b0; padding : 0 5px; cursor: pointe
 	transform:translate(-50%, -50%);	
 }
 
-.middle * {vertical-align: middle;}
 #preview { height: 36px; display: inline-block;}
 #preview-img { max-height: 34px;}
 
@@ -136,24 +135,41 @@ select {height: 34px; border: 1px solid #b0b0b0; padding : 0 5px; cursor: pointe
 	text-align: right;
 }
 
-ul.grid {width: 80%; margin: 0 10%; display: inline-block;}
-
-ul.grid li {
-	float: left; width: 19%; height: 150px; margin: 20px 1.25% 0 0;
-		border: 1px solid #b0b0b0; box-sizing: border-box;
+ul.grid {
+	width: 80%;
+	margin: 0 10%;
+	display: inline-block;
 }
 
-ul.grid li:nth-child(5n) { margin-right: 0 }
-/* (5n) 5번째마다(n) 의미 */
+ul.grid li {
+	float: left;
+	width: 19%;
+	height: 150px;
+	margin: 20px 1.25% 0 0;
+	border: 1px solid #b0b0b0;
+	box-sizing: border-box;
+}
 
-ul.grid li div { text-align: left; padding : 9px 10px;}
-ul.grid li div:nth-child(2) { padding: 0px 10px;}
-ul.grid li div:nth-child(1) { 
+ul.grid li:nth-child(5n) {
+	margin-right: 0;
+}
+/* (5n) 5번째 마다(n)의 의미 */
+ul.grid li div {
+	text-align: left;
+	padding: 9px 10px;
+}
+
+ul.grid li div:nth-child(2){
+	padding: 0px 10px;
+}
+
+ul.grid li div:nth-child(1){
 	height: 65px;
-	overflow : hidden; text-overflow: ellipsis;	
+	overflow: hidden;
+	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp : 3;
-	-webkit-box-orient : vertical;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 
 
