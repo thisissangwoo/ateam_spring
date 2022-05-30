@@ -1,5 +1,6 @@
 package com.hanul.anafor;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,8 +61,14 @@ public class PillController {
 	@RequestMapping(value = "/select", produces = "application/json;charset=UTF-8")
 	public String select(HttpServletRequest req) {
 
-		String select = req.getParameter("user_id");
-		List<PillVO> list = sql.selectList("pill.mapper.select", select);
+		String user_id = req.getParameter("user_id");
+		String hp_code = req.getParameter("hp_code");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(user_id, user_id);
+		map.put(hp_code, hp_code);
+		List<PillVO> list = sql.selectList("pill.mapper.select", map);
+
 
 		System.out.println(gson.toJson(list));
 		

@@ -21,9 +21,15 @@
 	</insert>
 
 	<select id="select" resultType="pill.PillVO">
-		select * 
+		<!-- select * 
 		from pill
-		where user_id = #{select}
+		where user_id = #{select} -->
+		
+		select p.*, (select hp_name from hp where p.hp_code = #{hp_code }) name 
+		from pill p
+		where user_id = #{user_id}
+		
+		
 	
 	</select>
 	
