@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import pill.PillDAO;
 import pill.PillVO;
+import schedule.ScheduleVO;
 import user.UserVO;
 
 @Controller
@@ -27,6 +28,20 @@ public class PillController {
 	@Autowired
 	@Qualifier("ateam")
 	SqlSession sql;
+	
+	
+	//처방전 삭제하기
+	@ResponseBody
+	@RequestMapping(value = "/pill_delete", produces = "application/json;charset=UTF-8")
+	public String delete(HttpServletRequest req) {
+
+		System.out.println(req.getParameter("dto"));
+		PillVO vo = gson.fromJson(req.getParameter("dto"), PillVO.class);
+		
+		sql.delete("pill.mapper.delete", vo);
+
+		return gson.toJson(vo);
+	}
 	
 	//처방전 db에 저장하기
 	@ResponseBody

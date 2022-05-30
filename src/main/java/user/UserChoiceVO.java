@@ -1,10 +1,18 @@
 package user;
 
 public class UserChoiceVO {
-	String user_id,hp_code,ch_date, hp_name,hp_addr ;
+	String user_id,hp_code,ch_date, hp_name,hp_addr, hp_tel ;
 
 	public String getHp_name() {
 		return hp_name;
+	}
+
+	public String getHp_tel() {
+		return hp_tel;
+	}
+
+	public void setHp_tel(String hp_tel) {
+		this.hp_tel = hp_tel;
 	}
 
 	public void setHp_name(String hp_name) {
