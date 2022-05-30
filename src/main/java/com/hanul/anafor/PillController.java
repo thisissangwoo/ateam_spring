@@ -62,11 +62,9 @@ public class PillController {
 	public String select(HttpServletRequest req) {
 
 		String user_id = req.getParameter("user_id");
-		String hp_code = req.getParameter("hp_code");
 		
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(user_id, user_id);
-		map.put(hp_code, hp_code);
+		map.put("user_id", user_id);
 		List<PillVO> list = sql.selectList("pill.mapper.select", map);
 
 

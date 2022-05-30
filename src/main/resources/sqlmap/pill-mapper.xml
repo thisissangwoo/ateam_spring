@@ -25,7 +25,7 @@
 		from pill
 		where user_id = #{select} -->
 		
-		select p.*, (select hp_name from hp where p.hp_code = #{hp_code }) name 
+		select p.*, (select h.hp_name from hp h where h.hp_code = p.hp_code) hp_name 
 		from pill p
 		where user_id = #{user_id}
 		
