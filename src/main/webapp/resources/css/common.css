@@ -172,6 +172,7 @@ ul.grid li div:nth-child(1){
 	-webkit-box-orient: vertical;
 }
 
+
 /* width 값을 class로 등록하여 관리 */
 .w-pct80 {width : 80%}
 .w-pct70 {width : 70%}
