@@ -50,4 +50,9 @@
 		<url-pattern>/*</url-pattern>	<!-- 모든 요청에 대해서 이 필터를 거치게 함  -->
 	</filter-mapping>
 	<!-- 한글 깨짐 방지 처리 완성 -->
+	
+	<!-- Session 시간 변경 -->
+	<session-config>
+		<session-timeout>120</session-timeout> <!-- 분 단위 -->
+	</session-config>
 </web-app>

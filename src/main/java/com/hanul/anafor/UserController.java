@@ -29,7 +29,6 @@ public class UserController {
    @Autowired UserDAO dao;
    Gson gson = new Gson();
    @Autowired @Qualifier("ateam") SqlSession sql;
-   @Autowired @Qualifier("ateam") private SqlSession sql2;
    @Autowired private JavaMailSender mailSender;
    
    /*로그인*/
@@ -173,5 +172,6 @@ public class UserController {
 				
 			System.out.println(sql.update("user.mapper.pw_find" , map));	
 		}
+	   
 	   
 }
