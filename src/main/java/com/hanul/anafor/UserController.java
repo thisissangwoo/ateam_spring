@@ -26,29 +26,22 @@ import user.UserVO;
 @Controller
 public class UserController {
 
-	@Autowired
-	UserDAO dao;
-	Gson gson = new Gson();
-	@Autowired
-	@Qualifier("ateam")
-	SqlSession sql;
-	@Autowired
-	@Qualifier("ateam")
-	private SqlSession sql2;
-	@Autowired
-	private JavaMailSender mailSender;
-
-	/* 로그인 */
-	@ResponseBody
-	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
-	public String login(HttpServletRequest req) {
-		UserVO vo = new UserVO();
-		vo.setUser_id(req.getParameter("user_id"));
-		vo.setUser_pw(req.getParameter("user_pw"));
-		vo = dao.login(vo);
-		System.out.println(gson.toJson(vo));
-		return gson.toJson(vo);
-	}
+   @Autowired UserDAO dao;
+   Gson gson = new Gson();
+   @Autowired @Qualifier("ateam") SqlSession sql;
+   @Autowired private JavaMailSender mailSender;
+   
+   /*로그인*/
+   @ResponseBody
+   @RequestMapping(value ="/login", produces = "application/json;charset=UTF-8")
+   public String login(HttpServletRequest req) {
+	  UserVO vo = new UserVO();
+	  vo.setUser_id(req.getParameter("user_id"));
+	  vo.setUser_pw(req.getParameter("user_pw"));
+      vo = dao.login(vo);
+      System.out.println(gson.toJson(vo));
+      return gson.toJson(vo);    
+   }
 
 	/*
 	 * 회원가입 네이버
