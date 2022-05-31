@@ -15,7 +15,7 @@ public class Web_NoticeController {
 	@Autowired private NoticeServiceImpl service;
 	
 	@RequestMapping ("/list.no")
-	public String notice(HttpSession session, Model model) {
+	public String list(HttpSession session, Model model) {
 		
 		session.setAttribute("category", "no");
 		
@@ -23,4 +23,16 @@ public class Web_NoticeController {
 		
 		return "notice/list";
 	}
+	
+	@RequestMapping ("/new.no")
+	public String notice() {
+		return "notice/new";
+	}
+	
+	@RequestMapping ("/insert.no")
+	public String insert() {
+		
+		return "notice/list";
+	}
+
 }
