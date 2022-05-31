@@ -31,6 +31,8 @@ public class UserController {
    @Autowired @Qualifier("ateam") SqlSession sql;
    @Autowired private JavaMailSender mailSender;
    
+  
+   
    /*로그인*/
    @ResponseBody
    @RequestMapping(value ="/login", produces = "application/json;charset=UTF-8")
@@ -172,6 +174,17 @@ public class UserController {
 				
 			System.out.println(sql.update("user.mapper.pw_find" , map));	
 		}
+	   
+	   /*소셜로그인*/
+	   @ResponseBody
+	   @RequestMapping(value ="/social", produces = "application/json;charset=UTF-8")
+	   public String social(HttpServletRequest req) {
+		  UserVO vo = new UserVO();
+		  vo.setUser_id(req.getParameter("user_id"));
+	      vo = dao.login(vo);
+	      System.out.println(gson.toJson(vo));
+	      return gson.toJson(vo);    
+	   }
 	   
 	   
 }
