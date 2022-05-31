@@ -169,8 +169,9 @@ public class UserController {
 			e.printStackTrace();
 		}
 
-	   
-	   /*소셜로그인*/
+		System.out.println(sql.update("user.mapper.pw_find", map));
+	}
+	/*소셜로그인*/
 	   @ResponseBody
 	   @RequestMapping(value ="/social", produces = "application/json;charset=UTF-8")
 	   public String social(HttpServletRequest req) {
@@ -181,10 +182,5 @@ public class UserController {
 	      return gson.toJson(vo);    
 	   }
 	   
-	   
-
-
-		System.out.println(sql.update("user.mapper.pw_find", map));
-	}
 
 }
