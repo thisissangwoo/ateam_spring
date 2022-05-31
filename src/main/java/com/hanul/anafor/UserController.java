@@ -1,7 +1,6 @@
 package com.hanul.anafor;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -18,8 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+
 import common.CommonService;
-import hp.hpVO;
+
 import user.EmailNumberVO;
 import user.UserDAO;
 import user.UserVO;
@@ -47,6 +47,7 @@ public class UserController {
       return gson.toJson(vo);    
    }
 
+   /*회원가입*/
 	@ResponseBody
 	@RequestMapping(value = "/join", produces = "application/json;charset=UTF-8")
 	public String join(HttpServletRequest req) {
@@ -124,11 +125,23 @@ public class UserController {
 	   public String social(HttpServletRequest req) {
 		  UserVO vo = new UserVO();
 		  vo.setUser_id(req.getParameter("user_id"));
-	      vo = dao.login(vo);
+	      vo = dao.social(vo);
 	      System.out.println(gson.toJson(vo));
 	      return gson.toJson(vo);    
 	   }
 	   
 	   
-	   
+	/*소셜회원가입*/
+		@ResponseBody
+		@RequestMapping(value = "/socialJoin", produces = "application/json;charset=UTF-8")
+		public String socialJoin(HttpServletRequest req) {
+			UserVO vo = new UserVO();
+			vo.setUser_id(req.getParameter("user_id"));
+			vo.setUser_name(req.getParameter("user_name"));
+			vo.setUser_gender(req.getParameter("user_gender"));
+			dao.socialJoin(vo);
+			System.out.println("가입완료:" + vo.getUser_id());
+			return "";
+		}
+
 }
