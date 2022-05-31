@@ -9,18 +9,32 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
+
+import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.function.ServerRequest.Headers;
+
+import user.EmailNumberVO;
 
 @Service
 public class CommonService {
 
+	   @Autowired private JavaMailSender mailSender;
+	   @Autowired @Qualifier("ateam") SqlSession sql;
+	
 	public JSONArray json_requestAPI(StringBuffer url) {
 		JSONObject json = new JSONObject(requestAPI(url));
 		JSONArray jlist = new JSONArray();
@@ -76,6 +90,70 @@ public class CommonService {
 			System.out.println(e);
 		}
 		return result;
+	}
+	
+	//아이디 이메일 인증 메일 전송 메소드
+	public int sendCheckEmail(String email) {
+		
+		// 인증번호 난수 생성 ,범위 (111,111 ~ 999,999)
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111;
+
+		System.out.println("이메일 : " + email);
+		System.out.println("인증번호 : " + checkNum);
+
+		String setForm = "sbb2388@gmail.com";
+		String toMail = email;
+		String title = "아나포 회원가입 인증 이메일 입니다";
+		String content = "<br>인증 번호는 " + checkNum + " 입니다<br>";
+
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setSubject(title);
+			helper.setText(content, true);
+			helper.setFrom(setForm);
+			helper.setTo(toMail);
+			mailSender.send(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return checkNum; 
+	}
+	
+	//비밀번호 찾기 메일 전송 메소드
+	public void sendFindPw(String email) {
+		// 임시비밀번호 난수 생성 ,범위 (111,111 ~ 999,999)
+				Random random = new Random();
+				int checkNum = random.nextInt(888888) + 111111;
+
+				String tempPass = Integer.toString(checkNum);
+
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("user_id", email);
+				map.put("user_pw", tempPass);
+
+				System.out.println("이메일 : " + email);
+				System.out.println("임시비밀번호 : " + checkNum);
+
+				String setForm = "sbb2388@gmail.com";
+				String toMail = email;
+				String title = "아나포 임시비밀번호 발급 이메일 입니다";
+				String content = "<br> 임시비밀번호는 " + checkNum + " 입니다<br>";
+
+				try {
+					MimeMessage message = mailSender.createMimeMessage();
+					MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+					helper.setSubject(title);
+					helper.setText(content, true);
+					helper.setFrom(setForm);
+					helper.setTo(toMail);
+					mailSender.send(message);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				sql.update("user.mapper.pw_find", map);
 	}
 
 }
