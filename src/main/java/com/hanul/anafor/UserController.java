@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+
+import common.CommonService;
+
 import user.EmailNumberVO;
 import user.UserDAO;
 import user.UserVO;
@@ -27,7 +30,8 @@ public class UserController {
    @Autowired UserDAO dao;
    Gson gson = new Gson();
    @Autowired @Qualifier("ateam") SqlSession sql;
-   @Autowired private JavaMailSender mailSender;
+   @Autowired CommonService common;
+ 
    
   
    
@@ -94,31 +98,7 @@ public class UserController {
 	@RequestMapping(value = "/emailCheck", produces = "application/json;charset=UTF-8")
 	public String emailCheck(HttpServletRequest req) {
 		String email = req.getParameter("user_id");
-
-		// 인증번호 난수 생성 ,범위 (111,111 ~ 999,999)
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-
-		System.out.println("이메일 : " + email);
-		System.out.println("인증번호 : " + checkNum);
-
-		String setForm = "sbb2388@gmail.com";
-		String toMail = email;
-		String title = "아나포 회원가입 인증 이메일 입니다";
-		String content = "<br>인증 번호는 " + checkNum + " 입니다<br>";
-
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setSubject(title);
-			helper.setText(content, true);
-			helper.setFrom(setForm);
-			helper.setTo(toMail);
-			mailSender.send(message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		EmailNumberVO vo = new EmailNumberVO(checkNum);
+		EmailNumberVO vo = new EmailNumberVO(common.sendCheckEmail(email)); //아이디 이메일 인증 메일 전송 메소드
 		return gson.toJson(vo);
 	}
 
@@ -137,38 +117,7 @@ public class UserController {
 	@RequestMapping(value = "/pw_find", produces = "application/json;charset=UTF-8")
 	public void pw_find(HttpServletRequest req) {
 		String email = req.getParameter("user_id");
-
-		// 임시비밀번호 난수 생성 ,범위 (111,111 ~ 999,999)
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-
-		String tempPass = Integer.toString(checkNum);
-
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("user_id", email);
-		map.put("user_pw", tempPass);
-
-		System.out.println("이메일 : " + email);
-		System.out.println("임시비밀번호 : " + checkNum);
-
-		String setForm = "sbb2388@gmail.com";
-		String toMail = email;
-		String title = "아나포 임시비밀번호 발급 이메일 입니다";
-		String content = "<br> 임시비밀번호는 " + checkNum + " 입니다<br>";
-
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setSubject(title);
-			helper.setText(content, true);
-			helper.setFrom(setForm);
-			helper.setTo(toMail);
-			mailSender.send(message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(sql.update("user.mapper.pw_find", map));
+		common.sendFindPw(email);			//비밀번호 찾기 메일 전송 메소드
 	}
 	/*소셜로그인*/
 	   @ResponseBody
@@ -180,6 +129,7 @@ public class UserController {
 	      System.out.println(gson.toJson(vo));
 	      return gson.toJson(vo);    
 	   }
+	   
 	   
 	/*소셜회원가입*/
 		@ResponseBody
@@ -193,4 +143,5 @@ public class UserController {
 			System.out.println("가입완료:" + vo.getUser_id());
 			return "";
 		}
+
 }
