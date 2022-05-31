@@ -17,6 +17,11 @@ public class UserDAO {
 		return vo;
 	}
 
+	/*
+	 * public void join_naver(UserVO vo) { sql.insert("user.mapper.join_naver", vo);
+	 * }
+	 */
+	
 	public void join(UserVO vo) {
 		sql.insert("user.mapper.join", vo);
 	}
