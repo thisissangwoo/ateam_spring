@@ -17,11 +17,6 @@ public class UserDAO {
 		return vo;
 	}
 
-	/*
-	 * public void join_naver(UserVO vo) { sql.insert("user.mapper.join_naver", vo);
-	 * }
-	 */
-	
 	public void join(UserVO vo) {
 		sql.insert("user.mapper.join", vo);
 	}
@@ -32,5 +27,15 @@ public class UserDAO {
 
 	public boolean id_chk2(String user_id) {
 		return (Integer) sql.selectOne("user.mapper.id_chk2", user_id) == 1 ? true : false;
+	}
+	
+	public UserVO social(UserVO inputVo) {
+		UserVO vo = sql.selectOne("user.mapper.social", inputVo);
+		return vo;
+	}
+	
+
+	public void socialJoin(UserVO vo) {
+		sql.insert("user.mapper.socialJoin", vo);
 	}
 }
