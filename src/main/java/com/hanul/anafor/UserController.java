@@ -33,6 +33,8 @@ public class UserController {
    @Autowired CommonService common;
  
    
+  
+   
    /*로그인*/
    @ResponseBody
    @RequestMapping(value ="/login", produces = "application/json;charset=UTF-8")
@@ -116,5 +118,16 @@ public class UserController {
 		String email = req.getParameter("user_id");
 		common.sendFindPw(email);			//비밀번호 찾기 메일 전송 메소드
 	}
+	/*소셜로그인*/
+	   @ResponseBody
+	   @RequestMapping(value ="/social", produces = "application/json;charset=UTF-8")
+	   public String social(HttpServletRequest req) {
+		  UserVO vo = new UserVO();
+		  vo.setUser_id(req.getParameter("user_id"));
+	      vo = dao.login(vo);
+	      System.out.println(gson.toJson(vo));
+	      return gson.toJson(vo);    
+	   }
+	   
 
 }
