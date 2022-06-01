@@ -4,17 +4,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
+<style>
+	#wrap{width:100%;height:auto}
+	#header{width:100%;height:372px;background: url("imgs/notice.png") center no-repeat; position:relative; }
+	#header p{margin-top:100px; margin-left:500px;	line-height: 300px; font-size: 70px; }
+</style>
 </head>
 <body>
-<h3>[ 공지사항 ]</h3>
+<form action="list.no" method="post">
+	<input type="hidden" name="curPage" value="1" />
+	<div id="wrap">
+		<div id="header">
+			<p>아나포 공지사항입니다</p>
+		</div>
+	</div>
+</form>
 <table>
 	<tr>
-		<th class="w-px70">번호</th>
+		<th class="w-px70">NO</th>
 		<th>제목</th>
-		<th class="w-px100">작성자</th>
+		<th class="w-px100">글쓴이</th>
 		<th class="w-px100">작성일자</th>
-		<th class="w-px100">첨부파일</th>
+		<th class="w-px100">조회수</th>
 	</tr>
 	<c:forEach items="${list }" var="vo">
       <tr>
@@ -22,7 +34,7 @@
          <td>${vo.title}</td>
          <td>${vo.name}</td>
          <td>${vo.writedate}</td>
-         <td></td>
+         <td>${vo.readcnt}</td>
       </tr>
 	</c:forEach>
 </table>
