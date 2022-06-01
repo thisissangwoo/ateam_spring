@@ -12,4 +12,9 @@ public class Web_UserController {
 		public String userLogin() {
 			return "user/login";
 		}
+		
+		@RequestMapping("/userJoin")
+		public String userJoin() {
+			return "user/join";
+		}
 }

@@ -82,8 +82,8 @@ header .category ul li a:hover, header .category ul li a.active {
 				<ul>
 					<li>
 
-						<a href='login' style="margin-right: 20px;">로그인</a>
-						<a href='user'>회원가입</a>
+						<a href='userLogin' style="margin-right: 20px;">로그인</a>
+						<a href='userJoin'>회원가입</a>
 
 					</li>			
 				</ul>
