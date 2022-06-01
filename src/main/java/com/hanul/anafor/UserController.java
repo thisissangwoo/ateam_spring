@@ -119,6 +119,7 @@ public class UserController {
 		String email = req.getParameter("user_id");
 		common.sendFindPw(email);			//비밀번호 찾기 메일 전송 메소드
 	}
+	
 	/*소셜로그인*/
 	   @ResponseBody
 	   @RequestMapping(value ="/social", produces = "application/json;charset=UTF-8")
@@ -143,5 +144,16 @@ public class UserController {
 			System.out.println("가입완료:" + vo.getUser_id());
 			return "";
 		}
+		
+	/*정보수정 버튼클릭시 조회*/
+	   @ResponseBody
+	   @RequestMapping(value ="/edit", produces = "application/json;charset=UTF-8")
+	   public String edit(HttpServletRequest req) {
+		  UserVO vo = new UserVO();
+		  vo.setUser_id(req.getParameter("user_id"));
+	      vo = dao.social(vo);
+	      System.out.println(gson.toJson(vo));
+	      return gson.toJson(vo);    
+	   }		
 
 }
