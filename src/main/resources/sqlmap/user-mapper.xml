@@ -8,15 +8,11 @@
 		where user_id = #{user_id}
 		and user_pw = #{user_pw}
 	</select>
+	
 	<insert id="join">
 		insert into anafor_user (user_id, user_pw, user_name, user_tel, user_birth, user_gender) 
 		values (#{user_id},#{user_pw},#{user_name},#{user_tel},#{user_birth},#{user_gender})
 	</insert>
-	
-	<!-- <insert id="join_naver">
-		insert into anafor_user (user_id, user_name, user_tel, user_naver) 
-		values (#{user_id},#{user_name},#{user_tel}, #{user_naver})
-	</insert> -->
 	
 	<select id="id_chk" resultType="integer">
 		select count(*) from anafor_user
@@ -49,4 +45,13 @@
 		where user_id =#{user_id}
 	</update>		
 	
+	<select id="social" resultType="user.UserVO">
+		select * from anafor_user
+		where user_id = #{user_id}
+	</select>
+	
+	<insert id="socialJoin">
+		insert into anafor_user (user_id, user_name, user_gender) 
+		values (#{user_id},#{user_name},#{user_gender})
+	</insert>
 </mapper>
