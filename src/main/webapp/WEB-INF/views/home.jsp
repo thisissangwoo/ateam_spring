@@ -31,16 +31,32 @@
 	#header .btn_app{position: absolute;left:60px;bottom:90px}
 	#header .btn_app a{width:200px;height:55px;display:block;border-radius:55px;overflow:hidden;}
 	#header .btn_app a img{width:100%}
-	</style>
-	<!-- //header -->
 	
-	<!-- jungle -->
-	<style type="text/css">
 	#wrapj{width:100%;height:auto}
 	
-	#jungle{width:100%;height:730px;background: url("imgs/jungle_bg.png") 100% 60px #ccc no-repeat;position:relative}
+	/* jungle */
+	#jungle{width:100%;height:730px;background: url("imgs/jungle_bg.png") 100% 40px #e0e0e0 no-repeat;position:relative}
+	#jungle .text_jungle{position: absolute;left: 87px; top: 130px; text-align: left;}
+	#jungle .text_jungle h3{font-size: 34px;font-weight: 600;line-height: 44px;position: relative;}
+	#jungle .text_jungle b{color: #696aad;}
+	#jungle .text_jungle p{font-size: 24px;line-height: 24px;}
+	#jungle .img_jungle{position: absolute;left: 60px;bottom: 30px;}
+	
+	/* mid */
+	#mid{width:100%;height: 900px; background: url("imgs/mid_img.png") center no-repeat;position: relative;display: block;margin: 0px auto; box-sizing: border-box; margin-top: 30px;margin-bottom: 100px;}
+	
+	/* bottom */
+	#wrapb{width:100%;height:auto}
+	
+	#bottom{width:100%;height:260px;background: #f5f5f5;position:relative;box-sizing: border-box;}
+	#bottom .text_bot{position:absolute;left:60px;top:50px;text-align: left;}
+	#bottom .text_bot h3{font-size:28px;font-weight:900;color:#696aad;line-height: 29px;}
+	#bottom .text_bot p{font-size:24px;color:#000;font-weight:200;margin: 0px auto;}
+	#bottom .btn_appbot{position: absolute;right:120px;bottom:90px;}
+	#bottom .btn_appbot a{width:200px;height:55px;display:block;border-radius:55px;overflow:hidden;border: 2px solid #696aad;}
+	#bottom .btn_appbot a img{width:100%}
 	</style>
-	<!-- //jungle -->
+	
 	
 	
 	
@@ -69,7 +85,7 @@
 	<!-- jungle -->
 	<div id="jungle">
 		<div class="text_jungle">
-			<h3><span>AnaFor</span> 앱으로 스마트하게 건강관리하세요</h3>
+			<h3><b>AnaFor</b> 앱으로 스마트하게 건강관리하세요</h3>
 			<p>나의 일상생활에 딱맞게 울리는 복약알림, AnaFor 띵동!</p>
 		</div>
 		<div class="img_jungle">
@@ -79,9 +95,26 @@
 	<!-- // jungle -->
 </div>	
 	<!-- mid -->
+	<div id="mid">
+		<div>
+			
+		</div>
+	</div>
 	<!-- // mid -->
 	
 	<!-- bottom -->
+	<div id="wrapb">
+		<div id="bottom">
+			<div class="text_bot">
+				<h3>AnaFor</h3>
+				<p><b>아픈</b> 나를 위한</p>
+				<p><b>아나포</b>를 지금<b>만나보세요!</b></p>
+			</div>
+			<div class="btn_appbot">
+				<a href=""><img src="imgs/btn_app.png"></a>
+			</div>
+		</div>	
+	</div>
 	<!-- // bottom -->	
 
 </div>
