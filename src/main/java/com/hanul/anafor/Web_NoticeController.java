@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import web_notice.NoticeServiceImpl;
+import web_notice.NoticeVO;
 
 @Controller
 public class Web_NoticeController {
@@ -30,7 +31,7 @@ public class Web_NoticeController {
 	}
 	
 	@RequestMapping ("/insert.no")
-	public String insert() {
+	public String insert(NoticeVO vo) {
 		
 		return "notice/list";
 	}

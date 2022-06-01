@@ -71,8 +71,8 @@ header .category ul li a:hover, header .category ul li a.active {
 			<c:if test="${ empty loginInfo }">
 				<ul>
 					<li>
-						<a href='login'>로그인</a>
-						<a href='user'>회원가입</a>
+						<a href='userLogin'>로그인</a>
+						<a href='userJoin'>회원가입</a>
 					</li>			
 				</ul>
 			</c:if>
