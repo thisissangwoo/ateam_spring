@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
 	
 	<h2>꾸준하게 건강을 챙길 수 있다면?</h2>
 		<div>
-			<img src="imgs/box.jpg" style="width: 50%;">
+			<img src="imgs/boxmain.jpg" style="width: 50%;">
 		</div>
 	
 		<br /><br />
@@ -35,28 +36,36 @@
 		
 		<div style="width: 760px; height: 150px; margin: auto; display: block;">
 			<div class="box">
-				<img src="imgs/select.png"><br />
+				<img src="imgs/clockicon.png"><br />
 				섭취시간/기록 알림
 			</div>
 			<div class="box">
-				<img src="imgs/select.png"><br />
+				<img src="imgs/boxicon.png"><br />
 				분실방지 알림
 			</div>
 			<div class="box">
-				<img src="imgs/select.png"><br />
+				<img src="imgs/gpsicon.png"><br />
 				GPS 위치확인
 			</div>
 			<div class="box">
-				<img src="imgs/select.png"><br />
+				<img src="imgs/phoneicon.png"><br />
 				중복섭취 방지 알림
 			</div>
 		</div>
 		
 		<br /><br />
 		
-		<div style="width: 200px; height: 65px; border: 1px solid; margin: auto; border-radius: 30px; background-color: #6969ff; color: white;">
-			<h3>AnaFor Box 구매하기</h3>		
+		<div style="width: 400px; height: 80px; border: 1px solid; margin: auto; border-radius: 50px; background-color: #6969ff; color: white; line-height: 80px;">
+			<a style="color: white; font-size: 2em;" href="shop.pr">AnaFor Box 구매하기</a>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		<br /><br />
 		
@@ -74,7 +83,7 @@
 			<h2>스마트 폰으로 예약하면<br />약먹는 시간을 알려줍니다</h2>
 			
 			<div>
-				<img src="imgs/sim.png" style="width: 500px; height: 500px;">
+				<img src="imgs/box.png" style="width: 800px; height: 600px;">
 			</div>
 			
 			<br /><br />
@@ -82,7 +91,7 @@
 			<h2>분실 우려없이 GPS 확인과 위치확인</h2>
 			
 			<div>
-				<img src="imgs/bob.png" style="width: 500px; height: 500px;">
+				<img src="imgs/gps.png" style="width: 800px; height: 600px;">
 			</div>
 			
 			<br /><br />
@@ -90,13 +99,13 @@
 			<h2>잊어버리지 않게 섭취 시간 알림<br />언제먹었는지 알수있는 섭취 히스토리</h2>
 			
 			<div>
-				<img src="imgs/sim.png" style="width: 500px; height: 500px;">
+				<img src="imgs/phone.png" style="width: 800px; height: 600px;">
 			</div>
 			
 		</details>
 		
 		
-		<div style="position: fixed; bottom: 100px; right: 100px; width: 80px; height: 80px; border: 1px solid; border-radius: 50%; background-color: #6969ff;  ">
+		<div style="position: fixed; bottom: 100px; right: 100px; width: 80px; height: 80px; border: 1px solid; border-radius: 50%; background-color: #6969ff; border-radius: 50%;  ">
 			<a href="#content" style="display: block; height: 100%; line-height: 80px; color: white;">TOP</a>		
 		</div>
 		
