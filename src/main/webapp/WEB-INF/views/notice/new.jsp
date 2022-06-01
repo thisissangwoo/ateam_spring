@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>신규 공지글</title>
 <script type="text/javascript" src="js/file_check.js"></script>
 </head>
 <body>
