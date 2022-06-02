@@ -117,6 +117,10 @@
 	#find{
 		margin-top: 20px;
 	}
+	
+	#find ul li{
+		float:left;
+	}
 
 </style>
 </head>
