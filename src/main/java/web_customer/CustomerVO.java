@@ -1,9 +1,9 @@
-package web_notice;
+package web_customer;
 
 import java.sql.Date;
 
-public class NoticeVO {
-	
+public class CustomerVO {
+
 	private int id, readcnt, no;
 	private String title, content, writer, name;
 	private Date writedate;
@@ -69,5 +69,6 @@ public class NoticeVO {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
-
+	
+	
 }

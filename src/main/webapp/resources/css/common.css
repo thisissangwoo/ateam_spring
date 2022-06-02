@@ -14,7 +14,7 @@ body * {
 
 a:link, a:visited {
 	text-decoration: none;
-	color: #000;
+	color: #919191;
 }
 
 #content {
@@ -28,24 +28,21 @@ img {
 table {
 	width: 80%;
 	margin: 0 auto;
-	border: 1px solid;
+    border-top: 1px solid #444444;
 	border-collapse: collapse;	/* 테두리 겹침 설정 collapse : 겹치지 않게 처리 */
 }
 
 table tr { height: 46px; }
 
 table th, table td {
-	border: 1px solid;
+    border-bottom: 1px solid #e0e0e0;
 	padding: 5px 10px;
+	color: #919191;
 }
 
-table th { background: #f6f6f6; }
+table th { background: #f6f6f6; color:black;}
 
-table tr td a:hover { font-weight: 700; color: red }
-
-/* table tr:hover td { */
-/* 	background: #ccc; */
-/* } */
+/* table tr td a:hover { font-weight: 700; color:black;} */
 
 .btnSet { margin-top: 20px; }
 
