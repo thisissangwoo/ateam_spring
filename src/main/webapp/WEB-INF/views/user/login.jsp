@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,11 @@
 		padding: 0px 45px;
 	}
 	
+	
+	input[type=text]:focus, input[type=password]:focus{
+		border:2px solid #696AAD;
+	}
+	
 	#btn-login{
 		width:480px;
 		height:50px;
@@ -39,7 +45,10 @@
 		margin:10px;
 	}
 	
-	
+	#btn-login:hover{
+		cursor: pointer;
+	}
+
  	#centerdiv{
 		width:100%;
 		height:50px;
@@ -76,7 +85,7 @@
 		font-family: 'Montserrat';
 	}
 	
-		#alogotitle{
+	#alogotitle{
 		width:197px;
 		height:26px;
 		text-align:center;
@@ -86,7 +95,6 @@
 		font-size:18px;
 	}
 	
-
 	#usericon{
 		position: absolute;
 		top:142px;
@@ -112,17 +120,59 @@
 		color:#ff0000;
 		float:left;
 		margin:18px 0px 0px 10px;
+		visibility: hidden;
 	}
 	
 	#find{
-		margin-top: 20px;
+		width:460px;
+		height:50px;
+		text-align:center;
+		margin:10px 0px 10px 0px;
 	}
 	
-	#find ul li{
-		float:left;
+	#findpw, #join{
+		padding:10px;
+	}
+</style>
+<script type="text/javascript">
+	//로그인 유효성 함수
+	function loginChk(){
+		
+		if($("#userid").val()==''){	//아이디를 입력하지 않았을 때
+			$("#userid").focus();
+			$("#check").text("아이디를 입력해주세요").css('visibility','visible');
+		
+			return false;
+		
+		}else if($("#userpw").val()==''){//비밀번호를 입력하지 않았을 때
+			$("#userpw").focus();
+			$("#check").text("비밀번호를 입력해주세요").css('visibility','visible');
+		
+			return false;
+		}
+		
+		$.ajax({					//ajax 통신
+			
+			url: 'userLoginChk' ,
+			data : {userid:$("#userid").val(), userpw:$("#userpw").val()},
+			success : function(response){
+				if(response){
+					location = "<c:url value='/' />";
+				}else{
+					$("#check").css('visibility','visible');
+					$("#userpw").val("").focus();
+				}
+			}, error : function(req,text){
+				alert(text+' : '+req.status);
+			}
+		});//ajax
 	}
 
-</style>
+
+
+
+</script>
+
 </head>
 
 <body>
@@ -139,7 +189,7 @@
 			<div id="checkmsg">
 			<span id="check"> 아이디 혹은 비밀번호가 일치하지 않습니다.</span>
 			</div>
-			<input type="button" id="btn-login" value="로그인"/>
+			<input type="button" id="btn-login" onclick="loginChk()" value="로그인"/>
 		</div>
 		<div id="centerdiv">
 			<div class="sepline">또는</div>
@@ -150,10 +200,8 @@
 			<a href="kakaoLogin"><img src="imgs/kakao_login.png" class="social"/></a>
 		</div>
 		<div id="find">
-			<ul>
-				<li><a>비밀번호 찾기</a></li>
-				<li><a href="userJoin">회원가입</a></li>
-			</ul>
+			
+			<a id="findpw">비밀번호 찾기</a> | <a id="join" href="userJoin">회원가입</a>
 		</div>
 	</div>
 </body>

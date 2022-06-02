@@ -93,7 +93,7 @@ header .category ul li a:hover, header .category ul li a.active {
 			<c:if test="${ !empty loginInfo }">
 				<ul>
 					<li>
-						<strong>${loginInfo.name }</strong> 님
+						<strong>${loginInfo.user_name }</strong> 님
 					</li>
 					<li>			
 						<a href='logout'>로그아웃</a>
