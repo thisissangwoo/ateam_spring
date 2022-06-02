@@ -6,42 +6,61 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 <style>
-	#wrap{width:100%;height:auto}
-	#header{width:100%;height:372px;background: url("imgs/faq.png") center no-repeat; position:relative; }
-	#header p{position:absolute; left:150px; top:30px; line-height: 80px; font-size: 70px; color: #929292; text-align: left}
-	table{margin-bottom: 100px;}
-	h3{margin-top: 100px; margin-left:200px; text-align:left; font-size: 1.5rem; }
+	#wrap{width:100%; height:auto}
+	#top_img{width:1920px; height:372px; background: url("imgs/faq.png") center no-repeat; position:relative; margin: 0 auto;}
+	#top_img .text_box{position:absolute; left:150px; top:100px; }
+	#top_img .text_box p{line-height: 80px; font-size:70px; color:#929292; text-align:left}
+	.qna{width:100%; height:auto; margin-top:100px; margin-bottom: 100px; background:center; position: relative; }
+	.qna table{width:1500px; height: auto; background: position:absolute; margin:0 auto; position: absolute; top: 50px; }
+	.qna p{display:block; width:100%;height:auto; line-height:50px; font-size: 40px; font-style: bold; text-align: left; position: absolute; left: 0%; top: 0%;}
 </style>
 </head>
 <body>
-<form action="list.cu" method="post">
+<form id="wrap" action="list.cu" method="post">
 	<input type="hidden" name="curPage" value="1" />
-	<div id="wrap">
-		<div id="header">
+	
+	<div id="top_img">
+		<div class="text_box">
 			<p><b>아나포에서 여러분의<br>소리를 듣습니다</b></p>
 		</div>
 	</div>
+
+	<div id='list-top'>
+		<ul>
+			<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
+			<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
+				 을 통해 admin 값을 가져와 비교 -->
+			<c:if test="${loginInfo.admin eq 'Y' }">	 
+				<li><a href='.cu'>글쓰기</a></li>
+			</c:if>
+		</ul>	
+	</div>
+	
+	<div class="qna">
+	
+		<p>Q&A</p>
+		<table>
+			
+			<tr>
+				<th class="w-px70">NO</th>
+				<th>제목</th>
+				<th class="w-px100">글쓴이</th>
+				<th class="w-px100">작성일자</th>
+				<th class="w-px100">조회수</th>
+			</tr>
+			<c:forEach items="${list }" var="vo">
+		      <tr>
+				<td>${vo.no }</td>
+				<td>
+					<a href='detail.cu?id=${vo.id }'>${vo.title }</a>			
+				</td>
+				<td>${vo.name}</td>
+				<td>${vo.writedate}</td>
+				<td>${vo.readcnt}</td>
+		      </tr>
+			</c:forEach>
+		</table>
+	</div>
 </form>
-<table>
-	<h3>Q&A</h3>
-	<tr>
-		<th class="w-px70">NO</th>
-		<th>제목</th>
-		<th class="w-px100">글쓴이</th>
-		<th class="w-px100">작성일자</th>
-		<th class="w-px100">조회수</th>
-	</tr>
-	<c:forEach items="${list }" var="vo">
-      <tr>
-		<td>${vo.no }</td>
-		<td>
-			<a href='detail.cu?id=${vo.id }'>${vo.title }</a>			
-		</td>
-		<td>${vo.name}</td>
-		<td>${vo.writedate}</td>
-		<td>${vo.readcnt}</td>
-      </tr>
-	</c:forEach>
-</table>
 </body>
 </html>

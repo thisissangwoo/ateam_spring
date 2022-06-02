@@ -14,8 +14,7 @@ public class CustomerDAO implements CustomerService {
 	
 	@Override
 	public void qna_insert(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		sql.insert("customer.mapper.qnainsert", vo);
 	}
 
 	@Override
