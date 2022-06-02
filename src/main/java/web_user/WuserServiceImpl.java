@@ -38,8 +38,8 @@ public class WuserServiceImpl implements WuserService {
 
 	@Override
 	public boolean member_social_email(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return dao.member_social_email(vo);
 	}
 
 }

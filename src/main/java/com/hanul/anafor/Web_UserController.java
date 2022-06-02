@@ -145,9 +145,7 @@ public class Web_UserController {
 		
 		
 		
-		
-		
-		
+	
 		//네이버 로그인 요청
 		@RequestMapping("/naverLogin")
 		public String naverLogin(HttpSession session) {
