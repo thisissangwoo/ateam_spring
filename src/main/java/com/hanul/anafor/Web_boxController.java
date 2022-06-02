@@ -21,6 +21,12 @@ public class Web_boxController {
 		return "shop/shop";
 	}
 	
-	
+	@RequestMapping ("/order.pr")
+	public String order() {
+		
+		
+		
+		return "shop/order";
+	}
 
 }
