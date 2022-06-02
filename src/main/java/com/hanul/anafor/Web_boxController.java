@@ -14,9 +14,7 @@ public class Web_boxController {
 		
 		session.setAttribute("category", "pr");
 		
-		
-		
-		
+
 		
 		return "shop/box";
 		

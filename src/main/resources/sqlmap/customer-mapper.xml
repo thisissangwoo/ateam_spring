@@ -25,5 +25,11 @@
 		update notice set readcnt = readcnt + 1
 		where id = #{id}
 	</update>	
-		
+	
+<!-- 공지사항 신규 글 등록 처리 -->
+	<insert id="insert">
+		insert into notice (id, root, title, content, writer, filename, filepath, code)
+		values ( seq_notice.nextval, seq_notice.currval , #{title}, #{content}, #{writer},
+				#{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR}, 'N03')
+	</insert>		
 </mapper>
