@@ -59,35 +59,7 @@ for(var i=1; i<=3; i++){
    <style>
 html, body{min-height: 100%; height: 100%;}
 
-/* common */
-html,body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,blockquote,p,address,pre,cite,form,fieldset,table,th,td,legend,label{margin:0;padding:0;border:0;font-size:15px; font-weight: 400; letter-spacing:-.03em; font-family: 'Montserrat', 'Noto Sans Korean', 'Helvetica', 'Verdana', sans-serif; color: #191927;}
-input,textarea,select{margin:0;padding:0; border: 0;  font-family: 'Montserrat', 'Noto Sans Korean', 'Malgun Gothic', 'Apple SD Gothic Neo', 'Helvetica', 'Verdana', sans-serif;}
 
-a{text-decoration:none; cursor: pointer}
-
-body{line-height:120%;color:#776f67;letter-spacing:0;-webkit-text-size-adjust:none}
-h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
-fieldset,img,abbr,acronym,label{border:0 none}
-.blind,legend{display:block;overflow:hidden;position:absolute;top:-1000em;left:0}
-blockquote:before,blockquote:after,q:before,q:after{content:''}
-ol,ul,dl{list-style:none}
-hr{display:none}
-fieldset{border:0}
-label,select,input,textarea{vertical-align:middle}
-img{vertical-align:top}
-.autoH:after{display:block;clear:both;content:' '}
-.autoH{*zoom:1}
-address,caption,em,cite{font-weight:normal;font-style:normal}
-ins{text-decoration:none}
-del{text-decoration:line-through}
-table{border-collapse:separate;border:0 none;border-spacing:0}
-caption{font-weight:normal;text-align:left}
-input:focus,
-select,
-a,
-textarea{outline: none; tap-highlight-color:transparent; -webkit-tap-highlight-color:transparent; }
-select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans-serif;}
-*{box-sizing: border-box;}
 
    #wrap{width:100%;height:auto}
    
