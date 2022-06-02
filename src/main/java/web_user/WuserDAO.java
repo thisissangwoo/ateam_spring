@@ -40,4 +40,10 @@ public class WuserDAO implements WuserService {
 		return false;
 	}
 
+	@Override
+	public boolean member_social_email(UserVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
