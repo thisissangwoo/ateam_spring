@@ -1,16 +1,12 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-body {
-	margin: 0 auto;
-	text-align: center;
-	font-size: 16px;
-	font-family: 'Noto Sans KR', sans-serif;
-}
 
+/* 
 body * {
 	font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 a:link, a:visited {
 	text-decoration: none;
@@ -22,27 +18,8 @@ a:link, a:visited {
 }
 
 img {
-	vertical-align: middle;		/* 세로축 가운데 정렬 */
+	vertical-align: middle;		세로축 가운데 정렬
 }
-
-table {
-	width: 80%;
-	margin: 0 auto;
-    border-top: 1px solid #444444;
-	border-collapse: collapse;	/* 테두리 겹침 설정 collapse : 겹치지 않게 처리 */
-}
-
-table tr { height: 46px; }
-
-table th, table td {
-    border-bottom: 1px solid #e0e0e0;
-	padding: 5px 10px;
-	color: #919191;
-}
-
-table th { background: #f6f6f6; color:black;}
-
-/* table tr td a:hover { font-weight: 700; color:black;} */
 
 .btnSet { margin-top: 20px; }
 
@@ -52,7 +29,7 @@ a.btn-fill, a.btn-empty {
 	border: 1px solid #696aad;
 	border-radius: 1px;
 	box-shadow: 1px 1px 2px;
-	       /* 오른쪽, 아래쪽, 번짐 정도 */
+	       오른쪽, 아래쪽, 번짐 정도
 }
 
 a.btn-fill {
@@ -91,7 +68,7 @@ textarea {
 input[name=title], textarea[name=content] { width: calc(100% - 24px) }
 
 input[name=addr] { width: calc(100% - 24px) }
-	/* calc(100% - 24px) 폭 100%에서 양쪽 24px(여백) 만큼 뺀 값만큼 늘림 */
+	calc(100% - 24px) 폭 100%에서 양쪽 24px(여백) 만큼 뺀 값만큼 늘림
 
 input[type=radio] {
 	width: 18px;
@@ -101,21 +78,12 @@ input[type=radio] {
 
 input[type=file], #delete-file { display: none; }
 
-.file-img { width: 20px; height: 18px; cursor: pointer;}
 
 select:focus, input:focus, textarea:focus { outline: none;}
 
 ul { list-style: none; padding: 0px;}
 
 select {height: 34px; border: 1px solid #b0b0b0; padding : 0 5px; cursor: pointer;}
-
-#list-top { padding:  20px 10%}
-#list-top div { height: 36px;}
-#list-top ul { margin: 0; display: flex;}
-#list-top ul li * { vertical-align: middle;}
-#list-top ul {margin-left: 3px;}
-#list-top ul:first-child { float: left;}
-#list-top ul:last-child {float: right;}
 
 .center {
 	position: absolute; left: 50%; top: 50%;
@@ -125,12 +93,6 @@ select {height: 34px; border: 1px solid #b0b0b0; padding : 0 5px; cursor: pointe
 #preview { height: 36px; display: inline-block;}
 #preview-img { max-height: 34px;}
 
-.left {
-	text-align: left;
-}
-.right {
-	text-align: right;
-}
 
 ul.grid {
 	width: 80%;
@@ -150,7 +112,7 @@ ul.grid li {
 ul.grid li:nth-child(5n) {
 	margin-right: 0;
 }
-/* (5n) 5번째 마다(n)의 의미 */
+(5n) 5번째 마다(n)의 의미
 ul.grid li div {
 	text-align: left;
 	padding: 9px 10px;
@@ -167,7 +129,7 @@ ul.grid li div:nth-child(1){
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-}
+} */
 
 
 /* width 값을 class로 등록하여 관리 */
@@ -218,7 +180,18 @@ img{vertical-align:top}
 address,caption,em,cite{font-weight:normal;font-style:normal}
 ins{text-decoration:none}
 del{text-decoration:line-through}
-table{border-collapse:separate;border:0 none;border-spacing:0}
+table{border-collapse:separate;border:0 none;border-spacing:0;
+background:center;
+width: 1500px;
+margin: 0 auto;
+border-top: 1px solid #444444;
+border-collapse: collapse;	/* 테두리 겹침 설정 collapse : 겹치지 않게 처리 */
+position: relative;
+margin-top:10px;
+margin-bottom: 100px;}
+table tr { height: 46px; }
+table th, table td {border-bottom: 1px solid #e0e0e0; padding: 5px 10px; color: gray; }
+table th { background: #f6f6f6; color:black;}
 caption{font-weight:normal;text-align:left}
 input:focus,
 select,
@@ -226,12 +199,38 @@ a,
 textarea{outline: none; tap-highlight-color:transparent; -webkit-tap-highlight-color:transparent; }
 select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans-serif;}
 *{box-sizing: border-box;}
+/* common */
 
+#content {
+	min-width: 1280px; min-height: 800px; height: 100%; 	
+}
 
+body {
+	text-align: center;
+	font-size: 16px;
+}
 
+#list-top { padding:  20px 10%}
+#list-top div { height: 36px;}
+#list-top ul { margin: 0; display: flex;}
+#list-top ul li * { vertical-align: middle;}
+#list-top ul {margin-left: 3px;}
+#list-top ul:first-child { float: left;}
+#list-top ul:last-child {float: right;}
 
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
 
+a:link, a:visited {
+	text-decoration: none;
+	color: gray;
+}
 
+.file-img { width: 20px; height: 18px; cursor: pointer;}
 
 
 

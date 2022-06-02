@@ -6,11 +6,9 @@
 <head>
 
 	
-    <meta charset="utf-8" />
+   
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
-    <meta content="telephone=no, address=no, email=no" name="format-detection" >
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+
    
     <title>아나포</title>   
    
@@ -118,7 +116,9 @@ html, body{min-height: 100%; height: 100%;}
    #bottom .text_bot p{font-size:24px;color:#000; line-height: 30px; font-weight:200;margin: 0px auto;}
    #bottom .btn_appbot{position: absolute;right:120px;bottom:90px;}
    #bottom .btn_appbot a{width:200px;height:55px;display:block;border-radius:55px;overflow:hidden;border: 2px solid #696aad;}
-   #bottom .btn_appbot a img{width:100%}
+   /* #bottom .btn_appbot a img{width:100%}
+   #bottom .btn_appbot a img{background: center;  position:absolute; } */
+   
    </style>
    
    
@@ -197,7 +197,7 @@ html, body{min-height: 100%; height: 100%;}
       </div>
    </div>
    <!--// mid —> -->
-   
+
    <!-- bottom -->
    <div id="wrapb">
       <div id="bottom">
