@@ -207,10 +207,10 @@ details div{
 			<div style="border-bottom: 1px solid; height: 1px; margin-bottom: 20px; margin-right: 20px;"></div>
 			
 			
-			 <c:forEach items="${list } " var="vo">
+			 <c:forEach items="${list }" var="vo">
 			 
 				<div style="height: 200px; text-align: left;">
-					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.name }</span>
+					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
 					<span>${vo.rev_date }</span>
 					
 					
