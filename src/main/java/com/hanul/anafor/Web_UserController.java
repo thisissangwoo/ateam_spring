@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Web_UserController {
 
-
+	
 		@RequestMapping("/userLogin")
 		public String userLogin() {
 			return "user/login";
