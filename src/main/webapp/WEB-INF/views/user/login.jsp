@@ -8,12 +8,24 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
-	@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+	.Anaforcenter{
+		position: absolute; left: 50%; top: 50%;
+		transform:translate(-50%, -50%);
+	}
 	
 	#AnaforLogo{
 		margin-bottom:10px;
+		text-align:center;
 	}
 
+	#login{
+		text-align:center;
+	}
+	
+	 #socialLogin{
+		text-align:center;
+	} 
+	
 	img{
 		width:200px;
 		height:45px;
@@ -24,6 +36,8 @@
 		margin:10px 0px 0px 0px;
 		border-radius:10px;
 		padding: 0px 45px;
+		border:1px solid #ccc;
+		line-height:50px;
 	}
 	
 	
@@ -32,7 +46,7 @@
 	}
 	
 	#btn-login{
-		width:480px;
+		width:400px;
 		height:50px;
 		background-color: #696AAD;
 		border-radius:10px;
@@ -51,8 +65,8 @@
 
  	#centerdiv{
 		width:100%;
-		height:50px;
 		margin:0px auto;
+		height:30px;
 	} 
 	
 	.sepline{
@@ -92,61 +106,110 @@
 		color:#696AAD;
 		letter-spacing:-0.015em;
 		font-weight:600;
-		font-size:18px;
+		font-size:16px;
 	}
 	
 	#usericon{
 		position: absolute;
-		top:142px;
-		left:20px;
+		top:94px;
+		left:28px;
 		font-size:20px;
 	}
 	
 	#pwicon{
 		position: absolute;
-		left:20px;
-		top: 202px;
+		left:28px;
+		top: 150px;
 		font-size:20px;
 	} 
 	
-	#checkmsg{
-		width:100%;
-		height:50px;
-	}
-	
 	#check{
-		display: inline-block;
-		font-size : 14px;
-		color:#ff0000;
-		float:left;
-		margin:18px 0px 0px 10px;
+		width:420px;
+		height:60px;
+	}
+	
+	#checkmsg{
+		display:block;
+		line-height:60px;
+		margin:10px 10px 0px 10px;
+		color:#FF0000;
 		visibility: hidden;
+		font-size:12px;
 	}
-	
+
 	#find{
-		width:460px;
-		height:50px;
+		width:93%;
+		height:auto;	
+		}
+	#find ul{
+		height:40px;
+		margin-top:15px;
 		text-align:center;
-		margin:10px 0px 10px 0px;
+	}
+	#find ul li{
+		display:inline-block;
+		color:#808080;
+		font-size:12px;
+	}
+	#find ul li a span{
+		font-size:12px;
+		color:#808080;
 	}
 	
-	#findpw, #join{
-		padding:10px;
-	}
+	
 </style>
+
+</head>
+
+<body>
+	<div class="Anaforcenter">
+		<div id="AnaforLogo">
+			<span id="alogo">AnaFor</span><br/>
+			<span id="alogotitle">아픈 나를 위해 아나포</span>
+		</div>
+		<div id="login">
+			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
+			<i class="fa-solid fa-user" id="usericon"></i><br/>
+			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요"/>
+			<i class="fa-solid fa-lock" id="pwicon"></i><br/>
+		</div>
+			<div id="check">
+			<span id="checkmsg"> 아이디 혹은 비밀번호가 일치하지 않습니다.</span>
+			</div>
+		<div id="login">	
+			<input type="button" id="btn-login" onclick="loginChk()" value="로그인"/>
+		</div>
+		<div id="centerdiv">
+			<div class="sepline">또는</div>
+		</div>
+		
+		<div id="socialLogin">
+			<a href="naverLogin"><img src="imgs/naver_login.png" class="social"/></a>
+			<a href="kakaoLogin"><img src="imgs/kakao_login.png" class="social"/></a>
+		</div>
+		<div id="find">
+			<ul>
+				<li><a id="findpw"><span>비밀번호 찾기</span></a></li>
+				<li>|</li>
+				<li><a id="join" href="userJoin"><span>회원가입</span></a></li>
+			</ul>
+   </div>
+	</div>
+	
+	
 <script type="text/javascript">
 	//로그인 유효성 함수
 	function loginChk(){
 		
 		if($("#userid").val()==''){	//아이디를 입력하지 않았을 때
 			$("#userid").focus();
-			$("#check").text("아이디를 입력해주세요").css('visibility','visible');
+			$("#checkmsg").text("아이디를 입력해주세요").css('visibility','visible');
 		
 			return false;
 		
 		}else if($("#userpw").val()==''){//비밀번호를 입력하지 않았을 때
 			$("#userpw").focus();
-			$("#check").text("비밀번호를 입력해주세요").css('visibility','visible');
+			$("#checkmsg").text("비밀번호를 입력해주세요").css('visibility','visible');
 		
 			return false;
 		}
@@ -159,7 +222,8 @@
 				if(response){
 					location = "<c:url value='/' />";
 				}else{
-					$("#check").css('visibility','visible');
+					$("#checkmsg").text("아이디 혹은 비밀번호가 일치하지 않습니다.").css('visibility','visible');
+					
 					$("#userpw").val("").focus();
 				}
 			}, error : function(req,text){
@@ -168,41 +232,6 @@
 		});//ajax
 	}
 
-
-
-
-</script>
-
-</head>
-
-<body>
-	<div class="center">
-		<div id="AnaforLogo">
-			<span id="alogo">AnaFor</span><br/>
-			<span id="alogotitle">아픈 나를 위해 아나포</span>
-		</div>
-		<div id="login">
-			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
-			<i class="fa-solid fa-user" id="usericon"></i><br/>
-			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요"/>
-			<i class="fa-solid fa-lock" id="pwicon"></i><br/>
-			<div id="checkmsg">
-			<span id="check"> 아이디 혹은 비밀번호가 일치하지 않습니다.</span>
-			</div>
-			<input type="button" id="btn-login" onclick="loginChk()" value="로그인"/>
-		</div>
-		<div id="centerdiv">
-			<div class="sepline">또는</div>
-		</div>
-		
-		<div id="socialLogin">
-			<a href="naverLogin"><img src="imgs/naver_login.png" class="social"/></a>
-			<a href="kakaoLogin"><img src="imgs/kakao_login.png" class="social"/></a>
-		</div>
-		<div id="find">
-			
-			<a id="findpw">비밀번호 찾기</a> | <a id="join" href="userJoin">회원가입</a>
-		</div>
-	</div>
+</script>	
 </body>
 </html>

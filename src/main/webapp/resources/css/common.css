@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-body {
+/* body {
 	margin: 0 auto;
 	text-align: center;
 	font-size: 16px;
@@ -22,14 +22,14 @@ a:link, a:visited {
 }
 
 img {
-	vertical-align: middle;		/* 세로축 가운데 정렬 */
+	vertical-align: middle;		세로축 가운데 정렬
 }
 
 table {
 	width: 80%;
 	margin: 0 auto;
     border-top: 1px solid #444444;
-	border-collapse: collapse;	/* 테두리 겹침 설정 collapse : 겹치지 않게 처리 */
+	border-collapse: collapse;	테두리 겹침 설정 collapse : 겹치지 않게 처리
 }
 
 table tr { height: 46px; }
@@ -42,7 +42,7 @@ table th, table td {
 
 table th { background: #f6f6f6; color:black;}
 
-/* table tr td a:hover { font-weight: 700; color:black;} */
+table tr td a:hover { font-weight: 700; color:black;}
 
 .btnSet { margin-top: 20px; }
 
@@ -52,7 +52,7 @@ a.btn-fill, a.btn-empty {
 	border: 1px solid #696aad;
 	border-radius: 1px;
 	box-shadow: 1px 1px 2px;
-	       /* 오른쪽, 아래쪽, 번짐 정도 */
+	       오른쪽, 아래쪽, 번짐 정도
 }
 
 a.btn-fill {
@@ -91,7 +91,7 @@ textarea {
 input[name=title], textarea[name=content] { width: calc(100% - 24px) }
 
 input[name=addr] { width: calc(100% - 24px) }
-	/* calc(100% - 24px) 폭 100%에서 양쪽 24px(여백) 만큼 뺀 값만큼 늘림 */
+	calc(100% - 24px) 폭 100%에서 양쪽 24px(여백) 만큼 뺀 값만큼 늘림
 
 input[type=radio] {
 	width: 18px;
@@ -150,7 +150,7 @@ ul.grid li {
 ul.grid li:nth-child(5n) {
 	margin-right: 0;
 }
-/* (5n) 5번째 마다(n)의 의미 */
+(5n) 5번째 마다(n)의 의미
 ul.grid li div {
 	text-align: left;
 	padding: 9px 10px;
@@ -170,7 +170,7 @@ ul.grid li div:nth-child(1){
 }
 
 
-/* width 값을 class로 등록하여 관리 */
+width 값을 class로 등록하여 관리
 .w-pct80 {width : 80%}
 .w-pct70 {width : 70%}
 .w-pct60 {width : 60%}
@@ -196,7 +196,8 @@ ul.grid li div:nth-child(1){
 .w-px30 {width : 30px}
 .w-px20 {width : 20px}
 .w-px10 {width : 10px}
-
+ */
+ 
 /* common */
 html,body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,blockquote,p,address,pre,cite,form,fieldset,table,th,td,legend,label{margin:0;padding:0;border:0;font-size:15px; font-weight: 400; letter-spacing:-.03em; font-family: 'Montserrat', 'Noto Sans Korean', 'Helvetica', 'Verdana', sans-serif; color: #191927;}
 input,textarea,select{margin:0;padding:0; border: 0;  font-family: 'Montserrat', 'Noto Sans Korean', 'Malgun Gothic', 'Apple SD Gothic Neo', 'Helvetica', 'Verdana', sans-serif;}

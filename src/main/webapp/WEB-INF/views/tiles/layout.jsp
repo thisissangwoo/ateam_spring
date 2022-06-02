@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${title }</title>
+<title>${title}</title>
 <style type="text/css">
 	#wrap { display: flex; flex-direction: column; height: 100%; }
 </style>
