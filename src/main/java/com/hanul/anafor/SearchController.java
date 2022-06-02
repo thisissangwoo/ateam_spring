@@ -29,7 +29,7 @@ public class SearchController {
 
    
    @ResponseBody
-   @RequestMapping(value="/basic", produces = "application/json;charset=UTF-8")
+   @RequestMapping(value="basic", produces = "application/json;charset=UTF-8")
    public String search(HttpServletRequest req) {
 	   hpVO searchVO = new hpVO();
 	   searchVO.setHp_name( req.getParameter("query") );
