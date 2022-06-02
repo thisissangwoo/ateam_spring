@@ -11,13 +11,15 @@
 <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> -->
 <style>
 
+
 header {
-	background-color: #696aad;
-	
-	padding: 10px 10px; 
-	text-align: left;
-	height: 40px;
+   background-color: #696aad;
+   
+   padding: 10px 10px; 
+   text-align: left;
+   height: 40px;
 }
+
 
 header ul, header ul li {
 
@@ -58,7 +60,7 @@ header .category ul li a:hover, header .category ul li a.active {
 
 </style>
 <header style="">
-	<div class="category" style='margin-left: 100px; width: 1200px;' >
+	<div class="category" style='margin-left: 100px; width: 100%;' >
 		<!-- logo -->
 		<div style='position: absolute;left: 0; top: 5px; margin-left: 100px' >
 			<ul>

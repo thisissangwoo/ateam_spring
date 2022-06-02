@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
- <!doctype html>
+
 <html>
 <head>
+
 	
     <meta charset="utf-8" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
@@ -16,8 +17,43 @@
     
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
-   <script type="text/javascript" src="js/home.js"></script>
+  <!--  <script type="text/javascript" src="js/home.js"></script>
+  
+ -->
+ 
+<script type="text/javascript">
+var list = new Array();
+	 function btn_prev(){
+		 $("#text1").removeClass(".text1");
+		 $("#text1").addClass(".text1 on");
+		 $("#text2").removeClass(".text2 on");
+		 $("#text2").addClass(".text2");
+		 return false;
+	 }
+for(var i=1; i<=3; i++){
+	
 
+	for(var i=1; i<=2; i++){
+		
+		// 객체 생성
+		var data = new Object() ;
+		
+		data.number = i ;
+		data.name = "Tester #" + i ;
+		
+		
+		// 리스트에 생성된 객체 삽입
+		testList.push(data) ;
+	}
+	
+	// String 형태로 변환
+	var jsonData = JSON.stringify(testList) ;
+	
+	alert(jsonData) ;
+출처: https://fruitdev.tistory.com/190 [과일가게 개발자:티스토리]
+	
+}	 
+</script> 
    
    <!-- header -->
    <style>
@@ -68,8 +104,8 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
    #top{width:100%;height:800px;margin:50px 0;position:relative}
    #top::before{content: '';display:block;position:absolute;height:100%;width:100%;background:#696aad;left:calc(50% - 400px);transform: translate(-50%, 0);margin-left:-50%}
    #top .view_box{height:755px;width:1257px;margin:0 auto;position:relative;padding-top:30px}
-   #top .view_box .phone_box{width:351px;height:755px;box-sizing:border-box;padding:100px 10px 60px 10px;background:#000;border-radius: 30px;z-index:3;position:relative}
-   #top .view_box .phone_box ul{display:block;width:100%;height:595px;background:red;overflow:hidden}
+   #top .view_box .phone_box{width:370px;height:755px;box-sizing:border-box;padding:80px 15px 90px 15px; background: url("imgs/phoneview.png") no-repeat; background-size: 370px; position:relative}
+   #top .view_box .phone_box ul{display:block;width:100%;height:590px;background:red;overflow:hidden}
    #top .view_box .phone_box li{display:inline-block}
    #top .view_box .phone_box li img{width:100%}
    #top .view_box .text_box{position:absolute;top:250px;right:60px}
@@ -84,7 +120,7 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
    #top .view_box .btn{width:200px;height:100px;position:absolute;bottom:118px;right:350px}
    #top .view_box .btn li{display:inline-block;float:left;position:relative}
    #top .view_box .btn li:last-child{margin-left:-1px}
-   #top .view_box .btn a{display:block;width:100px;height:100px;border:1px solid #776f67;background: url("https://cdn1.vectorstock.com/i/1000x1000/88/85/right-arrow-icon-vector-21638885.jpg") center 50% #fff no-repeat;background-size:35px}
+   #top .view_box .btn a{display:block;width:100px;height:100px;border:1px solid #776f67;background: url("imgs/arrow.png") center 50% #fff no-repeat;background-size:35px}
    #top .view_box .btn a.btn_prev{transform: rotate(180deg);}
    #top .view_box .btn a span{display:none}
 
@@ -106,8 +142,8 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
    
    #bottom{width:100%;height:260px;background: #f5f5f5;position:relative;box-sizing: border-box;}
    #bottom .text_bot{position:absolute;left:60px;top:50px;text-align: left;}
-   #bottom .text_bot h3{font-size:28px;font-weight:900;color:#696aad;line-height: 29px;}
-   #bottom .text_bot p{font-size:24px;color:#000;font-weight:200;margin: 0px auto;}
+   #bottom .text_bot h3{font-size:28px;font-weight:900;color:#696aad;line-height: 60px;}
+   #bottom .text_bot p{font-size:24px;color:#000; line-height: 30px; font-weight:200;margin: 0px auto;}
    #bottom .btn_appbot{position: absolute;right:120px;bottom:90px;}
    #bottom .btn_appbot a{width:200px;height:55px;display:block;border-radius:55px;overflow:hidden;border: 2px solid #696aad;}
    #bottom .btn_appbot a img{width:100%}
@@ -139,19 +175,19 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
    <div id="top">
       <div class="view_box">
          <div class="phone_box">
-            <ul>
+            <ul class="slides">
                <li><img src="https://findin.co.kr/wp-content/uploads/2021/11/1-1.png" alt="1"></li>
-               <li><img src="https://findin.co.kr/wp-content/uploads/2021/11/1-1.png" alt="2"></li>
+               <li><img src="imgs/box.png" alt="2"></li>
                <li><img src="https://findin.co.kr/wp-content/uploads/2021/11/1-1.png" alt="3"></li>
             </ul>
          </div>
          <div class="text_box">
-            <div class="text1">
+            <div class="text1" id="text1">
                <p>나와 가까운 병원찾기부터 스마트하게 약 관리까지!</p>
                <p>건강이 편해지다.</p>
             </div>
-            <div class="text2 on">
-               <p>나와 가까운 병원찾기부터 스마트하게 약 관리까지!2</p>
+            <div class="text2 on" id="text2">
+               <p >나와 가까운 병원찾기부터 스마트하게 약 관리까지!2</p>
                <p>건강이 편해지다.</p>
             </div>
             <div class="text3">
@@ -161,8 +197,8 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
          </div>
          <div class="btn">
             <ul>
-               <li><a href="" class="btn_prev"><span>이전</span></a></li>
-               <li><a href="" class="btn_next"><span>다음</span></a></li>
+               <li><a class="btn_prev"onclick="btn_prev()"><span>이전</span></a></li>
+               <li><a class="btn_next"onclick="btn_next()"><span>다음</span></a></li>
             </ul>
          </div>
       </div>
@@ -188,9 +224,9 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
          
       </div>
    </div>
-   <!— // mid —>
+   <!--// mid —> -->
    
-   <!— bottom —>
+   <!-- bottom -->
    <div id="wrapb">
       <div id="bottom">
          <div class="text_bot">
@@ -198,17 +234,13 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
             <p><b>아픈</b> 나를 위한</p>
             <p><b>아나포</b>를 지금<b>만나보세요!</b></p>
          </div>
-         <ul>
-            <li>qweqwe</li>
-            <li>sfdsdfa</li>
-            <li>vbccvbbgf</li>
-         </ul>
+       
          <div class="btn_appbot">
             <a href=""><img src="imgs/btn_app.png"></a>
          </div>
       </div>   
    </div>
-   <!— // bottom —>   
+   <!--// bottom -->
 
 </div>
 
