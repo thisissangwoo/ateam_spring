@@ -11,13 +11,15 @@
 <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> -->
 <style>
 
+
 header {
-	background-color: #696aad;
-	
-	padding: 10px 10px; 
-	text-align: left;
-	height: 40px;
+   background-color: #696aad;
+   
+   padding: 10px 10px; 
+   text-align: left;
+   height: 40px;
 }
+
 
 header ul, header ul li {
 
@@ -58,7 +60,7 @@ header .category ul li a:hover, header .category ul li a.active {
 
 </style>
 <header style="">
-	<div class="category" style='margin-left: 100px; width: 1200px;' >
+	<div class="category" style='margin-left: 100px; width: 100%;' >
 		<!-- logo -->
 		<div style='position: absolute;left: 0; top: 5px; margin-left: 100px' >
 			<ul>
@@ -82,8 +84,8 @@ header .category ul li a:hover, header .category ul li a.active {
 				<ul>
 					<li>
 
-						<a href='login' style="margin-right: 20px;">로그인</a>
-						<a href='user'>회원가입</a>
+						<a href='userLogin' style="margin-right: 20px;">로그인</a>
+						<a href='userJoin'>회원가입</a>
 
 					</li>			
 				</ul>
@@ -93,7 +95,7 @@ header .category ul li a:hover, header .category ul li a.active {
 			<c:if test="${ !empty loginInfo }">
 				<ul>
 					<li>
-						<strong>${loginInfo.name }</strong> 님
+						<strong>${loginInfo.user_name }</strong> 님
 					</li>
 					<li>			
 						<a href='logout'>로그아웃</a>
