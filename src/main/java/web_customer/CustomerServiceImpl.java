@@ -12,8 +12,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public void qna_insert(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.qna_insert(vo);
 	}
 
 	@Override

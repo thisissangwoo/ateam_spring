@@ -9,6 +9,7 @@ public class Web_boxController {
 	
 	@RequestMapping ("/box.pr")
 	public String box() {
+		
 		return "shop/box";
 	}
 	
