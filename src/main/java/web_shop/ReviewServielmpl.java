@@ -1,4 +1,4 @@
-package shop;
+package web_shop;
 
 import java.util.List;
 
@@ -10,28 +10,27 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReviewServielmpl implements ReviewService {
 
-	@Autowired private ReviewDAO dao;
+	@Autowired private WReviewDAO dao;
 	
 	@Override
-	public void Review_insert(ReviewVO vo) {
+	public void Review_insert(WReviewVO vo) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<ReviewVO> review_list() {
+	public List<WReviewVO> review_list() {
+		return dao.review_list();
+	}
+
+	@Override
+	public WReviewVO review_detail(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ReviewVO review_detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void review_update(ReviewVO vo) {
+	public void review_update(WReviewVO vo) {
 		// TODO Auto-generated method stub
 
 	}

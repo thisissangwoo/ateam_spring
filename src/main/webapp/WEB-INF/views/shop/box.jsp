@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,7 +157,7 @@ details div{
 			<br /><br />
 			
 			 <!--  -->
-			<div class="line">
+			<!-- <div class="line"> -->
 			<details>
 					<summary class="line" style="padding: 0 10px; background-color: #6969ff; color: white; height: 50px; width: 200px; line-height: 50px; display: inline; cursor: pointer;">
 						펼쳐보기
@@ -165,22 +165,22 @@ details div{
 				
 				<br /><br />
 				
-				<div style="height: 50px;">스마트 폰으로 예약하면</div>
-				<div style="height: 50px;">약먹는 시간을 알려줍니다</div>
+				<div style="height: 50px; line-height: 90px;">스마트 폰으로 예약하면</div>
+				<div style="height: 50px; line-height: 70px;">약먹는 시간을 알려줍니다</div>
 				<div>
 					<img src="imgs/box.png" style="width: 800px; height: 600px;">
 				</div>
-				<div style="height: 60px;">분실 우려없이 GPS 확인과 위치확인</div>
+				<div style="height: 100px; line-height: 160px;">분실 우려없이 GPS 확인과 위치확인</div>
 				<div>
 					<img src="imgs/gps.png" style="width: 800px; height: 600px;">
 				</div>
-				<div style="height: 40px;">잊어버리지 않게 섭취 시간 알림</div>
-				<div style="height: 40px;">언제먹었는지 알수있는 섭취 히스토리</div>				
+				<div style="height: 60px; line-height: 120px;">잊어버리지 않게 섭취 시간 알림</div>
+				<div style="height: 60px; line-height: 80px;">언제먹었는지 알수있는 섭취 히스토리</div>				
 				<div>
 					<img src="imgs/phone.png" style="width: 800px; height: 600px;">
 				</div>
 			</details>
-			</div>
+			<!-- </div> -->
 			
 			
 			<div style="position: fixed; bottom: 80px; right: 80px; width: 50px; height: 50px; border: 1px solid; border-radius: 50%; background-color: #6969ff; border-radius: 50%;  ">
@@ -206,7 +206,24 @@ details div{
 			</div>
 			<div style="border-bottom: 1px solid; height: 1px; margin-bottom: 20px; margin-right: 20px;"></div>
 			
-			<div style="height: 200px; text-align: left;">
+			
+			 <c:forEach items="${list } " var="vo">
+			 
+				<div style="height: 200px; text-align: left;">
+					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.name }</span>
+					<span>${vo.rev_date }</span>
+					
+					
+					
+					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
+					<div style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
+						${vo.rev_content }
+					</div>
+				</div>
+			</c:forEach>
+			
+			
+			<!-- <div style="height: 200px; text-align: left;">
 				<span style="height: 20px; font-size: 20px; line-height: 20px;">김상우</span>
 				<span>2022.01.01</span>
 				<form name="myform" id="myform" method="post" action="" style="height: 40px; line-height: 40px;">
@@ -222,31 +239,7 @@ details div{
 				<div style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
 					주문했는데 오늘 배송 가능하죠??
 				</div>
-			</div>
-			
-			<div style="height: 200px; text-align: left;">
-				<span style="height: 20px; font-size: 20px; line-height: 20px;">김상우</span>
-				<span>2022.01.01</span>
-				<form name="myform" id="myform" method="post" action="" style="height: 40px; line-height: 40px;">
-					<fieldset>
-						<input type="radio" name="rating" value="1" id="rate1" checked="checked"> <label for="rate1">⭐</label>
-						<input type="radio" name="rating" value="2" id="rate2" checked="checked"> <label for="rate2">⭐</label>
-						<input type="radio" name="rating" value="3" id="rate3" checked="checked"> <label for="rate3">⭐</label>
-						<input type="radio" name="rating" value="4" id="rate4"> <label for="rate4">⭐</label>
-						<input type="radio" name="rating" value="5" id="rate5"> <label for="rate5">⭐</label>
-					</fieldset>
-				</form>
-				<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
-				<div style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
-					주문했는데 오늘 배송 가능하죠??
-					
-			</div>
-		</div>
-		
-		
-		
+			</div> -->
 	</div>			
-	
-	
 </body>
 </html>

@@ -1,6 +1,6 @@
-package shop;
+package web_shop;
 
-public class ReviewVO {
+public class WReviewVO {
 	private int rev_id, rev_grade;
 	private String user_id, rev_date, rev_title, rev_content;
 	
