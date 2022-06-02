@@ -42,9 +42,9 @@
 		</tr>
 	</table>
 </form>
-<div class='btnSet'>
-	<a class='btn-fill' onclick="if( emptyCheck() ){ $('form').submit()}">저장하기</a>
-	<a class='btn-empty' href="list.no">취소</a>
+<div>
+	<a onclick="if( emptyCheck() ){ $('form').submit()}">저장하기</a>
+	<a href="list.no">취소</a>
 </div>
 </body>
 </html>

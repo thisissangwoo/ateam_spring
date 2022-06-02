@@ -14,32 +14,32 @@ public class NoticeDAO implements NoticeService {
 	
 	@Override
 	public void notice_insert(NoticeVO vo) {
-		sql.insert("notice.mapper.insert", vo);
+		sql.insert("wnotice.mapper.insert", vo);
 	}
 
 	@Override
 	public List<NoticeVO> notice_list() {
-		return sql.selectList("notice.mapper.list");
+		return sql.selectList("wnotice.mapper.list");
 	}
 
 	@Override
 	public NoticeVO notice_detail(int id) {
-		return sql.selectOne("notice.mapper.detail", id);
+		return sql.selectOne("wnotice.mapper.detail", id);
 	}
 
 	@Override
 	public void notice_update(NoticeVO vo) {
-		sql.update("notice.mapper.update", vo);
+		sql.update("wnotice.mapper.update", vo);
 	}
 
 	@Override
 	public void notice_delete(int id) {
-		sql.delete("notice.mapper.delete", id);
+		sql.delete("wnotice.mapper.delete", id);
 	}
 
 	@Override
 	public void notice_read(int id) {
-		sql.update("notice.mapper.read", id);
+		sql.update("wnotice.mapper.read", id);
 	}
 
 }
