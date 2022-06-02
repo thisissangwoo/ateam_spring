@@ -32,8 +32,17 @@ public class Web_NoticeController {
 	
 	@RequestMapping ("/insert.no")
 	public String insert(NoticeVO vo) {
-		
 		return "notice/list";
 	}
+
+	@RequestMapping ("/detail.no")
+	public String detail(int id, Model model) {
+		service.notice_read(id);
+		model.addAttribute("vo", service.notice_detail(id));
+		model.addAttribute("crlf", "\r\n");
+		
+		return "notice/detail";
+	}
+	
 
 }

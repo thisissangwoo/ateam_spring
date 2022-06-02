@@ -23,6 +23,7 @@ import web_user.WuserServiceImpl;
 @Controller
 public class Web_UserController {
 
+
 		//네이버 클라이언트 아이디
 		private String naver_client_id = "szRRJL0N7PYQvmPTLsqe";
 		//카카오 Rest Api key
@@ -32,6 +33,7 @@ public class Web_UserController {
 		@Autowired WuserServiceImpl service;
 		
 		//로그인 페이지
+
 		@RequestMapping("/userLogin")
 		public String userLogin(HttpSession session) {
 			session.setAttribute("category", "login");
