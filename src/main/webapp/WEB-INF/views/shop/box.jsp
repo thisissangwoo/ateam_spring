@@ -13,9 +13,60 @@
 	float: left;
 	margin: 30px;
 }
+
 .box img {
 	width: 80px;
 	height: 80px;
+}
+
+#myform fieldset {
+	display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+	border: 0; /* 필드셋 테두리 제거 */
+}
+
+#myform input[type=radio] {
+	display: none; /* 라디오박스 감춤 */
+}
+
+#myform label {
+	font-size: 1.8em;			 /* 이모지 크기 */
+	color: transparent;			 /* 기존 이모지 컬러 제거 */
+	text-shadow: 0 0 0 #f0f0f0;  /* 새 이모지 색상 부여 */
+}
+#myform fieldset{
+    display: inline-block; 		 /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; 			 /* 이모지 순서 반전 */
+    border: 0; 					 /* 필드셋 테두리 제거 */
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #6969ff;  /* 마우스 클릭 체크 */
+}
+ .line {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	margin: 8px 0px;
+}
+
+.line::before {
+	content: "";
+	flex-grow: 1;
+	margin: 0px 16px;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+}
+
+.line::after {
+	content: "";
+	flex-grow: 1;
+	margin: 0px 16px;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
 }
 </style>
 </head>
@@ -69,14 +120,12 @@
 		
 		<br /><br />
 		
-		
-		
+		 <!--  -->
+		<div class="line">
 		<details>
-			
-			<summary style="padding: 0 10px; background-color: #6969ff; color: white; height: 50px; width: 150px; line-height: 50px; display: inline;">
-				펼쳐보기
-			</summary>
-	
+				<summary class="line" style="padding: 0 10px; background-color: #6969ff; color: white; height: 50px; width: 150px; line-height: 50px; display: inline; cursor: pointer;">
+					펼쳐보기
+				</summary>
 			
 			<br /><br />
 			
@@ -103,6 +152,7 @@
 			</div>
 			
 		</details>
+		</div>
 		
 		
 		<div style="position: fixed; bottom: 100px; right: 100px; width: 80px; height: 80px; border: 1px solid; border-radius: 50%; background-color: #6969ff; border-radius: 50%;  ">
@@ -114,14 +164,39 @@
 		
 		<br /><br /><br /><br />
 		
-		<div style="display: block;">
-			<h3 style="">상품 리뷰</h3>
+		<div style="margin: 50px;">
+			<h2 style="margin: 0px; text-align: left;">상품 리뷰</h2>
+		
+		<form name="myform" id="myform" method="post" action="" style="text-align: left; margin-left: -20px;">
+			<fieldset>
+				<input type="radio" name="rating" value="1" id="rate1" checked="checked"> <label for="rate1">⭐</label>
+				<input type="radio" name="rating" value="2" id="rate2" checked="checked"> <label for="rate2">⭐</label>
+				<input type="radio" name="rating" value="3" id="rate3"> <label for="rate3">⭐</label>
+				<input type="radio" name="rating" value="4" id="rate4"> <label for="rate4">⭐</label>
+				<input type="radio" name="rating" value="5" id="rate5"> <label for="rate5">⭐</label>
+			</fieldset>
+		</form>
+	</div>
+		<hr  style="margin: 50px; margin-top: -20px;">
+		
+	<div style="margin: 50px;">
+		<h3 style="text-align: left; margin: 0px;">김상우</h3>
+		<form name="myform" id="myform" method="post" action="" style="text-align: left; margin-left: -20px;">
+			<fieldset>
+				<input type="radio" name="rating" value="1" id="rate1" checked="checked"> <label for="rate1">⭐</label>
+				<input type="radio" name="rating" value="2" id="rate2" checked="checked"> <label for="rate2">⭐</label>
+				<input type="radio" name="rating" value="3" id="rate3" checked="checked"> <label for="rate3">⭐</label>
+				<input type="radio" name="rating" value="4" id="rate4"> <label for="rate4">⭐</label>
+				<input type="radio" name="rating" value="5" id="rate5"> <label for="rate5">⭐</label>
+			</fieldset>
+		</form>
+		<h3 style="text-align: left; margin: 0px;">판매자: AnaFor</h3>
+		<div style=" width: 100%; height: 150px; text-align: left; padding: 10px; font-size: 1.2em;">
+			주문했는데 오늘 배송 가능하죠??
 		</div>
-		
-		<div style="margin: 30px;"><hr></div>
-		
-		
-		
+	</div>
+	<hr  style="margin: 50px;">
+	
 
 	
 </body>
