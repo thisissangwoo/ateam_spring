@@ -1,58 +1,251 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 주문</title>
 <style type="text/css">
-table td, table th, table{
-	border-bottom: none;
-	border-left: none;
-	border-top: none;
-	border-right: none;
-	margin: 5px;
+
+.wrap {
+	width: 1680px;
+	height: 0px auto;
+	left: 0px;
+	top: 60px;
+}
+
+.img {
+	width: 796px;
+	height: 569px;
+	left: 50px;
+	top: 106px;
+	position: absolute;
+}
+
+.text_div {
+	position: absolute;
+	width: 600px;
+	height: 50px;
+	left: 932px;
+	top: 130px;
+}
+
+#name {
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 50px;
+	text-align: left;
+}
+
+#name::after {
+	content:'';
+	display:block;
+	height: 2px;
+	width: 698;
+	background: #888888;
+}
+
+#price {
+	color: red;
+
+}
+
+/* hr {
+	position: absolute;
+	width: 698px;
+	height: 0px;
+	left: 932px;
+	top: 229px;
+	border: 2px solid #888888;
+} */
+
+.a {
+	position: absolute;
+	width: 80px;
+	height: 250px;
+	line-height: 50px;
+	left: 947px;
+	top: 205px;
+	text-align: left;
+}
+
+.a p {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.b {
+	position: absolute;
+	width: 230px;
+	height: 250px;
+	left: 1090px;
+	top: 205px;
+	line-height: 50px;
+	text-align: left;
+}
+
+.b p {
+	font-size: 16px;
+	color: black;
 }
 
 
+.c {
+	position: absolute;
+	width: 598px;
+	height: 99px;
+	left: 932px;
+	top: 470px;
+	border: 1px solid #CCCCCC;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+
+.cnt {
+	position: absolute;
+	width: 50px; 
+	height: 25px; 
+	left: 1465px; 
+	top: 485px;
+}
+
+.c #line {
+	line-height: 50px;
+	text-align: left;
+	font-size: 16px;
+	margin-left: 15px;
+	font-weight: bold;
+}
+
+.c #line::after {
+	content:'';
+	display:block;
+	height: 1px;
+	width: 570px;
+	background: #888888;
+}
+
+.order {
+	position: absolute;
+	width: 200px;
+	height: 80px;
+	left: 1008px;
+	top: 595px;
+	background: #696aad;
+	border-radius: 20px;
+	color: white;
+	border: none;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.buy_insert {
+	position: absolute;
+	width: 200px;
+	height: 80px;
+	left: 1250px;
+	top: 595px;
+	background: #808080;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.total {
+	position: absolute;
+	width: 180px; 
+	height: 18px; 
+	left: 1339px; 
+	top: 542px;
+}
+
+.total_price {
+	font-weight: bold; 
+	font-size: 15px; 
+	line-height: 20px; 
+	margin-right: 80px;
+}
+
+.money {
+	position: absolute; 
+	width: 180px; 
+	height: 18px; 
+	left: 1339px; 
+	top: 542px;
+}
+
+.money_result {
+	font-weight: 400; 
+	font-size: 17px; 
+	line-height: 20px; 
+	margin-left: 110px; 
+	color: red;
+}
+
 </style>
+
+<script type="text/javascript">
+	
+	var number
+	
+	/* var cnt = document.getElementById('cnt');
+	cnt.addEventListener('change', function () {
+		var cnt = document.getElementById('cnt');
+		var money_result = document.getElementById('money_result');
+		money_result.value = Number(cnt.value)*Number(this.value);
+	});
+ */
+
+</script>
 </head>
 <body>
-	<div style="height: 500px; margin: 100px;">
-		<div style="float: left;">
-			<img src="imgs/shopbox.png" style="width: 500px; height: 500px;">	
-		</div>
-		<div style="font-size: 1.7em; ">
-			아나포 스마트 약통 AnaFor Box Smart IoT 알약/영양제 통<br /> <hr style="width: 900px; aligh:right;">
-					
-			<table style="float: right; width: 900px; margin-right: 60px;">
-				<tr>
-					<th>판매가격</th>
-					<td style="float: left;">30,000원</td>
-				</tr>
-				<tr>
-					<th>배송안내</th>
-					<td style="float: left;">어떻게 해야하지?</td>
-				</tr>
-				<tr>
-					<th>모델명</th>
-					<td style="float: left;">AnaFor Box model 1</td>
-				</tr>
-				<tr>
-					<th>제조회사</th>
-					<td style="float: left;">AnaFor</td>
-				</tr>
-				<tr>
-					<th>원산지</th>
-					<td style="float: left;">대한민국</td>
-				</tr>
-			</table>
-			<br />
+	<div class="wrap">
+		<div class="img">
+			<img src="imgs/shopbox.png">
 		</div>
 		
-	</div>
+		<div class="text_div">
+			<p id="name" >아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</p>
+		</div>
+		
+		<hr/>
+		
+		<div class="a">
+			<p>상품가격</p>
+			<p>배송안내</p>
+			<p>모델명</p>
+			<p>제조회사</p>
+			<p>원산지</p>
+		</div>
+		
+		<div class="b">
+			<p id="price">30,000원</p>
+			<p>대한통운</p>
+			<p>AnaFor Smart Box Model 1</p>
+			<p>AnaFor</p>
+			<p>대한민국</p>
+		</div>
+		
+		<div class="c">
+			<p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
+		</div>
+		
+		<input class="cnt" type="number" style="border: 1px solid #808080;">
+		
+		<div class="total">
+			<p class="total_price">총 상품 금액</p>
+		</div>
+		
+		<div class="money">
+			<p class="money_result">30,000원</p>
+		</div>
+		
+		<button class="order" onclick="location.href='order.pr'">주문하기</button>
+		<button class="buy_insert">장바구니담기</button>
 	
-
+	</div>
 
 </body>
 </html>
