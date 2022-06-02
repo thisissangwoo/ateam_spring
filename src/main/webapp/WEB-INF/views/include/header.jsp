@@ -13,13 +13,13 @@
 
 
 header {
-	width:100%; height:auto;
-  	position: sticky;
-	padding-top: 32px;
-	top: 0px;
-	background: #696aad;
-	
-} 
+   background-color: #696aad;
+   
+   padding: 10px 10px; 
+   text-align: left;
+   height: 40px;
+}
+
 
 header ul, header ul li {
 
