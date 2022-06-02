@@ -12,37 +12,15 @@
 <style>
 
 
-header {
-   background-color: #696aad;
-   
-   padding: 10px 10px; 
-   text-align: left;
-   height: 40px;
-}
-
-
-header ul, header ul li {
-
-	display: inline;
-}
-
-
-
-header .category {
-	font-size: 18px;
-	 
-}
-
-header .category ul li a {
-	
-	color: #fff;
-}
-
-#logo {
-	font-weight: bold;
-	font-size: 30px;
-	
-}
+header {width: 100%; height: auto; background: #696aad; }
+header .category{width: 100%; height: 60px; position: relative;}
+header .category .logo{position: absolute; left: 60px;} 
+header .category .logo a{font-size: 30px; color: #fff; line-height: 37px; font-weight: 600;} 
+header .category .menu{position: absolute; right: 400px; top: 15px;}
+header .category .menu li{float:left; /* font-size: 15px; line-height: 25px; color: #fff; */  }
+header .category .menu li a{ font-size: 20px; line-height: 25px; color: #fff; padding-right: 15px; }
+header .category .login{position: absolute; right: 60px; top: 15px;}
+header .category .login a{font-size: 20px; line-height: 25px; color: #fff; padding-right: 15px;}
 
 
 
@@ -60,16 +38,16 @@ header .category ul li a:hover, header .category ul li a.active {
 
 </style>
 <header style="">
-	<div class="category" style='margin-left: 100px; width: 100%;' >
+	<div class="category">
 		<!-- logo -->
-		<div style='position: absolute;left: 0; top: 5px; margin-left: 100px' >
+		<div class="logo">
 			<ul>
 				<li><a href='<c:url value="/" />' id="logo">AnaFor</a></li>
 			</ul>	
 		</div>
 		
 		<!-- menu -->
-		<div style='position: absolute;right: 0; top: 15px; margin-right: 500px;'>
+		<div class="menu">
 			<ul>
 				<li><a href='box.pr'  ${category eq 'pr' ? 'class="active"' : '' }>제품소개</a></li>		
 				<li><a href='list.cu' ${category eq 'cu' ? 'class="active"' : '' }>고객센터</a></li>		
@@ -78,7 +56,7 @@ header .category ul li a:hover, header .category ul li a.active {
 		</div>
 		
 		<!-- login -->
- 		<div style='position: absolute;right: 0; top: 15px; margin-right: 100px;'>
+ 		<div class="login">
 			<!-- 로그인을 하지 않은 경우 -->
 			<c:if test="${ empty loginInfo }">
 				<ul>
@@ -107,6 +85,7 @@ header .category ul li a:hover, header .category ul li a.active {
 		
 	</div>
 </header>
+
 
 
 
