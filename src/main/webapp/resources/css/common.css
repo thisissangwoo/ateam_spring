@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-/* body {
+/*  body {
 	margin: 0 auto;
 	text-align: center;
 	font-size: 16px;
@@ -22,7 +22,7 @@ a:link, a:visited {
 }
 
 img {
-	vertical-align: middle;		세로축 가운데 정렬
+	vertical-align: middle;		
 }
 
 table {
@@ -52,7 +52,7 @@ a.btn-fill, a.btn-empty {
 	border: 1px solid #696aad;
 	border-radius: 1px;
 	box-shadow: 1px 1px 2px;
-	       오른쪽, 아래쪽, 번짐 정도
+	      오른쪽, 아래쪽, 번짐 정도
 }
 
 a.btn-fill {
@@ -169,7 +169,7 @@ ul.grid li div:nth-child(1){
 	-webkit-box-orient: vertical;
 }
 
-
+*/
 width 값을 class로 등록하여 관리
 .w-pct80 {width : 80%}
 .w-pct70 {width : 70%}
@@ -196,8 +196,8 @@ width 값을 class로 등록하여 관리
 .w-px30 {width : 30px}
 .w-px20 {width : 20px}
 .w-px10 {width : 10px}
- */
  
+  
 /* common */
 html,body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,blockquote,p,address,pre,cite,form,fieldset,table,th,td,legend,label{margin:0;padding:0;border:0;font-size:15px; font-weight: 400; letter-spacing:-.03em; font-family: 'Montserrat', 'Noto Sans Korean', 'Helvetica', 'Verdana', sans-serif; color: #191927;}
 input,textarea,select{margin:0;padding:0; border: 0;  font-family: 'Montserrat', 'Noto Sans Korean', 'Malgun Gothic', 'Apple SD Gothic Neo', 'Helvetica', 'Verdana', sans-serif;}
