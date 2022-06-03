@@ -20,4 +20,6 @@ public interface WuserService {
 	
 	//소셜 회원 정보 존재여부
 	boolean member_social_email(UserVO vo);
+	
+	
 }

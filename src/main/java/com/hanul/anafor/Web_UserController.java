@@ -54,6 +54,15 @@ public class Web_UserController {
 			return vo == null ? false: true;   //로그인 실패 했을시 false, 맞으면 true
 		}
 		
+		//로그아웃 처리
+		@RequestMapping("/logout")
+		public String userLogout(HttpSession session) {
+			
+			session.setAttribute("loginInfo", null);
+			
+			return "redirect:/";
+			
+		}
 		
 		
 		//회원가입 페이지
@@ -84,7 +93,7 @@ public class Web_UserController {
 		}
 		
 		//카카오 로그인 콜백 요청
-		@RequestMapping("/kakaocallback")
+		@RequestMapping("/kakao_callback")
 		public String kakaoCallback(HttpSession session, String code, String state, String error) {
 			if(!state.equals(session.getAttribute("state"))|| error != null ) {
 				return "redirect:/";
@@ -109,7 +118,6 @@ public class Web_UserController {
 			String type =json.getString("token_type");
 			
 			
-			
 			//-- 액세스 토큰 사용하여 모든 정보 받기(sample - 사용자 정보 가져오기)
 			
 //			curl -v -X GET "https://kapi.kakao.com/v2/user/me" \
@@ -117,13 +125,14 @@ public class Web_UserController {
 			
 			url = new StringBuffer("https://kapi.kakao.com/v2/user/me");
 			json = new JSONObject(common.requestAPI(url, type+" "+token));
-			
+			System.out.println("여기서2");
 			if(! json.isEmpty()) {  //json 안에 값이 있다면 저장하기
 				
 				UserVO vo = new UserVO();
-				vo.setUser_id(json.getString("email"));
+				//vo.setUser_id(json.getString("email"));
 				vo.setUser_kakao(json.get("id").toString());
-				vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
+			//	vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
+				System.out.println(vo.getUser_kakao());
 				/*
 				 * MemberVO vo = new MemberVO(); vo.setSocial_type("kakao");
 				 * vo.setId(json.get("id").toString());
@@ -141,8 +150,10 @@ public class Web_UserController {
 				 * session.setAttribute("loginInfo", vo);
 				 */
 			}
+			System.out.println("여기서3");
 			return "redirect:/";
-	}
+		}
+		
 		
 		
 		
@@ -175,6 +186,7 @@ public class Web_UserController {
 				 HttpSession session) {
 			//state 값이 맞지 않거나 에러가 발생해도 토큰 발급 불가
 			if(!state.equals(session.getAttribute("state")) || error != null){
+				System.out.println("네이버1");
 				return "redirect:/"; //메인 페이지로 이동
 			}
 			
@@ -186,7 +198,7 @@ public class Web_UserController {
 			//&state=9kgsGTfH4j7IyAkg  
 			StringBuffer url = new StringBuffer("https://nid.naver.com/oauth2.0/token?grant_type=authorization_code");
 			url.append("&client_id=").append(naver_client_id);
-			url.append("&client_secret=szRRJL0N7PYQvmPTLsqe");
+			url.append("&client_secret=sP8w3ahjpG");
 			url.append("&code=").append(code);
 			url.append("&state=").append(state);
 			
@@ -195,7 +207,7 @@ public class Web_UserController {
 			JSONObject json = new JSONObject(common.requestAPI(url));
 			String token = json.getString("access_token");
 			String type =json.getString("token_type");
-			
+			System.out.println("네이버2");
 			//curl  -XGET "https://openapi.naver.com/v1/nid/me" \
 		    //  -H "Authorization: Bearer AAAAPIuf0L+qfDkMABQ3IJ8heq2mlw71DojBj3oc2Z6OxMQESVSrtR0dbvsiQbPbP1/cxva23n7mQShtfK4pchdk/rc="
 			
@@ -203,7 +215,21 @@ public class Web_UserController {
 			json = new JSONObject(common.requestAPI(url,type + " " +token));
 			if(json.getString("resultcode").equals("00")) {
 				json = json.getJSONObject("response");
-				System.out.println(json);
+				System.out.println("네이버3");
+				/*
+				 * UserVO vo = new UserVO(); vo.setUser_id(json.getString("email"));
+				 * vo.setUser_name(json.getString("name"));
+				 * vo.setUser_naver(json.getString("id"));
+				 * vo.setUser_tel(json.getString("mobile"));
+				 * System.out.println(vo.getUser_id()); System.out.println(vo.getUser_name());
+				 * System.out.println(vo.getUser_tel());
+				 */
+				String id = json.getString("email");
+			//	String name = json.getString("name");
+			//	String tel = json.getString("mobile");
+				System.out.println(id);
+			//	System.out.println(name);
+			//	System.out.println(tel);
 				/*
 				 * //회원정보를 DB에 담기 위해서 회원정보 데이터 객체를 생성해야함 MemberVO vo = new MemberVO(); //소셜 로그인
 				 * 형태를 담음. vo.setSocial_type("naver"); vo.setId(json.getString("id"));
