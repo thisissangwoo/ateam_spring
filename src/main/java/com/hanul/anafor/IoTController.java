@@ -27,8 +27,8 @@ public class IoTController {
 	@RequestMapping ("/arduSetIoT")
 	public void arduSetIoT(HttpServletRequest req) {
 		System.out.println("arduSetIoT() 들어옴");
-		System.out.println(req.getParameter("latitude"));
-		System.out.println(req.getParameter("longitude"));
+		System.out.println(req.getParameter("latitude"));		//위도
+		System.out.println(req.getParameter("longitude"));		//경도
 	}
 	
 	

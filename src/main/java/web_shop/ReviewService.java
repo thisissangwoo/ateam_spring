@@ -2,7 +2,6 @@ package web_shop;
 
 import java.util.List;
 
-import web_notice.NoticeVO;
 
 public interface ReviewService {
 	
@@ -16,4 +15,5 @@ void Review_insert(WReviewVO vo);
 	
 	void review_delete(int id);
 	
+	WReviewPage review_list(WReviewPage page);
 }

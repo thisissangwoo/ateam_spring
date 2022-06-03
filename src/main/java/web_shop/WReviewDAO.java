@@ -41,4 +41,14 @@ public class WReviewDAO implements ReviewService {
 
 	}
 
+	@Override
+	public WReviewPage review_list(WReviewPage page) {
+		int pagecnt = sql.selectOne("wreview.mapper.totalList", page);
+		page.setTotalList(pagecnt);
+		
+		List<WReviewVO> list = sql.selectList("wreview.mapper.list", page);
+		page.setList(list);
+		return page;
+	}
+
 }

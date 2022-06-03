@@ -41,4 +41,10 @@ public class ReviewServielmpl implements ReviewService {
 
 	}
 
+	@Override
+	public WReviewPage review_list(WReviewPage page) {
+			
+		return dao.review_list(page);
+	}
+
 }
