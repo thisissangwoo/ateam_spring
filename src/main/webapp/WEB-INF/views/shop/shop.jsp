@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,8 +106,10 @@
 	position: absolute;
 	width: 50px; 
 	height: 25px; 
-	left: 1465px; 
+	left: 1445px;
 	top: 485px;
+	font-size: 16px;
+	text-align: center;
 }
 
 .c #line {
@@ -163,42 +166,41 @@
 
 .total_price {
 	font-weight: bold; 
-	font-size: 15px; 
+	font-size: 16px; 
 	line-height: 20px; 
 	margin-right: 80px;
 }
 
 .money {
 	position: absolute; 
-	width: 180px; 
+	width: 200px; 
 	height: 18px; 
-	left: 1339px; 
+	left: 1330px; 
 	top: 542px;
 }
 
 .money_result {
-	font-weight: 400; 
+	font-weight: bold;
 	font-size: 17px; 
 	line-height: 20px; 
 	margin-left: 110px; 
 	color: red;
 }
 
+/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+	  -moz-appearance: textfield;
+	}
+
 </style>
 
-<script type="text/javascript">
-	
-	var number
-	
-	/* var cnt = document.getElementById('cnt');
-	cnt.addEventListener('change', function () {
-		var cnt = document.getElementById('cnt');
-		var money_result = document.getElementById('money_result');
-		money_result.value = Number(cnt.value)*Number(this.value);
-	});
- */
-
-</script>
 </head>
 <body>
 	<div class="wrap">
@@ -232,20 +234,61 @@
 			<p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
 		</div>
 		
-		<input class="cnt" type="number" style="border: 1px solid #808080;">
+		<input class="cnt" type="number" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
 		
 		<div class="total">
 			<p class="total_price">총 상품 금액</p>
 		</div>
 		
 		<div class="money">
-			<p class="money_result">30,000원</p>
+			<p class="money_result">원</p>
+		<%-- <fmt:formatNumber value="${money_result}" pattern="#,###"/> --%>
+			
 		</div>
 		
-		<button class="order" onclick="location.href='order.pr'">주문하기</button>
-		<button class="buy_insert">장바구니담기</button>
+		<button class="order" type="submit" onclick="order()">주문하기</button>
+		<button class="buy_insert" type="submit">장바구니담기</button>
 	
 	</div>
+<script type="text/javascript">
 
+$(document).ready(function () {
+	$(".cnt").on("keyup", function() {
+		var total = (30000 * $('.cnt').val());
+		total = total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		$(".money_result").text(total + "원");
+	});
+});
+
+
+function order() {
+	if ($('.cnt').val() <= 0) {
+		alert("수량을 입력해주세요.");
+		$('.cnt').focus();
+	}
+	else{
+		alert("주문 페이지로 이동합니다.");
+		location.href="order.pr";
+	}
+}
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+
+</script>
 </body>
 </html>
