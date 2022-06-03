@@ -58,7 +58,8 @@ public class Web_UserController {
 		
 		//회원가입 페이지
 		@RequestMapping("/userJoin")
-		public String userJoin() {
+		public String userJoin(HttpSession session) {
+			session.setAttribute("category", "join");
 			return "user/join";
 		}
 		
