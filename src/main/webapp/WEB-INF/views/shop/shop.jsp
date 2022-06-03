@@ -105,7 +105,7 @@
 	position: absolute;
 	width: 50px; 
 	height: 25px; 
-	left: 1465px; 
+	left: 1465px;
 	top: 485px;
 }
 
@@ -186,19 +186,6 @@
 
 </style>
 
-<script type="text/javascript">
-	
-	var number
-	
-	/* var cnt = document.getElementById('cnt');
-	cnt.addEventListener('change', function () {
-		var cnt = document.getElementById('cnt');
-		var money_result = document.getElementById('money_result');
-		money_result.value = Number(cnt.value)*Number(this.value);
-	});
- */
-
-</script>
 </head>
 <body>
 	<div class="wrap">
@@ -239,13 +226,17 @@
 		</div>
 		
 		<div class="money">
-			<p class="money_result">30,000원</p>
+			<p class="money_result">원</p>
 		</div>
 		
 		<button class="order" onclick="location.href='order.pr'">주문하기</button>
 		<button class="buy_insert">장바구니담기</button>
 	
 	</div>
+<script type="text/javascript">
+	
+	
 
+</script>
 </body>
 </html>
