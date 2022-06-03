@@ -14,7 +14,7 @@ public class CustomerDAO implements CustomerService {
 	
 	@Override
 	public void qna_insert(CustomerVO vo) {
-		sql.insert("customer.mapper.qnainsert", vo);
+		sql.insert("wcustomer.mapper.qnainsert", vo);
 	}
 
 	@Override
@@ -25,12 +25,12 @@ public class CustomerDAO implements CustomerService {
 
 	@Override
 	public List<CustomerVO> qna_list() {
-		return sql.selectList("customer.mapper.qnalist");
+		return sql.selectList("wcustomer.mapper.qnalist");
 	}
 
 	@Override
 	public CustomerVO qna_detail(int id) {
-		return sql.selectOne("customer.mapper.qnadetail", id);
+		return sql.selectOne("wcustomer.mapper.qnadetail", id);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class CustomerDAO implements CustomerService {
 
 	@Override
 	public void qna_read(int id) {
-		sql.update("customer.mapper.qnaread", id);
+		sql.update("wcustomer.mapper.qnaread", id);
 
 	}
 

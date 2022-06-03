@@ -21,7 +21,6 @@
 	</div>
 </div>
 <table>
-	<h3>공지글 안내</h3>
 	<tr>
 		<th class="w-px120">제목</th>
 		<td class="left" colspan="5">${vo.title }</td>

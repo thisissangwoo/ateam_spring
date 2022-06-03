@@ -10,8 +10,7 @@
 	#wrap{width:100%;height:auto}
 	#header{width:100%;height:372px;background: url("imgs/faq.png") center no-repeat; position:relative; }
 	#header p{position:absolute; left:150px; top:30px; line-height: 80px; font-size: 70px; color: #929292; text-align: left}
-	table{margin-bottom: 100px;}
-	h3{margin-top: 100px; margin-left:200px; text-align:left; font-size: 1.5rem; }
+	h3{margin-top: 100px; margin-left:200px; text-align:left; font-size: 1.5rem; }	
 </style>
 </head>
 <body>
@@ -20,7 +19,6 @@
 	</div>
 </div>
 <table>
-	<h3>Q&A</h3>
 	<tr>
 		<th class="w-px120">제목</th>
 		<td class="left" colspan="5">${vo.title }</td>

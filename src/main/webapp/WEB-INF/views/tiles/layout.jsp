@@ -18,7 +18,15 @@
 <meta charset="UTF-8">
 <title>${title}</title>
 <style type="text/css">
-	#wrap { display: flex; flex-direction: column; height: 100%; }
+	/* #wrap { display: flex; flex-direction: column; height: 100%; } */
+#wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+
+
+
 </style>
 
 <!-- <link rel='stylesheet' type='text/css' href="resources/css/common.css"> -->
@@ -31,17 +39,23 @@
 <script type="text/javascript" src="js/file_check.js"></script>
 </head>
 <!-- 기본 layout 으로 header, content, footer 로 구성된 형태 -->
+<div class="header">
+	<tiles:insertAttribute name="header" />
+</div>
 
 <body>
+
 <div id="wrap">
-	<tiles:insertAttribute name="header" />
-	
 	<div id="content">
 		<tiles:insertAttribute name="content" />
 	</div>
 	
-	<tiles:insertAttribute name="footer" />
 </div>
 
 </body>
+
+<div id="footer">
+	<tiles:insertAttribute name="footer" />
+	</div>
+
 </html>
