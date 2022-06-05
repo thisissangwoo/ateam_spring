@@ -69,11 +69,11 @@
 		<p style="position: absolute; width: 147px; height: 50px; left: 446px; top: 190px; font-weight: bold; font-size: 16px; line-height: 50px; letter-spacing: -0.05em;">1개</p>
 	</div>
 	
-	<div class="order_detail" style="position: absolute; width: 1239px; height: 350px; left: 200px; top: 340px;">
+	<div class="order_detail" style="position: absolute; width: 1239px; height: 350px; left: 200px; top: 330px;">
 		<p id="detail" style="position: absolute; float: left; width: 150px; height: 50px; left: 248px; font-weight: bold; font-size: 20px; line-height: 50px; letter-spacing: -0.05em;">주문자 정보 입력</p>
 	</div>
 	
-	<div style="position: absolute; width: 127px; height: 237px; left: 450px; top: 410px; line-height: 50px; letter-spacing: -0.05em;">
+	<div style="position: absolute; width: 127px; height: 237px; left: 450px; top: 390px; line-height: 50px; letter-spacing: -0.05em;">
 		<p style="font-size: 14px; font-weight: bold;">받는사람</p>
 			<input type="text" style="position: absolute; width: 200px; height: 25px; left: 150px; top: 10px; border: 1px solid #d5d5d5; border-radius: 5px; font-size: 12px">
 		<p style="font-size: 14px; font-weight: bold;">연락처</p>
@@ -93,8 +93,8 @@
 		<textarea style="position: absolute; border: 1px solid #d5d5d5; top: 214px; left: 150px; width: 400px; height: 50px; resize: none; font-size: 12px;"></textarea>
 	</div>
 	
-		<p id="payment" style="position: absolute; width: 85px; height: 46px; left: 440px; top: 700px; font-weight: bold; font-size: 20px; line-height: 50px; letter-spacing: -0.05em; text-align: right;">결제 수단</p>
-		<p style="position: absolute; width: 170px; height: 46px; left: 410px; top: 750px; font-size: 11px; line-height: 50px; letter-spacing: -0.05em;">농협은행(무통장입금)</p>
+		<p id="payment" style="position: absolute; width: 85px; height: 46px; left: 440px; top: 670px; font-weight: bold; font-size: 20px; line-height: 50px; letter-spacing: -0.05em; text-align: right;">결제 수단</p>
+		<p style="position: absolute; width: 170px; height: 46px; left: 410px; top: 720px; font-size: 11px; line-height: 50px; letter-spacing: -0.05em;">농협은행(무통장입금)</p>
 		
 
 </div>
