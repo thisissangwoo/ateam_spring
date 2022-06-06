@@ -20,12 +20,12 @@ public class AdminController {
 
 	@Autowired private NoticeServiceImpl service;
 	
-	@RequestMapping ("/admin")
+	@RequestMapping ("admin")
 	public String list(HttpSession session, Model model) {
 		
 		
 		
-		return "admin/dashboard";
+		return "admin/list";
 	}
 
 	
