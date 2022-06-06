@@ -7,9 +7,8 @@
 <style type="text/css">
 
 .product {
-	position: absolute; 
-	width: 1680px; 
-	height: 100%;  
+	width: 1451px; 
+	height: 1080px;  
 }
 
 .product_textarea {
@@ -77,7 +76,7 @@
 </style>
 </head>
 <body>
-
+<form action="order.pr" method="post">
 <div class="product" >
 	<div class="product_textarea">
 		<p id="product_text" >주문 상품 정보</p>
@@ -114,36 +113,35 @@
 		
 		<div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 351px; background: #C4C4C4;">
 			<div style="width: 93px; height: 93px; left: 987px; top: 866px;">
-				<p style="font-weight: bold; font-size: 15px;">총 상품가격</p>
-				<p style="font-weight: bold; font-size: 15px; margin-right: 30px;">배송비</p>
+				<p style="font-weight: bold; font-size: 14px;">총 상품가격</p>
+				<p style="font-weight: bold; font-size: 14px; margin-right: 30px;">배송비</p>
 			</div>
 			
 			<div style="position: absolute; width: 86px; height: 93px; left: 300px; top: -1px; letter-spacing: 0.2px; ">
-				<p style="font-weight: bold; font-size: 18px; color: red; letter-spacing: 0.2px;">30,000원</p>
-				<p style="font-weight: bold; font-size: 16px;">0원</p>
+				<p style="font-weight: bold; font-size: 14px; color: red; letter-spacing: 0.2px;">30,000원</p>
+				<p style="font-weight: bold; font-size: 14px;">0원</p>
 			</div>
 		</div>
 		
 		<div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 444px; background: #C4C4C4;">
 			<div style="widows: 93px; height: 93px; left: 987px; top: 866px;">
-				<p style="font-weight: bold; font-size: 15px; margin-left: 10px; text-align: left; margin-top: 5px;">농협은행(무통장입금)</p>
-				<p style="font-weight: bold; font-size: 15px; margin-left: 10px; text-align: left; margin-top: -5px;">총 결제금액</p>
+				<p style="font-weight: bold; font-size: 14px; margin-left: 10px; text-align: left; margin-top: 5px;">농협은행(무통장입금)</p>
+				<p style="font-weight: bold; font-size: 14px; margin-left: 10px; text-align: left; margin-top: -5px;">총 결제금액</p>
 			</div>
 			
 			<div style="position: absolute; width: 187px; height: 86px; left: 228px; top: 6px;">
-				<p style="font-size: 15px; margin-left: 10px; letter-spacing: 0.5px; color: black;">356-0769-1562-03</p>
-				<p id="total_result" style="font-weight: bold; font-size: 15px; margin-left: 35px; letter-spacing: 0.5px; color: red; margin-top: -5px; font-size: 18px; ">30,000원</p>
+				<p style="font-size: 14px; margin-left: 10px; letter-spacing: 0.5px; color: black; font-weight: bold;">356-0769-1562-03</p>
+				<p id="total_result" style="font-weight: bold; font-size: 14px; margin-left: 35px; letter-spacing: 0.5px; color: red; margin-top: -5px; font-size: 16px; ">30,000원</p>
 			</div>
 		
 		</div>
 	</div>
 	
-	
+	<button class="order_result" type="submit" style="position: absolute; width: 350px; height: 60px; left: 760px; top: 970px; background: #696aad; border-radius: 10px; border: none; font-size: 17px; color: white;">주문하기</button>
 		
-	
-		
-
 </div>
+</form>
+
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
