@@ -45,7 +45,7 @@ function go_page(page) {
 	
 	.page_on {
 		border-radius: 50%;
-		background-color: #57343A;
+		background-color: #6969ff;
 		color: #fff;
 		font-weight: bold;
 	}

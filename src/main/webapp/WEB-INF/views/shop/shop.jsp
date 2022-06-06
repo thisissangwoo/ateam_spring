@@ -248,7 +248,7 @@
 		</div>
 		
 		<button class="order" type="submit" onclick="order()">주문하기</button>
-		<button class="buy_insert" type="submit">장바구니담기</button>
+		<button class="buy_insert" type="submit" onclick="basket()">장바구니담기</button>
 	
 	</div>
 </form>
@@ -274,7 +274,16 @@ function order() {
 	}
 }
 
-
+function basket() {
+	if ($('.cnt').val() <= 0) {
+		alert("수량을 입력해주세요.");
+		$('.cnt').focus();
+	}
+	else{
+		alert("장바구니로 이동합니다.");
+		location.href="basket.pr";
+	}
+}
 
 </script>
 </body>
