@@ -247,11 +247,11 @@
 			
 		</div>
 		
-		<button class="order" type="submit" onclick="order()">주문하기</button>
-		<button class="buy_insert" type="submit" onclick="basket()">장바구니담기</button>
 	
 	</div>
 </form>
+		<button class="order" type="submit" onclick="order()">주문하기</button>
+		<button class="buy_insert" type="submit" onclick="basket()">장바구니담기</button>	
 <script type="text/javascript">
 
 $(document).ready(function () {
