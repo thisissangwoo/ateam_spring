@@ -16,17 +16,13 @@ public class Web_boxController {
 	
 	@RequestMapping ("/shop.pr")
 	public String shop() {
-		
-		
-		
+
 		return "shop/shop";
 	}
 	
 	@RequestMapping ("/order.pr")
 	public String order() {
-		
-		
-		
+
 		return "shop/order";
 	}
 
