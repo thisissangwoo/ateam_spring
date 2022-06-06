@@ -28,17 +28,17 @@ function checkAll(checkAll){
 <body>
 <div id="wrap">
 	<div style="height: 730px;">
-		<div style="margin: 30px; height: 50px; width: auto;">
-			<span>
+		<div style="margin: 30px auto; height: 50px; width: 1160px;">
+			<span style="float: left;">
 				<img src="imgs/select.png" style="width: 70px;; height: 70px;" >
 				<span style="font-size: 30px; line-height: 50px; ">장바구니</span>
 			</span>
 			
-			<span style=" border: 1px solid; padding: 5px;"><a>선택삭제</a></span>
+			<span style=" border: 1px solid; padding: 5px; float: right;"><a>선택삭제</a></span>
 		</div>
 		<div>
-			<table style="width: 1160px;">
-				<tr>
+			<table style="width: 1160px; margin-bottom: 0px;">
+				<tr style="background-color: #DCDCDC">
 					<td style="width: 10px;"><input type="checkbox" name="chk" onclick="checkAll(this)"></td>
 					<td style="width: 200px; text-align: left;">전체선택</td>
 					<td style="width: 600px;">상품정보</td>
@@ -54,11 +54,14 @@ function checkAll(checkAll){
 					<td>30,000원</td>
 					<td>무료</td>
 				</tr>
-			
-					
 			</table>
 		</div>
-	
+		<div style="width: 1160px; margin: 0px auto; height: 30px; background-color:#DCDCDC; line-height: 30px; ">
+			<span style="float: right; font-weight: bold;">
+				상품가격 30,000 + 배송비 무료 = 주문금액 30,000 원
+			</span>
+		
+		</div>
 	
 	
 	

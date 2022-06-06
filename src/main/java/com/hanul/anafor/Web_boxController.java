@@ -35,7 +35,9 @@ public class Web_boxController {
 	}
 	
 	@RequestMapping ("/basket.pr")
-	public String basket() {
+	public String basket(HttpSession session, Model model) {
+		
+		
 		
 		
 		
