@@ -104,6 +104,21 @@ ul.grid li div:nth-child(1){
 	-webkit-box-orient: vertical;
 } */
 
+a.btn-fill-s {
+	font-size: 13px; font-weight: bold;
+	padding: 1px 10px;
+	border: 1px solid #c4dafc;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px #022d72;
+	background : #b1cdfa;
+	color: #0000cd;	
+}
+
+a:hover { 
+	cursor: pointer; 
+}
+
+
 
 /* width 값을 class로 등록하여 관리 */
 .w-pct80 {width : 80%}
@@ -175,7 +190,7 @@ select,button,textarea,input{font-family: 'Montserrat', 'Noto Sans Korean', sans
 /* common */
 
 #content {
-	min-width: 1280px; min-height: 800px; height: 100%; 	
+	min-width: 1280px; min-height: 600px; height: 100%; 	
 }
 
 body {
