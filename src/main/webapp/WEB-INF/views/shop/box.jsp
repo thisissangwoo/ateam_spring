@@ -168,6 +168,9 @@ details div {
 				</div>
 			</c:forEach>
 		</div>
-		<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		<form action="box.pr" method="post">
+			<input type="hidden" name="curPage" value="1" />
+				<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		</form>
 </body>
 </html>

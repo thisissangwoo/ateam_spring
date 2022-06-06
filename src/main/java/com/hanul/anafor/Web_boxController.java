@@ -34,7 +34,14 @@ public class Web_boxController {
 
 	}
 	
-	
+	@RequestMapping ("/basket.pr")
+	public String basket() {
+		
+		
+		
+		return "shop/basket";
+	}
+
 	
 	
 	
