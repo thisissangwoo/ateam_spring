@@ -9,7 +9,10 @@
 	select * from anafor_user where user_id = #{user_id} and user_pw = #{user_pw}
 </select>
 
-
-
+<!-- 회원 이메일 중복 여부 -->
+<select id="emailchk" resultType="integer">
+		select count(*) from anafor_user
+		where user_id = #{id}
+</select>
 
 </mapper>

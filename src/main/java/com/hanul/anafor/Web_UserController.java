@@ -6,8 +6,10 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +34,8 @@ public class Web_UserController {
 		@Autowired CommonService common;
 		@Autowired WuserServiceImpl service;
 		
+		@Autowired @Qualifier("ateam") SqlSession sql;
+		
 		//로그인 페이지
 
 		@RequestMapping("/userLogin")
@@ -39,6 +43,17 @@ public class Web_UserController {
 			session.setAttribute("category", "login");
 			return "user/login";
 		}
+		
+		
+		//이메일 중복 처리
+		 @ResponseBody
+		 @RequestMapping("/userEmailChk")
+		 public boolean userEmailChk(String id) {
+//			 return service.user_email_chk(userid);	
+			 System.out.println("입력됨");
+			 return (Integer)sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;
+		 }
+		
 		
 		//로그인 처리 (ajax 사용시 ResponseBody )
 		@ResponseBody
@@ -125,14 +140,13 @@ public class Web_UserController {
 			
 			url = new StringBuffer("https://kapi.kakao.com/v2/user/me");
 			json = new JSONObject(common.requestAPI(url, type+" "+token));
-			System.out.println("여기서2");
 			if(! json.isEmpty()) {  //json 안에 값이 있다면 저장하기
 				
 				UserVO vo = new UserVO();
-				//vo.setUser_id(json.getString("email"));
-				vo.setUser_kakao(json.get("id").toString());
-			//	vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
-				System.out.println(vo.getUser_kakao());
+				json = json.getJSONObject("kakao_account");
+				vo.setUser_id(json.getString("email"));
+				//vo.setUser_kakao(json.get("id").toString());
+				vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
 				/*
 				 * MemberVO vo = new MemberVO(); vo.setSocial_type("kakao");
 				 * vo.setId(json.get("id").toString());
@@ -150,7 +164,6 @@ public class Web_UserController {
 				 * session.setAttribute("loginInfo", vo);
 				 */
 			}
-			System.out.println("여기서3");
 			return "redirect:/";
 		}
 		

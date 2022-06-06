@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script type="text/javascript" src="js/join-check.js"></script>
 <style>
+	
 	
 	.Anaforcenter{
 		margin:0px auto;
@@ -36,7 +38,7 @@
 	}
 	
 	input[type=text], input[type=password]{
-		width:400px;
+		width:500px;
 		height:50px;
 		margin:10px 0px 0px 0px;
 		border-radius:10px;
@@ -86,18 +88,22 @@
 		height:14px;
 	}
 
-	#pw,#pwchk,#name,#tel,#birth{
-		width:500px;
+	#useremail input[type=text], #usercode input[type=text]{
+		width:400px;
 	}
 	
-	#gender{
+	#usergender #selectbox{
 		width:500px;
 		height:50px;
-		margin:10px 0px 0px 0px;
+		margin:10px auto 0px auto;
 		border-radius:10px;
-		padding: 0px 20px;
 		border:1px solid #ccc;
-		line-height:50px;
+		padding: 5px 7px 5px 12px;
+	}
+	
+	#usergender select{
+		width:470px;
+		height:38px;
 	}
 	
 	#idmsg, #codemsg,#pwmsg,#pwmsg2,#namemsg,#telmsg,#genmsg,#birthmsg{
@@ -105,14 +111,11 @@
 		text-align:left;
 		display:inline-block;
 		font-size:13px;
-		color:#696AAD;
 		font-weight:500;
 		padding:5px;
 	}
-		
-	
 	#btn-join{
-	
+		display:inline-block;
 		width:500px;
 		height:50px;
 		background-color: #696AAD;
@@ -123,10 +126,12 @@
 		font-weight:400;
 		padding:3px 7px;
 		border:0px;
+		line-height:45px;
 	}
 	#joinbutton{
 		width:100%;
 		height:170px;
+		margin:15px 0px 0px 0px;
 	}
 	
 	.visible{
@@ -135,106 +140,169 @@
 	.hidden{
 		visibility: hidden;
 	}
-
+	
+	.valid{color:green;}
+	.invalid{color:red;}
+	
 </style>
 </head>
 <body>
 	<div id="AnaforLogo">
 		<span id="alogo">AnaFor</span><br/>
 		<span id="alogotitle">아픈 나를 위해 아나포</span>
-		</div>	
-	<form action="userjoinChk" method="post">
+	</div>	
+<form action="userjoinChk" method="post"> 
 	<div class="Anaforcenter">
 		<div id="noticejoin">
 		<span id="notice">* 필수 입력사항</span>
 		</div>
 		<div id="useremail">
-			<input type="text" name="id" id="id" placeholder="이메일을 입력하세요 *" maxlength="100"/>
-			<input type="button" value="중복확인"/><br/>
+			<input type="text" name="id" class="chk" placeholder="이메일을 입력하세요 *" maxlength="100"/>
+			<input type="button" id="btn-email" onclick="checkEmail()" value="중복확인"/><br/>
 			<span id="idmsg">예)happy@anafor.com</span>
 		</div>
 		<div id="usercode">
-			<input type="text" name="code" id="code" placeholder="인증코드를 입력하세요 *"/>
-			<input type="button" value="이메일 인증"/><br/>
+			<input type="text" name="code" class="chk"  placeholder="인증코드를 입력하세요 *"/>
+			<input type="button" id="btn-code" onclick="sendEmailCode()" value="이메일 인증"/><br/>
 			<span id="codemsg">이메일 인증코드를 받고 입력하세요</span>
 		</div>
 		<div id="userpw">
-			<input type="password" name="pw" id="pw" placeholder="비밀번호 *"/><br/>
-			<span id="pwmsg">8~16자 이내로 영문과 숫자를 혼합하여 입력해주세요</span>
+			<input type="password" name="pw" class="chk" placeholder="비밀번호 *"/><br/>
+			<span id="pwmsg">8~16자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span>
 		</div>
 		<div id="userpwchk">
-			<input type="password" name="pwchk" id="pwchk"  placeholder="비밀번호 확인*"/><br/>
+			<input type="password" name="pwchk" class="chk"  placeholder="비밀번호 확인*"/><br/>
 			<span id="pwmsg2"></span>
 		</div>
 		<div id="username">
-			<input type="text" name="name" id="name"  placeholder="이름 *"/><br/>
+			<input type="text" name="name" class="chk"  placeholder="이름 *"/><br/>
 			<span id="namemsg"></span>
 		</div>
 		
 		<div id="userbirth">
-			<input type="text" name="birth" id="birth"  placeholder="생년월일을 입력하세요 *"/><br/>
-			<span id="birthmsg">예)1990101</span>
+			<input type="text" name="birth" class="chk" placeholder="생년월일을 입력하세요 *"/><br/>
+			<span id="birthmsg">예)19990101</span>
 		</div>
 		<div id="userphone">
-			<input type="text" name="tel" id="tel"  placeholder="휴대폰 번호 *"/><br/>
+			<input type="text" name="tel" placeholder="휴대폰 번호 *"/><br/>
 			<span id="telmsg">'-'없이 번호만 입력 예)01012345678</span>
 		</div>
 		<div id="usergender">
-		<select name="gender" id="gender">
-			<option value="">성별 *</option>
-			<option value="남">남</option>
-			<option value="여">여</option>
-		</select>
-		<br/>
-		<span id="genmsg"></span>
+			<div id="selectbox">
+				<select name="gender" >
+					<option value="">성별 *</option>
+					<option value="남">남</option>
+					<option value="여">여</option>
+				</select>
+			</div>
+			<span id="genmsg"></span>
 		</div>
 		<div id="joinbutton">
-			<input type="button" id="btn-join" onclick="commoncheck()" value="가입하기"/>
+			<a id="btn-join" onclick="go_join()">가입하기</a>
 		</div>
 	</div>	
-	</form>
+</form> 
 
 <script>
-	
-	function commoncheck(){
+function go_join(){
+
+		//이메일 중복확인 검사
+		if($('[name=id]').hasClass('checked')){
+			//중복확인 검사를 했을 경우
+			if($('[name=id]').siblings('span').hasClass('invalid')){
+				$('[name=id]').siblings('span').text(join.id.unUsable.desc);
+				$('[name=id]').focus();
+				return;
+			}
+		}else{
+			//중복확인을 안 했을 경우
+			if(!item_check($('[name=id]'))) return;   
+			else{
+				$('[name=id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
+				$('[name=id]').focus();
+				return;
+			}
+		}
+		//비밀번호 , 비밀번호 확인, 이름 검증 필요
+		if(!item_check($('[name=pw]')))	return;
+		if(!item_check($('[name=pwchk]'))) return;
+		if(!item_check($('[name=name]'))) return;
+		if(!item_check($('[name=birth]'))) return;
 		
-		if($("#id").val()==""){
-			$("#idmsg").text("아이디를 입력하세요 예)happy@anafor.com").css("color","red");
-			$("#id").focus();
-		}else if($("#code").val()==""){
-			$("#codemsg").text("인증코드를 입력하세요").css("color","red");
-			$("#code").focus();
-		}else if($("#pw").val()==""){
-			$("#pwmsg").text("8~16자 이내로 영문과 숫자를 혼합하여 입력해주세요").css("color","red");
-			$("#pw").focus();
-		}else if($("#pwchk").val()==""){
-			$("#pwmsg2").text("비밀번호를 다시 한번 입력해주세요").css("color","red");
-			$("#pwchk").focus();
-		}else if($("#name").val()==""){
-			$("#namemsg").text("이름을 입력해주세요").css("color","red");
-			$("#name").focus();
-		}else if($("#birth").val()==""){
-			$("#birthmsg").text("생년월일을 입력해주세요 예)1990101").css("color","red");
-			$("#birth").focus();
-		}else if($("#tel").val()==""){
-			$("#telmsg").text("전화번호를 입력해주세요 '-'없이 번호만 입력 예)01012345678").css("color","red");
-			$("#tel").focus();
-		}else if($("#gender").val()==""){
-			$("#genmsg").text("성별을 선택해주세요").css("color","red");
+		//성별 선택안했을때
+		if($('[name=gender]').val()==''){
+			$('#selectbox').css("border","2px solid #696AAD");
+			$('#genmsg').text("성별을 선택해주세요").css("color","red");
+			return;
+		}else{
+			$('#selectbox').css("border","1px solid #ccc");
+			$('#genmsg').text("");
 		}
 		
+		alert("회원가입이 완료되었습니다");
+		return;
+}//go_join
+
+
+$('.chk').on('keyup', function (e) {
+	//id 입력 후 enter를 누르면 아이디 중복확인 버튼 실행
+	if($(this).attr('name') == 'id'){
+		if(e.keyCode == 13){
+			checkEmail();
+		}
+	} 
+	var data = join.tag_status($(this)); //입력하고 있는 tag의 값을 보낸 후 결과값 반환
+	$(this).siblings('span').text(data.desc).removeClass().addClass(data.code);
+});
+
+$('#selectbox').click(function(){
+	$('#selectbox').css("border","2px solid #696AAD");
+});
+
+
+function item_check(item){
+	var data = join.tag_status(item);
+	if(data.code == 'invalid') {
+		item.siblings('span').text(data.desc).removeClass().addClass(data.code);
+		item.focus();
+		return false;
 	}
+	return true;
+}
+
+//이메일 인증 코드 전송 함수
+/* function sendEmailCode(){
 	
 	
+	
+}
+ */
 
 
+//이메일 중복 확인
+function checkEmail(){
+	
+	var data = join.tag_status($('[name=id]'));
+	if(data.code=="invalid"){
+		$('[name=id]').siblings('span').text(data.desc);
+		$('[name=id]').focus();
+		return;
+	}
+		
+	$.ajax({					//ajax 통신
+		url: 'userEmailChk',
+		data : {id:$('[name=id]').val()},
+		success : function(response){
+				var data = join.id_usable(response);
+				$('[name=id]').siblings('span').text(data.desc).removeClass().addClass(data.code);
+				$('[name=id]').addClass('checked');
+		}, error : function(req,text){
+			alert(text+' : '+req.status);
+		}
+	});//ajax
 
-
-
-
+}//checkEmail()
 </script>
-
-
 
 </body>
 
