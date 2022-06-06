@@ -60,9 +60,7 @@ public class Web_boxController {
 	
 	@RequestMapping ("/order.pr")
 	public String order() {
-		
-		
-		
+
 		return "shop/order";
 	}
 

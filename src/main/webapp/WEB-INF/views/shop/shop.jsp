@@ -9,8 +9,8 @@
 <style type="text/css">
 
 .wrap {
-	width: 1680px;
-	height: 0px auto;
+	width: 1638px;
+	height: 759px;
 	left: 0px;
 	top: 60px;
 }
@@ -203,6 +203,7 @@
 
 </head>
 <body>
+<form action="shop.pr" method="post">
 	<div class="wrap">
 		<div class="img">
 			<img src="imgs/shopbox.png">
@@ -250,6 +251,7 @@
 		<button class="buy_insert" type="submit" onclick="basket()">장바구니담기</button>
 	
 	</div>
+</form>
 <script type="text/javascript">
 
 $(document).ready(function () {
@@ -282,21 +284,6 @@ function basket() {
 		location.href="basket.pr";
 	}
 }
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-	
-	
 
 </script>
 </body>
