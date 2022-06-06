@@ -54,6 +54,24 @@
 	background: #888888;
 }
 
+#bank::after {
+	content:'';
+	display:block;
+	height: 1px;
+	width: 1000px;
+	background: #888888;
+}
+
+#total_result::after {
+	content:'';
+	display:block;
+	height: 1px;
+	margin-left: -864px;
+	margin-top: -9px;
+	width: 1000px;
+	background: #888888;
+}
+
 
 
 </style>
@@ -91,10 +109,38 @@
 			<input type="text" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
 		<p id="delivery" style="position: absolute; top: 200px; left: 30px; font-size: 14px; font-weight: bold;">배송요청사항</p>
 		<textarea style="position: absolute; border: 1px solid #d5d5d5; top: 214px; left: 150px; width: 400px; height: 50px; resize: none; font-size: 12px;"></textarea>
+		<p id="payment" style="position: absolute; width: 85px; height: 46px; top: 300px; font-weight: bold; font-size: 20px; line-height: 50px; letter-spacing: -0.05em; text-align: right;">결제 수단</p>
+		<p id="bank" style="position: absolute; height: 46px; top: 350px; font-size: 13px; line-height: 50px; letter-spacing: -0.05em; font-weight: bold;">농협은행(무통장입금)</p>
+		
+		<div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 351px; background: #C4C4C4;">
+			<div style="width: 93px; height: 93px; left: 987px; top: 866px;">
+				<p style="font-weight: bold; font-size: 15px;">총 상품가격</p>
+				<p style="font-weight: bold; font-size: 15px; margin-right: 30px;">배송비</p>
+			</div>
+			
+			<div style="position: absolute; width: 86px; height: 93px; left: 300px; top: -1px; letter-spacing: 0.2px; ">
+				<p style="font-weight: bold; font-size: 18px; color: red; letter-spacing: 0.2px;">30,000원</p>
+				<p style="font-weight: bold; font-size: 16px;">0원</p>
+			</div>
+		</div>
+		
+		<div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 444px; background: #C4C4C4;">
+			<div style="widows: 93px; height: 93px; left: 987px; top: 866px;">
+				<p style="font-weight: bold; font-size: 15px; margin-left: 10px; text-align: left; margin-top: 5px;">농협은행(무통장입금)</p>
+				<p style="font-weight: bold; font-size: 15px; margin-left: 10px; text-align: left; margin-top: -5px;">총 결제금액</p>
+			</div>
+			
+			<div style="position: absolute; width: 187px; height: 86px; left: 228px; top: 6px;">
+				<p style="font-size: 15px; margin-left: 10px; letter-spacing: 0.5px; color: black;">356-0769-1562-03</p>
+				<p id="total_result" style="font-weight: bold; font-size: 15px; margin-left: 35px; letter-spacing: 0.5px; color: red; margin-top: -5px; font-size: 18px; ">30,000원</p>
+			</div>
+		
+		</div>
 	</div>
 	
-		<p id="payment" style="position: absolute; width: 85px; height: 46px; left: 440px; top: 670px; font-weight: bold; font-size: 20px; line-height: 50px; letter-spacing: -0.05em; text-align: right;">결제 수단</p>
-		<p style="position: absolute; width: 170px; height: 46px; left: 410px; top: 720px; font-size: 11px; line-height: 50px; letter-spacing: -0.05em;">농협은행(무통장입금)</p>
+	
+		
+	
 		
 
 </div>
