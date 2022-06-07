@@ -7,17 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import web_shop.ReviewServielmpl;
+import web_shop.ShopDetailVO;
+import web_shop.ShopServicelmpl;
 import web_shop.WReviewPage;
-import web_shop_detail.ShopDetailVO;
+
 
 @Controller
 public class Web_BoxController {
 
 	@Autowired
-	private ReviewServielmpl service;
-	
+	private ShopServicelmpl service;
+
 	@Autowired private WReviewPage page;
 	
 	@RequestMapping("/box.pr")
@@ -43,8 +45,6 @@ public class Web_BoxController {
 		return "shop/basket";
 	}
 
-	
-
 
 //==================== 제품구매, 제품 상세페이지 ====================
 
@@ -58,8 +58,7 @@ public class Web_BoxController {
 	public String order(ShopDetailVO vo, HttpSession session) {
 		
 		session.setAttribute("orderInfo", vo);
-		
+		service.order_insert(vo);
 		return "shop/order";
 	}
-
 }

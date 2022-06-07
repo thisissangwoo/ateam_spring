@@ -5,12 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
-public class ReviewServielmpl implements ReviewService {
+public class ShopServicelmpl implements ShopService {
 
-	@Autowired private WReviewDAO dao;
+	@Autowired private WShopDAO dao;
 	
 	@Override
 	public void Review_insert(WReviewVO vo) {
@@ -46,5 +44,9 @@ public class ReviewServielmpl implements ReviewService {
 			
 		return dao.review_list(page);
 	}
-
+//======================================================
+	@Override
+	public void order_insert(ShopDetailVO vo) {
+		dao.order_insert(vo);
+	}
 }
