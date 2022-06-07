@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>상품 주문</title>
 <style type="text/css">
-
 .wrap {
 	width: 1638px;
 	height: 759px;
@@ -39,8 +39,8 @@
 }
 
 #name::after {
-	content:'';
-	display:block;
+	content: '';
+	display: block;
 	height: 2px;
 	width: 698;
 	background: #888888;
@@ -48,18 +48,16 @@
 
 #price {
 	color: red;
-
 }
 
 /* hr {
-	position: absolute;
-	width: 698px;
-	height: 0px;
-	left: 932px;
-	top: 229px;
-	border: 2px solid #888888;
+   position: absolute;
+   width: 698px;
+   height: 0px;
+   left: 932px;
+   top: 229px;
+   border: 2px solid #888888;
 } */
-
 .a {
 	position: absolute;
 	width: 80px;
@@ -90,7 +88,6 @@
 	color: black;
 }
 
-
 .c {
 	position: absolute;
 	width: 598px;
@@ -104,8 +101,8 @@
 
 .cnt {
 	position: absolute;
-	width: 50px; 
-	height: 25px; 
+	width: 50px;
+	height: 25px;
 	left: 1445px;
 	top: 485px;
 	font-size: 16px;
@@ -121,8 +118,8 @@
 }
 
 .c #line::after {
-	content:'';
-	display:block;
+	content: '';
+	display: block;
 	height: 1px;
 	width: 570px;
 	background: #888888;
@@ -158,131 +155,134 @@
 
 .total {
 	position: absolute;
-	width: 180px; 
-	height: 18px; 
-	left: 1339px; 
+	width: 180px;
+	height: 18px;
+	left: 1339px;
 	top: 542px;
 }
 
 .total_price {
-	font-weight: bold; 
-	font-size: 16px; 
-	line-height: 20px; 
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 20px;
 	margin-right: 80px;
 }
 
 .money {
-	position: absolute; 
-	width: 200px; 
-	height: 18px; 
-	left: 1330px; 
+	position: absolute;
+	width: 200px;
+	height: 18px;
+	left: 1330px;
 	top: 542px;
 }
 
 .money_result {
 	font-weight: bold;
-	font-size: 17px; 
-	line-height: 20px; 
-	margin-left: 110px; 
+	font-size: 17px;
+	line-height: 20px;
+	margin-left: 110px;
 	color: red;
 }
 
 /* Chrome, Safari, Edge, Opera */
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-	  -webkit-appearance: none;
-	  margin: 0;
-	}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
 
-	/* Firefox */
-	input[type=number] {
-	  -moz-appearance: textfield;
-	}
-
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
 </style>
 
 </head>
 <body>
-<form action="shop.pr" method="post">
-	<div class="wrap">
-		<div class="img">
-			<img src="imgs/shopbox.png">
+	<form action="order.pr" method="post">
+		<div class="wrap">
+			<div class="img">
+				<img src="imgs/shopbox.png">
+			</div>
+
+			<div class="text_div">
+				<p id="name">아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</p>
+			</div>
+
+			<hr />
+
+			<div class="a">
+				<p>상품가격</p>
+				<p>배송안내</p>
+				<p>모델명</p>
+				<p>제조회사</p>
+				<p>원산지</p>
+			</div>
+
+			<div class="b">
+				<p id="price">30,000원</p>
+				<p>대한통운</p>
+				<p>AnaFor Smart Box Model 1</p>
+				<p>AnaFor</p>
+				<p>대한민국</p>
+			</div>
+
+			<div class="c">
+				<p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
+			</div>
+
+			<input class="cnt" type="number" name="cnt"
+				style="border: 1px solid #808080;">
+			<p
+				style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
+
+			<div class="total">
+				<p class="total_price">총 상품 금액</p>
+			</div>
+
+			<div class="money">
+				<input type="hidden" name="price" />
+				<p class="money_result">원</p>
+			</div>
+
 		</div>
-		
-		<div class="text_div">
-			<p id="name" >아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</p>
-		</div>
-		
-		<hr/>
-		
-		<div class="a">
-			<p>상품가격</p>
-			<p>배송안내</p>
-			<p>모델명</p>
-			<p>제조회사</p>
-			<p>원산지</p>
-		</div>
-		
-		<div class="b">
-			<p id="price">30,000원</p>
-			<p>대한통운</p>
-			<p>AnaFor Smart Box Model 1</p>
-			<p>AnaFor</p>
-			<p>대한민국</p>
-		</div>
-		
-		<div class="c">
-			<p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
-		</div>
-		
-		<input class="cnt" type="number" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
-		
-		<div class="total">
-			<p class="total_price">총 상품 금액</p>
-		</div>
-		
-		<div class="money">
-			<p class="money_result">원</p>
-		<%-- <fmt:formatNumber value="${money_result}" pattern="#,###"/> --%>
-			
-		</div>
-		
-	
-	</div>
-</form>
-		<button class="order" type="submit" onclick="order()">주문하기</button>
-		<button class="buy_insert" type="submit" onclick="basket()">장바구니담기</button>	
-<script type="text/javascript">
+
+		<button class="order" onclick="order()">주문하기</button>
+		<button class="buy_insert" onclick="basket()">장바구니담기</button>
+
+	</form>
+	<script type="text/javascript">
 
 $(document).ready(function () {
-	$(".cnt").on("keyup", function() {
-		var total = (30000 * $('.cnt').val());
-		total = total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-		$(".money_result").text(total + "원");
-	});
+   $(".cnt").on("keyup", function() {
+      var total = (30000 * $('.cnt').val());
+      $("[name=price]").val(total);
+      total = total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+      $(".money_result").text(total + "원");
+   });
 });
 
 
 function order() {
-	if ($('.cnt').val() <= 0) {
-		alert("수량을 입력해주세요.");
-		$('.cnt').focus();
-	}
-	else{
-		alert("주문 페이지로 이동합니다.");
-		location.href="order.pr";
-	}
+   if ($('.cnt').val() <= 0) {
+      alert("수량을 입력해주세요.");
+      $('.cnt').focus();
+      return;
+   }
+   else{
+      alert("주문 페이지로 이동합니다.");
+      $("form").submit();
+   }
 }
 
 function basket() {
-	if ($('.cnt').val() <= 0) {
-		alert("수량을 입력해주세요.");
-		$('.cnt').focus();
-	}
-	else{
-		alert("장바구니로 이동합니다.");
-		location.href="basket.pr";
-	}
+   if ($('.cnt').val() <= 0) {
+      alert("수량을 입력해주세요.");
+      $('.cnt').focus();
+   }
+   else{
+      alert("장바구니로 이동합니다.");
+      $("form").submit();
+   }
 }
 
 </script>
