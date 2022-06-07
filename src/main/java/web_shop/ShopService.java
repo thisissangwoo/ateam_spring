@@ -3,8 +3,7 @@ package web_shop;
 import java.util.List;
 
 
-
-public interface ReviewService {
+public interface ShopService {
 	
 void Review_insert(WReviewVO vo);
 
@@ -17,13 +16,9 @@ void Review_insert(WReviewVO vo);
 	void review_delete(int id);
 	
 	WReviewPage review_list(WReviewPage page);
+//=====================================================
 	
-	List<BasketVO>basket_list();
-	
-	
-	void basket_delete(int id);
-
-	void basket_insert(BasketVO vo);
-	
+	// 주문 목록 저장 (C)
+	void order_insert(ShopDetailVO vo);
 	
 }

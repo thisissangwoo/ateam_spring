@@ -420,11 +420,8 @@ function orderChk() {
 	}
 	else {
 		alert("주문이 정상적으로 처리되었습니다.");
-	    $("form").submit();
-		
-		
+	    location.href="/ordercomp.pr"
 	}
-	
 }
 </script>
 

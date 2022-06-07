@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public class WReviewDAO implements ReviewService {
+public class WShopDAO implements ShopService {
 
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 	
@@ -51,22 +50,12 @@ public class WReviewDAO implements ReviewService {
 		page.setList(list);
 		return page;
 	}
-
+//===========================================================================	
 	@Override
-	public List<BasketVO> basket_list() {
+	public void order_insert(ShopDetailVO vo) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void basket_delete(int id) {
-		// TODO Auto-generated method stub
+		sql.insert("order.mapper.insert", vo);
 		
-	}
-
-	@Override
-	public void basket_insert(BasketVO vo) {
-		sql.insert("basket.mapper.insert", vo);
 	}
 
 }
