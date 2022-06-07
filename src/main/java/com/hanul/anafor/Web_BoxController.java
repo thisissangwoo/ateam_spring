@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import web_shop.ReviewServielmpl;
 import web_shop.WReviewPage;
+import web_shop_detail.ShopDetailVO;
 
 @Controller
-public class Web_boxController {
+public class Web_BoxController {
 
 	@Autowired
 	private ReviewServielmpl service;
@@ -43,24 +44,21 @@ public class Web_boxController {
 	}
 
 	
-	
-	
-	
-	
-	
 
-	// -----제품구매-------------------------------------------------------------------------------------------------------------------------------
+
+//==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
 	public String shop() {
-
 		return "shop/shop";
 	}
 
 	
 	@RequestMapping ("/order.pr")
-	public String order() {
-
+	public String order(ShopDetailVO vo, HttpSession session) {
+		
+		session.setAttribute("orderInfo", vo);
+		
 		return "shop/order";
 	}
 
