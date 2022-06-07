@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import web_shop.BasketVO;
 import web_shop.ReviewServielmpl;
 import web_shop.WReviewPage;
 import web_shop_detail.ShopDetailVO;
@@ -30,27 +31,32 @@ public class Web_BoxController {
 		page.setPageList(pageList);
 		model.addAttribute("page", service.review_list(page));
 		
-
+			
 		return "shop/box";
 
 	}
 	
 	@RequestMapping ("/basket.pr")
-	public String basket() {
+	public String basket(BasketVO vo, HttpSession session) {
+		
+		service.basket_insert(vo);
 		
 		
-		
-		return "shop/basket";
+		return "redirect:basket.pr";
 	}
-
 	
-
 
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
 	public String shop() {
+		
+		
+		
+		
+		
 		return "shop/shop";
+		
 	}
 
 	

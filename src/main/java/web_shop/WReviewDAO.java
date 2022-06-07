@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class WReviewDAO implements ReviewService {
 
@@ -49,6 +50,23 @@ public class WReviewDAO implements ReviewService {
 		List<WReviewVO> list = sql.selectList("wreview.mapper.list", page);
 		page.setList(list);
 		return page;
+	}
+
+	@Override
+	public List<BasketVO> basket_list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void basket_delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void basket_insert(BasketVO vo) {
+		sql.insert("basket.mapper.insert", vo);
 	}
 
 }
