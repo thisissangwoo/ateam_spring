@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class NoticeDAO implements NoticeService {
 
@@ -22,6 +23,17 @@ public class NoticeDAO implements NoticeService {
 		return sql.selectList("wnotice.mapper.list");
 	}
 
+	@Override
+	public NoticePage notice_list(NoticePage page) {
+		// 1. 먼저 총 글의 개수를 알아야 페이지 처리를 할 수 있기 때문에 전체 글 개수를 조회
+		int pagecnt = sql.selectOne("wnotice.mapper.totalList", page);
+		page.setTotalList(pagecnt);
+		
+		List<NoticeVO> list = sql.selectList("wnotice.mapper.list", page);
+		page.setList(list);		
+		return page;
+	}
+	
 	@Override
 	public NoticeVO notice_detail(int id) {
 		return sql.selectOne("wnotice.mapper.detail", id);

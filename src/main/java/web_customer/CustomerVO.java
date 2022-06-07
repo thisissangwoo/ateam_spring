@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class CustomerVO {
 
-	private int id, readcnt, no;
+	private int id, readcnt, no, root, step, indent;
 	private String title, content, writer, name;
 	private Date writedate;
 	private String filename, filepath;
@@ -26,6 +26,24 @@ public class CustomerVO {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public int getRoot() {
+		return root;
+	}
+	public void setRoot(int root) {
+		this.root = root;
+	}
+	public int getStep() {
+		return step;
+	}
+	public void setStep(int step) {
+		this.step = step;
+	}
+	public int getIndent() {
+		return indent;
+	}
+	public void setIndent(int indent) {
+		this.indent = indent;
 	}
 	public String getTitle() {
 		return title;

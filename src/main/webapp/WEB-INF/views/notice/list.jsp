@@ -10,10 +10,10 @@
 	#top_img{width:1920px; height:372px; background: url("imgs/notice.png") center no-repeat; position:relative; margin: 0 auto;}
 	#top_img .text_box{position:absolute; right:380px; top:200px; }
 	#top_img .text_box p{line-height: 80px; font-size:70px; color:black;}
+	table{margin-top:30px; margin-bottom: 20px;}
 </style>
 </head>
 <body>
-<form id="wrap" action="list.no" method="post">
 	<input type="hidden" name="curPage" value="1" />
 	<div id="top_img">
 		<div class="text_box">
@@ -25,7 +25,7 @@
 			<th class="w-px70">NO</th>
 			<th>제목</th>
 			<th class="w-px100">글쓴이</th>
-			<th class="w-px100">날짜</th>
+			<th class="w-px100">작성일자</th>
 			<th class="w-px100">조회수</th>
 		</tr>
 		<c:forEach items="${list }" var="vo">
@@ -40,6 +40,5 @@
 	      </tr>
 		</c:forEach>
 	</table>
-</form>
 </body>
 </html>

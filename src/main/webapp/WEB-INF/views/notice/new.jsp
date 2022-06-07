@@ -8,10 +8,6 @@
 <body>
 <form id="wrap" action="insert.no" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="curPage" value="1" />
-	<div id="top_img">
-		<div class="text_box">
-		</div>
-	</div>
 	<div id="content">
 		<table>
 			<tr>
