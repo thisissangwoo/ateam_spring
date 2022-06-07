@@ -43,6 +43,7 @@ public class Web_UserController {
 			session.setAttribute("category", "login");
 			return "user/login";
 		}
+	
 		
 		
 		//이메일 중복 처리

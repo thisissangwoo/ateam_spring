@@ -2,7 +2,14 @@ package iot;
 public class GPSVO {
 	int no, box_id;
 	double latitude,longitude;
-	String gps_date;
+	String gps_date,user_id;
+	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public int getNo() {
 		return no;
 	}

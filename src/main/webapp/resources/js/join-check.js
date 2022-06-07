@@ -7,7 +7,7 @@
 		var data = tag.val();	// tag 내 입력된 값을 data 변수에 할당
 		tag = tag.attr('name');	// tag 의 name 속성의 값을 확인 ex) id, pw
 		
-	// tag 에 입력한 data에 들어있는데 tag의 name 속성의 값으로 id, pw, pw_chk 인지를
+	// tag 에 입력한 data에 들어있는데 tag의 name 속성의 값으로 id, pw, pw_chk 등을
 	// 구분(판단)하여 유효성 검사 진행하려고 함.
 		// id 의 상태가 유효한지 아닌지 판단이 필요하므로 함수 선언( id_status() )
 		if (tag == 'id')		return this.id_status( data );
@@ -15,9 +15,10 @@
 		else if ( tag == 'pwchk' )	return this.pw_chk_status( data );
  		else if (tag == 'name') return this.name_status(data);
 		else if (tag == 'birth') return this.birth_status(data);
+		else if	(tag=='tel')	return this.tel_status(data);
 	}
 	, id_status : function ( id ) {
-		var reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 		
 		if (id == '') 				return this.id.empty;
 		else if (reg.test(id))		return this.id.valid;
@@ -58,8 +59,8 @@
 		, valid : { code : 'valid', desc : '사용 가능한 비밀번호 입니다.'}
 		, equal : { code : 'valid', desc : '비밀번호가 일치합니다.'}
 		, notEqual : { code : 'invalid', desc : '비밀번호가 일치하지 않습니다.'}
-		, lack : { code : 'invalid', desc : '영문 대/소문자 숫자를 모두 포함해야 합니다.'}
-		, invalid : { code : 'invalid' , desc : '비밀번호를 영문 대/소문자, 숫자를 모두 포함'}
+		, lack : { code : 'invalid', desc : '영문 대/소문자, 숫자를 모두 포함해야 합니다.'}
+		, invalid : { code : 'invalid' , desc : '비밀번호를 영문 대/소문자, 숫자를 모두 포함해야합니다.'}
 	}
 	, common : {
 		empty : { code : 'invalid', desc : '입력하세요!' }
@@ -81,7 +82,7 @@
 	}
 	, name:{
 		empty:{code:'invalid',desc:'이름을 입력해주세요'},
-		valid:{code:'valid',desc:""},
+		valid:{code:'valid',desc:''},
 		invalid:{code:'invalid',desc:"한글과 영문 대/소문자만 입력가능합니다"}
 	}
 	, birth_status:function(birth){
@@ -102,9 +103,21 @@
 		
 	}
 	, birth:{
-		empty:{code:'invalid',desc:'생년월일을 입력하세요 예)19990101'},
-		valid:{code:'valid',desc:""},
-		invalid:{code:'invalid',desc:"생년월일이 유효하지 않습니다. 예)19990101"}
+		empty:{code:'invalid',desc:'생년월일을 입력하세요. 예)19990101'},
+		valid:{code:'valid',desc:''},
+		invalid:{code:'invalid',desc:"생년월일을 형식에 맞게 입력해주세요. 예)19990101"}
+	}
+	, tel_status:function(tel){
+		var reg = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
+		if(tel=='') return this.tel.empty;
+		else if(reg.test(tel)) return this.tel.invalid;
+		else return this.tel.valid;
+	}
+	, tel:{
+		empty:{code:'invalid',desc:"번호를 입력하세요. '-'없이 번호만 입력 예)01012345678"},
+		valid:{code:'valid',desc:''},
+		invalid:{code:'invalid',desc:"번호를 형식에 맞게 입력해주세요. '-'없이 번호만 입력 예)01012345678"}
+		
 	}
 
 }

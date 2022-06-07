@@ -91,23 +91,38 @@
 	#useremail input[type=text], #usercode input[type=text]{
 		width:400px;
 	}
+	#input[type=radio]{
+	    background-color: initial;
+		cursor: default;
+		appearance:auto;
+		box-sizing: border-box;
+	}
 	
 	#usergender #selectbox{
 		width:500px;
-		height:50px;
+		height:40px;
 		margin:10px auto 0px auto;
-		border-radius:10px;
-		border:1px solid #ccc;
-		padding: 5px 7px 5px 12px;
+		padding: 0px 7px 0px 12px;
+		text-align:left;
+	}
+	#selectbox ul{
+		display:block;
+		width:100%;
+		height:40px;
 	}
 	
-	#usergender #selectbox:focus{
-		border:2px solid #696AAD;
+	#selectbox ul li{
+		display:block;
+		width:50%;
+		float:left;
+		padding-right: 80px;
+		line-height:25px;
 	}
-	#usergender select{
-		width:470px;
-		height:38px;
+
+	label{
+		font-size:15px;
 	}
+	
 	
 	#idmsg, #codemsg,#pwmsg,#pwmsg2,#namemsg,#telmsg,#genmsg,#birthmsg{
 		width:500px;
@@ -165,7 +180,7 @@
 			<span id="idmsg">예)happy@anafor.com</span>
 		</div>
 		<div id="usercode">
-			<input type="text" name="code" class="chk"  placeholder="인증코드를 입력하세요 *"/>
+			<input type="text" name="code"  placeholder="인증코드를 입력하세요 *"/>
 			<input type="button" id="btn-code" onclick="sendEmailCode()" value="이메일 인증"/><br/>
 			<span id="codemsg">이메일 인증코드를 받고 입력하세요</span>
 		</div>
@@ -187,16 +202,15 @@
 			<span id="birthmsg">예)19990101</span>
 		</div>
 		<div id="userphone">
-			<input type="text" name="tel" placeholder="휴대폰 번호 *"/><br/>
+			<input type="text" name="tel" class="chk" placeholder="휴대폰 번호 *"/><br/>
 			<span id="telmsg">'-'없이 번호만 입력 예)01012345678</span>
 		</div>
 		<div id="usergender">
-			<div id="selectbox" tabindex="0">
-				<select name="gender" >
-					<option value="">성별 *</option>
-					<option value="남">남</option>
-					<option value="여">여</option>
-				</select>
+			<div id="selectbox" >
+				<ul>
+				<li><label><input type="radio" name="gender" value="남" checked/>&nbsp;&nbsp;남</label></li>
+				<li><label><input type="radio"  name="gender"  value="여"/>&nbsp;&nbsp;여</label></li>
+				</ul>
 			</div>
 			<span id="genmsg"></span>
 		</div>
@@ -233,20 +247,11 @@ function go_join(){
 		if(!item_check($('[name=birth]'))) return;
 		
 		
-		if($('[name=gender]').val()==""){
-			$('#selectbox').focus();
-			$('#genmsg').text("성별을 선택해주세요").css("color","red");
-			return;
-		}
-		
+
 		alert("회원가입이 완료되었습니다");
 		return;
 		
 }//go_join
-
-
-
-
 
 
 $('.chk').on('keyup', function (e) {
@@ -259,6 +264,8 @@ $('.chk').on('keyup', function (e) {
 	var data = join.tag_status($(this)); //입력하고 있는 tag의 값을 보낸 후 결과값 반환
 	$(this).siblings('span').text(data.desc).removeClass().addClass(data.code);
 });
+
+
 
 
 

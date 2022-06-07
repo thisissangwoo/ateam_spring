@@ -4,9 +4,14 @@
 <mapper namespace="iot.mapper">
 
 	<insert id="insert">
-		
-		insert box_gps(box_id,user_id, latitude,longitude,gps_date) into values (#{box_id},#{latitude},#{longitude})
+	
+	insert into box_gps(box_id, user_id, latitude,longitude,gps_date) values(#{box_id}, #{user_id}, #{latitude},#{longitude},sysdate)
 	
 	</insert> 
+
+	<select id="webSelect" resultType="iot.GPSVO">
+		select * from box_gps where box_id = #{box_id} and user_id = #{user_id}
+	</select>
+
 
 </mapper>
