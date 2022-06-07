@@ -250,7 +250,7 @@
    
    <button class="order" onclick="order()">주문하기</button>
    <button class="buy_insert" onclick="basket()">장바구니담기</button>
-   
+
 </form>
    
 <script type="text/javascript">

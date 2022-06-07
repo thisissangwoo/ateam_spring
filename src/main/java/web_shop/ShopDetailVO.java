@@ -1,4 +1,4 @@
-package web_shop_detail;
+package web_shop;
 
 public class ShopDetailVO {
 	
