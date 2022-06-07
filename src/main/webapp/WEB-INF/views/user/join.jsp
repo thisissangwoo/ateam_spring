@@ -101,6 +101,9 @@
 		padding: 5px 7px 5px 12px;
 	}
 	
+	#usergender #selectbox:focus{
+		border:2px solid #696AAD;
+	}
 	#usergender select{
 		width:470px;
 		height:38px;
@@ -188,7 +191,7 @@
 			<span id="telmsg">'-'없이 번호만 입력 예)01012345678</span>
 		</div>
 		<div id="usergender">
-			<div id="selectbox">
+			<div id="selectbox" tabindex="0">
 				<select name="gender" >
 					<option value="">성별 *</option>
 					<option value="남">남</option>
@@ -229,19 +232,21 @@ function go_join(){
 		if(!item_check($('[name=name]'))) return;
 		if(!item_check($('[name=birth]'))) return;
 		
-		//성별 선택안했을때
-		if($('[name=gender]').val()==''){
-			$('#selectbox').css("border","2px solid #696AAD");
+		
+		if($('[name=gender]').val()==""){
+			$('#selectbox').focus();
 			$('#genmsg').text("성별을 선택해주세요").css("color","red");
 			return;
-		}else{
-			$('#selectbox').css("border","1px solid #ccc");
-			$('#genmsg').text("");
 		}
 		
 		alert("회원가입이 완료되었습니다");
 		return;
+		
 }//go_join
+
+
+
+
 
 
 $('.chk').on('keyup', function (e) {
@@ -255,9 +260,6 @@ $('.chk').on('keyup', function (e) {
 	$(this).siblings('span').text(data.desc).removeClass().addClass(data.code);
 });
 
-$('#selectbox').click(function(){
-	$('#selectbox').css("border","2px solid #696AAD");
-});
 
 
 function item_check(item){
