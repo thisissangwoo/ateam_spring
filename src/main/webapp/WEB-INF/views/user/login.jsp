@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
+
+	body{
+		text-align:left;	
+	}
+
 	.Anaforcenter{
 		position: absolute; left: 50%; top: 50%;
 		transform:translate(-50%, -50%);
@@ -40,6 +45,9 @@
 		line-height:50px;
 	}
 	
+	#alogo:hover{
+		cursor:pointer;
+	}
 	
 	input[type=text]:focus, input[type=password]:focus{
 		border:2px solid #696AAD;
@@ -232,6 +240,11 @@
 		});//ajax
 	}
 
+	$('#alogo').click(function() {
+		
+		location="<c:url value='/' />";
+	});
+	
 </script>	
 </body>
 </html>
