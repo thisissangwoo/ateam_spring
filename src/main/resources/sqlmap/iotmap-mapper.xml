@@ -9,7 +9,7 @@
 	
 	</insert> 
 
-	<select id="webSelect" resultType="iot.GPSVO">
+	<select id="webSelect" resultType="IoT.GPSVO">
 		select * from box_gps where box_id = #{box_id} and user_id = #{user_id}
 	</select>
 

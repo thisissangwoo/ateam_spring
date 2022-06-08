@@ -45,6 +45,9 @@
 		line-height:50px;
 	}
 	
+	#alogo:hover{
+		cursor:pointer;
+	}
 	
 	input[type=text]:focus, input[type=password]:focus{
 		border:2px solid #696AAD;
@@ -237,6 +240,11 @@
 		});//ajax
 	}
 
+	$('#alogo').click(function() {
+		
+		location="<c:url value='/' />";
+	});
+	
 </script>	
 </body>
 </html>

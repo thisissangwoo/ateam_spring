@@ -1,7 +1,23 @@
 package user;
 
 public class UserVO {
-    private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin;
+    private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, social_type, social_id;
+    
+	public String getSocial_id() {
+		return social_id;
+	}
+
+	public void setSocial_id(String social_id) {
+		this.social_id = social_id;
+	}
+
+	public String getSocial_type() {
+		return social_type;
+	}
+
+	public void setSocial_type(String social_type) {
+		this.social_type = social_type;
+	}
 
 	public String getUser_id() {
 		return user_id;

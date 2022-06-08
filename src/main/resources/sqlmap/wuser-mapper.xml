@@ -15,4 +15,20 @@
 		where user_id = #{id}
 </select>
 
+<!-- 소셜 회원 정보 입력-->
+<insert id="social_insert">
+	insert into anafor_user (user_id, user_name, user_birth, user_tel, user_gender, ${social_type} )
+	values(#{user_id}, #{user_name}, #{user_birth,jdbcType=DATE}, #{user_tel,jdbcType=VARCHAR}, #{user_gender}, #{social_id})
+</insert>
+<!-- 소셜 회원 정보 업데이트 -->
+<update id="social_update">
+	update anafor_user set user_name = #{user_name}, user_tel = #{user_tel,jdbcType=VARCHAR}, user_gender = #{user_gender}
+	where ${social_type} = #{social_id}
+</update>
+<!-- 소셜 회원 존재 여부 조회 -->
+<select id="social_email" resultType="integer">
+			select count(*) from anafor_user
+			where ${social_type} = #{social_id}
+			<!-- ${social_type} 내 들어있는 동적 데이터 (즉, 네이버, 카카오) 를 불러옴 -->
+</select>
 </mapper>

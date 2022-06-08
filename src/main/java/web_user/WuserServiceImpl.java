@@ -39,14 +39,23 @@ public class WuserServiceImpl implements WuserService {
 
 	@Override
 	public boolean user_social_email(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.user_social_email(vo);
 	}
 
 	@Override
 	public boolean user_email_chk(String id) {
-		// TODO Auto-generated method stub
 		return dao.user_email_chk(id);
+	}
+
+	@Override
+	public boolean user_social_insert(UserVO vo) {
+		return dao.user_social_insert(vo);
+	}
+
+	@Override
+	public boolean user_social_update(UserVO vo) {
+		// TODO Auto-generated method stub
+		return dao.user_social_update(vo);
 	}
 
 }
