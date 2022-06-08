@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
@@ -18,6 +19,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeVO> notice_list() {
 		return dao.notice_list();
+	}
+	
+	@Override
+	public NoticePage notice_list(NoticePage page) {
+		return dao.notice_list(page);
 	}
 
 	@Override
