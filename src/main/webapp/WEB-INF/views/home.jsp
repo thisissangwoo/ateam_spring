@@ -48,7 +48,7 @@ for(var i=1; i<=3; i++){
 	var jsonData = JSON.stringify(testList) ;
 	
 	alert(jsonData) ;
-출처: https://fruitdev.tistory.com/190 [과일가게 개발자:티스토리]
+
 	
 }	 
 </script> 

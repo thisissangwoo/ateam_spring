@@ -62,7 +62,7 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 465px; 
+   left: 464px; 
    top: 160px; 
    font-weight: bold; 
    font-size: 17px; 
@@ -306,7 +306,7 @@
 </style>
 </head>
 <body>
-<!-- <form action="order.pr" method="post"> -->
+<form action="order.pr" method="post">
 <div class="product" >
    <div class="product_textarea">
       <p id="product_text" >주문 상품 정보</p>
@@ -372,7 +372,7 @@
    <button class="order_result" style="cursor: pointer;" onclick="orderChk()">주문하기</button>
 
 </div>
-<!-- </form> -->
+</form>
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -398,21 +398,21 @@ function daum_post() {
 
 function orderChk() {
 	
-	if($("#person_receive").val() == ""){	//아이디를 입력하지 않았을 때
+	if($("#person_receive").val() == ""){
 		$("#person_receive").focus();
 		alert("받는 사람을 입력해주세요.");
 	
 		return false;
 	
 	} 
-	else if ($("#phone").val() == ""){	//아이디를 입력하지 않았을 때
+	else if ($("#phone").val() == ""){
 		$("#phone").focus();
 		alert("연락처를 입력해주세요.");
 	
 		return false;
 	
 	} 
-	else if ($("#default").val() == ""){	//아이디를 입력하지 않았을 때
+	else if ($("#default").val() == ""){
 		$("#default").focus();
 		alert("주소를 입력해주세요.");
 	
@@ -420,7 +420,7 @@ function orderChk() {
 	}
 	else {
 		alert("주문이 정상적으로 처리되었습니다.");
-	    location.href="/ordercomp.pr"
+	    location.href="/anafor"
 	}
 }
 </script>

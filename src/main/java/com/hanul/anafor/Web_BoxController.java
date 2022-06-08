@@ -49,16 +49,30 @@ public class Web_BoxController {
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
-	public String shop() {
+	public String shop(ShopDetailVO vo, HttpSession session) {
+		
+		session.setAttribute("orderInfo", vo);
+		
 		return "shop/shop";
 	}
 
-	
 	@RequestMapping ("/order.pr")
 	public String order(ShopDetailVO vo, HttpSession session) {
 		
-		session.setAttribute("orderInfo", vo);
-		service.order_insert(vo);
+		session.getAttribute("orderInfo");
+		
+//		service.order_insert(vo);
+		
 		return "shop/order";
 	}
+	
+//	@RequestMapping ("/order_result.pr")
+//	public String order_result(ShopDetailVO vo, HttpSession session) {
+//		
+//	    service.order_insert(vo);
+//		
+//		return "redirect:/";
+//	}
+	
+	
 }
