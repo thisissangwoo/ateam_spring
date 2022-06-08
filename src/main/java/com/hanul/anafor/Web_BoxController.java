@@ -57,11 +57,6 @@ public class Web_BoxController {
 		
 		session.setAttribute("orderInfo", vo);
 
-			
-
-		
-		
-		
 		return "shop/shop";
 	}
 
@@ -80,25 +75,26 @@ public class Web_BoxController {
 		
 		session.getAttribute("orderInfo");
 		
-//		service.order_insert(vo);
-		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
+		
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
 		
-		
-		
-		//service.order_insert(vo);
 		return "shop/order";
 	}
 	
-//	@RequestMapping ("/order_result.pr")
-//	public String order_result(ShopDetailVO vo, HttpSession session) {
-//		
-//	    service.order_insert(vo);
-//		
-//		return "redirect:/";
-//	}
+	@RequestMapping("/order_result.pr")
+	public String b(ShopDetailVO vo, HttpSession session) {
+		
+		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
+		
+		vo.setCnt(vo2.getBk_cnt());
+		vo.setPrice(vo2.getBk_price());
+
+		service.order_insert(vo);
+		
+		return "redirect:box.pr";
+	}
 	
 	
 }

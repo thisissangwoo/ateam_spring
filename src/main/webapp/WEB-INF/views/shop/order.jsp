@@ -376,21 +376,23 @@
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
 function daum_post() {
    
    new daum.Postcode({
-      oncomplete: function(res) {
-         $("[name=post]").val(res.zonecode);
+      oncomplete: function(data) {
+         $("[name=post]").val(data.zonecode);
+         
          // 지번, 도로명 구분
-         var addr = res.userSelectedType == "J" ? res.jibunAddress : res.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
-           // name 이 addr 인 태그의 0 번지에 addr 값을 할당
+         var addr = data.userSelectedType == "J" ? data.jibunAddress : data.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
+         // name 이 addr 인 태그의 0 번지에 addr 값을 할당
+         
+         // 건물명이 있을 경우 기존 주소의 건물명 값을 추가
+         if(data.buildingName != "") addr += '(' + data.buildingName + ')';
            
-           // 건물명이 있을 경우 기존 주소의 건물명 값을 추가
-           if(res.buildingName != "") addr += '(' + res.buildingName + ')';
-           
-           $("[name=addr]").eq(0).val(addr);
+         $("[name=addr]").eq(0).val(addr);
       }
    }).open();
 }
@@ -401,8 +403,7 @@ function orderChk() {
 	if($("#person_receive").val() == ""){
 		$("#person_receive").focus();
 		alert("받는 사람을 입력해주세요.");
-	
-		return false;
+		return;
 	
 	} 
 	else if ($("#phone").val() == ""){
