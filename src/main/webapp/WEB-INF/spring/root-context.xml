@@ -20,7 +20,7 @@
 		<property name="host" value="smtp.gmail.com" /> <!-- gmail 로 설정됨 -->
 		<property name="port" value="587" />
 		<property name="username" value="sbb2388@gmail.com" /> <!-- gmail 아이디 -->
-		<property name="password" value="hyjrheqchqdzcxra" /> <!-- gmail 비밀번호 -->
+		<property name="password" value="zpzivpmxrvucffjf" /> <!-- gmail 비밀번호 -->
 		<property name="javaMailProperties">
 		    <props>
 			<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>

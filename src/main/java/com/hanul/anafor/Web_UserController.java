@@ -48,8 +48,8 @@ public class Web_UserController {
 		//이메일 발송
 		@ResponseBody
 		@RequestMapping("/sendEmailChk")
-		public String sendEmailchk(String email) {
-			return Integer.toString(common.sendCheckEmail(email));
+		public int sendEmailchk(String email) {
+			return common.sendCheckEmail(email);
 		}
 		
 		

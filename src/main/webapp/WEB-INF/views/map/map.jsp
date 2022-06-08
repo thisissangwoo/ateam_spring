@@ -135,20 +135,8 @@ var first_polyline = new Array();
 
 for (var i = 0; i < json.length; i ++) {
 	
-	first_polyline[i] = new kakao.maps.LatLng(json[i].latitude, json[i].longitude);
-} 
-
- 
-
-/* var first_polyline = [
- 
-new kakao.maps.LatLng(35.153868, 126.88833),
-new kakao.maps.LatLng(35.15352, 126.88802),
-new kakao.maps.LatLng(35.15362, 126.88797),
-new kakao.maps.LatLng(35.15366, 126.88801)
- 
-]; 
-  */
+	first_polyline[i] = new kakao.maps.LatLng(json[i].latitude ,json[i].longitude);
+}  
  
 // 지도에 표시할 선을 생성합니다
  
@@ -158,7 +146,7 @@ path: first_polyline, // 선을 구성하는 좌표배열 입니다
  
 strokeWeight: 10, // 선의 두께 입니다
  
-strokeColor: '#black', // 선의 색깔입니다
+strokeColor: '#FFAE00', // 선의 색깔입니다
  
 strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
  
