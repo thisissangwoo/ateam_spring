@@ -306,7 +306,7 @@
 </style>
 </head>
 <body>
-<form action="order.pr" method="post">
+<form action="order_result.pr" method="post">
 <div class="product" >
    <div class="product_textarea">
       <p id="product_text" >주문 상품 정보</p>
@@ -332,7 +332,7 @@
       <input type="text" name="tel" maxlength="4" style="position: absolute; width: 60px; height: 25px; left: 290px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
       
       <p class="addr_receive_text">*받는주소</p>
-      <a id="post_code" onclick="daum_post()">우편번호</a>//
+      <a id="post_code" onclick="daum_post()">우편번호</a>
          <input type="text" name="post" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px;" /><br />
          <p id="default_addr_text">기본주소</p>
          <input type="text" id="default" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
@@ -421,6 +421,7 @@ function orderChk() {
 	}
 	else {
 		alert("주문이 정상적으로 처리되었습니다.");
+	    $("form").submit();
 	    location.href="/anafor"
 	}
 }

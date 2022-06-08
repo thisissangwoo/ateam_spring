@@ -22,28 +22,9 @@
  
 
 
-	for(var i=1; i<=2; i++){
-		
-		// 객체 생성
-		var data = new Object() ;
-		
-		data.number = i ;
-		data.name = "Tester #" + i ;
-		
-		
-		// 리스트에 생성된 객체 삽입
-		testList.push(data) ;
-	}
-	
-	// String 형태로 변환
-	var jsonData = JSON.stringify(testList) ;
-	
-	alert(jsonData) ;
 
-	
-}	 
-</script> 
 
+   
    <!-- header -->
    <style>
 html, body{min-height: 100%; height: 100%;}

@@ -254,12 +254,11 @@ $(document).ready(function () {
 
 
 function order() {
-	 alert("주문 페이지로 이동합니다.");
-	   $("form").submit();
+	 
+	var variable ='${sessionScope.loginInfo}';
 	//ajax
-	<%-- var loginInfo = '<%=(String)session.getAttribute("loginInfo")%>';
 	
-	if ( loginInfo != "null"){
+	if ( variable != ""){
 		
 		if ($('.cnt').val() == 0 || $('.cnt').val() == "") {
 		       alert("수량을 입력하세요.");
@@ -275,7 +274,7 @@ function order() {
 	else{
 		alert("로그인 후 이용하실 수 있습니다.");
 		location = "<c:url value='/' />";
-	}  --%>
+	}
 }
 
 

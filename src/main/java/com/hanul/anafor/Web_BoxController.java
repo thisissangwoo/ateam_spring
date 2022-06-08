@@ -1,6 +1,6 @@
 package com.hanul.anafor;
 
-import javax.mail.Session;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import web_shop.BasketVO;
 import web_shop.ShopDetailVO;
@@ -80,6 +80,7 @@ public class Web_BoxController {
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
 		
+		
 		return "shop/order";
 	}
 	
@@ -90,12 +91,11 @@ public class Web_BoxController {
 		
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
-
 		service.order_insert(vo);
 		
-		return "redirect:box.pr";
+		
+		return "redirect:/";
 	}
-	
 	
 }
 
