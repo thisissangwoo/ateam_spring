@@ -84,7 +84,7 @@
       	</tr>
 	</c:forEach>
 </table>
-<div class='btnSet'>
+<div>
 	<jsp:include page="/WEB-INF/views/include/page.jsp" />
 	<!-- jsp 표준 include를 사용하여 설정 -->
 </div>	

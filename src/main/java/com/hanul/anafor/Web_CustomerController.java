@@ -50,7 +50,7 @@ public class Web_CustomerController {
 		page.setKeyword(keyword);
 		
 		model.addAttribute("page",service.qna_list(page));
-		return "customer/list";
+		return "customer/q_list";
 	}
 	
 	@RequestMapping ("/detail.cu")
@@ -58,7 +58,7 @@ public class Web_CustomerController {
 		service.qna_read(id);
 		model.addAttribute("vo", service.qna_detail(id));
 		model.addAttribute("crlf", "\r\n");	
-		return "customer/detail";
+		return "customer/q_detail";
 	}
 	
 	@RequestMapping ("/insert.cu")
@@ -82,7 +82,7 @@ public class Web_CustomerController {
 	// 신규 Q&A 입력(글쓰기) 화면 요청
 	@RequestMapping ("/new.cu")
 	public String qna() {
-		return "customer/new";
+		return "customer/q_new";
 	}
 	
 	//글삭제
@@ -148,7 +148,7 @@ public class Web_CustomerController {
 	public String modify(int id, Model model) {
 		// 해당 공지글 정보를 DB에서 조회해와 수정화면에 출력
 		model.addAttribute("vo", service.qna_detail(id));
-		return "customer/modify";
+		return "customer/q_modify";
 	}
 	
 	//Q&A 답글 작성화면 요청
@@ -156,7 +156,7 @@ public class Web_CustomerController {
 	public String reply(int id, Model model) {
 		// 원글의 상세 정보를 DB에서 조회해와 답글 화면에 출력
 		model.addAttribute("vo", service.qna_detail(id));
-		return "customer/reply";
+		return "customer/q_reply";
 	}
 	
 	//Q&A 답글 저장처리 요청

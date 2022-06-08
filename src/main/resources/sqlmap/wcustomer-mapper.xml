@@ -5,13 +5,15 @@
 
 <!-- 페이징 처리된 Q&A 글 목록 조회 -->  
 	<select id="qna_list" resultType="web_customer.CustomerVO">
-	 	select * 
-	 	from (  select rownum no, n.*, (select user_name from anafor_user where user_id = n.writer)name 
-	            from (select * from notice <include refid="where_search" /> 
-	            order by root, step desc)n  
-	            order by no desc )
-		where no between #{beginList} and #{endList}
-		and code='N03'	
+		select *
+		from (select rownum no, n.*, (select user_name from anafor_user where user_id = n.writer)name 
+		      from (select * 
+		      		from notice 
+		      		where code='N03'
+                    order by root, step desc)n 
+		      <include refid="where_search" /> 
+		      order by no desc)
+		where no between #{beginList} and #{endList}      
 	</select>
 
 <!-- Q&A 상세 내용 조회 -->
@@ -37,7 +39,9 @@
 		
 <!-- 전체 Q&A 수 조회 -->
 	<select id="qna_totalList" resultType="integer">
-		select count(*) from notice <include refid="where_search" /> 
+		select count(*) 
+		from (select * from notice where code='N03')n 		
+		<include refid="where_search" /> 
 	</select>	
 
 <!-- 해당 ID의 Q&A글 삭제 -->
