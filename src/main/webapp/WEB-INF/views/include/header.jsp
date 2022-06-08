@@ -11,7 +11,7 @@
 <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> -->
 <style>
 
-
+header ul, header ul li {margin: 0;	padding: 0;	display: inline;}
 header {width: 100%; height: auto; background: #696aad; }
 header .category{width: 100%; height: 60px; position: relative;}
 header .category .logo{position: absolute; left: 60px;} 
@@ -21,8 +21,9 @@ header .category .menu li{float:left; /* font-size: 15px; line-height: 25px; col
 header .category .menu li a{ font-size: 20px; line-height: 25px; color: #fff; padding-right: 15px; }
 header .category .login{position: absolute; right: 60px; top: 15px;}
 header .category .login a{font-size: 20px; line-height: 25px; color: #fff; padding-right: 15px;}
-
-
+/* header .category .login_on{position: absolute; width: 300px; height: auto;}
+header .category .login_on ul{right: 80px;}
+header .category .login_on a{font-size: 20px; line-height: 25px; color: #fff; } */
 
 header .category ul li:not(:first-child) { /* 첫번째 li만 빼고 지정 */
 	padding-left: 30px;
@@ -70,17 +71,18 @@ header .category ul li a:hover, header .category ul li a.active {
 			</c:if>
 			
 			<!-- 로그인한 경우 -->
-			<c:if test="${ !empty loginInfo }">
-				<ul>
-					<li>
-						<strong>${loginInfo.user_name }</strong> 님
-					</li>
-					<li>			
-						<a href='logout'>로그아웃</a>
-					</li>
-				</ul>
-			</c:if>
-			
+			<div class="login_on">
+				<c:if test="${ !empty loginInfo }">
+					<ul>
+						<li>
+							<a><b>${loginInfo.user_name }</b> 님</a>
+						</li>
+						<li>			
+							<a href='logout'>로그아웃</a>
+						</li>
+					</ul>
+				</c:if>
+			</div>
 		</div>
 		
 	</div>
