@@ -199,7 +199,7 @@ input[type=number] {
 </head>
 <body>
 
-<form action="order.pr" method="post">
+<form action="a.pr" method="post">
    <div class="wrap">
       <div class="img">
          <img src="imgs/shopbox.png">
@@ -231,14 +231,14 @@ input[type=number] {
          <p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
       </div>
       
-      <input class="cnt" type="number" name="cnt" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
+      <input class="cnt" type="number" name="bk_cnt" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
       
       <div class="total">
          <p class="total_price">총 상품 금액</p>
       </div>
       
       <div class="money">
-         <input type="hidden" name="price" />
+         <input type="hidden" name="bk_price"/>
            <p class="money_result">원</p>
       </div>
       
@@ -254,7 +254,7 @@ input[type=number] {
 $(document).ready(function () {
    $(".cnt").on("keyup", function() {
       var total = (30000 * $('.cnt').val());
-      $("[name=price]").val(total);
+      $("[name=bk_price]").val(total);
       total = total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
       $(".money_result").text(total + "원");
    });

@@ -6,7 +6,7 @@
 
 	<insert id="insert">
 		insert into basket (bk_cnt, bk_price, user_id)
-		values (#{bk_cnt}, #{bk_price}, #{user_id} )
+		values (#{cnt}, #{price}, #{user_id} )
 	
 	</insert>
 

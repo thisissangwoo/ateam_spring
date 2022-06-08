@@ -1,5 +1,6 @@
 package com.hanul.anafor;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,6 @@ public class Web_BoxController {
 		
 			
 		return "shop/box";
-
 	}
 	
 	@RequestMapping ("/basket.pr")
@@ -44,7 +44,7 @@ public class Web_BoxController {
 		//service.basket_insert(vo);
 		
 		
-		return "redirect:basket.pr";
+		return "shop/basket";
 	}
 
 
@@ -52,22 +52,35 @@ public class Web_BoxController {
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
-	public String shop() {
+	public String shop(BasketVO vo, HttpSession session) {
 		
-		
+
 		
 		
 		
 		return "shop/shop";
-		
 	}
 
+	
+	
+	@RequestMapping("/a.pr")
+	public String a(BasketVO vo, HttpSession session) {
+		
+		session.setAttribute("orderInfo", vo);
+		
+		return "redirect:order.pr";
+	}
 	
 	@RequestMapping ("/order.pr")
 	public String order(ShopDetailVO vo, HttpSession session) {
 		
-		session.setAttribute("orderInfo", vo);
-		service.order_insert(vo);
+		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
+		vo.setCnt(vo2.getBk_cnt());
+		vo.setPrice(vo2.getBk_price());
+		
+		
+		
+		//service.order_insert(vo);
 		return "shop/order";
 	}
 }
