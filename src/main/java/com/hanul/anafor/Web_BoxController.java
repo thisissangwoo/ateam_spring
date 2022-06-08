@@ -40,10 +40,10 @@ public class Web_BoxController {
 		return "shop/box";
 	}
 	//장바구니 리스트 조회
-	@RequestMapping("/basket.pr")
+	@RequestMapping ("/basket.pr")
 	public String basket(BasketVO vo, HttpSession session, Model model) {
 		
-		session.getAttribute("orderInfo");
+		//service.basket_insert(vo);
 		
 		model.addAttribute("list", service.basket_list());
 		
@@ -61,6 +61,7 @@ public class Web_BoxController {
 		return "redirect:basket.pr";
 	}
 
+
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
@@ -69,22 +70,26 @@ public class Web_BoxController {
 		return "shop/shop";
 	}
 
+	
+	
 	@RequestMapping("/a.pr")
 	public String a(BasketVO vo, HttpSession session) {
-
+		
 		session.setAttribute("orderInfo", vo);
-
+		
 		return "redirect:order.pr";
 	}
-
-	@RequestMapping("/order.pr")
+	
+	@RequestMapping ("/order.pr")
 	public String order(ShopDetailVO vo, HttpSession session) {
-
+		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
-
-		// service.order_insert(vo);
+		
+		
+		
+		//service.order_insert(vo);
 		return "shop/order";
 	}
 }

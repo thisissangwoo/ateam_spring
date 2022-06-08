@@ -58,28 +58,12 @@ function checkAll(checkAll){
 				</tr>
 			</table>
 		</div>
-		
 		<div style="width: 1160px; margin: 0px auto; height: 30px; background-color:#DCDCDC; line-height: 30px; ">
 			<span style="float: right; font-weight: bold;">
 				상품가격 30,000 + 배송비 무료 = 주문금액 30,000 원
 			</span>
 		
 		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	</div>
 </div>
