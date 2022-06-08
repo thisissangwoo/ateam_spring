@@ -3,15 +3,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신규 공지글</title>
+<title>Insert title here</title>
+<style type="text/css">
+input {
+	height: 22px;
+	padding: 3px 5px;
+	font-size: 15px;
+}
+ 
+textarea {
+	font-size: 15px; padding:3px 5px;  height: 250px; resize: none;
+}
+input[name=title], textarea[name=content] { width: calc(100% - 24px) }
+input[type=file], #delete-file { display: none; }
+
+
+.btnSet { margin-top: 20px; }
+a.btn-fill, a.btn-empty {
+	text-align: center;
+	padding: 3px 10px;
+	border: 1px solid #696aad;
+	border-radius: 1px;
+	box-shadow: 1px 1px 2px;
+	       오른쪽, 아래쪽, 번짐 정도
+}
+a.btn-fill {
+	background: #696aad;
+	color: #fff;	
+}
+a.btn-empty {
+	background: #fff;
+	color: #696aad;
+}
+a.btn-fill-s {
+	font-size: 13px; font-weight: bold;
+	padding: 1px 10px;
+	border: 1px solid #c4dafc;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px #022d72;
+	background : #b1cdfa;
+	color: #0000cd;	
+}
+table{margin-top:30px;}
+p{font-size:30px; margin-top:100px; font-weight: bold;}
+</style>
 </head>
 <body>
-<form id="wrap" action="insert.no" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="curPage" value="1" />
-	<div id="top_img">
-		<div class="text_box">
-		</div>
-	</div>
+<p>공지사항 작성</p>
+<!-- 파일을 첨부하여 submit()할 경우
+	1. method는 post로 지정
+	2. form에 반드시 enctype='multipart/form-data'지정 -->
+	
+<form action="insert.no" method="post" enctype="multipart/form-data">
 	<div id="content">
 		<table>
 			<tr>
@@ -41,11 +84,11 @@
 				</td>
 			</tr>
 		</table>
+		<div class='btnSet'>
+			<a class='btn-fill' onclick="if( emptyCheck() ){ $('form').submit()}">저장하기</a>
+			<a class='btn-empty' href="list.no">취소</a>
+		</div>
 	</div>
 </form>
-<div class='btnSet'>
-	<a class='btn-fill' onclick="if( emptyCheck() ){ $('form').submit()}">저장하기</a>
-	<a class='btn-empty' href="list.no">취소</a>
-</div>
 </body>
 </html>

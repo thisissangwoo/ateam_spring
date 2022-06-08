@@ -10,6 +10,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired private CustomerDAO dao;
 	
+	//Q&A
+	
 	@Override
 	public void qna_insert(CustomerVO vo) {
 		dao.qna_insert(vo);
@@ -17,13 +19,17 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void qna_reply_insert(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.qna_reply_insert(vo);
 	}
 
 	@Override
 	public List<CustomerVO> qna_list() {
 		return dao.qna_list();
+	}
+
+	@Override
+	public CustomerPage qna_list(CustomerPage page) {
+		return dao.qna_list(page);
 	}
 
 	@Override
@@ -33,14 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void qna_update(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.qna_update(vo);
 	}
 
 	@Override
 	public void qna_delete(int id) {
-		// TODO Auto-generated method stub
-
+		dao.qna_delete(id);
 	}
 
 	@Override
@@ -48,6 +52,8 @@ public class CustomerServiceImpl implements CustomerService {
 		dao.qna_read(id);
 	}
 
+	//FAQ//
+	
 	@Override
 	public void faq_insert(CustomerVO vo) {
 		// TODO Auto-generated method stub
@@ -56,6 +62,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerVO> faq_list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerPage faq_list(CustomerPage page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

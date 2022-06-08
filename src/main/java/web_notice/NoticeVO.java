@@ -27,6 +27,7 @@ public class NoticeVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -69,5 +70,4 @@ public class NoticeVO {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
-
 }
