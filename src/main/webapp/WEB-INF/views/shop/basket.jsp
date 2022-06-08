@@ -37,27 +37,28 @@ function checkAll(checkAll){
 			
 			<span style=" border: 1px solid; padding: 5px; float: right;"><a>선택삭제</a></span>
 		</div>
-		
-		<div>
-			<table style="width: 1160px; margin-bottom: 0px;">
-				<tr style="background-color: #DCDCDC">
-					<td style="width: 10px;"><input type="checkbox" name="chk" onclick="checkAll(this)"></td>
-					<td style="width: 200px; text-align: left;">전체선택</td>
-					<td style="width: 600px;">상품정보</td>
-					<td style="width: 100px;">수량</td>
-					<td style="width: 150px;">상품금액</td>
-					<td style="width: 100px;">배송비</td>
-				</tr>
-				<tr style="height: 130px;">
-					<td style="width: 20px;"><input type="checkbox" name="chk"></td>
-					<td style="text-align: left;"><img src="imgs/shopbox.png" style="width: 150px; height: 150px;"></td>
-					<td>아나포 스마트 약통 AnaFor Box Smart IoT 알약/영양제 통</td>
-					<td>--개</td>
-					<td>30,000원</td>
-					<td>무료</td>
-				</tr>
-			</table>
-		</div>
+		<c:forEach items="${list}" var="i">
+			<div>
+				<table style="width: 1160px; margin-bottom: 0px;">
+					<tr style="background-color: #DCDCDC">
+						<td style="width: 10px;"><input type="checkbox" name="chk" onclick="checkAll(this)"></td>
+						<td style="width: 200px; text-align: left;">전체선택</td>
+						<td style="width: 600px;">상품정보</td>
+						<td style="width: 100px;">수량</td>
+						<td style="width: 150px;">상품금액</td>
+						<td style="width: 100px;">배송비</td>
+					</tr>
+					<tr style="height: 130px;">
+						<td style="width: 20px;"><input type="checkbox" name="chk"></td>
+						<td style="text-align: left;"><img src="imgs/shopbox.png" style="width: 150px; height: 150px;"></td>
+						<td>아나포 스마트 약통 AnaFor Box Smart IoT 알약/영양제 통</td>
+						<td>${ i.bk_cnt}개</td>
+						<td>${ i.bk_price}</td>
+						<td>무료</td>
+					</tr>
+				</table>
+			</div>
+		</c:forEach>
 		<div style="width: 1160px; margin: 0px auto; height: 30px; background-color:#DCDCDC; line-height: 30px; ">
 			<span style="float: right; font-weight: bold;">
 				상품가격 30,000 + 배송비 무료 = 주문금액 30,000 원

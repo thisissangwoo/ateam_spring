@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import user.UserVO;
 import web_shop.BasketVO;
 import web_shop.ShopDetailVO;
 import web_shop.ShopServicelmpl;
@@ -44,8 +45,8 @@ public class Web_BoxController {
 	public String basket(BasketVO vo, HttpSession session, Model model) {
 		
 		//service.basket_insert(vo);
-		
-		model.addAttribute("list", service.basket_list());
+		UserVO user =  (UserVO) session.getAttribute("loginInfo");
+		model.addAttribute("list", service.basket_list(user));
 		
 		return "shop/basket";
 	}
@@ -53,8 +54,11 @@ public class Web_BoxController {
 	//insert 장바구니
 	@RequestMapping("/b.pr")
 	public String b(BasketVO vo, HttpSession session) {
-
+		
+		session.getAttribute("loginInfo");
 		session.setAttribute("orderInfo", vo);
+
+		
 		
 		service.basket_insert(vo);
 

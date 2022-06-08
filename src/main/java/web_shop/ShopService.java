@@ -2,6 +2,8 @@ package web_shop;
 
 import java.util.List;
 
+import user.UserVO;
+
 
 public interface ShopService {
 	
@@ -26,6 +28,6 @@ void Review_insert(WReviewVO vo);
 
 	void basket_insert(BasketVO vo);
 	
-	List<BasketVO> basket_list();
+	List<BasketVO> basket_list(UserVO user);
 	
 }

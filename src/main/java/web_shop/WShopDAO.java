@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import user.UserVO;
+
 @Repository
 public class WShopDAO implements ShopService {
 
@@ -70,9 +72,8 @@ public class WShopDAO implements ShopService {
 	}
 
 	@Override
-	public List<BasketVO> basket_list() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BasketVO> basket_list(UserVO user) {
+		return sql.selectList("Wbasket.mapper.list", user);
 	}
 
 }

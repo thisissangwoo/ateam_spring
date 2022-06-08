@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import user.UserVO;
+
 @Service
 public class ShopServicelmpl implements ShopService {
 
@@ -64,9 +66,9 @@ public class ShopServicelmpl implements ShopService {
 		dao.basket_insert(vo);
 	}
 
+
 	@Override
-	public List<BasketVO> basket_list() {
-		
-		return dao.basket_list();
+	public List<BasketVO> basket_list(UserVO user) {
+		return dao.basket_list(user);
 	}
 }
