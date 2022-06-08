@@ -34,7 +34,7 @@ public class IoTController {
 		vo.setBox_id(2222);
 		vo.setUser_id("testabc");
 		
-		  List<GPSVO> list = sql.selectList("iot.mapper.webSelect",vo);
+		  List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
 		  model.addAttribute("list", new Gson().toJson(list));
 		 
 		return "map/map";
