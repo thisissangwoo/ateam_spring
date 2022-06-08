@@ -34,7 +34,6 @@ public class UserDAO {
 		return vo;
 	}
 	
-
 	public void socialJoin(UserVO vo) {
 		sql.insert("user.mapper.socialJoin", vo);
 	}

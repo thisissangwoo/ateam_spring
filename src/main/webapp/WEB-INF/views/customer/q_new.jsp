@@ -49,12 +49,12 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 </style>
 </head>
 <body>
-<p>공지사항 작성</p>
+<p>Q&A 작성</p>
 <!-- 파일을 첨부하여 submit()할 경우
 	1. method는 post로 지정
 	2. form에 반드시 enctype='multipart/form-data'지정 -->
 	
-<form action="insert.no" method="post" enctype="multipart/form-data">
+<form action="insert.cu" method="post" enctype="multipart/form-data">
 	<div id="content">
 		<table>
 			<tr>
@@ -86,9 +86,10 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 		</table>
 		<div class='btnSet'>
 			<a class='btn-fill' onclick="if( emptyCheck() ){ $('form').submit()}">저장하기</a>
-			<a class='btn-empty' href="list.no">취소</a>
+			<a class='btn-empty' href="list.cu">취소</a>
 		</div>
 	</div>
 </form>
 </body>
 </html>
+

@@ -7,7 +7,6 @@
 <insert id="insert">
 	insert into review(user_id,hp_code,rev_grade,rev_text1,rev_text2,rev_text3,rev_text4,rev_date)
 	 values(#{user_id},#{hp_code},#{rev_grade},#{rev_text1}, #{rev_text2}, #{rev_text3}, #{rev_text4}, #{rev_date})
-
 </insert>
 
 <!-- 리뷰 전체 조회 -->

@@ -32,8 +32,10 @@
 .menu-v1{	line-height:0;}
 .menu-v1:hover{background-color:#414141;}
 .menu-v1:hover>a{color:white;font-weight:bold;}
+
 .menu-v1 .submenu{background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;}
 /* .menu-v1 .submenu{position:absolute; top: 80px; background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;} */
+
 .menu-v1 .submenu li:hover{	background-color:#000;color:#414141;font-weight:bold;}
 
 
