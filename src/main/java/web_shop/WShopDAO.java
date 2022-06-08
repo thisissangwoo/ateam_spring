@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class WReviewDAO implements ReviewService {
+public class WShopDAO implements ShopService {
 
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 	
@@ -49,6 +49,24 @@ public class WReviewDAO implements ReviewService {
 		List<WReviewVO> list = sql.selectList("wreview.mapper.list", page);
 		page.setList(list);
 		return page;
+	}
+//===========================================================================	
+	@Override
+	public void order_insert(ShopDetailVO vo) {
+		// TODO Auto-generated method stub
+		sql.insert("order.mapper.insert", vo);
+		
+	}
+//===========================================================================
+	@Override
+	public void basket_delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void basket_insert(BasketVO vo) {
+		sql.insert("Wbasket.mapper.insert", vo);
 	}
 
 }
