@@ -8,7 +8,8 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=681e977067d98d095ccfda23ca7c463c"></script>
     <style>
     	#title{
-    		padding:5px;
+    		padding:10px;
+    		text-align:center;
     	}
     
     </style>
@@ -21,11 +22,14 @@
 <script>
 var json = JSON.parse('${list}');
 var first_positions = [];
-
+var textday ,texttime;
 for (var i=0; i<json.length; i++){
+	textday = json[i].gps_date.substr(0,10);
+	texttime = json[i].gps_date.substr(11,18);
+	
 	first_positions[i] = {
-			content: '<div>'+json[i].gps_date+'</div>',
-			latlng: new kakao.maps.LatLng(json[i].latitude, json[i].longtitude)
+			content: '<div id="title">'+textday+'<br/>'+texttime+'</div>',
+			latlng: new kakao.maps.LatLng(json[i].latitude, json[i].longitude)
 	};
 }
 
@@ -33,9 +37,9 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할�
  
 mapOption = {
  
-center: new kakao.maps.LatLng(35.153868, 126.88833), // 지도의 중심좌표
+center: first_positions[0].latlng, // 지도의 중심좌표
  
-level: 6 // 지도의 확대 레벨
+level: 1// 지도의 확대 레벨
  
 };
  
@@ -120,9 +124,17 @@ infowindow.open(map, marker);
  
 }
  
-/*  
 // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+
+var first_polyline = new Array();
+
+for (var i = 0; i < first_positions.length; i ++) {
+	
+	first_polyline.push(first_positions[i].latlng);
+}
+
  
+/* 
 var first_polyline = [
  
 new kakao.maps.LatLng(36.3206145, 127.3661757),
@@ -131,7 +143,7 @@ new kakao.maps.LatLng(36.3261, 127.3389),
  
 new kakao.maps.LatLng(36.3371, 127.3420)
  
-];
+]; */
  
  
 // 지도에 표시할 선을 생성합니다
@@ -142,7 +154,7 @@ path: first_polyline, // 선을 구성하는 좌표배열 입니다
  
 strokeWeight: 3, // 선의 두께 입니다
  
-strokeColor: 'black', // 선의 색깔입니다
+strokeColor: '#black', // 선의 색깔입니다
  
 strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
  
@@ -155,7 +167,7 @@ strokeStyle: 'solid' // 선의 스타일입니다
  
 first_linePath.setMap(map);
  
- */
+
  
  
 </script>

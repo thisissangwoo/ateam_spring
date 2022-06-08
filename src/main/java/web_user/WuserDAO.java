@@ -48,6 +48,7 @@ public class WuserDAO implements WuserService {
 	}
 
 	
+	//이메일 중복체크
 	@Override
 	public boolean user_email_chk(String id) {
 		return (Integer) sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;

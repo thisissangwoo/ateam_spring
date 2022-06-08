@@ -108,10 +108,10 @@
 		invalid:{code:'invalid',desc:"생년월일을 형식에 맞게 입력해주세요. 예)19990101"}
 	}
 	, tel_status:function(tel){
-		var reg = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
+		var reg = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 		if(tel=='') return this.tel.empty;
-		else if(reg.test(tel)) return this.tel.invalid;
-		else return this.tel.valid;
+		else if(reg.test(tel)) return this.tel.valid;
+		else return this.tel.invalid;
 	}
 	, tel:{
 		empty:{code:'invalid',desc:"번호를 입력하세요. '-'없이 번호만 입력 예)01012345678"},

@@ -13,6 +13,7 @@
 		margin:0px auto;
 		width:60%;
 		height:auto;
+		pointer-events:auto;
 	}
 	
 	#AnaforLogo{
@@ -53,7 +54,7 @@
 		width:100px;
 		height:50px;
 		color:#696AAD;
-		background: transparent;
+		background: white;
 		font-weight:600;
 		border-radius:10px;
 		border:1px solid #ccc;
@@ -63,6 +64,7 @@
 	
 	input[type=button]:hover{
 		cursor:pointer;
+		border:1px solid #696AAD;
 	}
 	
 	
@@ -180,8 +182,8 @@
 			<span id="idmsg">예)happy@anafor.com</span>
 		</div>
 		<div id="usercode">
-			<input type="text" name="code"  placeholder="인증코드를 입력하세요 *"/>
-			<input type="button" id="btn-code" onclick="sendEmailCode()" value="이메일 인증"/><br/>
+			<input type="text" name="code" placeholder="인증코드를 입력하세요 *"/>
+			<input type="button" id="btn-code" onclick="sendEmailCode()"value="이메일 인증"/><br/>
 			<span id="codemsg">이메일 인증코드를 받고 입력하세요</span>
 		</div>
 		<div id="userpw">
@@ -240,14 +242,13 @@ function go_join(){
 				return;
 			}
 		}
-		//비밀번호 , 비밀번호 확인, 이름 검증 필요
+		//비밀번호 , 비밀번호 확인, 이름, 생일, 전화번호 검증 필요
 		if(!item_check($('[name=pw]')))	return;
 		if(!item_check($('[name=pwchk]'))) return;
 		if(!item_check($('[name=name]'))) return;
 		if(!item_check($('[name=birth]'))) return;
+		if(!item_check($('[name=tel]')))	return;
 		
-		
-
 		alert("회원가입이 완료되었습니다");
 		return;
 		
@@ -280,12 +281,43 @@ function item_check(item){
 }
 
 //이메일 인증 코드 전송 함수
-/* function sendEmailCode(){
+function sendEmailCode(){
+	if($('#idmsg').hasClass('invalid')){
+		$("#codemsg").text("유효하지 않은 이메일입니다. 이메일을 다시 작성해주세요").removeClass().addClass("invalid");
+		return;
+	}else if($('[name=id]').val()==''){
+		$("#codemsg").text("이메일을 먼저 작성해주세요").removeClass().addClass("invalid");
+		$('[name=id]').focus();
+		return;
+	}else if($('[name=id]').hasClass('checked')){
+		//중복확인 검사를 했을 경우
+		if($('[name=id]').siblings('span').hasClass('invalid')){
+			$('[name=id]').siblings('span').text(join.id.unUsable.desc);
+			$('[name=id]').focus();
+			return;
+		}
+	}else if(!$('[name=id]').hasClass('checked')){
+		//중복확인을 안 했을 경우
+		if(!item_check($('[name=id]'))) return;   
+		else{
+			$('[name=id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
+			$('[name=id]').focus();
+			return;
+		}
+	} 
 	
-	
-	
+	$.ajax({
+		url:'sendEmailChk',
+		data:{email:$('[name=id]').val()},
+		success:function(response){
+				alert("인증메일이 발송되었습니다.\n 해당 메일함을 확인해주세요");
+		},error:function(req,text){
+				alert(text+':'+req.status);
+			}
+			
+		});//ajax
 }
- */
+ 
 
 
 //이메일 중복 확인

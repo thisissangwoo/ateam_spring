@@ -43,7 +43,14 @@ public class Web_UserController {
 			session.setAttribute("category", "login");
 			return "user/login";
 		}
+		
 	
+		//이메일 발송
+		@ResponseBody
+		@RequestMapping("/sendEmailChk")
+		public String sendEmailchk(String email) {
+			return Integer.toString(common.sendCheckEmail(email));
+		}
 		
 		
 		//이메일 중복 처리
