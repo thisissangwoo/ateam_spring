@@ -40,10 +40,30 @@ public class WuserDAO implements WuserService {
 		return false;
 	}
 
+
 	@Override
-	public boolean member_social_email(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean user_social_email(UserVO vo) {
+		
+		return (Integer) sql.selectOne("wuser.mapper.social_email",vo) == 0 ? false: true;
+	}
+
+	
+	//이메일 중복체크
+	@Override
+	public boolean user_email_chk(String id) {
+		return (Integer) sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;
+	}
+
+	@Override
+	public boolean user_social_insert(UserVO vo) {
+		
+		return sql.insert("wuser.mapper.social_insert",vo) == 0 ? false: true;
+	}
+
+	@Override
+	public boolean user_social_update(UserVO vo) {
+		
+		return sql.insert("wuser.mapper.social_update",vo) == 0 ? false: true;
 	}
 
 }

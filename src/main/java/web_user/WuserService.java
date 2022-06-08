@@ -19,5 +19,15 @@ public interface WuserService {
 	boolean user_delete(String id);
 	
 	//소셜 회원 정보 존재여부
-	boolean member_social_email(UserVO vo);
+	boolean user_social_email(UserVO vo);
+	
+	//회원 이메일 중복 여부 확인
+	boolean user_email_chk(String id);
+	
+	//소셜 회원 정보 입력
+	boolean user_social_insert(UserVO vo);
+	
+	//소셜 회원 정보 업데이트
+	boolean user_social_update(UserVO vo);
+	
 }

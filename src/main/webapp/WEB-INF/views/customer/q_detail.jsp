@@ -7,17 +7,24 @@
 <meta charset="UTF-8">
 <title>Q&A</title>
 <style>
-	#wrap{width:100%;height:auto}
-	#header{width:100%;height:372px;background: url("imgs/faq.png") center no-repeat; position:relative; }
-	#header p{position:absolute; left:150px; top:30px; line-height: 80px; font-size: 70px; color: #929292; text-align: left}
-	h3{margin-top: 100px; margin-left:200px; text-align:left; font-size: 1.5rem; }	
+
+a.btn-empty {
+	background: #fff;
+	color: #696aad;
+	text-align: center;
+	padding: 3px 10px;
+	border: 1px solid #696aad;
+	border-radius: 1px;
+	box-shadow: 1px 1px 1px;
+}
+
+table{margin-top:30px; margin-bottom: 20px;}
+
+p{font-size:30px; margin-top:100px; font-weight: bold;}
 </style>
 </head>
 <body>
-<div id="wrap">
-	<div id="header">
-	</div>
-</div>
+<p>Q&A</p>
 <table>
 	<tr>
 		<th class="w-px120">제목</th>
@@ -39,10 +46,20 @@
 		<th>첨부파일</th>
 		<td class="left" colspan="5">${vo.filename }
 			<c:if test="${not empty vo.filename}"> <!-- 첨부파일이 없지 않으면 아이콘 표시 -->
-				<a href="download.no?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
+				<a href="download.cu?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
 			</c:if>
 		</td>
 	</tr>	
 </table>
+<div>
+	<a class='btn-empty' href='list.cu?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
+	<a class='btn-empty' href='modify.cu?id=${vo.id}'>수정</a>
+	<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
+	
+	<!-- 로그인되어 있는 경우에만 답글 쓰기 가능 -->
+	<c:if test="${ ! empty loginInfo }">
+	<a class='btn-empty' href='reply.cu?id=${vo.id }'>답글쓰기</a>
+	</c:if>	
+</div>
 </body>
 </html>
