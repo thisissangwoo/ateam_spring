@@ -67,6 +67,6 @@ public class ShopServicelmpl implements ShopService {
 	@Override
 	public List<BasketVO> basket_list() {
 		
-		return dao.basket_list(vo);
+		return dao.basket_list();
 	}
 }
