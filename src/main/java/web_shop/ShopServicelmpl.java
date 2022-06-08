@@ -49,4 +49,18 @@ public class ShopServicelmpl implements ShopService {
 	public void order_insert(ShopDetailVO vo) {
 		dao.order_insert(vo);
 	}
+
+	
+	
+//========================================================
+	@Override
+	public void basket_delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void basket_insert(BasketVO vo) {
+		dao.basket_insert(vo);
+	}
 }

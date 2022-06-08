@@ -57,5 +57,16 @@ public class WShopDAO implements ShopService {
 		sql.insert("order.mapper.insert", vo);
 		
 	}
+//===========================================================================
+	@Override
+	public void basket_delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void basket_insert(BasketVO vo) {
+		sql.insert("Wbasket.mapper.insert", vo);
+	}
 
 }
