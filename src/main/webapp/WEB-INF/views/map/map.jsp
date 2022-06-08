@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div id="map" style="width:100%;height:800px;"></div>    
+<div id="map" style="width:80%;height:800px; margin:auto;"></div>    
  
  
 <script>
@@ -47,7 +47,12 @@ level: 1// 지도의 확대 레벨
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 
- 
+ var mapTypeControl = new kakao.maps.MapTypeControl(); // 지도에 컨트롤을 추가해야 지도위에 표시
+// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT); // 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
 
 //첫번째 띄울 좌표
  /* 
@@ -128,23 +133,22 @@ infowindow.open(map, marker);
 
 var first_polyline = new Array();
 
-for (var i = 0; i < first_positions.length; i ++) {
+for (var i = 0; i < json.length; i ++) {
 	
-	first_polyline.push(first_positions[i].latlng);
-}
+	first_polyline[i] = new kakao.maps.LatLng(json[i].latitude, json[i].longitude);
+} 
 
  
-/* 
-var first_polyline = [
+
+/* var first_polyline = [
  
-new kakao.maps.LatLng(36.3206145, 127.3661757),
+new kakao.maps.LatLng(35.153868, 126.88833),
+new kakao.maps.LatLng(35.15352, 126.88802),
+new kakao.maps.LatLng(35.15362, 126.88797),
+new kakao.maps.LatLng(35.15366, 126.88801)
  
-new kakao.maps.LatLng(36.3261, 127.3389),
- 
-new kakao.maps.LatLng(36.3371, 127.3420)
- 
-]; */
- 
+]; 
+  */
  
 // 지도에 표시할 선을 생성합니다
  
@@ -152,7 +156,7 @@ var first_linePath = new kakao.maps.Polyline({
  
 path: first_polyline, // 선을 구성하는 좌표배열 입니다
  
-strokeWeight: 3, // 선의 두께 입니다
+strokeWeight: 10, // 선의 두께 입니다
  
 strokeColor: '#black', // 선의 색깔입니다
  
