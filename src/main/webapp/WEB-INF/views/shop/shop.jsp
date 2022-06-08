@@ -254,8 +254,10 @@ $(document).ready(function () {
 
 
 function order() {
-
-	var loginInfo = '<%=(String)session.getAttribute("loginInfo")%>';
+	 alert("주문 페이지로 이동합니다.");
+	   $("form").submit();
+	//ajax
+	<%-- var loginInfo = '<%=(String)session.getAttribute("loginInfo")%>';
 	
 	if ( loginInfo != "null"){
 		
@@ -273,7 +275,7 @@ function order() {
 	else{
 		alert("로그인 후 이용하실 수 있습니다.");
 		location = "<c:url value='/' />";
-	} 
+	}  --%>
 }
 
 
