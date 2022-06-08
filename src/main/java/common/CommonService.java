@@ -165,8 +165,8 @@ public class CommonService {
 				sql.update("user.mapper.pw_find", map);
 	}
 
-			// 접근 토근을 이용하여 프로필 API 호출하기 위해 (access_token과 token_type 값을 파라미터로 전달)
-			public String requestAPI(StringBuffer url, String property) {
+		// 접근 토근을 이용하여 프로필 API 호출하기 위해 (access_token과 token_type 값을 파라미터로 전달)
+		public String requestAPI(StringBuffer url, String property) {
 				String result = "";
 				try {
 					// URL url = new URL(apiURL);

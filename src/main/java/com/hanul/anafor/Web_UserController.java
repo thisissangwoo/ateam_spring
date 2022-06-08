@@ -6,8 +6,10 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +34,8 @@ public class Web_UserController {
 		@Autowired CommonService common;
 		@Autowired WuserServiceImpl service;
 		
+		@Autowired @Qualifier("ateam") SqlSession sql;
+		
 		//로그인 페이지
 
 		@RequestMapping("/userLogin")
@@ -40,6 +44,24 @@ public class Web_UserController {
 			return "user/login";
 		}
 		
+	
+		//이메일 발송
+		@ResponseBody
+		@RequestMapping("/sendEmailChk")
+		public String sendEmailchk(String email) {
+			return Integer.toString(common.sendCheckEmail(email));
+		}
+		
+		
+		//이메일 중복 처리
+		 @ResponseBody
+		 @RequestMapping("/userEmailChk")
+		 public boolean userEmailChk(String id) {
+//			 return service.user_email_chk(userid);	
+			 return (Integer)sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;
+		 }
+		
+		
 		//로그인 처리 (ajax 사용시 ResponseBody )
 		@ResponseBody
 		@RequestMapping("/userLoginChk")
@@ -47,14 +69,21 @@ public class Web_UserController {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("user_id", userid);
 			map.put("user_pw", userpw);
-			//System.out.println(map.get("user_id"));
 			UserVO vo = service.user_login(map);
 			session.setAttribute("loginInfo", vo);
 			
 			return vo == null ? false: true;   //로그인 실패 했을시 false, 맞으면 true
 		}
 		
-		
+		//로그아웃 처리
+		@RequestMapping("/logout")
+		public String userLogout(HttpSession session) {
+			
+			session.setAttribute("loginInfo", null);
+			
+			return "redirect:/";
+			
+		}
 		
 		//회원가입 페이지
 		@RequestMapping("/userJoin")
@@ -84,7 +113,7 @@ public class Web_UserController {
 		}
 		
 		//카카오 로그인 콜백 요청
-		@RequestMapping("/kakaocallback")
+		@RequestMapping("/kakao_callback")
 		public String kakaoCallback(HttpSession session, String code, String state, String error) {
 			if(!state.equals(session.getAttribute("state"))|| error != null ) {
 				return "redirect:/";
@@ -109,7 +138,6 @@ public class Web_UserController {
 			String type =json.getString("token_type");
 			
 			
-			
 			//-- 액세스 토큰 사용하여 모든 정보 받기(sample - 사용자 정보 가져오기)
 			
 //			curl -v -X GET "https://kapi.kakao.com/v2/user/me" \
@@ -117,33 +145,57 @@ public class Web_UserController {
 			
 			url = new StringBuffer("https://kapi.kakao.com/v2/user/me");
 			json = new JSONObject(common.requestAPI(url, type+" "+token));
-			
 			if(! json.isEmpty()) {  //json 안에 값이 있다면 저장하기
-				
+				//[필수] 필수 제공 항목 닉네임 | 	[선택] 선택 제공 항목	카카오계정(이메일)	성별  생일
 				UserVO vo = new UserVO();
+				vo.setSocial_id(json.get("id").toString());			//소셜제공 아이디
+				json = json.getJSONObject("kakao_account");
+				System.out.println(json);
 				vo.setUser_id(json.getString("email"));
-				vo.setUser_kakao(json.get("id").toString());
+				vo.setSocial_type("user_kakao");
 				vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
-				/*
-				 * MemberVO vo = new MemberVO(); vo.setSocial_type("kakao");
-				 * vo.setId(json.get("id").toString());
-				 * 
-				 * json = json.getJSONObject("kakao_account");
-				 * vo.setSocial_email(json.getString("email")); vo.setName(
-				 * json.getJSONObject("profile").getString("nickname") );
-				 * vo.setGender(json.has("gender") && json.getString("gender").equals("female")?
-				 * "여": "남");
-				 * 
-				 * 
-				 * //카카오 최초 로그인인 경우 회원정보 저장 insert // 카카오 로그인 이력이 있어 회원정보가 있다면 변경 저장
-				 * if(service.member_social_email(vo)) { service.member_social_update(vo); }else
-				 * { service.member_social_insert(vo); } //vo에 담은 데이터를 session의 loginInfo에 담음
-				 * session.setAttribute("loginInfo", vo);
-				 */
+				vo.setUser_gender(json.has("gender") && json.getString("gender").equals("female")? "여": "남");
+				//카카오 최초 로그인인 경우 회원정보 저장 insert // 카카오 로그인 이력이 있어 회원정보가 있다면 변경 저장
+				 if(service.user_social_email(vo)) { 
+					 service.user_social_update(vo); 
+				}else{ service.user_social_insert(vo); } //vo에 담은 데이터를 session의 loginInfo에 담음
+				 session.setAttribute("loginInfo", vo);
 			}
 			return "redirect:/";
-	}
-		
+//			HTTP/1.1 200 OK
+//			{
+//			    "id":123456789,
+//			    "kakao_account": { 
+//			        "profile_needs_agreement": false,
+//			        "profile": {
+//			            "nickname": "홍길동",
+//			            "thumbnail_image_url": "http://yyy.kakao.com/.../img_110x110.jpg",
+//			            "profile_image_url": "http://yyy.kakao.com/dn/.../img_640x640.jpg",
+//			            "is_default_image":false
+//			        },
+//			        "name_needs_agreement":false, 
+//			        "name":"홍길동",
+//			        "email_needs_agreement":false, 
+//			        "is_email_valid": true,   
+//			        "is_email_verified": true,
+//			        "email": "sample@sample.com",
+//			        "age_range_needs_agreement":false,
+//			        "age_range":"20~29",
+//			        "birthday_needs_agreement":false,
+//			        "birthday":"1130",
+//			        "gender_needs_agreement":false,
+//			        "gender":"female"
+//			    },  
+//			    "properties":{
+//			        "nickname":"홍길동카톡",
+//			        "thumbnail_image":"http://xxx.kakao.co.kr/.../aaa.jpg",
+//			        "profile_image":"http://xxx.kakao.co.kr/.../bbb.jpg",
+//			        "custom_field1":"23",
+//			        "custom_field2":"여"
+//			        ...
+//			    }
+//			}
+		}
 		
 		
 	
@@ -186,7 +238,7 @@ public class Web_UserController {
 			//&state=9kgsGTfH4j7IyAkg  
 			StringBuffer url = new StringBuffer("https://nid.naver.com/oauth2.0/token?grant_type=authorization_code");
 			url.append("&client_id=").append(naver_client_id);
-			url.append("&client_secret=szRRJL0N7PYQvmPTLsqe");
+			url.append("&client_secret=sP8w3ahjpG");
 			url.append("&code=").append(code);
 			url.append("&state=").append(state);
 			
@@ -195,27 +247,39 @@ public class Web_UserController {
 			JSONObject json = new JSONObject(common.requestAPI(url));
 			String token = json.getString("access_token");
 			String type =json.getString("token_type");
-			
 			//curl  -XGET "https://openapi.naver.com/v1/nid/me" \
 		    //  -H "Authorization: Bearer AAAAPIuf0L+qfDkMABQ3IJ8heq2mlw71DojBj3oc2Z6OxMQESVSrtR0dbvsiQbPbP1/cxva23n7mQShtfK4pchdk/rc="
 			
+			// 출생 연도 휴대전화번호 이름 이메일 주소 성별 생일(네이버는 필수정보)
 			url = new StringBuffer("https://openapi.naver.com/v1/nid/me");
 			json = new JSONObject(common.requestAPI(url,type + " " +token));
 			if(json.getString("resultcode").equals("00")) {
+				
 				json = json.getJSONObject("response");
-				System.out.println(json);
-				/*
-				 * //회원정보를 DB에 담기 위해서 회원정보 데이터 객체를 생성해야함 MemberVO vo = new MemberVO(); //소셜 로그인
-				 * 형태를 담음. vo.setSocial_type("naver"); vo.setId(json.getString("id"));
-				 * vo.setSocial_email(json.getString("email"));
-				 * vo.setName(json.getString("name")); vo.setGender(json.has("gender") &&
-				 * json.getString("gender").equals("F") ? "여" : "남");
-				 * 
-				 * //네이버 최초 로그인인 경우 회원정보 저장 insert // 네이버 로그인 이력이 있어 회원정보가 있다면 변경 저장
-				 * if(service.member_social_email(vo)) { service.member_social_update(vo); }else
-				 * { service.member_social_insert(vo); } //vo에 담은 데이터를 session의 loginInfo에 담음
-				 * session.setAttribute("loginInfo", vo);
-				 */
+				
+				//회원정보 DB에 담기 위해 객체 생성
+				UserVO vo = new UserVO();
+				vo.setSocial_type("user_naver");
+				vo.setUser_id(json.getString("email"));
+				vo.setUser_name(json.getString("name"));
+				vo.setSocial_id(json.getString("id"));
+				String phone = json.getString("mobile"); //전화번호 하이픈 제거
+				phone=phone.replace("-", "");
+				vo.setUser_tel(phone);
+				String birthday= json.getString("birthday");
+				birthday = birthday.replace("-", "");		//생년월일 날짜 하이픈 제거
+				vo.setUser_birth(json.getString("birthyear")+birthday);
+				vo.setUser_gender(json.has("gender") && json.getString("gender").equals("F") ? "여" : "남");
+				
+				if(service.user_social_email(vo)) {
+					System.out.println("업데이트");
+					service.user_social_update(vo);
+				}else {
+					System.out.println("처음입력");
+					service.user_social_insert(vo);
+				}		
+				
+				session.setAttribute("loginInfo", vo);
 				
 			}
 //			{
