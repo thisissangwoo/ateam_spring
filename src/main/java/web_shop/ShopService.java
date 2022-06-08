@@ -21,4 +21,11 @@ void Review_insert(WReviewVO vo);
 	// 주문 목록 저장 (C)
 	void order_insert(ShopDetailVO vo);
 	
+//======================================================
+	void basket_delete(int id);
+
+	void basket_insert(BasketVO vo);
+	
+	List<BasketVO> basket_list();
+	
 }

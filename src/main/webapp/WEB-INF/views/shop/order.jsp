@@ -312,8 +312,8 @@
       <p id="product_text" >주문 상품 정보</p>
       <img src="imgs/shopbox.png" style="position: absolute; width: 221px; height: 210px; left: 246px; top: 80px; border-radius: 11px;">
       <p id="box_text">아나포 스마트 약통 AnaFor Smart IoT 알약/영양제</p>
-      <p id="price"><fmt:formatNumber value="${orderInfo.price }" pattern="#,##0원" /></p>
-      <p id="cnt"><fmt:formatNumber value="${orderInfo.cnt }" pattern="#,##0개" /></p>
+      <p id="price"><fmt:formatNumber value="${orderInfo.bk_price }" pattern="#,##0원" /></p>
+      <p id="cnt"><fmt:formatNumber value="${orderInfo.bk_cnt }" pattern="#,##0개" /></p>
    </div>
    
    <div class="order_detail">
@@ -351,7 +351,7 @@
          </div>
          
          <div style="position: absolute; width: 86px; height: 93px; left: 300px; top: -1px; letter-spacing: 0.2px; ">
-            <p id="total_detail_price"><fmt:formatNumber value="${orderInfo.price }" pattern="#,##0원" /></p>
+            <p id="total_detail_price"><fmt:formatNumber value="${orderInfo.bk_price }" pattern="#,##0원" /></p>
             <p id="delivery_detail">0원</p>
          </div>
       </div>
@@ -364,7 +364,7 @@
          
          <div style="position: absolute; width: 187px; height: 86px; left: 228px; top: 6px;">
             <p id="bank_number">356-0769-1562-03</p>
-            <p id="total_detail_result"><fmt:formatNumber value="${orderInfo.price }" pattern="#,##0원" /></p>
+            <p id="total_detail_result"><fmt:formatNumber value="${orderInfo.bk_price }" pattern="#,##0원" /></p>
          </div>
       </div>
    </div>
