@@ -1,4 +1,4 @@
-package iot;
+package IoT;
 public class GPSVO {
 	int no, box_id;
 	double latitude,longitude;
