@@ -172,5 +172,6 @@ details div {
 			<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		</form>
+		</div>
 </body>
 </html>
