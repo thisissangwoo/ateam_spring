@@ -7,7 +7,7 @@
 <title>공지사항</title>
 <style>
 	#wrap{width:100%; height:auto}
-	#top_img{width:1920px; height:372px; background: url("imgs/notice.png") center no-repeat; position:relative; margin: 0 auto;}
+	#top_img{width:1902px; height:372px; background: url("imgs/notice.png") center no-repeat; position:relative; margin: 0 auto;}
 	#top_img .text_box{position:absolute; right:380px; top:200px; }
 	#top_img .text_box p{line-height: 80px; font-size:70px; color:black;}
 	table{margin-bottom:10px;}

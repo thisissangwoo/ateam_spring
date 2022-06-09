@@ -56,8 +56,8 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 	<a class='btn-empty' href='modify.cu?id=${vo.id}'>수정</a>
 	<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
 	
-	<!-- 로그인되어 있는 경우에만 답글 쓰기 가능 -->
-	<c:if test="${ ! empty loginInfo }">
+	<!-- 관리자 로그인되어 있는 경우에만 답글 쓰기 가능 -->
+	<c:if test="${loginInfo.admin eq 'Y' }">
 	<a class='btn-empty' href='reply.cu?id=${vo.id }'>답글쓰기</a>
 	</c:if>	
 </div>

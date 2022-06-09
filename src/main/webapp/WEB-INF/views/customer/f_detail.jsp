@@ -24,7 +24,7 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 </style>
 </head>
 <body>
-<p>Q&A</p>
+<p>FAQ</p>
 <table>
 	<tr>
 		<th class="w-px120">제목</th>
@@ -46,19 +46,16 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 		<th>첨부파일</th>
 		<td class="left" colspan="5">${vo.filename }
 			<c:if test="${not empty vo.filename}"> <!-- 첨부파일이 없지 않으면 아이콘 표시 -->
-				<a href="download.cu?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
+				<a href="f_download.cu?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
 			</c:if>
 		</td>
 	</tr>	
 </table>
 <div>
-	<a class='btn-empty' href='list.cu?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
-	<a class='btn-empty' href='modify.cu?id=${vo.id}'>수정</a>
-	<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
-	
-	<!-- 로그인되어 있는 경우에만 답글 쓰기 가능 -->
+	<a class='btn-empty' href='f_list.cu?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
 	<c:if test="${ ! empty loginInfo }">
-	<a class='btn-empty' href='reply.cu?id=${vo.id }'>답글쓰기</a>
+	<a class='btn-empty' href='f_modify.cu?id=${vo.id}'>수정</a>
+	<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='f_delete.cu?id=${vo.id}'}">삭제</a>
 	</c:if>	
 </div>
 </body>

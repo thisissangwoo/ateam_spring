@@ -56,8 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public void faq_insert(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.faq_insert(vo);
 	}
 
 	@Override
@@ -68,14 +67,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerPage faq_list(CustomerPage page) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.faq_list(page);
 	}
 
 	@Override
 	public CustomerVO faq_detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.faq_detail(id);
 	}
 
 	@Override
@@ -92,8 +89,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void faq_read(int id) {
-		// TODO Auto-generated method stub
-
+		dao.faq_read(id);
 	}
 
 }
