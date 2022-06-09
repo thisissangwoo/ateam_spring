@@ -60,6 +60,24 @@ public class Web_UserController {
 			 return service.user_email_chk(id);	
 		 }
 		
+		 //임시 비밀번호 발급 페이지
+		 @RequestMapping("/findpw")
+		 public String findPw() {
+			 return "user/findpw";
+		 }
+		 
+		 
+		 //비밀번호 찾기 (임시 이메일 발송)
+		 @ResponseBody
+		 @RequestMapping("/sendTempPW")
+		 public boolean sendTempPW(String id) {
+			 if(! service.user_email_chk(id)) { 	//해당 메일이 DB에 존재할때
+				 common.sendFindPw(id);
+				 return true;
+			 }else {
+				 return false;						//해당 메일이 존재하지 않을때
+			 }
+		 }
 		
 		//로그인 처리 (ajax 사용시 ResponseBody )
 		@ResponseBody
