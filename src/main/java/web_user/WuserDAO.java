@@ -17,9 +17,9 @@ public class WuserDAO implements WuserService {
 	
 	
 	@Override
-	public boolean user_join(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_join(UserVO vo) {
+		
+		sql.insert("wuser.mapper.join",vo);
 	}
 
 	//로그인 

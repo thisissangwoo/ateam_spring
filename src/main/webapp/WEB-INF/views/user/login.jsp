@@ -178,7 +178,7 @@
 		<div id="login">
 			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
 			<i class="fa-solid fa-user" id="usericon"></i><br/>
-			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요"/>
+			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요" onkeypress="if (event.keyCode == 13) go_login()" />
 			<i class="fa-solid fa-lock" id="pwicon"></i><br/>
 		</div>
 			<div id="check">

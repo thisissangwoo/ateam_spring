@@ -57,8 +57,7 @@ public class Web_UserController {
 		 @ResponseBody
 		 @RequestMapping("/userEmailChk")
 		 public boolean userEmailChk(String id) {
-//			 return service.user_email_chk(userid);	
-			 return (Integer)sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;
+			 return service.user_email_chk(id);	
 		 }
 		
 		
@@ -90,6 +89,13 @@ public class Web_UserController {
 		public String userJoin(HttpSession session) {
 			session.setAttribute("category", "join");
 			return "user/join";
+		}
+		
+		//회원가입 정보 DB 저장
+		@RequestMapping("/userjoinChk")
+		public String userJoinChk(UserVO vo) {
+			service.user_join(vo);
+			return "user/login";
 		}
 		
 		
