@@ -69,7 +69,7 @@
 				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="#">대시보드</a>
 					
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#">사용자관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="adminUser">사용자관리</a>
 									
 				</li>
 				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="#">컨텐츠관리</a>
