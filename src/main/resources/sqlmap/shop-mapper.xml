@@ -5,7 +5,7 @@
 
 <insert id="insert">
 	insert into shop(id, user_id, name, tel, addr, coment, code, cnt, price)
-	values(seq_shop.nextval, #{id}, #{user_id}, #{name}, #{tel}, #{addr}, #{coment}, #{code}, #{cnt}, #{price})
+	values( #{id}, #{user_id}, #{name}, #{tel}, #{addr}, #{coment, jdbcType=VARCHAR}, 'so1', #{cnt}, #{price})
 </insert>
 
 </mapper>
