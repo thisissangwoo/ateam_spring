@@ -290,7 +290,9 @@ function basket() {
 		}
 		else{
 		   alert("장바구니로 이동합니다.");
-		   location = "<c:url value='b.pr'/>";
+		   $("form").attr("action", "b.pr");
+		   $("form").submit();
+		   
 		}
 	}
 	else{

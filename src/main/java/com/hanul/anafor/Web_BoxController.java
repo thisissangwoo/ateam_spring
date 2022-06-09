@@ -70,9 +70,11 @@ public class Web_BoxController {
 	public String b(BasketVO vo, HttpSession session) {
 		
 		session.setAttribute("orderInfo", vo);
-		UserVO vo2 = (UserVO) session.getAttribute("loginInfo");
 		
+		UserVO vo2 = (UserVO) session.getAttribute("loginInfo");
+			
 		vo.setUser_id(vo2.getUser_id());
+		
 		service.basket_insert(vo);
 		
 		return "redirect:basket.pr";
