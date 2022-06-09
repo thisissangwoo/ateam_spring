@@ -39,53 +39,63 @@ header .category ul li a:hover, header .category ul li a.active {
 
 </style>
 <header style="">
-	<div class="category">
-		<!-- logo -->
-		<div class="logo">
-			<ul>
-				<li><a href='<c:url value="/" />' id="logo">AnaFor</a></li>
-			</ul>	
-		</div>
-		
-		<!-- menu -->
-		<div class="menu">
-			<ul>
-				<li><a href='box.pr'  ${category eq 'pr' ? 'class="active"' : '' }>제품소개</a></li>		
-				<li><a href='list.cu' ${category eq 'cu' ? 'class="active"' : '' }>고객센터</a></li>		
-				<li><a href='list.no' ${category eq 'no' ? 'class="active"' : '' }>공지사항</a></li>		
-			</ul>	
-		</div>
-		
-		<!-- login -->
- 		<div class="login">
-			<!-- 로그인을 하지 않은 경우 -->
-			<c:if test="${ empty loginInfo }">
-				<ul>
-					<li>
+   <div class="category">
+      <!-- logo -->
+      <div class="logo">
+         <ul>
+            <li><a href='<c:url value="/" />' id="logo">AnaFor</a></li>
+         </ul>   
+      </div>
+      
+      <!-- menu -->
+      <div class="menu">
+         <ul>
+            <li><a href='box.pr'  ${category eq 'pr' ? 'class="active"' : '' }>제품소개</a></li>      
+            <li><a href='list.cu' ${category eq 'cu' ? 'class="active"' : '' }>고객센터</a></li>      
+            <li><a href='list.no' ${category eq 'no' ? 'class="active"' : '' }>공지사항</a></li>      
+         </ul>   
+      </div>
+      
+      <!-- login -->
+       <div class="login">
+         <!-- 로그인을 하지 않은 경우 -->
+         <c:if test="${ empty loginInfo }">
+            <ul>
+               <li>
 
-						<a href='userLogin' style="margin-right: 20px;">로그인</a>
-						<a href='userJoin'>회원가입</a>
+                  <a href='userLogin' style="margin-right: 20px;">로그인</a>
+                  <a href='userJoin'>회원가입</a>
 
-					</li>			
-				</ul>
-			</c:if>
-			
-			<!-- 로그인한 경우 -->
-			<div class="login_on">
-				<c:if test="${ !empty loginInfo }">
-					<ul>
-						<li>
-							<a><b>${loginInfo.user_name }</b> 님</a>
-						</li>
-						<li>			
-							<a href='logout'>로그아웃</a>
-						</li>
-					</ul>
-				</c:if>
-			</div>
-		</div>
-		
-	</div>
+               </li>         
+            </ul>
+         </c:if>
+         
+         <!-- 로그인한 경우 -->
+         <c:if test="${ loginInfo.admin eq 'Y'}">
+            <ul>
+               <li>
+                  <a href="admin"><strong>관리자 페이지</strong></a>
+<%--                   <a href="admin"><strong>${loginInfo.user_name }</strong></a> 님 --%>
+               </li>
+               <li>         
+                  <a href='logout'>로그아웃</a>
+               </li>
+            </ul>
+         </c:if>
+         <c:if test="${ loginInfo.admin eq 'N' }">
+            <ul>
+               <li>
+                  <a href="mypage">${loginInfo.user_name } 님</a>
+               </li>
+               <li>         
+                  <a href='logout'>로그아웃</a>
+               </li>
+            </ul>
+         </c:if>
+         
+      </div>
+      
+   </div>
 </header>
 
 
