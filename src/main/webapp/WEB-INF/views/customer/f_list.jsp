@@ -36,7 +36,7 @@
 
 #list-top{
 	margin-top:10px;
-	width:1850px; 
+	width: 900px;
 	display: inline-block;
 }
 
@@ -64,18 +64,16 @@ select {
 }
 
 #menu_form {
-	width:100%; 
+	width:218px;
 	height: 100px; 
-	position: relative; 
+	margin: auto; 
+	padding-top: 30px;
 }
 
 #wrap #menu {
 	margin:0 auto; 
 	height: 50px; 
 	cursor: pointer; 
-	position:absolute; 
-	left:850px; 
-	top:50px; 
 } 
 
 #menu ul{ oveflow:hidden;}
@@ -106,24 +104,22 @@ select {
 .faq{
 	background:center;
 	border-bottom:0px solid #ddd;
-	margin-left:200px;
-	margin-right:200px;
-	width: 1500px;
+	width: 1000px;
 	height: 100%;
 }
 
 .faq .q{
-padding : 10px 20px;
-background: #f1f0f2;
-color:black;
+	padding : 15px 30px 15px;
+ 	background-color: rgba( 105, 106, 173, 0.3 );
+	color:black;
 }
 
 
 .faq .a{
-	background:#f1f0f2; 
+	background:#f1f0f2;
 	padding: 10px 75px 10px 75px;
     line-height: 22px;
-    padding : 10px 20px;
+    padding : 20px 50px;
 }
 .a{
    font-size: 16px;
@@ -132,6 +128,7 @@ color:black;
 .q{
    max-width : 100%;
    text-align : left;
+   font-weight : bold;
    font-size: 16px;
    border-bottom: 1px solid #bdbdbd;
    margin-top: 10px;
@@ -184,15 +181,16 @@ summary::-webkit-details-marker {
 				<!-- 검색 버튼 생성 -->
 				<tr><a class='btn-empty' onclick="$('form').submit()">검색</a></tr>
 			</ul>
-			<ul>
+<%-- 			<ul>
 				<!-- 관리자만 글쓰기 가능-->
 				<c:if test="${loginInfo.admin eq 'Y' }">
 					<li><a class='btn-empty'  href='f_new.cu'>글쓰기</a></li>
 				</c:if>
-			</ul>	
+			</ul>	 --%>
 		</div>	
 	</div>
-</form>		
+</form>	
+<div style="margin: auto; width: 1000px;">
 	<div class='faq'>
 	   <div class='faqbody'>
 	      <c:forEach items="${page.list}" var="vo">
@@ -201,12 +199,13 @@ summary::-webkit-details-marker {
 						${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
 					</c:forEach>
 		            <summary class='q'>${vo.title }
-		               <i class="fas fa-angle-double-down"></i>
+			            <img src='imgs/drop-down.png' />
 		            </summary>
 		            <pre class='a'>${vo.content }</pre>
 		         </details>
    	      	</c:forEach>
 	   	</div>
+	</div>
 	</div>
 	<div>
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
