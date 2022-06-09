@@ -4,7 +4,8 @@
 
 <html>
 <head>
-
+  <link rel="stylesheet" type="text/css" href="css/slick.css">
+  <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
 	
    
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
@@ -19,39 +20,10 @@
   
  -->
  
-<script type="text/javascript">
-var list = new Array();
-	 function btn_prev(){
-		 $("#text1").removeClass(".text1");
-		 $("#text1").addClass(".text1 on");
-		 $("#text2").removeClass(".text2 on");
-		 $("#text2").addClass(".text2");
-		 return false;
-	 }
-for(var i=1; i<=3; i++){
-	
 
-	for(var i=1; i<=2; i++){
-		
-		// 객체 생성
-		var data = new Object() ;
-		
-		data.number = i ;
-		data.name = "Tester #" + i ;
-		
-		
-		// 리스트에 생성된 객체 삽입
-		testList.push(data) ;
-	}
-	
-	// String 형태로 변환
-	var jsonData = JSON.stringify(testList) ;
-	
-	alert(jsonData) ;
-출처: https://fruitdev.tistory.com/190 [과일가게 개발자:티스토리]
-	
-}	 
-</script> 
+
+
+
    
    <!-- header -->
    <style>
@@ -74,19 +46,15 @@ html, body{min-height: 100%; height: 100%;}
    #top{width:100%;height:800px;margin:50px 0;position:relative}
    #top::before{content: '';display:block;position:absolute;height:100%;width:100%;background:#696aad;left:calc(50% - 400px);transform: translate(-50%, 0);margin-left:-50%}
    #top .view_box{height:755px;width:1257px;margin:0 auto;position:relative;padding-top:30px}
-   #top .view_box .phone_box{width:370px;height:755px;box-sizing:border-box;padding:80px 15px 90px 15px; background: url("imgs/phoneview.png") no-repeat; background-size: 370px; position:relative}
+   #top .view_box .phone_box{width:375px;height:755px;box-sizing:border-box;padding:80px 15px 90px 10px; background: url("imgs/phoneview.png") no-repeat; background-size: 370px; position:relative}
    #top .view_box .phone_box ul{display:block;width:100%;height:590px;background:red;overflow:hidden}
+   #top .view_box .phone_box section{display:block;width:100%;height:590px;background:red;overflow:hidden}
    #top .view_box .phone_box li{display:inline-block}
    #top .view_box .phone_box li img{width:100%}
-   #top .view_box .text_box{position:absolute;top:250px;right:60px}
-   #top .view_box .text_box .text1,
-   #top .view_box .text_box .text2,
-   #top .view_box .text_box .text3{display:none}
-   #top .view_box .text_box .text1.on,
-   #top .view_box .text_box .text2.on,
-   #top .view_box .text_box .text3.on{display:block}
+   #top .view_box .text_box{position:absolute;top:150px;right:60px}
    #top .view_box .text_box p:nth-of-type(1){font-size:30px;line-height:75px;padding-bottom:20px}
    #top .view_box .text_box p:nth-of-type(2){font-size:56px;line-height:58px;font-weight:700}
+   #top .view_box .text_box .page_text{position: absolute; top: 300px; left: 0px;}
    #top .view_box .btn{width:200px;height:100px;position:absolute;bottom:118px;right:350px}
    #top .view_box .btn li{display:inline-block;float:left;position:relative}
    #top .view_box .btn li:last-child{margin-left:-1px}
@@ -147,32 +115,32 @@ html, body{min-height: 100%; height: 100%;}
    <div id="top">
       <div class="view_box">
          <div class="phone_box">
-            <ul class="slides">
+            <!-- <ul class="slides">
                <li><img src="https://findin.co.kr/wp-content/uploads/2021/11/1-1.png" alt="1"></li>
                <li><img src="imgs/box.png" alt="2"></li>
                <li><img src="https://findin.co.kr/wp-content/uploads/2021/11/1-1.png" alt="3"></li>
-            </ul>
+            </ul> -->
+            <section class="lazy1 slider" data-sizes="50vw">
+			    <div><img  src="imgs/pagea.png"/></div>
+			    <div><img  src="imgs/pageb.png"/></div>
+			    <div><img  src="imgs/pagec.png"/></div>
+			    <div><img  src="imgs/paged.png"/></div>
+			    <div><img  src="imgs/pagee.png"/></div>
+			</section>
          </div>
          <div class="text_box">
             <div class="text1" id="text1">
                <p>나와 가까운 병원찾기부터 스마트하게 약 관리까지!</p>
                <p>건강이 편해지다.</p>
             </div>
-            <div class="text2 on" id="text2">
-               <p >나와 가까운 병원찾기부터 스마트하게 약 관리까지!2</p>
-               <p>건강이 편해지다.</p>
-            </div>
-            <div class="text3">
-               <p>나와 가까운 병원찾기부터 스마트하게 약 관리까지!3</p>
-               <p>건강이 편해지다.</p>
-            </div>
+			<div class="page_text"><img src="imgs/pagetext.png" alt="text" /></div>            
          </div>
-         <div class="btn">
+         <!-- <div class="btn">
             <ul>
                <li><a class="btn_prev"onclick="btn_prev()"><span>이전</span></a></li>
                <li><a class="btn_next"onclick="btn_next()"><span>다음</span></a></li>
             </ul>
-         </div>
+         </div> -->
       </div>
    </div>
    <!-- // top -->
@@ -213,6 +181,26 @@ html, body{min-height: 100%; height: 100%;}
       </div>   
    </div>
    <!--// bottom -->
+   
+
+  
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+
+	 $(".lazy1").slick({
+	        lazyLoad: 'ondemand', // ondemand progressive anticipated
+	        infinite: true,
+	        autoplay: true,
+	          autoplaySpeed: 3000
+	       
+	      });
+	 /*   prevArrow : $('.prevArrow'), 
+     nextArrow : $('.nextArrow') */
+
+	
+</script>
 
 </div>
 

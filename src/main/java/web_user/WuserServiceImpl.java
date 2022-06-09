@@ -36,10 +36,26 @@ public class WuserServiceImpl implements WuserService {
 		return false;
 	}
 
+
 	@Override
-	public boolean member_social_email(UserVO vo) {
-		
-		return dao.member_social_email(vo);
+	public boolean user_social_email(UserVO vo) {
+		return dao.user_social_email(vo);
+	}
+
+	@Override
+	public boolean user_email_chk(String id) {
+		return dao.user_email_chk(id);
+	}
+
+	@Override
+	public boolean user_social_insert(UserVO vo) {
+		return dao.user_social_insert(vo);
+	}
+
+	@Override
+	public boolean user_social_update(UserVO vo) {
+		// TODO Auto-generated method stub
+		return dao.user_social_update(vo);
 	}
 
 }

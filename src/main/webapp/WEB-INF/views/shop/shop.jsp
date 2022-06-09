@@ -50,14 +50,6 @@
 	color: red;
 }
 
-/* hr {
-   position: absolute;
-   width: 698px;
-   height: 0px;
-   left: 932px;
-   top: 229px;
-   border: 2px solid #888888;
-} */
 .a {
 	position: absolute;
 	width: 80px;
@@ -243,12 +235,12 @@ input[type=number] {
       </div>
       
    </div>
-   
-   <button class="order" onclick="order()">주문하기</button>
-   <button class="buy_insert" onclick="basket()">장바구니담기</button>
-
 </form>
-   
+	   <button class="order" onclick="order()">주문하기</button>
+	   <button class="buy_insert" onclick="basket()">장바구니담기</button>
+
+
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function () {
@@ -262,18 +254,31 @@ $(document).ready(function () {
 
 
 function order() {
-   if ($('.cnt').val() <= 0) {
-      alert("수량을 입력해주세요.");
-      $('.cnt').focus();
-      return;
-   }
-   else{
-      alert("주문 페이지로 이동합니다.");
-      $("form").submit();
-   }
+	 
+	var variable ='${sessionScope.loginInfo}';
+	//ajax
+	
+	if ( variable != ""){
+		
+		if ($('.cnt').val() == 0 || $('.cnt').val() == "") {
+		       alert("수량을 입력하세요.");
+		       $('.cnt').focus();
+		       return;
+		}
+		else{
+		   alert("주문 페이지로 이동합니다.");
+		   $("form").submit();
+		}
+		
+	} 
+	else{
+		alert("로그인 후 이용하실 수 있습니다.");
+		location = "<c:url value='/' />";
+	}
 }
 
-function basket() {
+
+/* function basket() {
    if ($('.cnt').val() <= 0) {
       alert("수량을 입력해주세요.");
       $('.cnt').focus();
@@ -282,7 +287,7 @@ function basket() {
       alert("장바구니로 이동합니다.");
       $("form").submit();
    }
-}
+} */
 
 </script>
 </body>
