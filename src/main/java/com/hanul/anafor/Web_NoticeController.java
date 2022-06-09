@@ -1,5 +1,6 @@
 package com.hanul.anafor;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +77,12 @@ public class Web_NoticeController {
 		return "notice/detail";
 	}
 	
-
+	// 공지글의 첨부 파일 다운로드 요청
+	@RequestMapping ("/download.no")
+	public void download(int id, HttpSession session, HttpServletResponse response) {
+		// 해당 공지글의 첨부파일 정보를 DB에서 조회해와 
+		// 해당 파일을 서버로부터 다운로드 한다.
+		NoticeVO notice = service.notice_detail(id);
+		common.fileDownload(notice.getFilename(), notice.getFilepath(), session, response);		
+	}
 }

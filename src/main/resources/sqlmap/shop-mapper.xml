@@ -5,7 +5,7 @@
 
 <insert id="insert">
 	insert into shop(id, user_id, name, tel, addr, coment, code, cnt, price)
-	values(2, 'admin', '관리자', 01012345678, '광주', '광주', 'so1', 1, 30000)
+	values( #{id}, #{user_id}, #{name}, #{tel}, #{addr}, #{coment, jdbcType=VARCHAR}, 'so1', #{cnt}, #{price})
 </insert>
 
 </mapper>
