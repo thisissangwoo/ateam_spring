@@ -13,9 +13,8 @@ public class WuserServiceImpl implements WuserService {
 	@Autowired WuserDAO dao;
 	
 	@Override
-	public boolean user_join(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_join(UserVO vo) {
+		 dao.user_join(vo);
 	}
 
 	@Override

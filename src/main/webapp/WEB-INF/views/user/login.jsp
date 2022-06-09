@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 
@@ -178,7 +178,7 @@
 		<div id="login">
 			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
 			<i class="fa-solid fa-user" id="usericon"></i><br/>
-			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요"/>
+			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요" onkeypress="if (event.keyCode == 13) loginChk()" />
 			<i class="fa-solid fa-lock" id="pwicon"></i><br/>
 		</div>
 			<div id="check">
@@ -197,7 +197,7 @@
 		</div>
 		<div id="find">
 			<ul>
-				<li><a id="findpw"><span>비밀번호 찾기</span></a></li>
+				<li><a id="findpw" href="findpw"><span>비밀번호 찾기</span></a></li>
 				<li>|</li>
 				<li><a id="join" href="userJoin"><span>회원가입</span></a></li>
 			</ul>

@@ -6,29 +6,119 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 <style>
-	#wrap{width:100%; height:auto}
-	#top_img{width:1920px; height:372px; background: url("imgs/faq.png") center no-repeat; position:relative; margin: 0 auto;}
-	#top_img .text_box{position:absolute; left:150px; top:100px; }
-	#top_img .text_box p{line-height: 80px; font-size:70px; color:#929292; text-align:left}
-	table{margin-bottom:10px;}
-	#list-top{margin-top:10px;width:1850px; display: inline-block;}
-	a.btn-empty {background: #fff; color: #929292; text-align:center; padding:3px 10px; margin-left:5px;
-	border: 1px solid #b0b0b0; }
-	input {
-		height: 30px;
-		margin-left:5px;
-		font-size: 15px;
-		border: 1px solid #b0b0b0;
-	}
-	select {height: 30px; border: 1px solid #b0b0b0; padding : 0 5px; cursor: pointer;}
+#wrap{
+	width:100%; 
+	height:auto; 
+	position:relative;
+}
+
+#top_img{
+	width:1909px; 
+	height:372px; 
+	background: url("imgs/faq.png") center no-repeat; 
+	position:relative; 
+	margin: 0 auto;
+}
+
+#top_img .text_box{
+	position:absolute; 
+	left:150px; 
+	top:100px; 
+}
+
+#top_img .text_box p{
+	line-height: 80px; 
+	font-size:70px; 
+	color:#929292; 
+	text-align:left
+}
+
+table{
+	margin-bottom:10px;
+}
+
+#list-top{
+	margin-top:10px;
+	width:1850px; 
+	display: inline-block;
+}
+
+a.btn-empty {
+	background: #fff; 
+	color: #929292; 
+	text-align:center; 
+	padding:3px 10px; 
+	margin-left:5px;
+	border: 1px solid #b0b0b0; 
+}
+
+input {
+	height: 30px;
+	margin-left:5px;
+	font-size: 15px;
+	border: 1px solid #b0b0b0;
+}
+
+select {
+	height: 30px; 
+	border: 1px solid #b0b0b0; 
+	padding : 0 5px; 
+	cursor: pointer;
+}
+
+#menu_form {
+	width:100%; 
+	height: 100px; 
+	position: relative; 
+}
+
+#wrap #menu {
+	margin:0 auto; 
+	height: 50px; 
+	cursor: pointer; 
+	position:absolute; 
+	left:850px; 
+	top:50px; 
+} 
+
+#menu ul{ oveflow:hidden;}
+	
+#menu ul li{float:left;}
+
+#menu ul li a{
+	font-size:30px;
+	display: block;
+	padding: 10px 20px;
+	border : 1px solid #929292;
+}
+
+#menu ul li a:hover{
+	background-color: #b0b0b0;
+	color: white;	
+}
+
+#menu ul li:nth-child(1) a {
+	border-right: 0px;
+	background-color : #929292;
+	color: white;	
+}
+
 </style>
 </head>
 <body>
-<form id="wrap" action="list.cu" method="post">
+<form id="wrap" action="f_list.cu" method="post">
 	<input type="hidden" name="curPage" value="1" />
 	<div id="top_img">
 		<div class="text_box">
 			<p><b>아나포에서 여러분의<br>소리를 듣습니다</b></p>
+		</div>
+	</div>
+	<div id="menu_form">
+		<div id="menu">
+			<ul>	
+				<li><a href="f_list.cu">FAQ</a></li>
+				<li><a href="list.cu">Q&A</a></li>
+			</ul>
 		</div>
 	</div>
 	<div id='list-top'>
@@ -38,9 +128,8 @@
 				<tr>
 					<select name='search' class='w-px90'>
 						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>제목</option>
-						<option value="content" ${page.search eq 'content' ? 'selected' : '' }>내용</option>
-						<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
+						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>질문</option>
+						<option value="content" ${page.search eq 'content' ? 'selected' : '' }>답변</option>
 					</select>			
 				</tr>		
 				<!-- 검색 키워드를 입력할 input 태그  -->
@@ -50,12 +139,9 @@
 			</ul>
 			
 			<ul>
-				<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
-				<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
-					 을 통해 admin 값을 가져와 비교 -->
-								<!-- 로그인한 경우 -->
-				<c:if test="${ !empty loginInfo }">
-					<li><a class='btn-empty'  href='new.cu'>글쓰기</a></li>
+				<!-- 관리자만 글쓰기 가능-->
+				<c:if test="${loginInfo.admin eq 'Y' }">
+					<li><a class='btn-empty'  href='f_new.cu'>글쓰기</a></li>
 				</c:if>
 			</ul>	
 		</div>	
@@ -64,24 +150,27 @@
 <table>
 	<tr>
 		<th class="w-px70">NO</th>
-		<th>제목</th>
-		<th class="w-px100">글쓴이</th>
-		<th class="w-px100">작성일자</th>
-		<th class="w-px100">조회수</th>
+		<th>자주하는 질문</th>
 	</tr>
+
 	<c:forEach items="${page.list }" var="vo">
 		<tr>
 			<td>${vo.no }</td>
 			<td class='left'>
-				<c:forEach begin="1" end="${vo.indent }" var="i">
-					${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
-				</c:forEach>
-				<a href='detail.cu?id=${vo.id }'>${vo.title }</a>			
+				<details>
+					<c:forEach begin="1" end="${vo.indent }" var="i">
+						${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
+					</c:forEach>
+					<summary>
+						<a>${vo.title }</a>			
+					</summary>
+					<ul>
+						<li class='left'>${vo.content}</li>
+					<ul>
+				</details>	
 			</td>
-			<td>${vo.name}</td>
-			<td>${vo.writedate}</td>
-			<td>${vo.readcnt}</td>
       	</tr>
+
 	</c:forEach>
 </table>
 <div>
