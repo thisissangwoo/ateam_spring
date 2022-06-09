@@ -71,11 +71,17 @@ public class Web_BoxController {
 		
 		session.setAttribute("orderInfo", vo);
 		UserVO vo2 = (UserVO) session.getAttribute("loginInfo");
+		
 		vo.setUser_id(vo2.getUser_id());
 		service.basket_insert(vo);
 		
 		return "redirect:basket.pr";
 	}
+	
+	
+	
+	
+	
 	
 	
 
@@ -85,7 +91,7 @@ public class Web_BoxController {
 
 	public String shop(ShopDetailVO vo, HttpSession session) {
 		
-		session.setAttribute("orderInfo", vo);
+		//session.setAttribute("orderInfo", vo);
 		
 		return "shop/shop";
 	}

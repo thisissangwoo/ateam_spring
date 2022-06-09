@@ -35,7 +35,12 @@ function checkAll(checkAll){
 				<span style="font-size: 30px; line-height: 50px; ">장바구니</span>
 			</span>
 			
-			<span style=" border: 1px solid; padding: 5px; float: right;"><a>선택삭제</a></span>
+		<%-- 	<c:if test="${ ! empty loginInfo }">
+				<span style=" border: 1px solid; padding: 5px; float: right;">
+					<a class="btn-empty" onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.pr?id=${vo.id}'}">선택삭제</a>
+				</span>
+			</c:if>	 --%>
+			
 		</div>
 		
 			<div>

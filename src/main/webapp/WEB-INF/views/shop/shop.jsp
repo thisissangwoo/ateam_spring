@@ -291,7 +291,7 @@ function basket() {
 		}
 		else{
 		   alert("장바구니로 이동합니다.");
-		   location = "<c:url value='basket.pr'/>";
+		   location = "<c:url value='b.pr'/>";
 		}
 		
 	} 
