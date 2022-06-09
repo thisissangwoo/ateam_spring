@@ -1,6 +1,6 @@
 package com.hanul.anafor;
 
-import javax.mail.Session;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import user.UserVO;
 import web_shop.BasketVO;
@@ -79,12 +79,11 @@ public class Web_BoxController {
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
-	public String shop(BasketVO vo, HttpSession session) {
-		
 
+	public String shop(ShopDetailVO vo, HttpSession session) {
 		
-		
-		
+		session.setAttribute("orderInfo", vo);
+
 		return "shop/shop";
 	}
 
@@ -101,12 +100,30 @@ public class Web_BoxController {
 	@RequestMapping ("/order.pr")
 	public String order(ShopDetailVO vo, HttpSession session) {
 		
+		session.getAttribute("orderInfo");
+		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
+		
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
 		
-			
 		//service.order_insert(vo);
+		
 		return "shop/order";
 	}
+	
+	@RequestMapping("/order_result.pr")
+	public String b(ShopDetailVO vo, HttpSession session) {
+		
+		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
+		
+		vo.setCnt(vo2.getBk_cnt());
+		vo.setPrice(vo2.getBk_price());
+		service.order_insert(vo);
+		
+		
+		return "redirect:/";
+	}
+	
 }
+
