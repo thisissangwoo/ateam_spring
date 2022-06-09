@@ -62,7 +62,7 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 464px; 
+   left: 467px; 
    top: 160px; 
    font-weight: bold; 
    font-size: 17px; 
@@ -352,7 +352,7 @@
          
          <div style="position: absolute; width: 86px; height: 93px; left: 300px; top: -1px; letter-spacing: 0.2px; ">
             <p id="total_detail_price"><fmt:formatNumber value="${orderInfo.bk_price }" pattern="#,##0원" /></p>
-            <p id="delivery_detail">0원</p>
+            <p id="delivery_detail">무료</p>
          </div>
       </div>
       

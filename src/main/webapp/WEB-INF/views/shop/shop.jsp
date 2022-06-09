@@ -283,7 +283,6 @@ function basket() {
 	var loginInfo ="${sessionScope.loginInfo}";
 	
 	if (loginInfo != ""){
-		
 		if ($('.cnt').val() == 0 || $('.cnt').val() == "") {
 		       alert("수량을 입력하세요.");
 		       $('.cnt').focus();
@@ -293,8 +292,7 @@ function basket() {
 		   alert("장바구니로 이동합니다.");
 		   location = "<c:url value='b.pr'/>";
 		}
-		
-	} 
+	}
 	else{
 		alert("로그인 후 이용하실 수 있습니다.");
 		location = "<c:url value='userLogin'/>";

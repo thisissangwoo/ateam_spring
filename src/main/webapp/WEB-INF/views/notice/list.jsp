@@ -54,7 +54,7 @@
 				<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
 					 을 통해 admin 값을 가져와 비교 -->
 								<!-- 로그인한 경우 -->
-				<c:if test="${ !empty loginInfo }">
+				<c:if test="${loginInfo.admin eq 'Y' }">	
 					<li><a class='btn-empty'  href='new.no'>글쓰기</a></li>
 				</c:if>
 			</ul>	
