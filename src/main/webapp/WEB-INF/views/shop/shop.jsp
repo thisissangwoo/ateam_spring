@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -223,21 +223,21 @@ input[type=number] {
          <p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
       </div>
       
-      <input class="cnt" type="number" name="bk_cnt" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
+      <input class="cnt" type="number" value="1" name="bk_cnt" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
       
       <div class="total">
          <p class="total_price">총 상품 금액</p>
       </div>
       
       <div class="money">
-         <input type="hidden" name="bk_price"/>
-           <p class="money_result">원</p>
+         <input type="hidden" name="bk_price" value="30000"/>
+           <p class="money_result"><fmt:formatNumber value="30000" pattern="#,##0원" /></p>
       </div>
       
    </div>
+	   <button type="button" class="order" onclick="order()">주문하기</button>
+	   <button type="button" class="buy_insert" onclick="basket()">장바구니담기</button>
 </form>
-	   <button class="order" onclick="order()">주문하기</button>
-	   <button class="buy_insert" onclick="basket()">장바구니담기</button>
 
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -255,10 +255,9 @@ $(document).ready(function () {
 
 function order() {
 	 
-	var variable ='${sessionScope.loginInfo}';
-	//ajax
+	var loginInfo ="${sessionScope.loginInfo}";
 	
-	if ( variable != ""){
+	if (loginInfo != ""){
 		
 		if ($('.cnt').val() == 0 || $('.cnt').val() == "") {
 		       alert("수량을 입력하세요.");
@@ -273,21 +272,33 @@ function order() {
 	} 
 	else{
 		alert("로그인 후 이용하실 수 있습니다.");
-		location = "<c:url value='/' />";
+		location = "<c:url value='userLogin'/>";
 	}
 }
 
 
-/* function basket() {
-   if ($('.cnt').val() <= 0) {
-      alert("수량을 입력해주세요.");
-      $('.cnt').focus();
-   }
-   else{
-      alert("장바구니로 이동합니다.");
-      $("form").submit();
-   }
-} */
+function basket() {
+	 
+	var loginInfo ="${sessionScope.loginInfo}";
+	
+	if (loginInfo != ""){
+		
+		if ($('.cnt').val() == 0 || $('.cnt').val() == "") {
+		       alert("수량을 입력하세요.");
+		       $('.cnt').focus();
+		       return;
+		}
+		else{
+		   alert("장바구니로 이동합니다.");
+		   location = "<c:url value='basket.pr'/>";
+		}
+		
+	} 
+	else{
+		alert("로그인 후 이용하실 수 있습니다.");
+		location = "<c:url value='userLogin'/>";
+	}
+}
 
 </script>
 </body>

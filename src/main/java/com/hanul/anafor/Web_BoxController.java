@@ -3,13 +3,15 @@ package com.hanul.anafor;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import user.UserVO;
 import web_shop.BasketVO;
 import web_shop.ShopDetailVO;
 import web_shop.ShopServicelmpl;
@@ -23,6 +25,8 @@ public class Web_BoxController {
 	private ShopServicelmpl service;
 
 	@Autowired private WReviewPage page;
+	
+	@Autowired @Qualifier("ateam") private SqlSession sql;
 	
 	@RequestMapping("/box.pr")
 	public String list(HttpSession session, Model model, @RequestParam (defaultValue = "1") int curPage, @RequestParam(defaultValue = "3") int pageList) {
@@ -56,7 +60,7 @@ public class Web_BoxController {
 	public String shop(ShopDetailVO vo, HttpSession session) {
 		
 		session.setAttribute("orderInfo", vo);
-
+		
 		return "shop/shop";
 	}
 
@@ -88,11 +92,12 @@ public class Web_BoxController {
 	public String b(ShopDetailVO vo, HttpSession session) {
 		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
-		
+		UserVO vo3 = (UserVO) session.getAttribute("loginInfo");
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
+		vo.setUser_id(vo3.getUser_id());
 		service.order_insert(vo);
-		
+		System.out.println("order.mapper.insert");
 		
 		return "redirect:/";
 	}
