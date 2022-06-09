@@ -7,7 +7,7 @@ import user.UserVO;
 public interface WuserService {
 
 	//회원 가입시 회원정보 저장
-	boolean user_join(UserVO vo);
+	void user_join(UserVO vo);
 	
 	//로그인시 회원정보 조회
 	UserVO user_login(HashMap<String, String> map);
