@@ -172,8 +172,8 @@ select {
 		<tr>
 			<th class="w-px70">NO</th>
 			<th>제목</th>
-			<th class="w-px100">글쓴이</th>
-			<th class="w-px100">작성일자</th>
+			<th class="w-px100">작성자</th>
+			<th class="w-px120">작성일자</th>
 			<th class="w-px100">조회수</th>
 		</tr>
 		<c:forEach items="${page.list }" var="vo">
