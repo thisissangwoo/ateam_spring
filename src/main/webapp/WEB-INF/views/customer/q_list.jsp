@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -38,9 +37,9 @@ table {
 	margin-bottom: 10px;
 }
 
-#list-top {
-	margin-top: 10px;
-	width: 1850px;
+#list-top{
+	margin-top:10px;
+	width: 900px;
 	display: inline-block;
 }
 
@@ -68,19 +67,17 @@ select {
 }
 
 #menu_form {
-	width: 100%;
-	height: 100px;
-	position: relative;
+	width:218px;
+	height: 100px; 
+	margin: auto; 
+	padding-top: 30px;
 }
 
 #wrap #menu {
-	margin: 0 auto;
-	height: 50px;
-	cursor: pointer;
-	position: absolute;
-	left:850px; 
-	top: 50px;
-}
+	margin:0 auto; 
+	height: 50px; 
+	cursor: pointer; 
+} 
 
 #menu ul {
 	oveflow: hidden;
@@ -156,7 +153,7 @@ select {
 					</tr>
 				</ul>
 
-				<ul>
+<%-- 				<ul>
 					<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
 					<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
 					 을 통해 admin 값을 가져와 비교 -->
@@ -164,7 +161,7 @@ select {
 					<c:if test="${ !empty loginInfo }">
 						<li><a class='btn-empty' href='new.cu'>글쓰기</a></li>
 					</c:if>
-				</ul>
+				</ul> --%>
 			</div>
 		</div>
 	</form>
