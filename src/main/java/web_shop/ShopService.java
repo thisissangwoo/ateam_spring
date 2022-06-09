@@ -28,6 +28,6 @@ void Review_insert(WReviewVO vo);
 
 	void basket_insert(BasketVO vo);
 	
-	List<BasketVO> basket_list(UserVO user);
+	List<BasketVO> basket_list(String user_id);
 	
 }

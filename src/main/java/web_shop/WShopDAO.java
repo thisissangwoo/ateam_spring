@@ -72,8 +72,8 @@ public class WShopDAO implements ShopService {
 	}
 
 	@Override
-	public List<BasketVO> basket_list(UserVO user) {
-		return sql.selectList("Wbasket.mapper.list", user);
+	public List<BasketVO> basket_list(String user_id) {
+		return sql.selectList("Wbasket.mapper.list", user_id);
 	}
 
 }
