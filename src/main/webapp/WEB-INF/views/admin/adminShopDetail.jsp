@@ -7,6 +7,9 @@
 <title>주문 상세</title>
 </head>
 <body>
+<div style="position: absolute; width: 100%; height: 59px; background: #929292; ">
 
+
+</div>
 </body>
 </html>
