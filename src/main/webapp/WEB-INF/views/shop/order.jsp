@@ -62,7 +62,7 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 465px; 
+   left: 464px; 
    top: 160px; 
    font-weight: bold; 
    font-size: 17px; 
@@ -306,7 +306,7 @@
 </style>
 </head>
 <body>
-<!-- <form action="order.pr" method="post"> -->
+<form action="order_result.pr" method="post">
 <div class="product" >
    <div class="product_textarea">
       <p id="product_text" >주문 상품 정보</p>
@@ -332,7 +332,7 @@
       <input type="text" name="tel" maxlength="4" style="position: absolute; width: 60px; height: 25px; left: 290px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
       
       <p class="addr_receive_text">*받는주소</p>
-      <button id="post_code" onclick="daum_post()">우편번호</button>
+      <a id="post_code" onclick="daum_post()">우편번호</a>
          <input type="text" name="post" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px;" /><br />
          <p id="default_addr_text">기본주소</p>
          <input type="text" id="default" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
@@ -372,25 +372,27 @@
    <button class="order_result" style="cursor: pointer;" onclick="orderChk()">주문하기</button>
 
 </div>
-<!-- </form> -->
+</form>
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
 function daum_post() {
    
    new daum.Postcode({
-      oncomplete: function(res) {
-         $("[name=post]").val(res.zonecode);
+      oncomplete: function(data) {
+         $("[name=post]").val(data.zonecode);
+         
          // 지번, 도로명 구분
-         var addr = res.userSelectedType == "J" ? res.jibunAddress : res.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
-           // name 이 addr 인 태그의 0 번지에 addr 값을 할당
+         var addr = data.userSelectedType == "J" ? data.jibunAddress : data.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
+         // name 이 addr 인 태그의 0 번지에 addr 값을 할당
+         
+         // 건물명이 있을 경우 기존 주소의 건물명 값을 추가
+         if(data.buildingName != "") addr += '(' + data.buildingName + ')';
            
-           // 건물명이 있을 경우 기존 주소의 건물명 값을 추가
-           if(res.buildingName != "") addr += '(' + res.buildingName + ')';
-           
-           $("[name=addr]").eq(0).val(addr);
+         $("[name=addr]").eq(0).val(addr);
       }
    }).open();
 }
@@ -398,21 +400,20 @@ function daum_post() {
 
 function orderChk() {
 	
-	if($("#person_receive").val() == ""){	//아이디를 입력하지 않았을 때
+	if($("#person_receive").val() == ""){
 		$("#person_receive").focus();
 		alert("받는 사람을 입력해주세요.");
-	
-		return false;
+		return;
 	
 	} 
-	else if ($("#phone").val() == ""){	//아이디를 입력하지 않았을 때
+	else if ($("#phone").val() == ""){
 		$("#phone").focus();
 		alert("연락처를 입력해주세요.");
 	
 		return false;
 	
 	} 
-	else if ($("#default").val() == ""){	//아이디를 입력하지 않았을 때
+	else if ($("#default").val() == ""){
 		$("#default").focus();
 		alert("주소를 입력해주세요.");
 	
@@ -420,7 +421,8 @@ function orderChk() {
 	}
 	else {
 		alert("주문이 정상적으로 처리되었습니다.");
-	    location.href="/ordercomp.pr"
+	    $("form").submit();
+	    location.href="/anafor"
 	}
 }
 </script>
