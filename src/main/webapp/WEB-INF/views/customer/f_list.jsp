@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>고객센터</title>
 <style>
 #wrap{
@@ -31,10 +32,6 @@
 	font-size:70px; 
 	color:#929292; 
 	text-align:left
-}
-
-table{
-	margin-bottom:10px;
 }
 
 #list-top{
@@ -103,7 +100,57 @@ select {
 	color: white;	
 }
 
+/* FAQ */
+
+
+.faq{
+	background:center;
+	border-bottom:0px solid #ddd;
+	margin-left:200px;
+	margin-right:200px;
+	width: 1500px;
+	height: 100%;
+}
+
+.faq .q{
+padding : 10px 20px;
+background: #f1f0f2;
+color:black;
+}
+
+
+.faq .a{
+	background:#f1f0f2; 
+	padding: 10px 75px 10px 75px;
+    line-height: 22px;
+    padding : 10px 20px;
+}
+.a{
+   font-size: 16px;
+   text-align : left;
+}
+.q{
+   max-width : 100%;
+   text-align : left;
+   font-size: 16px;
+   border-bottom: 1px solid #bdbdbd;
+   margin-top: 10px;
+}
+ 
+summary { 
+	cursor: pointer; 
+}
+summary { 
+	list-style: none; 
+}   
+summary::-webkit-details-marker {
+   display: none;
+}   
+
+
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+
 </head>
 <body>
 <form id="wrap" action="f_list.cu" method="post">
@@ -137,7 +184,6 @@ select {
 				<!-- 검색 버튼 생성 -->
 				<tr><a class='btn-empty' onclick="$('form').submit()">검색</a></tr>
 			</ul>
-			
 			<ul>
 				<!-- 관리자만 글쓰기 가능-->
 				<c:if test="${loginInfo.admin eq 'Y' }">
@@ -146,36 +192,25 @@ select {
 			</ul>	
 		</div>	
 	</div>
-</form>	
-<table>
-	<tr>
-		<th class="w-px70">NO</th>
-		<th>자주하는 질문</th>
-	</tr>
-
-	<c:forEach items="${page.list }" var="vo">
-		<tr>
-			<td>${vo.no }</td>
-			<td class='left'>
-				<details>
-					<c:forEach begin="1" end="${vo.indent }" var="i">
+</form>		
+	<div class='faq'>
+	   <div class='faqbody'>
+	      <c:forEach items="${page.list}" var="vo">
+		         <details>
+		         	<c:forEach begin="1" end="${vo.indent }" var="i">
 						${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
 					</c:forEach>
-					<summary>
-						<a>${vo.title }</a>			
-					</summary>
-					<ul>
-						<li class='left'>${vo.content}</li>
-					<ul>
-				</details>	
-			</td>
-      	</tr>
-
-	</c:forEach>
-</table>
-<div>
-	<jsp:include page="/WEB-INF/views/include/page.jsp" />
-	<!-- jsp 표준 include를 사용하여 설정 -->
-</div>	
+		            <summary class='q'>${vo.title }
+		               <i class="fas fa-angle-double-down"></i>
+		            </summary>
+		            <pre class='a'>${vo.content }</pre>
+		         </details>
+   	      	</c:forEach>
+	   	</div>
+	</div>
+	<div>
+		<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		<!-- jsp 표준 include를 사용하여 설정 -->
+	</div>	
 </body>
 </html>
