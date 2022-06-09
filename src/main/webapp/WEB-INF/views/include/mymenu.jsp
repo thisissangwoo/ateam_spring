@@ -16,33 +16,18 @@
 #logo{width: 100%; height: 60px; position: relative; border-bottom: 1px solid #d9d9d9;}
 
 #logo h3{color: #fff; position: absolute; left: 80px; top: 5px; font-weight: 600; font-size: 30px; line-height: 32px;}
-#logo p{display: block; color: #fff; position: absolute; left: 105px; top: 30px; font-weight: 600; font-size: 14px;line-height: 20px}
+#logo p{display: block; color: #fff; position: absolute; left: 115px; top: 30px; font-weight: 600; font-size: 14px;line-height: 20px}
 
 #dormammu{width: 100%; height: auto; position: relative; }
-#dormammu ul{position:absolute; width: 100%; height: 30px; left: 5px; top: 20px; }
-#dormammu ul li a{font-weight: 600; font-size: 20px; line-height: 30px;}
-#dormammu ul li img{margin-right: 30px;}
+#dormammu ul{position: absolute; left: 40px; top: 10px;}
+#dormammu ul li a{font-size: 20px; color: b0b0b0; font-weight: 600; margin-left: 20px; line-height: 25px; text-decoration: none;}
+#dormammu ul li a:hover{font-weight: bold; color : #fff;}
 
-#container{width: 100%; height: auto; position: relative; }
-#container ul{position:absolute; width: 100%; height: auto; left: 20px; top: 100px; }
-#container ul li a{font-weight: 600; font-size: 18px; line-height: 40px; text-align: center;}
-#container ul li img{margin-right: 30px;}
-
-/*v1*/
-#nav-v1{position:relative; width:100%;text-align: left; }
-.menu-v1{	line-height:0;}
-.menu-v1:hover{background-color:#414141;}
-.menu-v1:hover>a{color:white;font-weight:bold;}
-
-.menu-v1 .submenu{background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;}
-/* .menu-v1 .submenu{position:absolute; top: 80px; background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;} */
-
-.menu-v1 .submenu li:hover{	background-color:#000;color:#414141;font-weight:bold;}
-
-/* #dormammu ul li a:hover, header .category ul li a.active {font-weight: bold; color : #b0b0b0;} */
-#dormammu ul li a:hover, header .category ul li a.active {font-weight: bold; color : #b0b0b0;}
-
-
+#container{width: 100%; height: auto; position: relative; top: 100px; text-align: left; padding: 20px;}
+#container div ul li{font-size: 18px; color: #b0b0b0; line-height: 30px; font-weight: 600;}
+#container .menu_1, .menu_2, .menu_3, .menu_4{margin-left: 20px;} 
+#container ul{margin-bottom: 20px;}
+#container ul li a:hover{font-weight: bold; color : #fff;}
 </style>
 
 
@@ -54,7 +39,7 @@
 
 	<div id="logo">
 		<h3>AnaFor</h3>
-		<p>관리자 센터</p>
+		<p>MY 페이지</p>
 	</div>
 
 	<div id="dormammu">
@@ -64,29 +49,28 @@
 	</div>
 	
 	<div id="container">
-			
-			<ul id="nav-v1">
-				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="#">대시보드</a>
-					
-				</li>
-				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#">사용자관리</a>
-									
-				</li>
-				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="#">컨텐츠관리</a>
-					<!-- <ul class="submenu">
-						<li><a href="#">Q&A</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">리뷰</a></li>
-						<li><a href="#">공지사항</a></li>
-					</ul> -->				
-				</li>
-				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="#">shop관리</a>
-									
-				</li>
-				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="#">통계</a>
-									
-				</li>
-			</ul>
+		<div class="my_shopping">
+			<ul>
+				<li class="menu_title1">MY쇼핑</li>
+				<li class="menu_1"><a>주문활동/배송조회</a></li>
+			</ul>	
+		</div>		
+		
+		<div class="my_activity">
+			<ul>
+				<li class="menu_title2">MY활동</li>
+				<li class="menu_2"><a>문의내역 확인</a></li>
+				<li class="menu_3"><a>리뷰관리</a></li>
+			</ul>	
+		</div>		
+		
+		<div class="my_information">
+			<ul>
+				<li class="menu_title3">MY정보</li>
+				<li class="menu_4"><a>개인정보확인/수정</a></li>
+			</ul>	
+		</div>		
+		
 		
 	</div>
 </div>			
