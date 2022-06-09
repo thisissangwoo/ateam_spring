@@ -177,7 +177,7 @@
 		<span id="notice">* 필수 입력사항</span>
 		</div>
 		<div id="useremail">
-			<input type="text" name="id" class="chk" placeholder="이메일을 입력하세요 *" maxlength="100"/>
+			<input type="text" name="user_id" class="chk" placeholder="이메일을 입력하세요 *" maxlength="100"/>
 			<input type="button" id="btn-email" onclick="checkEmail()" value="중복확인"/><br/>
 			<span id="idmsg">예)happy@anafor.com</span>
 		</div>
@@ -187,7 +187,7 @@
 			<span id="codemsg">이메일 인증코드를 받고 입력하세요</span>
 		</div>
 		<div id="userpw">
-			<input type="password" name="pw" class="chk" placeholder="비밀번호 *"/><br/>
+			<input type="password" name="user_pw" class="chk" placeholder="비밀번호 *"/><br/>
 			<span id="pwmsg">8~16자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span>
 		</div>
 		<div id="userpwchk">
@@ -195,23 +195,23 @@
 			<span id="pwmsg2"></span>
 		</div>
 		<div id="username">
-			<input type="text" name="name" class="chk"  placeholder="이름 *"/><br/>
+			<input type="text" name="user_name" class="chk"  placeholder="이름 *"/><br/>
 			<span id="namemsg"></span>
 		</div>
 		
 		<div id="userbirth">
-			<input type="text" name="birth" class="chk" placeholder="생년월일을 입력하세요 *"/><br/>
+			<input type="text" name="user_birth" class="chk" placeholder="생년월일을 입력하세요 *"/><br/>
 			<span id="birthmsg">예)19990101</span>
 		</div>
 		<div id="userphone">
-			<input type="text" name="tel" class="chk" placeholder="휴대폰 번호 *"/><br/>
+			<input type="text" name="user_tel" class="chk" placeholder="휴대폰 번호 *"/><br/>
 			<span id="telmsg">'-'없이 번호만 입력 예)01012345678</span>
 		</div>
 		<div id="usergender">
 			<div id="selectbox" >
 				<ul>
-				<li><label><input type="radio" name="gender" value="남" checked/>&nbsp;&nbsp;남</label></li>
-				<li><label><input type="radio"  name="gender"  value="여"/>&nbsp;&nbsp;여</label></li>
+				<li><label><input type="radio" name="user_gender" value="남" checked/>&nbsp;&nbsp;남</label></li>
+				<li><label><input type="radio"  name="user_gender"  value="여"/>&nbsp;&nbsp;여</label></li>
 				</ul>
 			</div>
 			<span id="genmsg"></span>
@@ -223,34 +223,46 @@
 </form> 
 
 <script>
+var code=""  //인증코드 받을 변수
 function go_join(){
 
 		//이메일 중복확인 검사
-		if($('[name=id]').hasClass('checked')){
+		if($('[name=user_id]').hasClass('checked')){
 			//중복확인 검사를 했을 경우
-			if($('[name=id]').siblings('span').hasClass('invalid')){
-				$('[name=id]').siblings('span').text(join.id.unUsable.desc);
-				$('[name=id]').focus();
+			if($('[name=user_id]').siblings('span').hasClass('invalid')){
+				$('[name=user_id]').siblings('span').text(join.id.unUsable.desc);
+				$('[name=user_id]').focus();
 				return;
 			}
 		}else{
 			//중복확인을 안 했을 경우
-			if(!item_check($('[name=id]'))) return;   
+			if(!item_check($('[name=user_id]'))) return;   
 			else{
-				$('[name=id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
-				$('[name=id]').focus();
+				$('[name=user_id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
+				$('[name=user_id]').focus();
 				return;
 			}
 		}
 		//비밀번호 , 비밀번호 확인, 이름, 생일, 전화번호 검증 필요
-		if(!item_check($('[name=pw]')))	return;
+		if(!item_check($('[name=user_pw]')))	return;
 		if(!item_check($('[name=pwchk]'))) return;
-		if(!item_check($('[name=name]'))) return;
-		if(!item_check($('[name=birth]'))) return;
-		if(!item_check($('[name=tel]')))	return;
+		if(!item_check($('[name=user_name]'))) return;
+		if(!item_check($('[name=user_birth]'))) return;
+		if(!item_check($('[name=user_tel]')))	return;
 		
-		alert("회원가입이 완료되었습니다");
-		return;
+		//인증코드 검증
+		if($('#codemsg').hasClass('invalid')|| $('[name=code]').val()==''){
+			$('[name=code]').focus();
+			if(code!=''){
+				$('#codemsg').text("인증코드를 입력해주세요").removeClass().addClass('invalid');
+			}else{
+				$('#codemsg').text("인증코드를 먼저 받아주세요").removeClass().addClass('invalid');
+			}
+			return;
+		}
+		
+		alert("회원가입이 완료되었습니다!\n 로그인 페이지로 이동합니다.");
+		$('form').submit();
 		
 }//go_join
 
@@ -265,9 +277,6 @@ $('.chk').on('keyup', function (e) {
 	var data = join.tag_status($(this)); //입력하고 있는 tag의 값을 보낸 후 결과값 반환
 	$(this).siblings('span').text(data.desc).removeClass().addClass(data.code);
 });
-
-
-
 
 
 function item_check(item){
@@ -285,32 +294,34 @@ function sendEmailCode(){
 	if($('#idmsg').hasClass('invalid')){
 		$("#codemsg").text("유효하지 않은 이메일입니다. 이메일을 다시 작성해주세요").removeClass().addClass("invalid");
 		return;
-	}else if($('[name=id]').val()==''){
+	}else if($('[name=user_id]').val()==''){
 		$("#codemsg").text("이메일을 먼저 작성해주세요").removeClass().addClass("invalid");
-		$('[name=id]').focus();
+		$('[name=user_id]').focus();
 		return;
-	}else if($('[name=id]').hasClass('checked')){
+	}else if($('[name=user_id]').hasClass('checked')){
 		//중복확인 검사를 했을 경우
-		if($('[name=id]').siblings('span').hasClass('invalid')){
-			$('[name=id]').siblings('span').text(join.id.unUsable.desc);
-			$('[name=id]').focus();
+		if($('[name=user_id]').siblings('span').hasClass('invalid')){
+			$('[name=user_id]').siblings('span').text(join.id.unUsable.desc);
+			$('[name=user_id]').focus();
 			return;
 		}
-	}else if(!$('[name=id]').hasClass('checked')){
+	}else if(!$('[name=user_id]').hasClass('checked')){
 		//중복확인을 안 했을 경우
-		if(!item_check($('[name=id]'))) return;   
+		if(!item_check($('[name=user_id]'))) return;   
 		else{
-			$('[name=id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
-			$('[name=id]').focus();
+			$('[name=user_id]').siblings('span').text(join.id.valid.desc); // 사용할 수 있는 id여도 중복확인을 안 했을 경우
+			$('[name=user_id]').focus();
 			return;
 		}
 	} 
 	
 	$.ajax({
 		url:'sendEmailChk',
-		data:{email:$('[name=id]').val()},
+		data:{email:$('[name=user_id]').val()},
 		success:function(response){
-				alert("인증메일이 발송되었습니다.\n 해당 메일함을 확인해주세요");
+				alert("인증메일이 발송되었습니다.\n해당 메일함을 확인해주세요");
+				code=response;
+				console.log(code);
 		},error:function(req,text){
 				alert(text+':'+req.status);
 			}
@@ -318,25 +329,43 @@ function sendEmailCode(){
 		});//ajax
 }
  
+ $('[name=code]').keyup(function() {
+	 matchCode();
+});
+ 
+
+ //인증코드 일치 여부 확인
+ function matchCode(){
+	 
+	 if(code!=""){
+		if($('[name=code]').val() == code){
+				$('#codemsg').text("인증코드가 일치합니다.").removeClass().addClass('valid');
+			}else{
+				$('#codemsg').text("인증코드가 일치하지 않습니다.").removeClass().addClass('invalid');
+		}
+	 }else{
+		 $('#codemsg').text("인증코드를 먼저 받아주세요").removeClass().addClass('invalid');
+	 }
+ }
 
 
 //이메일 중복 확인
 function checkEmail(){
 	
-	var data = join.tag_status($('[name=id]'));
+	var data = join.tag_status($('[name=user_id]'));
 	if(data.code=="invalid"){
-		$('[name=id]').siblings('span').text(data.desc);
-		$('[name=id]').focus();
+		$('[name=user_id]').siblings('span').text(data.desc);
+		$('[name=user_id]').focus();
 		return;
 	}
 		
 	$.ajax({					//ajax 통신
 		url: 'userEmailChk',
-		data : {id:$('[name=id]').val()},
+		data : {id:$('[name=user_id]').val()},
 		success : function(response){
 				var data = join.id_usable(response);
-				$('[name=id]').siblings('span').text(data.desc).removeClass().addClass(data.code);
-				$('[name=id]').addClass('checked');
+				$('[name=user_id]').siblings('span').text(data.desc).removeClass().addClass(data.code);
+				$('[name=user_id]').addClass('checked');
 		}, error : function(req,text){
 			alert(text+' : '+req.status);
 		}

@@ -48,8 +48,8 @@ public class Web_UserController {
 		//이메일 발송
 		@ResponseBody
 		@RequestMapping("/sendEmailChk")
-		public String sendEmailchk(String email) {
-			return Integer.toString(common.sendCheckEmail(email));
+		public int sendEmailchk(String email) {
+			return common.sendCheckEmail(email);
 		}
 		
 		
@@ -57,10 +57,27 @@ public class Web_UserController {
 		 @ResponseBody
 		 @RequestMapping("/userEmailChk")
 		 public boolean userEmailChk(String id) {
-//			 return service.user_email_chk(userid);	
-			 return (Integer)sql.selectOne("wuser.mapper.emailchk",id) == 0 ? true : false;
+			 return service.user_email_chk(id);	
 		 }
 		
+		 //임시 비밀번호 발급 페이지
+		 @RequestMapping("/findpw")
+		 public String findPw() {
+			 return "user/findpw";
+		 }
+		 
+		 
+		 //비밀번호 찾기 (임시 이메일 발송)
+		 @ResponseBody
+		 @RequestMapping("/sendTempPW")
+		 public boolean sendTempPW(String id) {
+			 if(! service.user_email_chk(id)) { 	//해당 메일이 DB에 존재할때
+				 common.sendFindPw(id);
+				 return true;
+			 }else {
+				 return false;						//해당 메일이 존재하지 않을때
+			 }
+		 }
 		
 		//로그인 처리 (ajax 사용시 ResponseBody )
 		@ResponseBody
@@ -90,6 +107,13 @@ public class Web_UserController {
 		public String userJoin(HttpSession session) {
 			session.setAttribute("category", "join");
 			return "user/join";
+		}
+		
+		//회원가입 정보 DB 저장
+		@RequestMapping("/userjoinChk")
+		public String userJoinChk(UserVO vo) {
+			service.user_join(vo);
+			return "user/login";
 		}
 		
 		
