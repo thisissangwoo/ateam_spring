@@ -4,6 +4,14 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
 <tiles-definitions>
+	<definition name="mypage_layout" template="/WEB-INF/views/tiles/mypage_layout.jsp">
+		<put-attribute name="mymenu" value="/WEB-INF/views/include/mymenu.jsp" />	
+	</definition>
+	
+	<definition name="mypage/*" extends="mypage_layout">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/{1}.jsp" />	
+	</definition>
+
 	<definition name="admin_layout" template="/WEB-INF/views/tiles/admin_layout.jsp">
 		<put-attribute name="menu" value="/WEB-INF/views/include/menu.jsp" />	
 	</definition>
