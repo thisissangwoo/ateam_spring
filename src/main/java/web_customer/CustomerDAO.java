@@ -65,26 +65,29 @@ public class CustomerDAO implements CustomerService {
 	
 	@Override
 	public void faq_insert(CustomerVO vo) {
-		// TODO Auto-generated method stub
-
+		sql.insert("wcustomer.mapper.faq_insert", vo);
 	}
 
 	@Override
 	public List<CustomerVO> faq_list() {
-		// TODO Auto-generated method stub
-		return null;
+		return sql.selectList("wcustomer.mapper.faq_list");
+
 	}
 
 	@Override
 	public CustomerPage faq_list(CustomerPage page) {
-		// TODO Auto-generated method stub
-		return null;
+		// 1. 먼저 총 글의 개수를 알아야 페이지 처리를 할 수 있기 때문에 전체 글 개수를 조회
+		int pagecnt = sql.selectOne("wcustomer.mapper.faq_totalList", page);
+		page.setTotalList(pagecnt);
+		
+		List<CustomerVO> list = sql.selectList("wcustomer.mapper.faq_list", page);
+		page.setList(list);
+		return page;
 	}
 
 	@Override
 	public CustomerVO faq_detail(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sql.selectOne("wcustomer.mapper.faq_detail", id);
 	}
 
 	@Override
@@ -101,8 +104,7 @@ public class CustomerDAO implements CustomerService {
 
 	@Override
 	public void faq_read(int id) {
-		// TODO Auto-generated method stub
-
+		sql.update("wcustomer.mapper.faq_read", id);
 	}
 
 }
