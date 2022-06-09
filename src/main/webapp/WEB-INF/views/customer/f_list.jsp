@@ -150,7 +150,7 @@ select {
 <table>
 	<tr>
 		<th class="w-px70">NO</th>
-		<th>제목</th>
+		<th>자주하는 질문</th>
 	</tr>
 
 	<c:forEach items="${page.list }" var="vo">
