@@ -10,12 +10,12 @@
 	// tag 에 입력한 data에 들어있는데 tag의 name 속성의 값으로 id, pw, pw_chk 등을
 	// 구분(판단)하여 유효성 검사 진행하려고 함.
 		// id 의 상태가 유효한지 아닌지 판단이 필요하므로 함수 선언( id_status() )
-		if (tag == 'id')		return this.id_status( data );
-		else if ( tag == 'pw')	return this.pw_status( data );
+		if (tag == 'user_id')		return this.id_status( data );
+		else if ( tag == 'user_pw')	return this.pw_status( data );
 		else if ( tag == 'pwchk' )	return this.pw_chk_status( data );
- 		else if (tag == 'name') return this.name_status(data);
-		else if (tag == 'birth') return this.birth_status(data);
-		else if	(tag=='tel')	return this.tel_status(data);
+ 		else if (tag == 'user_name') return this.name_status(data);
+		else if (tag == 'user_birth') return this.birth_status(data);
+		else if	(tag=='user_tel')	return this.tel_status(data);
 	}
 	, id_status : function ( id ) {
 		var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
@@ -36,7 +36,7 @@
 	
 	, pw_chk_status : function ( pw_ck ) {
 		if ( pw_ck == '' )				return this.pw.empty_pwchk;
-		else if (pw_ck == $('[name=pw]').val())		return this.pw.equal;
+		else if (pw_ck == $('[name=user_pw]').val())		return this.pw.equal;
 		else 							return this.pw.notEqual;
 	}
 	

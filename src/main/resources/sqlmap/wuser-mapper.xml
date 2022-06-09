@@ -4,6 +4,12 @@
 <mapper namespace="wuser.mapper">
 
 
+<!-- 회원 가입 정보 DB 저장 -->
+<insert id="join">
+	insert into anafor_user (user_id, user_pw, user_name, user_birth, user_tel, user_gender) values (#{user_id}, #{user_pw}, #{user_name},#{user_birth}, #{user_tel}, #{user_gender})
+
+</insert>
+
 <!-- 로그인 기능 -->
 <select id="login" resultType="user.UserVO">
 	select * from anafor_user where user_id = #{user_id} and user_pw = #{user_pw}
