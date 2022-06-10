@@ -47,28 +47,21 @@ body{
 		<h3>컨텐츠 관리</h3>
 	</div>
 	<div id='list-top' >
-		<!-- 항목별 검색 처리 부분 -->
-		<ul>
-			<tr>
-				<select name="search" class="w-px100">
-					<option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-					<option value="title"
-						${page.search eq 'title' ? 'selected' : '' }>제목</option>
-					<option value="content"
-						${page.search eq 'content' ? 'selected' : '' }>내용</option>
-					<option value="writer"
-						${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
-				</select>
-			</tr>
-			<!-- 검색 키워드를 입력할 input 태그  -->
-			<tr>
-				<input type="text" name="keyword" value="${page.keyword }" class="w-px500" />
-			</tr>
-			<!-- 검색 버튼 생성 -->
-			<tr>
-				<a class="btn-empty" onclick="$('form').submit()">검색</a>
-			</tr>
-		</ul>
+		<form action="list.co" method="post">
+			<div>
+				<ul>		
+					<li>
+						<select name="notice_name" class='w-px160' onchange="$('form').submit()">
+							<option value="all" ${code eq 'all' ? 'selected' : '' }>전체</option>
+							<c:forEach items="${depts }" var="vo">
+								<option ${dept_id ne 'all' and dept_id eq vo.department_id ? 'selected' : '' } value="${vo.department_id }" >${vo.department_name }</option>
+							</c:forEach>
+						</select>
+					</li>
+				</ul>
+			
+			</div>
+		</form>
 	</div>	
 	<div id="list-board">
 	

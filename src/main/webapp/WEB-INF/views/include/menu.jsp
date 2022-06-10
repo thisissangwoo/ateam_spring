@@ -40,7 +40,7 @@
 .menu-v1 .submenu li:hover{	background-color:#000;color:#414141;font-weight:bold;}
 
 /* #dormammu ul li a:hover, header .category ul li a.active {font-weight: bold; color : #b0b0b0;} */
-#dormammu ul li a:hover, header .category ul li a.active {font-weight: bold; color : #b0b0b0;}
+#dormammu ul li a:hover, #dormammu ul li a:active {font-weight: bold; color : #b0b0b0;}
 #dormammu ul{text-decoration: none;}
 
 </style>
@@ -72,7 +72,7 @@
 				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#" >사용자관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="contents.co" >컨텐츠관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="contents.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
 					<!-- <ul class="submenu">
 						<li><a href="#">Q&A</a></li>
 						<li><a href="#">FAQ</a></li>
