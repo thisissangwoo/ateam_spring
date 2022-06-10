@@ -192,6 +192,7 @@ input[type=number] {
 <body>
 
 <form action="a.pr" method="post">
+
    <div class="wrap">
       <div class="img">
          <img src="imgs/shopbox.png">
