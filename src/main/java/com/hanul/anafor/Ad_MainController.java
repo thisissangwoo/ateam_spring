@@ -26,6 +26,7 @@ public class Ad_MainController {
 	@RequestMapping ("admin")
 	public String list(HttpSession session, Model model) {
 		
+
 		return "admin_main/list";
 	}
 
@@ -35,8 +36,8 @@ public class Ad_MainController {
 		session.setAttribute("category", "bo");
 		   
 		return "admin_main/dashboard";
-	}
 
+	}
 }
 
 
