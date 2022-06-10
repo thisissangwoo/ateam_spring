@@ -66,7 +66,7 @@
 	<div id="container">
 			
 			<ul id="nav-v1">
-				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="dashboard.bo" ${category eq 'bo' ? 'class="active"' : '' } >대시보드</a>
+				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="admin" ${category eq 'bo' ? 'class="active"' : '' } >대시보드</a>
 					
 				</li>
 				

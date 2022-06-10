@@ -2,11 +2,25 @@ package user;
 
 public class UserVO {
     private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 
-    				social_type, social_id, memo;
-    private int brCnt, qCnt;  //br:구매평, q:q&A
+    				social_type, social_id, memo, join_date;
+    private int brCnt, qCnt,no;  //br:구매평, q:q&A
     
-    
-    
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public String getJoin_date() {
+		return join_date;
+	}
+
+	public void setJoin_date(String join_date) {
+		this.join_date = join_date;
+	}
+
 	public int getBrCnt() {
 		return brCnt;
 	}

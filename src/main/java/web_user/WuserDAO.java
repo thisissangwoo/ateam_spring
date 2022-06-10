@@ -1,6 +1,7 @@
 package web_user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +67,12 @@ public class WuserDAO implements WuserService {
 		return sql.insert("wuser.mapper.social_update",vo) == 0 ? false: true;
 	}
 
+	@Override
+	public	UserPage admin_manage_user(UserPage page) {	
+		int pagecnt = sql.selectOne("wuser.mapper.usertotalList",page);
+		page.setTotalList(pagecnt);
+		List<UserVO> list = sql.selectList("wuser.mapper.admin_select",page);
+		page.setList(list);
+		return page;
+	}
 }

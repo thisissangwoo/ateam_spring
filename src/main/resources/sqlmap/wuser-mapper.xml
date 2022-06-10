@@ -37,4 +37,20 @@
 			where ${social_type} = #{social_id}
 			<!-- ${social_type} 내 들어있는 동적 데이터 (즉, 네이버, 카카오) 를 불러옴 -->
 </select>
+
+<!-- 관리자 회원 관리 -->
+<select id="admin_select" resultType="user.UserVO">
+	select *
+	from(select rownum no, a.user_id, a.user_name, a.admin, to_char(a.join_date, 'YYYY-MM-DD'), a.memo, 
+	(select count(*) from notice n where a.user_id = n.writer and code='N03' ) qCnt, 
+	(select count(*) from box_review b where a.user_id = b.user_id) brCnt
+	 from  (select * from anafor_user order by CASE when admin = 'Y' then 1 else 2 end ) a)
+	where no between #{beginList} and #{endList} 
+</select>
+
+<select id="usertotalList" resultType="integer">
+	select count(*) 
+		from anafor_user	
+
+</select>
 </mapper>
