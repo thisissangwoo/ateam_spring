@@ -28,8 +28,16 @@ public class Ad_MainController {
 		
 		
 		
-		return "admin/list";
+		return "admin_main/list";
 	}
+	
+	   @RequestMapping ("/dashboard.bo")
+	      public String dashboard(HttpSession session, Model model) {
+	            
+	      session.setAttribute("category", "bo");
+	         
+	      return "admin_main/dashboard";
+	   }
 
 }
 

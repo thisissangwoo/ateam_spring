@@ -1,8 +1,10 @@
 package user;
 
 public class UserVO {
-    private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, social_type, social_id;
+    private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 
+    				social_type, social_id, memo;
     private int brCnt, qCnt;  //br:구매평, q:q&A
+    
     
     
 	public int getBrCnt() {
@@ -19,6 +21,14 @@ public class UserVO {
 
 	public void setqCnt(int qCnt) {
 		this.qCnt = qCnt;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 	public String getSocial_id() {
