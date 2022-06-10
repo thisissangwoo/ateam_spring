@@ -278,6 +278,7 @@ function order() {
 }
 
 
+
 function basket() {
 	 
 	var loginInfo ="${sessionScope.loginInfo}";
@@ -290,7 +291,9 @@ function basket() {
 		}
 		else{
 		   alert("장바구니로 이동합니다.");
-		   location = "<c:url value='basket.pr'/>";
+		   $("form").attr("action", "b.pr");
+		   $("form").submit();
+		   
 		}
 	}
 	else{
