@@ -308,6 +308,7 @@
 <body>
 <form action="order_result.pr" method="post">
 <div class="product" >
+
    <div class="product_textarea">
       <p id="product_text" >주문 상품 정보</p>
       <img src="imgs/shopbox.png" style="position: absolute; width: 221px; height: 210px; left: 246px; top: 80px; border-radius: 11px;">
