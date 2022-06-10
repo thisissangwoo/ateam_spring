@@ -8,7 +8,9 @@
 </head>
 <body>
 
-
+<div style="background-color: gray; width: 100%; height: 50px;">
+	shop 관리
+</div>
 
 
 
