@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>관리자 페이지입니다</h3>
+
+<h3>여기가 관리자 페이지 내용이 들어갈 곳입니다.</h3>
 </body>
 </html>
