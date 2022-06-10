@@ -24,11 +24,88 @@ public class Ad_ShopController {
 		
 		return "admin_shop/adminShopDetail";
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//===============================================================================================================================
+
+
+	@RequestMapping("/list.sp")
+	public String list() {
+
+		return "admin_shop/list";
+	}
+
 }
-
-
-
-
-
 
 
