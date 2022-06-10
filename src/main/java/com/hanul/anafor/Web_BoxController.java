@@ -42,23 +42,57 @@ public class Web_BoxController {
 		return "shop/box";
 	}
 	
+	
+	
 	@RequestMapping ("/basket.pr")
-	public String basket(BasketVO vo, HttpSession session) {
+	public String basket(BasketVO vo, HttpSession session, Model model) {
 		
 		//service.basket_insert(vo);
+		//MemberVO member = (MemberVO) session.getAttribute("loginInfo");
+		//vo.setWriter(member.getId());
+		
+		//vo.setWriter(((MemberVO) session.getAttribute("loginInfo")).getId());
+		
+		UserVO vo2 = (UserVO) session.getAttribute("loginInfo");
+		String user_id = vo2.getUser_id();
+		
+		model.addAttribute("list", service.basket_list(user_id));
 		
 		
 		return "shop/basket";
 	}
 
-
+	
+	
+	
+	
+	@RequestMapping("/b.pr")
+	public String b(BasketVO vo, HttpSession session) {
+		
+		session.setAttribute("orderInfo", vo);
+		
+		UserVO vo2 = (UserVO) session.getAttribute("loginInfo");
+			
+		vo.setUser_id(vo2.getUser_id());
+		
+		service.basket_insert(vo);
+		
+		return "redirect:basket.pr";
+	}
+	
+	
+	
+	
+	
+	
+	
 
 //==================== 제품구매, 제품 상세페이지 ====================
 
 	@RequestMapping("/shop.pr")
 	public String shop(ShopDetailVO vo, HttpSession session) {
 		
-		session.setAttribute("orderInfo", vo);
+		//session.setAttribute("orderInfo", vo);
 		
 		return "shop/shop";
 	}
@@ -83,6 +117,7 @@ public class Web_BoxController {
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
 		
+		//service.order_insert(vo);
 		
 		return "shop/order";
 	}
