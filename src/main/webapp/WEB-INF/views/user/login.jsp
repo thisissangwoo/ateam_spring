@@ -228,7 +228,8 @@
 			data : {userid:$("#userid").val(), userpw:$("#userpw").val()},
 			success : function(response){
 				if(response){
-					location = "<c:url value='/' />";
+					//location = "<c:url value='/' />";
+					location.href = document.referrer;
 				}else{
 					$("#checkmsg").text("아이디 혹은 비밀번호가 일치하지 않습니다.").css('visibility','visible');
 					
