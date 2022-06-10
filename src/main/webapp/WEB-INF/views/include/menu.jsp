@@ -66,13 +66,13 @@
 	<div id="container">
 			
 			<ul id="nav-v1">
-				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="#">대시보드</a>
+				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="dashboard.bo" >대시보드</a>
 					
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#">사용자관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#" >사용자관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="#">컨텐츠관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="contents.co" >컨텐츠관리</a>
 					<!-- <ul class="submenu">
 						<li><a href="#">Q&A</a></li>
 						<li><a href="#">FAQ</a></li>
@@ -86,8 +86,7 @@
 				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="#">통계</a>
 									
 				</li>
-			</ul>
-		
+			</ul>	
 	</div>
 </div>			
 </body>
