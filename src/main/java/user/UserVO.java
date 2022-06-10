@@ -2,7 +2,25 @@ package user;
 
 public class UserVO {
     private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, social_type, social_id;
+    private int brCnt, qCnt;  //br:구매평, q:q&A
     
+    
+	public int getBrCnt() {
+		return brCnt;
+	}
+
+	public void setBrCnt(int brCnt) {
+		this.brCnt = brCnt;
+	}
+
+	public int getqCnt() {
+		return qCnt;
+	}
+
+	public void setqCnt(int qCnt) {
+		this.qCnt = qCnt;
+	}
+
 	public String getSocial_id() {
 		return social_id;
 	}

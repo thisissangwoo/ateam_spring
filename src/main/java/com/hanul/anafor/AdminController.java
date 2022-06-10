@@ -27,12 +27,6 @@ public class AdminController {
 		
 		return "admin/list";
 	}
-
-	@RequestMapping("adminUser")
-	public String adminUser() {
-		return "admin/manageUser";
-	}
-	
 	
 }
 
