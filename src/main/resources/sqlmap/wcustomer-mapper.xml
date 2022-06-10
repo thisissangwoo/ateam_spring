@@ -9,7 +9,7 @@
 		from (select rownum no, n.*, (select user_name from anafor_user where user_id = n.writer)name 
 		      from (select * 
 		      		from notice 
-		      		where code='N03'
+		      		where code= 'N03'
                     order by root, step desc)n 
 		      <include refid="where_search" /> 
 		      order by no desc)
