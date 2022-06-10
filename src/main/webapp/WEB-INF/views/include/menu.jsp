@@ -72,7 +72,7 @@
 				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#" >사용자관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="contents.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="list.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
 					<!-- <ul class="submenu">
 						<li><a href="#">Q&A</a></li>
 						<li><a href="#">FAQ</a></li>

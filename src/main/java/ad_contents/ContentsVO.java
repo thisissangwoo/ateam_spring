@@ -7,7 +7,7 @@ public class ContentsVO {
 	private int id, readcnt, no, root, step, indent;
 	private String title, content, writer, name;
 	private Date writedate;
-	private String filename, filepath, code;
+	private String filename, filepath, code, category;
 	
 	public int getId() {
 		return id;
@@ -93,7 +93,12 @@ public class ContentsVO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	
 	
 }

@@ -1,0 +1,53 @@
+package ad_contents;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ContentsServiceImpl implements ContentsService {
+
+	@Autowired private ContentsDAO dao;
+	
+	@Override
+	public void con_insert(ContentsVO vo) {
+		dao.con_insert(vo);
+	}
+
+	@Override
+	public void con_reply_insert(ContentsVO vo) {
+		dao.con_reply_insert(vo);
+	}
+
+	@Override
+	public List<ContentsVO> con_list() {
+		return dao.con_list();
+	}
+
+	@Override
+	public ContentsPage con_list(ContentsPage page) {
+		return dao.con_list(page);
+	}
+
+	@Override
+	public ContentsVO con_detail(int id) {
+		return dao.con_detail(id);
+	}
+
+	@Override
+	public void con_update(ContentsVO vo) {
+		dao.con_update(vo);
+	}
+
+	@Override
+	public void con_delete(int id) {
+		dao.con_delete(id);
+	}
+
+	@Override
+	public void con_read(int id) {
+		dao.con_read(id);
+	}
+
+}

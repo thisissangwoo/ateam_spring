@@ -35,13 +35,21 @@ table {
 	margin-bottom: 10px;
 }
 
-#list-top {
-	margin-top: 10px;
-	width: 1800px;
-	display: inline-block;
+#list-top{
+	padding-left:10px;
+	padding-right:220px;
+	width: 1500px;
+	display: block;
+	margin: 0 auto;
+}
+
+#list-content{
+	margin-left:20px;
+	margin-right: 800px;
 }
 
 a.btn-empty {
+	width:70px;
 	background: #fff;
 	color: #929292;
 	text-align: center;
@@ -76,7 +84,7 @@ select {
 			</div>
 		</div>
 		<div id='list-top'>
-			<div>
+			<div id='list-content'>
 				<!-- 항목별 검색 처리 부분 -->
 				<ul>
 					<tr>
@@ -100,16 +108,6 @@ select {
 						<a class='btn-empty' onclick="$('form').submit()">검색</a>
 					</tr>
 				</ul>
-
-				<%-- 			<ul>
-				<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
-				<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
-					 을 통해 admin 값을 가져와 비교 -->
-								<!-- 로그인한 경우 -->
-				<c:if test="${loginInfo.admin eq 'Y' }">	
-					<li><a class='btn-empty'  href='new.no'>글쓰기</a></li>
-				</c:if>
-			</ul>	 --%>
 			</div>
 		</div>
 	</form>

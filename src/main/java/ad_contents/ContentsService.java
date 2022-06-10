@@ -2,20 +2,22 @@ package ad_contents;
 
 import java.util.List;
 
-public interface ContentsService {					// CRUD (Create, Read, Update, Delete)
+public interface ContentsService {				// CRUD (Create, Read, Update, Delete)
 
-	void notice_insert(ContentsVO vo);				// 공지글 신규 저장(C)
+	void con_insert(ContentsVO vo);				// 게시글 신규 저장(C)
 	
-	List<ContentsVO>notice_list();					// 공지글 목록 조회(R)
+	void con_reply_insert(ContentsVO vo);		// 답글	신규 저장(C)
 	
-	ContentsPage notice_list(ContentsPage page);	// 공지글 목록 조회 - 페이지 처리된 (R)
+	List<ContentsVO>con_list();					// 목록 조회(R)
 	
-	ContentsVO notice_detail(int id);				// 공지글 상세조회(R)
+	ContentsPage con_list(ContentsPage page);	// 목록 조회 - 페이지 처리된 (R)
 	
-	void notice_update(ContentsVO vo);				// 공지글 변경저장(U)
+	ContentsVO con_detail(int id);				// 상세조회(R)
 	
-	void notice_delete(int id);						// 공지글 삭제(D)
+	void con_update(ContentsVO vo);				// 변경저장(U)
 	
-	void notice_read(int id);						// 공지글 조회시 조회수 증가 처리(U) 
+	void con_delete(int id);					// 삭제(D)
 	
+	void con_read(int id);						// 조회시 조회수 증가 처리(U) 
+
 }

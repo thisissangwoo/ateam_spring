@@ -2,8 +2,11 @@ package ad_contents;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import common.PageVO;
 
+@Component
 public class ContentsPage extends PageVO {
 
 	private List<ContentsVO> list;
