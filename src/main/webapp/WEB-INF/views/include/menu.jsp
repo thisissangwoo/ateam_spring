@@ -80,7 +80,7 @@
 						<li><a href="#">공지사항</a></li>
 					</ul> -->				
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="#">shop관리</a>
+				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="list.sp">shop관리</a>
 									
 				</li>
 				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="#">통계</a>
