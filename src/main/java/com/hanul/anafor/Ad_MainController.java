@@ -28,7 +28,7 @@ public class Ad_MainController {
 		
 		
 		
-		return "admin/list";
+		return "admin_main/list";
 	}
 
 }
