@@ -17,7 +17,7 @@ import web_notice.NoticeServiceImpl;
 
 
 @Controller
-public class AdminController {
+public class Ad_MainController {
 	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 
@@ -31,13 +31,6 @@ public class AdminController {
 		return "admin/list";
 	}
 
-//============================== 주문 상세 ==============================	
-	@RequestMapping("/adminShopDetail.pr")
-	public String adminShopDetail() {
-		
-		
-		return "admin/adminShopDetail";
-	}
 }
 
 
