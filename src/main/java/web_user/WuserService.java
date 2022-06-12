@@ -34,4 +34,9 @@ public interface WuserService {
 	//관리자 회원 관리
 	UserPage admin_manage_user(UserPage page);
 	
+	//회원 메모 삭제
+	boolean delete_user_memo(String id);
+	
+	//회원 메모 저장
+	boolean save_user_memo(String id, String memo);
 }

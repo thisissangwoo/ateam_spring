@@ -75,4 +75,20 @@ public class WuserDAO implements WuserService {
 		page.setList(list);
 		return page;
 	}
+
+	// 회원 메모 삭제
+	@Override
+	public boolean delete_user_memo(String id) {
+		
+		return sql.update("wuser.mapper.delete_memo",id) == 0 ?  false:true;
+	}
+
+	// 회원 메모 저장
+	@Override
+	public boolean save_user_memo(String id, String memo) {
+		HashMap<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("memo", memo);
+		return  sql.update("wuser.mapper.save_memo",map)  == 0 ? false : true;
+	}
 }

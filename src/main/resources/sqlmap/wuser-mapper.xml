@@ -48,9 +48,19 @@
 	where no between #{beginList} and #{endList} 
 </select>
 
+<!-- 전체 회원 인원 수 조회 -->
 <select id="usertotalList" resultType="integer">
 	select count(*) 
 		from anafor_user	
-
 </select>
+
+<!-- 회원 메모 삭제 -->
+<update id="delete_memo">
+	update anafor_user set memo = '' where user_id=#{id}
+</update>
+
+<!-- 회원 메모 저장-->
+<update id="save_memo">
+	update anafor_user set memo = #{memo} where user_id=#{id}
+</update>
 </mapper>

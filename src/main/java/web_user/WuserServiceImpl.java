@@ -63,4 +63,17 @@ public class WuserServiceImpl implements WuserService {
 		return dao.admin_manage_user(page);
 	}
 
+	@Override
+	public boolean delete_user_memo(String id) {
+		return dao.delete_user_memo(id);
+		
+	}
+
+	@Override
+	public boolean save_user_memo(String id, String memo) {
+		return dao.save_user_memo(id, memo);
+	}
+	
+	
+
 }

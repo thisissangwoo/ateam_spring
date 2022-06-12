@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import web_user.UserPage;
 import web_user.WuserServiceImpl;
@@ -26,5 +27,21 @@ public class Ad_UserController {
 		System.out.println(page.getBeginList());
 		model.addAttribute("page",service.admin_manage_user(page));
 		return "admin_user/manageUser";
+	}
+	
+	//회원에 대한 메모 삭제
+	@ResponseBody
+	@RequestMapping("delete.memo")
+	public boolean deleteMemo(String userid) {
+		
+		return service.delete_user_memo(userid);
+	}
+	
+	//회원에 대한 메모 저장
+	@ResponseBody
+	@RequestMapping("save.memo")
+	public boolean saveMemo(String userid, String memo) {
+		
+		return service.save_user_memo(userid,memo);
 	}
 }

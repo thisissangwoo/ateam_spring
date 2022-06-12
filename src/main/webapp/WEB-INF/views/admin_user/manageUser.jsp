@@ -133,34 +133,68 @@
 				<td>${vo.admin eq 'Y' ? '관리자':'일반회원'}</td>
 				<td>${vo.join_date }</td>
 				<td>${vo.qCnt}&nbsp;/&nbsp;${vo.brCnt }</td>
-				<td><a onclick="show()"><i class="fa-solid fa-square-pen"></i></a></td>
+				<td><a onclick="show('${vo.memo}','${vo.user_id}')"><i class="fa-solid fa-square-pen"></i></a></td>
 			</tr>
-			</c:forEach>
-		</table>
-		<div id="modal">
+			<div id="modal">
 			<div id="memo_content">
 				<a id="close-btn"><i class="fa-solid fa-xmark"></i></a>
 				<span>Memo</span>
 				<textarea  placeholder="내용을 입력해 주세요." rows="10"></textarea>
 				<div id="btn-class">
-				<input type="button" value="삭제하기"/>
-				<input type="button" value="저장하기"/>
+				<input type="button" onclick="delete_memo()" value="삭제하기"/>
+				<input type="button" onclick="save_memo()" value="저장하기"/>
 				</div>
-			</div>
+			</div> 
 		</div>
 		<div>
+			</c:forEach>
+		</table>
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		<!-- jsp 표준 include를 사용하여 설정 -->
 	</div>
 	</div>
 <script>
-	function show(){
+	var user_id = '';
+	function show(memo,id){
+		user_id = id;
+		if(memo != ''){
+			memo = memo.replace(/(?:\r\n|\r|\n)/g, '<br />'); // 줄바꿈 표현
+			$('textarea').text(memo);
+		}
 		$('#modal').css("display","block");
 	}
 	
 	$('#close-btn').click(function(){
 		$('#modal').css("display","none");
+		location="<c:url value='/user.ur' />";
 	});
+	
+	function delete_memo(){
+		$('textarea').text('');   //텍스트를 지우고
+		$.ajax({
+			url:'delete.memo',
+			data:{userid:user_id},
+			success: function(response){
+				alert("메모가 삭제되었습니다");
+				
+			},error : function(req,text){
+				alert(text+' : '+req.status);
+			}
+		});
+	}
+	
+	function save_memo(){
+		$.ajax({
+			url:'save.memo',
+			data:{userid:user_id,memo:$('textarea').val()},
+			success: function(response){
+				alert("메모가 저장되었습니다.");
+			},error : function(req,text){
+				alert(text+' : '+req.status);
+			}
+		});
+		
+	}
 
 </script>	
 </body>
