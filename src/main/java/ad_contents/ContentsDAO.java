@@ -59,4 +59,25 @@ public class ContentsDAO implements ContentsService {
 		sql.update("ad_contents.mapper.con_read", id);
 	}
 
+	@Override
+	public List<CodeVO> code() {
+		return sql.selectList("ad_contents.mapper.code_list");
+	}
+
+	@Override
+	public List<ContentsVO> con_list(String code) {
+		return sql.selectList("ad_contents.mapper.con_list", code);
+	}
+
+	@Override
+	public ContentsPage con_list2(ContentsPage page) {
+		int pagecnt = sql.selectOne("ad_contents.mapper.con_totalList", page);
+		page.setTotalList(pagecnt);
+		
+		List<ContentsVO> list = sql.selectList("ad_contents.mapper.con_list2", page);
+		page.setList(list);
+		return page;
+	}
+
+
 }

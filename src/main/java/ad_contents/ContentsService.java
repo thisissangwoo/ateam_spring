@@ -20,4 +20,11 @@ public interface ContentsService {				// CRUD (Create, Read, Update, Delete)
 	
 	void con_read(int id);						// 조회시 조회수 증가 처리(U) 
 
+	List<CodeVO> code();						// 게시판 코드명 조회
+	
+	List<ContentsVO>con_list(String code);		// 해당 코드 게시글 목록 조회(R)
+	
+	ContentsPage con_list2(ContentsPage page);	// 목록 조회 - 페이지 처리된 (R)
+	
+	
 }
