@@ -31,7 +31,6 @@ public class Ad_MainController {
 	}
 	
 	
-
 	@RequestMapping ("/dashboard.bo")
 		public String dashboard(HttpSession session, Model model) {
 		      

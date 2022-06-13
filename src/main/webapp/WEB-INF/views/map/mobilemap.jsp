@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,  initial-scale=1">
     <title>원, 선, 사각형, 다각형 표시하기</title>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=681e977067d98d095ccfda23ca7c463c"></script>
     <style>
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-<div id="map" style="width:80%;height:800px; margin:auto;"></div>    
+<div id="map" style="height:800px"></div>    
  
  
 <script>

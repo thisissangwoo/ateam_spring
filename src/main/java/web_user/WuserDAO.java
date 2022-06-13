@@ -1,6 +1,7 @@
 package web_user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +67,28 @@ public class WuserDAO implements WuserService {
 		return sql.insert("wuser.mapper.social_update",vo) == 0 ? false: true;
 	}
 
+	@Override
+	public	UserPage admin_manage_user(UserPage page) {	
+		int pagecnt = sql.selectOne("wuser.mapper.usertotalList",page);
+		page.setTotalList(pagecnt);
+		List<UserVO> list = sql.selectList("wuser.mapper.admin_select",page);
+		page.setList(list);
+		return page;
+	}
+
+	// 회원 메모 삭제
+	@Override
+	public boolean delete_user_memo(String id) {
+		
+		return sql.update("wuser.mapper.delete_memo",id) == 0 ?  false:true;
+	}
+
+	// 회원 메모 저장
+	@Override
+	public boolean save_user_memo(String id, String memo) {
+		HashMap<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("memo", memo);
+		return  sql.update("wuser.mapper.save_memo",map)  == 0 ? false : true;
+	}
 }
