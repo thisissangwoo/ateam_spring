@@ -49,7 +49,7 @@ public class IoTController {
 			@RequestMapping ("/arduSetIoT")
 			public void arduSetIoT(HttpServletRequest req) {
 				System.out.println("arduSetIoT() 들어옴");
-				double lat = (Double.parseDouble(req.getParameter("latitude"))/1000000);
+				double lat = (Double.parseDouble(req.getParameter("latitude"))/1000000); 
 				double lon = (Double.parseDouble(req.getParameter("longitude"))/1000000);
 				GPSVO vo = new GPSVO();
 				//추후 아이디도 로라통신으로 주고 받아야함
