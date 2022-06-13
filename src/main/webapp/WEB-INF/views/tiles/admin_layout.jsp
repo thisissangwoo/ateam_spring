@@ -11,7 +11,7 @@
 	<c:when test="${category eq 'login' }"><c:set var='title' value='로그인' /></c:when>
 	<c:when test="${category eq 'join' }"><c:set var='title' value='회원가입' /></c:when>
 	<c:when test="${category eq 'co' }"><c:set var='title' value='컨텐츠관리' /></c:when>
-	<c:when test="${category eq 'bo' }"><c:set var='title' value='대시보드' /></c:when>
+	<c:when test="${category eq 'sp' }"><c:set var='title' value='shop관리' /></c:when>
 	<c:when test="${category eq 'ur' }"><c:set var='title' value='사용자관리' /></c:when>
 </c:choose>
 
@@ -24,27 +24,28 @@
 	/* #wrap { display: flex; flex-direction: column; height: 100%; } */
 
 
-#wrap {
-    min-height: 100%;
-    width: 100%;
-    height: auto;
+#admin_wrap {
+	display : flex;
+    min-height: 937px;
+/*     width: 100%; */
+    height: 100%;
 }
 
-.menu{
-	position: absolute; 
+.admin_menu{
+/* 	position: absolute;  */
 	width: 15%;
-	height: 100%;
+/* 	height: 100%; */
 	background:#414141;
-	float: left;
+/* 	float: left; */
 }
 
-#content{
-	position: absolute;
-	left:15%;
+#admin_content{
+/* 	position: absolute; */
+/* 	left:15%; */
 	width: 85%;
-	height: 100%;
+/* 	height: 100%; */
 	background: #ccc;
-	float: right;
+/* 	float: right; */
 	
    
 }
@@ -61,16 +62,16 @@
 <script type="text/javascript" src="js/file_check.js"></script>
 </head>
 <body>
-<div id="wrap">
+<div id="admin_wrap">
 <!-- 기본 layout 으로 header, content, footer 로 구성된 형태 -->
-	<div class="menu">
+	<div class="admin_menu">
 		<tiles:insertAttribute name="menu" />
 	</div>
 
 
 
 
-	<div id="content">
+	<div id="admin_content">
 		<tiles:insertAttribute name="content" />
 	</div>
 	
