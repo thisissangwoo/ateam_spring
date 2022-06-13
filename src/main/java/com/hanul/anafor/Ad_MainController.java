@@ -30,6 +30,8 @@ public class Ad_MainController {
 		
 		return "admin_main/list";
 	}
+	
+	
 
 }
 

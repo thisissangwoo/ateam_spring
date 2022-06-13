@@ -11,6 +11,7 @@
 	<c:when test="${category eq 'login' }"><c:set var='title' value='로그인' /></c:when>
 	<c:when test="${category eq 'join' }"><c:set var='title' value='회원가입' /></c:when>
 	<c:when test="${category eq 'co' }"><c:set var='title' value='컨텐츠관리' /></c:when>
+	<c:when test="${category eq 'bo' }"><c:set var='title' value='대시보드' /></c:when>
 </c:choose>
 
 <!DOCTYPE html>
