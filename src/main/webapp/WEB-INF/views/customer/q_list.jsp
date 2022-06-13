@@ -34,16 +34,24 @@
 }
 
 table {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #list-top{
-	margin-top:10px;
-	width: 900px;
-	display: inline-block;
+	width: 1500px;
+	display: block;
+	margin: 0 auto;
+	padding-left:5px;
+	padding-right:220px;
+}
+
+#list-content{
+	margin: 0 auto;
+	display: block;
 }
 
 a.btn-empty {
+	width:70px;
 	background: #fff;
 	color: #929292;
 	text-align: center;
@@ -153,39 +161,41 @@ select {
 					</tr>
 				</ul>
 
-<%-- 				<ul>
-					<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
+ 				<ul>
+<%-- 					<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
 					<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
 					 을 통해 admin 값을 가져와 비교 -->
 					<!-- 로그인한 경우 -->
 					<c:if test="${ !empty loginInfo }">
 						<li><a class='btn-empty' href='new.cu'>글쓰기</a></li>
-					</c:if>
-				</ul> --%>
+					</c:if> --%>
+				</ul>
 			</div>
 		</div>
 	</form>
-	<table>
-		<tr>
-			<th class="w-px70">NO</th>
-			<th>제목</th>
-			<th class="w-px100">작성자</th>
-			<th class="w-px120">작성일자</th>
-			<th class="w-px100">조회수</th>
-		</tr>
-		<c:forEach items="${page.list }" var="vo">
+	<div id="list-content">
+		<table>
 			<tr>
-				<td>${vo.no }</td>
-				<td class='left'><c:forEach begin="1" end="${vo.indent }"
-						var="i">
-					${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
-				</c:forEach> <a href='detail.cu?id=${vo.id }'>${vo.title }</a></td>
-				<td>${vo.name}</td>
-				<td>${vo.writedate}</td>
-				<td>${vo.readcnt}</td>
+				<th class="w-px70">NO</th>
+				<th>제목</th>
+				<th class="w-px100">작성자</th>
+				<th class="w-px120">작성일자</th>
+				<th class="w-px100">조회수</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${page.list }" var="vo">
+				<tr>
+					<td>${vo.no }</td>
+					<td class='left'><c:forEach begin="1" end="${vo.indent }"
+							var="i">
+						${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
+					</c:forEach> <a href='detail.cu?id=${vo.id }'>${vo.title }</a></td>
+					<td>${vo.name}</td>
+					<td>${vo.writedate}</td>
+					<td>${vo.readcnt}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	<div>
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		<!-- jsp 표준 include를 사용하여 설정 -->
