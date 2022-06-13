@@ -18,11 +18,11 @@ public class Ad_ShopController {
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 
 //============================== 주문 상세 ==============================	
-	@RequestMapping("/adminShopDetail.sp")
+	@RequestMapping("/shopDetail.sp")
 	public String adminShopDetail() {
 		
 		
-		return "admin_shop/adminShopDetail";
+		return "admin_shop/shopDetail";
 	}
 
 

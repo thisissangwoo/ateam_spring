@@ -21,9 +21,10 @@
 	/* #wrap { display: flex; flex-direction: column; height: 100%; } */
 #wrap {
     min-height: 100%;
-    position: relative;
+    position: absolute;
 }
 
+/* .header{ position: fixed;  top: 0;  left: 0;  right: 0; height: 60px; background: teal;  display: flex;  justify-content: space-between;  align-items: center;} */
 
 
 
@@ -37,15 +38,19 @@
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
 <script type="text/javascript" src="js/file_check.js"></script>
+
 </head>
 <!-- 기본 layout 으로 header, content, footer 로 구성된 형태 -->
 <div class="header">
 	<tiles:insertAttribute name="header" />
 </div>
 
+
 <body>
 
 <div id="wrap">
+	
+
 	<div id="content">
 		<tiles:insertAttribute name="content" />
 	</div>

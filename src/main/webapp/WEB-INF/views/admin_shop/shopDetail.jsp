@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +38,17 @@
    font-size: 14px;
 }
 
+#delevery::after {
+   content:'';
+   display:block;
+   height: 1.5px;
+   width: 1460px;
+   margin-left: -32px;
+   margin-top: 49px;
+   background: #888888;
+}
+
+
 </style>
 </head>
 <body>
@@ -47,7 +57,7 @@
 	<p style="position: absolute; width: 106px; left: 20px; top: 20px; font-weight: bold; font-size: 21px; letter-spacing: 0.5px; color: white;">주문 상세</p>
 </div>
 
-<div style="position: absolute; width: 1460px; height: 400px; top: 52px; background: white; margin: 80px;">
+<div style="position: absolute; width: 1460px; height: 400px; top: 52px; background: white; margin: 80px; border-radius: 11px;">
 	<p id="order_text" style="position: absolute; width: 154px; margin: 25px; font-weight: bold; font-size: 18px; letter-spacing: 0.5px;">2022.06.09 주문</p>
 	<img src="imgs/shopbox.png" style="position: absolute; width: 220px; height: 210px; left: 70px; top: 125px; border-radius: 11px; ">
 	<p style="position: absolute; width: 410px; left: 320px; top: 170px; font-weight: bold; font-size: 17px; letter-spacing: 0.5px;">아나포 스마트 약통 AnaFor Smart IoT 알약/영양제</p>
@@ -55,14 +65,14 @@
 	<p style="position: absolute; width: 80px; left: 297px; top: 254px; font-weight: bold; font-size: 17px; letter-spacing: 0.5px;">1개</p>
 </div>
 
-<div style="position: absolute; width: 1460px; height: 600px;  top: 530px; background: white; margin: 80px;">
+<div style="position: absolute; width: 1460px; height: 600px;  top: 530px; background: white; margin: 80px; border-radius: 11px;">
 	<p id="order_information_text" style="position: absolute; margin: 30px; font-weight: bold; font-size: 18px; letter-spacing: 0.5px; width: 100px;">주문자 정보</p>
 	
 	<div style="position: absolute; width: 100px; height: 213px; left: 32px; top: 100px;">
 		<p style="font-size: 14px; letter-spacing: 0.5px; font-weight: bold; margin: 5px">받는사람</p>
 		<p style="font-size: 14px; letter-spacing: 0.5px; font-weight: bold; margin-top: 20px;">연락처</p>
 		<p style="font-size: 14px; letter-spacing: 0.5px; font-weight: bold; margin-top: 20px;">받는주소</p>
-		<p style="font-size: 14px; letter-spacing: 0.5px; font-weight: bold; margin-top: 70px;">배송요청사항</p>
+		<p id="delevery" style="font-size: 14px; letter-spacing: 0.5px; font-weight: bold; margin-top: 70px;">배송요청사항</p>
 	</div>
 	
 	<div style="position: absolute; width: 400px; height: 213px; left: 160px; top: 100px;">
@@ -85,6 +95,8 @@
 	     
 	    <!-- 배송요청사항 -->
 	    <textarea id="textarea"></textarea>
+	    
+	    
 	</div>
 	
 	
