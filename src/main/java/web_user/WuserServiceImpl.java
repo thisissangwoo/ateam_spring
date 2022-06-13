@@ -1,6 +1,7 @@
 package web_user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,8 +54,26 @@ public class WuserServiceImpl implements WuserService {
 
 	@Override
 	public boolean user_social_update(UserVO vo) {
-		// TODO Auto-generated method stub
 		return dao.user_social_update(vo);
 	}
+
+	@Override
+	public UserPage admin_manage_user(UserPage page) {
+
+		return dao.admin_manage_user(page);
+	}
+
+	@Override
+	public boolean delete_user_memo(String id) {
+		return dao.delete_user_memo(id);
+		
+	}
+
+	@Override
+	public boolean save_user_memo(String id, String memo) {
+		return dao.save_user_memo(id, memo);
+	}
+	
+	
 
 }

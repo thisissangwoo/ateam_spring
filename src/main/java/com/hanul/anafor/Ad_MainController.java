@@ -29,7 +29,8 @@ public class Ad_MainController {
 
 		return "admin_main/list";
 	}
-
+	
+	
 	@RequestMapping ("/dashboard.bo")
 		public String dashboard(HttpSession session, Model model) {
 		      

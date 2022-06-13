@@ -66,10 +66,12 @@
 	<div id="container">
 			
 			<ul id="nav-v1">
-				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="dashboard.bo" >대시보드</a>
+				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="admin" ${category eq 'bo' ? 'class="active"' : '' } >대시보드</a>
 					
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="#" >사용자관리</a>
+				
+				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="user.ur" ${category eq 'ur' ? 'class="active"' : '' }>사용자관리</a>
+
 									
 				</li>
 				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="list.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
