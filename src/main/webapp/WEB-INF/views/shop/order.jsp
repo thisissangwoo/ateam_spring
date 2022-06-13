@@ -300,9 +300,6 @@
    color: white;"
 }
 
-
-
-
 </style>
 </head>
 <body>
@@ -340,7 +337,7 @@
          <p id="detail_addr_text">나머지주소</p>
          <input type="text" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
       <p id="delivery_request_text">배송요청사항</p>
-      <textarea id="textarea"></textarea>
+      <textarea id="textarea" name="coment" ></textarea>
       
       <p id="payment_text">결제 수단</p>
       <p id="bank_text">농협은행(무통장입금)</p>
@@ -404,13 +401,13 @@ function orderChk() {
 	if($("#person_receive").val() == ""){
 		$("#person_receive").focus();
 		alert("받는 사람을 입력해주세요.");
-		return;
+		return ;
 	
 	} 
 	else if ($("#phone").val() == ""){
 		$("#phone").focus();
 		alert("연락처를 입력해주세요.");
-	
+		
 		return false;
 	
 	} 
@@ -421,8 +418,8 @@ function orderChk() {
 		return false;
 	}
 	else {
+//	    $("form").submit();
 		alert("주문이 정상적으로 처리되었습니다.");
-	    $("form").submit();
 	    location.href="/anafor"
 	}
 }
