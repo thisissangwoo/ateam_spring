@@ -18,11 +18,11 @@
 <meta charset="UTF-8">
 <title>${title}</title>
 <style type="text/css">
-	/* #wrap { display: flex; flex-direction: column; height: 100%; } */
-#wrap {
-    min-height: 100%;
-    position: absolute;
-}
+#wrap { display: flex; flex-direction: column; height: 100%; }
+/* #wrap { */
+/*     min-height: 100%; */
+/*     position: absolute; */
+/* } */
 
 /* .header{ position: fixed;  top: 0;  left: 0;  right: 0; height: 60px; background: teal;  display: flex;  justify-content: space-between;  align-items: center;} */
 
