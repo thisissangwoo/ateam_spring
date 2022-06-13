@@ -17,7 +17,7 @@
    width: 1240px;
    height: 40%;
    left: 200px;
-   top: 20px;
+   top: 70px;
 }
 
 .product #product_text::after {
@@ -88,7 +88,7 @@
    width: 1239px; 
    height: 350px; 
    left: 200px; 
-   top: 330px;
+   top: 380px;
 }
 
 #detail {
@@ -108,7 +108,7 @@
    width: 127px; 
    height: 237px; 
    left: 450px; 
-   top: 390px; 
+   top: 440px; 
    line-height: 50px; 
    letter-spacing: -0.05em;
 }
@@ -292,7 +292,7 @@
    width: 350px; 
    height: 60px; 
    left: 760px; 
-   top: 970px; 
+   top: 1020px; 
    background: #696aad; 
    border-radius: 10px; 
    border: none; 

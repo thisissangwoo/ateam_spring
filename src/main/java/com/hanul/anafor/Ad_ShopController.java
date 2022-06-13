@@ -21,7 +21,6 @@ public class Ad_ShopController {
 	@RequestMapping("/shopDetail.sp")
 	public String adminShopDetail() {
 		
-		
 		return "admin_shop/shopDetail";
 	}
 
