@@ -96,6 +96,8 @@
 	    <!-- 배송요청사항 -->
 	    <textarea id="textarea"></textarea>
 	    
+	    <p style="position: absolute; font-weight: bold; font-size: 18px; letter-spacing: 0.5px; width: 100px; right: 440px; top: 270px; ">결제 정보</p>
+	    
 	    
 	</div>
 	
