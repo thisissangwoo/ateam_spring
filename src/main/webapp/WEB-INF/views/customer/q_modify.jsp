@@ -12,7 +12,7 @@ input {
 }
  
 textarea {
-	font-size: 15px; padding:3px 5px;  height: 250px; resize: none;
+	font-size: 15px; padding:3px 5px;  height: 350px; resize: none;
 }
 input[name=title], textarea[name=content] { width: calc(100% - 24px) }
 input[type=file], #delete-file { display: none; }
@@ -53,7 +53,6 @@ table{margin-top:30px; margin-bottom: 20px;}
 <body>
 <p>Q&A 수정</p>
 <form action="update.cu" method="post" enctype="multipart/form-data">
-<input type="hidden" name="id" value="${vo.id }" />
 <table>
 	<tr>
 		<th class='w-px120'>제목</th>

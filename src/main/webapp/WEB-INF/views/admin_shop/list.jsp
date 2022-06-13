@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<h3>여기가 관리자 페이지 내용이 들어갈 곳입니다.</h3>
+<div style="background-color: gray; width: 100%; height: 50px;">
+	shop 관리
+</div>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

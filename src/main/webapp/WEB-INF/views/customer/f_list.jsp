@@ -35,12 +35,19 @@
 }
 
 #list-top{
-	margin-top:10px;
-	width: 900px;
-	display: inline-block;
+	width: 1000px;
+	display: block;
+	margin: 0 auto;
+	padding-left:5px;
+	padding-right:220px;
+}
+
+#list-content{
+	margin-right: 300px;
 }
 
 a.btn-empty {
+	width:70px;
 	background: #fff; 
 	color: #929292; 
 	text-align:center; 
@@ -166,7 +173,7 @@ summary::-webkit-details-marker {
 		</div>
 	</div>
 	<div id='list-top'>
-		<div>
+		<div id='list-content'>
 			<!-- 항목별 검색 처리 부분 -->
 			<ul>
 				<tr>
@@ -181,12 +188,6 @@ summary::-webkit-details-marker {
 				<!-- 검색 버튼 생성 -->
 				<tr><a class='btn-empty' onclick="$('form').submit()">검색</a></tr>
 			</ul>
-<%-- 			<ul>
-				<!-- 관리자만 글쓰기 가능-->
-				<c:if test="${loginInfo.admin eq 'Y' }">
-					<li><a class='btn-empty'  href='f_new.cu'>글쓰기</a></li>
-				</c:if>
-			</ul>	 --%>
 		</div>	
 	</div>
 </form>	
