@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문 상품 정보</title>
+<title>My 주문목록</title>
 <style type="text/css">
 
 .product {
