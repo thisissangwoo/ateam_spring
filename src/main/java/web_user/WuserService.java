@@ -1,6 +1,7 @@
 package web_user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import user.UserVO;
 
@@ -30,4 +31,12 @@ public interface WuserService {
 	//소셜 회원 정보 업데이트
 	boolean user_social_update(UserVO vo);
 	
+	//관리자 회원 관리
+	UserPage admin_manage_user(UserPage page);
+	
+	//회원 메모 삭제
+	boolean delete_user_memo(String id);
+	
+	//회원 메모 저장
+	boolean save_user_memo(String id, String memo);
 }

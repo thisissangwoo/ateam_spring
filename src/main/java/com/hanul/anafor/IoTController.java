@@ -49,7 +49,7 @@ public class IoTController {
 			@RequestMapping ("/arduSetIoT")
 			public void arduSetIoT(HttpServletRequest req) {
 				System.out.println("arduSetIoT() 들어옴");
-				double lat = (Double.parseDouble(req.getParameter("latitude"))/1000000);
+				double lat = (Double.parseDouble(req.getParameter("latitude"))/1000000); 
 				double lon = (Double.parseDouble(req.getParameter("longitude"))/1000000);
 				GPSVO vo = new GPSVO();
 				//추후 아이디도 로라통신으로 주고 받아야함
@@ -62,6 +62,21 @@ public class IoTController {
 				System.out.println(lat);
 				System.out.println(lon);
 			}
+			
+			//안드로이드에 지도 띄우기
+			@RequestMapping("/iotmobilemap")
+			public String userMapMobile(Model model) {
+				//우선 디비에 임의로 저장해놓은 데이터의 box_id와 user_id로 조회 (이 부분 추후 수정)
+				GPSVO vo = new GPSVO();
+				vo.setBox_id(2222);
+				vo.setUser_id("testabc");
+				
+				  List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
+				  model.addAttribute("list", new Gson().toJson(list));
+				 
+				return "map/mobilemap";
+				
+			}		
 	
 //============================================================================================
 	@ResponseBody
