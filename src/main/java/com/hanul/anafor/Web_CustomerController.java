@@ -110,44 +110,44 @@ public class Web_CustomerController {
 	@RequestMapping("/update.cu")
 	public String update(CustomerVO vo, String attach
 			,MultipartFile file, HttpSession session) {
-		
-		//원래 글의 첨부파일 정보를 조회한다(id를 통해)
-		CustomerVO customer = service.qna_detail(vo.getId());
-		String uuid = session.getServletContext().getRealPath("resources") 
-				+ "/" + customer.getFilepath();
-		
-		//파일 첨부한 경우
-		if(! file.isEmpty()) {
-			
-			//원래 첨부파일이 없었는데 수정시 첨부한 경우
-			vo.setFilename(file.getOriginalFilename());
-			vo.setFilepath(common.fileUpload("customer", file, session));
-			
-			//원래 첨부파일 있었고 수정시 바꿔서 첨부한경우 - 원래 파일을 물리적 영역에서 삭제
-			if(customer.getFilename()!=null) {
-				File f= new File(uuid);
-				if(f.exists()) f.delete();
-			}
-		}else {
-			
-			//원래 첨부하지않았고 수정시에도 첨부하지 않은경우
-			//원래 첨부된 파일이 있었는데 삭제한 경우 - 원래의 파일을 물리적 영역에서 삭제
-			if ( attach.isEmpty() ) {
-				if (customer.getFilename() != null) {
-					File f = new File(uuid);
-					if (f.exists())  f.delete();
-				}
-			} else {
-			// 2. 원래 첨부된 파일을 그대로 사용하는 경우	
-				vo.setFilename(customer.getFilename());
-				vo.setFilepath(customer.getFilepath());
-			}
-		}
-		
-		//화면에서 변경한 정보를 db에 저장한후 상세화면으로 이동
-		service.qna_update(vo);	
-		return "redirect:detail.cu?id=" + vo.getId();
-	}
+	      
+	      //원래 글의 첨부파일 정보를 조회한다(id를 통해)
+	      CustomerVO customer = service.qna_detail(vo.getId());
+	      String uuid = session.getServletContext().getRealPath("resources") 
+	            + "/" + customer.getFilepath();
+	      
+	      //파일 첨부한 경우
+	      if(! file.isEmpty()) {
+	         
+	         //원래 첨부파일이 없었는데 수정시 첨부한 경우
+	         vo.setFilename(file.getOriginalFilename());
+	         vo.setFilepath(common.fileUpload("customer", file, session));
+	         
+	         //원래 첨부파일 있었고 수정시 바꿔서 첨부한경우 - 원래 파일을 물리적 영역에서 삭제
+	         if(customer.getFilename()!=null) {
+	            File f= new File(uuid);
+	            if(f.exists()) f.delete();
+	         }
+	      }else {
+	         
+	         //원래 첨부하지않았고 수정시에도 첨부하지 않은경우
+	         //원래 첨부된 파일이 있었는데 삭제한 경우 - 원래의 파일을 물리적 영역에서 삭제
+	         if ( attach.isEmpty() ) {
+	            if (customer.getFilename() != null) {
+	               File f = new File(uuid);
+	               if (f.exists())  f.delete();
+	            }
+	         } else {
+	         // 2. 원래 첨부된 파일을 그대로 사용하는 경우   
+	            vo.setFilename(customer.getFilename());
+	            vo.setFilepath(customer.getFilepath());
+	         }
+	      }
+	      
+	      //화면에서 변경한 정보를 db에 저장한후 상세화면으로 이동
+	      service.qna_update(vo);   
+	      return "redirect:detail.cu?id=" + vo.getId();
+	   }
 
 	/*Q&A 답글 작성화면 요청*/
 	@RequestMapping ("/reply.cu")

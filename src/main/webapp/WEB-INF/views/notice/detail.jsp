@@ -28,6 +28,15 @@ a.btn-empty {
 	border-radius: 1px;
 	box-shadow: 1px 1px 1px;
 }
+
+.btnSet { 
+	margin-top: 10px; 
+	margin-bottom: 130px;
+}
+
+#content_td{
+	height: 300px;
+}
 </style>
 </head>
 <body>
@@ -47,7 +56,7 @@ a.btn-empty {
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td class="left" colspan="5">${fn:replace(vo.content,crlf,'<br>') }</td>
+			<td id="content_td" class="left" colspan="5">${fn:replace(vo.content,crlf,'<br>') }</td>
 		</tr>
 		<tr>
 			<th>첨부파일</th>
@@ -59,7 +68,7 @@ a.btn-empty {
 			</td>
 		</tr>
 	</table>
-	<div>
+	<div class='btnSet'>
 		<a class='btn-empty'
 			href='list.no?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
 	</div>
