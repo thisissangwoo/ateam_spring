@@ -18,7 +18,11 @@ input[name=title], textarea[name=content] { width: calc(100% - 24px) }
 input[type=file], #delete-file { display: none; }
 
 
-.btnSet { margin-top: 20px; }
+.btnSet { 
+	margin-top: 10px; 
+	margin-bottom: 70px;
+}
+
 a.btn-fill, a.btn-empty {
 	text-align: center;
 	padding: 3px 10px;
@@ -47,7 +51,9 @@ a.btn-fill-s {
 
 p{font-size:30px; margin-top:100px; font-weight: bold;}
 table{margin-top:30px; margin-bottom: 20px;}
-
+#select_td{
+	padding-left: 26px;
+}
 </style>
 </head>
 <body>
@@ -58,6 +64,18 @@ table{margin-top:30px; margin-bottom: 20px;}
 		<th class='w-px120'>제목</th>
 		<td><input type="text" name="title" value="${vo.title}" title='제목' class='chk' /></td>
 	</tr>
+	<tr>
+		<th>문의사항</th>
+		<td id="select_td" class="left">
+			<select name="sort" class="left" >
+				<option value="제품문의"  ${vo.sort eq '제품문의' ? 'selected' : '' }>제품문의</option>
+				<option value="결제문의" ${vo.sort eq '결제문의' ? 'selected' : '' }>결제문의</option>
+				<option value="배송문의" ${vo.sort eq '배송문의' ? 'selected' : '' }>배송문의</option>
+				<option value="교환/환불/반품" ${vo.sort eq '교환/환불/반품' ? 'selected' : '' }>교환/환불/반품</option>
+				<option value="기타" ${vo.sort eq '기타' ? 'selected' : '' }>기타</option>
+			</select>
+		</td>
+	</tr>		
 	<tr>
 		<th>내용</th>
 		<td><textarea name='content' class='chk' title='내용'>${vo.content}</textarea></td>
@@ -75,7 +93,7 @@ table{margin-top:30px; margin-bottom: 20px;}
 	</tr>
 </table>
 <input type="hidden" name="attach" />	<!-- 첨부 파일 저장 시 사용 -->
-
+<input type="hidden" name="id" value="${vo.id }" />	
 </form>
 <div class='btnSet'>
 	<a class='btn-fill' onclick=" if(emptyCheck() ) { $('form').submit() }">수정</a>
