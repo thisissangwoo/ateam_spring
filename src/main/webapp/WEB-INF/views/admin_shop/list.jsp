@@ -29,6 +29,8 @@
 				<td>수량</td>
 				<td>진행사항</td>
 			</tr>
+			
+			
 			<tr>
 				<td style="width: 50px;">김상우우</td>
 				<td style="width: 300px;">광주광역시 서구 농성동...</td>
@@ -69,13 +71,47 @@
 				<td style="width: 200px;">별점</td>
 				<td style="width: 200px;">작성일</td>
 			</tr>
-			<tr>
-				<td style="width: 50px;">김상우우</td>
-				<td style="width: 300px;">광주광역시 서구 농성동...</td>
-				<td style="width: 150px;">010-1234-1234</td>
-				<td>⭐⭐⭐⭐⭐</td>
-				<td>2022-12-12</td>
-			</tr>
+			
+			
+			<c:forEach items="${page.list }" var="vo">
+
+				<div style="height: 200px; text-align: left;">
+					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
+					<div style="height: 30px; font-size: 20px; line-height: 30px;">
+						<c:choose>
+							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
+							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
+						</c:choose>
+					</div>
+					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
+					<div
+						style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
+						${vo.rev_content }
+					</div>
+				</div>
+			</c:forEach>
+			
+			<c:forEach items="${page.list }" var="vo">
+				<tr>
+					<td style="width: 50px;">${vo.user_id }</td>
+					<td style="width: 300px;">${vo.rev_title }</td>
+					<td style="width: 150px;">${vo.rev_content }</td>
+					<td>
+						<c:choose>
+							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
+							<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
+							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
+						</c:choose>
+					</td>
+					<td>${vo.rev_date }</td>
+				</tr>
+			</c:forEach>
 		</table>
 	
 		<div>
