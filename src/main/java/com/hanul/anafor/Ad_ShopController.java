@@ -28,7 +28,6 @@ public class Ad_ShopController {
 	@Autowired private WReviewPage page;
 	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
-	@Autowired private ad_ShopServiceImpl service;
 
 //============================== 주문 상세 ==============================	
 	@RequestMapping("/shopDetail.sp")
