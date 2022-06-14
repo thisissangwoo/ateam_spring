@@ -67,7 +67,7 @@ public class Ad_ShopController {
 
 
 	@RequestMapping("/list.sp")
-	public String list(HttpSession session, Model model, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "6") int pageList ) {
+	public String list(HttpSession session, Model model, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "15") int pageList ) {
 		session.setAttribute("category", "sp");
 		
 		page.setCurPage(curPage);

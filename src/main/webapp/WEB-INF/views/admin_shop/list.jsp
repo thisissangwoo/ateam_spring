@@ -13,8 +13,8 @@
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: auto; margin: 1%; max-height: 45%; padding: 10px;">
-		<h3 style="font-weight: bold; font-size: 20px; text-align: left;">리뷰 리스트</h3>
+	<div style=" background-color: white; height: 800px; margin: 1%; max-height: 800px; padding: 10px;">
+		<h3 style="font-weight: bold; font-size: 20px; text-align: left; margin: 20px;">리뷰 리스트</h3>
 	
 		<table style="width: 100%;">
 			<tr>
@@ -45,13 +45,13 @@
 				</tr>
 			</c:forEach>
 		</table>
-	
-		<div>
+		</div>
+		<div style="margin-bottom: -120px;">
 			<form action="list.sp" method="post">
 				<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
 			</form>
 		</div>	
-	</div>
+	
 </body>
 </html>
