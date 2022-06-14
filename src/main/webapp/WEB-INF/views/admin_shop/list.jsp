@@ -16,7 +16,7 @@
 
 
 
-	<div style=" background-color: white; height: auto; margin: 1%; max-height: 45%; padding: 10px;">
+	<div style=" background-color: white; height: 43%; margin: 1%; max-height: 45%; padding: 10px;">
 		<h3 style="font-weight: bold; font-size: 20px; text-align: left;">주문 리스트</h3>
 		<table style="width: 100%;">
 			<tr>
@@ -30,7 +30,57 @@
 				<td>진행사항</td>
 			</tr>
 			
+			<tr>
+				<td style="width: 50px;">김상우우</td>
+				<td style="width: 300px;">광주광역시 서구 농성동...</td>
+				<td style="width: 150px;">010-1234-1234</td>
+				<td>2022-12-12</td>
+				<td>아나포 BOX1</td>
+				<td>300,000</td>
+				<td>10</td>
+				<td>배송준비중</td>
+			</tr>
 			
+			<tr>
+				<td style="width: 50px;">김상우우</td>
+				<td style="width: 300px;">광주광역시 서구 농성동...</td>
+				<td style="width: 150px;">010-1234-1234</td>
+				<td>2022-12-12</td>
+				<td>아나포 BOX1</td>
+				<td>300,000</td>
+				<td>10</td>
+				<td>배송준비중</td>
+			</tr>
+			<tr>
+				<td style="width: 50px;">김상우우</td>
+				<td style="width: 300px;">광주광역시 서구 농성동...</td>
+				<td style="width: 150px;">010-1234-1234</td>
+				<td>2022-12-12</td>
+				<td>아나포 BOX1</td>
+				<td>300,000</td>
+				<td>10</td>
+				<td>배송준비중</td>
+			</tr>
+			<tr>
+				<td style="width: 50px;">김상우우</td>
+				<td style="width: 300px;">광주광역시 서구 농성동...</td>
+				<td style="width: 150px;">010-1234-1234</td>
+				<td>2022-12-12</td>
+				<td>아나포 BOX1</td>
+				<td>300,000</td>
+				<td>10</td>
+				<td>배송준비중</td>
+			</tr>
+			<tr>
+				<td style="width: 50px;">김상우우</td>
+				<td style="width: 300px;">광주광역시 서구 농성동...</td>
+				<td style="width: 150px;">010-1234-1234</td>
+				<td>2022-12-12</td>
+				<td>아나포 BOX1</td>
+				<td>300,000</td>
+				<td>10</td>
+				<td>배송준비중</td>
+			</tr>
 			<tr>
 				<td style="width: 50px;">김상우우</td>
 				<td style="width: 300px;">광주광역시 서구 농성동...</td>
@@ -43,7 +93,7 @@
 			</tr>
 		</table>
 		
-		<div>
+		<div style="line-height: 50px; height: 50px;">
 			<form action="box.pr" method="post">
 				<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
@@ -73,7 +123,7 @@
 			</tr>
 			
 			
-			<c:forEach items="${page.list }" var="vo">
+			<c:forEach items="${vo.list }" var="vo">
 
 				<div style="height: 200px; text-align: left;">
 					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
@@ -115,7 +165,7 @@
 		</table>
 	
 		<div>
-			<form action="box.pr" method="post">
+			<form action="list.sp" method="post">
 				<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
 			</form>
