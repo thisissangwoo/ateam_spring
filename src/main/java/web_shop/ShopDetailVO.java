@@ -3,8 +3,14 @@ package web_shop;
 public class ShopDetailVO {
 	
 	private int id, cnt, price;
-	private String user_id, name, tel, addr, coment, code;
+	private String user_id, name, tel, addr, coment, code, code_name;
 	
+	public String getCode_name() {
+		return code_name;
+	}
+	public void setCode_name(String code_name) {
+		this.code_name = code_name;
+	}
 	public int getId() {
 		return id;
 	}

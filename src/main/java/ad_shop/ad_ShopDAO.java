@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import web_notice.NoticeVO;
 import web_shop.ShopDetailVO;
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
@@ -47,7 +48,26 @@ public class ad_ShopDAO implements ad_ShopService {
 	@Override
 	public ShopDetailVO order_detail(int id) {
 		// TODO Auto-generated method stub
-		return sql.selectOne("shop_detail.mapper.detail", id);
+		return sql.selectOne("ad_order.mapper.detail", id);
+	}
+
+	@Override
+	public List<ShopDetailVO> order_list() {
+		// TODO Auto-generated method stub
+		return sql.selectList("ad_order.mapper.list");
+	}
+
+	@Override
+	public ad_ShopDetailPage order_list(ad_ShopDetailPage page1) {
+		// TODO Auto-generated method stub
+		int pagecnt = sql.selectOne("ad_order.mapper.totalList", page1);
+		page1.setTotalList(pagecnt);
+		
+		List<ShopDetailVO> list = sql.selectList("ad_order.mapper.list", page1);
+		page1.setList(list);		
+		return page1;
+		
+		
 	}
 
 	

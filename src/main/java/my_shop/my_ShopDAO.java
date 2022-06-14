@@ -12,9 +12,9 @@ public class my_ShopDAO implements my_ShopService {
 	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 
-	public ShopDetailVO order_detail(int id) {
+	public ShopDetailVO order_detail(String user_id) {
 		// TODO Auto-generated method stub
-		return sql.selectOne("order_detail.mapper.detail", id);
+		return sql.selectOne("my_order.mapper.detail", user_id);
 	}
 
 }

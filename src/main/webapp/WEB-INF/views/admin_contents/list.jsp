@@ -29,7 +29,7 @@ body{
    margin:30px;
    border-radius: 5px;
    background-color: white;
-      font-size: 18px;
+   font-size: 18px;
 }
 
 #list-select{
@@ -225,7 +225,6 @@ select[name=pageList]{
 			      <td>${vo.category}</td>
 			      <td class='left'>
 			         <c:forEach begin="1" end="${vo.indent }" var="i">      
-			<%--                      ${i eq vo.indent ? "<img src='imgs/re_1.png' /><img src='imgs/re_2.png' />" : "&nbsp;&nbsp;" }      --%>
 			            ${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }  
 			         </c:forEach>
 			         <a href='detail.co?id=${vo.id }'>${vo.title }</a>         

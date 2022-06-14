@@ -95,13 +95,11 @@ a.btn-empty {
 			</tr>
 		</table>
 		<div>
-			<c:if test="${loginInfo.user_id eq vo.writer }">
-				<a class='btn-empty' href='list.co?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
-				<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a> 
-				<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}">삭제</a>
-				<c:if test="${vo.code eq 'N03'}">
-					<a class='btn-empty' href='reply.co?id=${vo.id }'>답글쓰기</a>
-				</c:if>
+			<a class='btn-empty' href='list.co?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
+			<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a> 
+			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}">삭제</a>
+			<c:if test="${vo.code eq 'N03'}">
+				<a class='btn-empty' href='reply.co?id=${vo.id }'>답글쓰기</a>
 			</c:if>
 		</div>
 	</div>

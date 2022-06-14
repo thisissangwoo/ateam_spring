@@ -36,6 +36,7 @@ table {
 }
 
 #list-top{
+	padding-top:115px;
 	padding-left:10px;
 	padding-right:220px;
 	width: 1500px;
@@ -119,6 +120,11 @@ select {
 			<th class="w-px120">작성일자</th>
 			<th class="w-px100">조회수</th>
 		</tr>
+		<c:if test="${ empty page.list }">
+			<tr>
+				<td colspan="5">게시글 정보가 없습니다.</td>
+			</tr>
+		</c:if>
 		<c:forEach items="${page.list }" var="vo">
 			<tr>
 				<td>${vo.no }</td>

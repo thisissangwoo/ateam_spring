@@ -2,7 +2,7 @@ package ad_shop;
 
 import java.util.List;
 
-import web_notice.NoticeVO;
+import ad_contents.ContentsPage;
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
 import web_shop.ShopDetailVO;
@@ -16,6 +16,7 @@ public interface ad_ShopService {
 	
 	//리뷰 리스트 전체보기
 	List<web_shop.WReviewVO>review_list();
+	
 	
 	
 	
@@ -40,5 +41,6 @@ public interface ad_ShopService {
 	
 	//=====================================================================================
 	
-	
+	List<web_shop.ShopDetailVO> order_list();
+	ad_ShopDetailPage order_list(ad_ShopDetailPage page);
 }

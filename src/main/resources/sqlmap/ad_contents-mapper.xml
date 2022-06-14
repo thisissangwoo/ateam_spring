@@ -36,7 +36,7 @@
 		      order by no desc)
 		where no between #{beginList} and #{endList}      
 	</select>
-		
+	
 <!-- 글 상세 조회 -->
 	<select id="con_detail" resultType="ad_contents.ContentsVO">
 		select n.*, (select code_name from type t where t.code = n.code) category, (select user_name from anafor_user where user_id = n.writer) name
