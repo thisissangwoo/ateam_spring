@@ -32,9 +32,9 @@
 	
 <!-- Q&A 신규 글 등록 처리 -->
 	<insert id="qna_insert">
-		insert into notice (id, root, title, content, writer, filename, filepath, code)
+		insert into notice (id, root, title, content, writer, filename, filepath, code, sort)
 		values ( notice_seq.nextval, notice_seq.currval , #{title}, #{content}, #{writer},
-				#{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR}, 'N03')
+				#{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR}, 'N03', #{sort})
 	</insert>
 		
 <!-- 전체 Q&A 수 조회 -->
@@ -48,13 +48,14 @@
 	<delete id="qna_delete">
 		delete from notice
 		where id = #{id}
+		or root = #{id}
 	</delete>
 
 <!-- Q&A 수정 저장 -->
 	<update id="qna_update">
-		update notice set title=#{title}, content=#{content}
+		update notice set title=#{title}, sort=#{sort},  content=#{content}
 			, filename = #{filename, jdbcType=VARCHAR}
-			, filepath = #{filepath, jdbcType=VARCHAR} 
+			, filepath = #{filepath, jdbcType=VARCHAR}
 		where id = #{id}
 	</update>
 

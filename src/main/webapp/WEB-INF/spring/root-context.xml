@@ -10,9 +10,7 @@
 	<import resource="classpath:data/default.xml"/>
 
 
-
-	<context:component-scan base-package="user,hp,pill,drug,common,schedule,review,web_notice,web_customer,web_user, web_shop, IoT,ad_contents,ad_main" />
-
+	<context:component-scan base-package="user,hp,pill,drug,common,schedule,review,web_notice,web_customer,web_user, web_shop, IoT,ad_contents, ad_shop, my_shop, ad_main" />
 
 	
 	<!-- 이메일 인증 -->

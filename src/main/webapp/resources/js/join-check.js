@@ -96,7 +96,7 @@
 		if(birth.length!=0 && dt.getDate()!=d ) return this.birth.invalid;
 		else if(birth.length!=0 && dt.getMonth()+1 != m )  return this.birth.invalid;
 		else if(birth.length!=0 && dt.getFullYear() != y)  return this.birth.invalid;
-		else if(y < 1920 || y >today.getFullYear())			 return this.birth.invalid;
+		else if(y < 1922 || y >today.getFullYear()-13)			 return this.birth.invalid;
 		else if((y == today.getFullYear() && m > today.getMonth()+1)|| (y == today.getFullYear() && m == today.getMonth()+1 && d > today.getDate() ))  return this.birth.invalid;
 		else if(birth=='') return this.birth.empty;
 		else return this.birth.valid;
