@@ -10,6 +10,7 @@
 		      from (select * 
 		      		from notice 
 		      		where code='N03'
+		      		and writer = #{writer}
                     order by root, step desc)n
               <include refid="where_search" />        
 		      order by no desc)
@@ -19,7 +20,7 @@
 	<!-- 전체 공지사항 글 수 조회 -->
 	<select id="myq_totalList" resultType="integer">
 		select count(*) 
-		from (select * from notice where code='N03')n 		
+		from (select * from notice where code='N03' and writer = #{writer})n 		
 		<include refid="where_search" /> 
 	</select>	
 	
