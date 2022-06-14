@@ -138,7 +138,7 @@ select[name=pageList]{
 }
 
 #write{
-	margin-left: 970px;
+	margin-left: 850px;
 }
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">

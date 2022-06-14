@@ -5,7 +5,7 @@ import java.sql.Date;
 public class CustomerVO {
 
 	private int id, readcnt, no, root, step, indent;
-	private String title, content, writer, name;
+	private String title, content, writer, name, sort;
 	private Date writedate;
 	private String filename, filepath;
 	
@@ -69,6 +69,12 @@ public class CustomerVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 	public Date getWritedate() {
 		return writedate;
 	}
@@ -87,6 +93,5 @@ public class CustomerVO {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
-	
 	
 }
