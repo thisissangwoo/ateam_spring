@@ -130,6 +130,27 @@ public class Ad_ShopController {
 		return "admin_shop/list";
 	}
 
+	
+	@RequestMapping("/reviewDetail.sp")
+	public String list(int id, Model model) {
+		
+	
+//		service.review_list();
+		
+		
+		
+		
+		
+		
+		return "admin_shop/reviewDetail";
+	}
+
+	
+	
+	
+	
+	
+	
 }
 
 

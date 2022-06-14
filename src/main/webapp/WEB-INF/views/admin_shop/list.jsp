@@ -148,8 +148,8 @@
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td style="width: 50px;">${vo.user_id }</td>
-					<td style="width: 300px;">${vo.rev_title }</td>
-					<td style="width: 150px;">${vo.rev_content }</td>
+					<td style="width: 150px;">${vo.rev_title }</td>
+					<td style="width: 500px;"><a href="reviewDetail.sp?id=${vo.rev_id }">${vo.rev_content }</a></td>
 					<td>
 						<c:choose>
 							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
