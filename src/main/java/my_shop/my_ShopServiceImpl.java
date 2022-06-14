@@ -10,9 +10,9 @@ public class my_ShopServiceImpl implements my_ShopService {
 	
 	@Autowired private my_ShopDAO dao;
 
-	public ShopDetailVO order_detail(int id) {
+	public ShopDetailVO order_detail(String user_id) {
 		// TODO Auto-generated method stub
-		return dao.order_detail(id);
+		return dao.order_detail(user_id);
 		
 	}
 

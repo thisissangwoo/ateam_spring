@@ -370,22 +370,22 @@
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 230px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 76px; left: 23px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">상품준비중</p>
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 430px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송시작</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송중</p>
+      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; background: #E0E0E0; border-radius: 50%; background: #696aad;">
+      	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: white; font-size: 16px;">배송중</p>
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 830px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송완료</p>
       </div>
    </div>
