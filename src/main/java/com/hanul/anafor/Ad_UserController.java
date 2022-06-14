@@ -20,10 +20,12 @@ public class Ad_UserController {
 	
 	//전체 회원 조회
 	@RequestMapping("user.ur")
-	public String adminUser(HttpSession session, @RequestParam(defaultValue="1") int curPage, Model model) {
+	public String adminUser(HttpSession session, @RequestParam(defaultValue="1") int curPage, String search, String keyword, Model model) {
 		session.setAttribute("category", "ur");
 		
 		page.setCurPage(curPage);				//기본값 1 부여
+		page.setSearch(search);
+		page.setKeyword(keyword);
 		System.out.println(page.getBeginList());
 		model.addAttribute("page",service.admin_manage_user(page));
 		return "admin_user/manageUser";

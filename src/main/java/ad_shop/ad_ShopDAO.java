@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import web_shop.ShopDetailVO;
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
 
@@ -33,4 +34,17 @@ public class ad_ShopDAO implements ad_ShopService {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	//========================================================================================================
+	@Override
+	public ShopDetailVO order_detail(int id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("shop_detail.mapper.detail", id);
+	}
+
 }

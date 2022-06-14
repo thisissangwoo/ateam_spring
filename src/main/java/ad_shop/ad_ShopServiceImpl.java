@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import web_shop.ShopDetailVO;
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
 
@@ -19,13 +20,19 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 		return dao.review_list();
 	}
 
-
-
-
 	@Override
 	public WReviewPage review_list(WReviewPage page) {
 		return dao.review_list(page);
 	}
 	
+	
+	//===============================================================================================
+	@Override
+	public ShopDetailVO order_detail(int id) {
+		// TODO Auto-generated method stub
+		return dao.order_detail(id);
+	}
+	
+
 
 }

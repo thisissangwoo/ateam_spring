@@ -17,8 +17,7 @@ import ad_shop.ad_ShopServiceImpl;
 import web_shop.WReviewPage;
 
 
-
-
+import ad_shop.ad_ShopServiceImpl;
 
 
 @Controller
@@ -29,10 +28,14 @@ public class Ad_ShopController {
 	@Autowired private WReviewPage page;
 	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
+	@Autowired private ad_ShopServiceImpl service;
 
 //============================== 주문 상세 ==============================	
 	@RequestMapping("/shopDetail.sp")
-	public String adminShopDetail() {
+	public String adminShopDetail(int id, Model model) {
+		
+		service.order_detail(id);
+		model.addAttribute("vo", service.order_detail(id));
 		
 		return "admin_shop/shopDetail";
 	}

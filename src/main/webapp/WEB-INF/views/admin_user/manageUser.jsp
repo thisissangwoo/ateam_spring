@@ -9,52 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 
-	#titlename{
-		width:100%;
-		background:#929292;
-		height:60px;
-		text-align:left;
-		font-size:20px;
-		font-weight:700;
-		line-height:60px;
-		padding: 0px 10px;
-		color:#FFFFFF;
-	}
-	#UserProfile{
-		width:90%;
-		margin:20px auto;
-		background-color: #FFFFFF;
-		border-radius:10px;
-	}
-	table{
-		width:100%;
-		border:0px;
-	}
-	tr{
-	}
-	td{
-		font-size:14px;
-		color:#929292;
-	}
-	#totaluser{
-		width:150px;
-		height:40px;
-		display:block;
-		text-align:left;
-		line-height:40px;
-		margin-left:20px;
-		font-size:15px;
-		font-weight:700;
-		margin-top:15px;
-		margin-bottom:15px;
-	}
-	
-	textarea {
-    width: 100%;
-    height: 200px;
-    border: 1px solid #ccc;
-    resize: none;
-  }
+	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
+	#UserProfile{ width:90%; margin:30px auto; background-color: #FFFFFF; border-radius:10px; height:80%; }
+	table{ width:90%; border:0px; }
+	td{font-size:14px; color:#929292;}
+	#totaluser{width:150px; height:40px; display:block; text-align:left; line-height:40px;	margin-left:30px; padding:10px; font-size:15px; font-weight:700; margin-top:15px; margin-bottom:15px;}
+	textarea { width: 100%; height: 200px;  border: 1px solid #ccc; resize: none; }
   
   #modal{
   	display:none;
@@ -82,12 +42,7 @@
 		text-align:right;
 		display:block;
 	}
-	span{
-		display:block;
-		margin:10px;
-		font-weight:500;
-		font-size:15px;
-	}
+	
 	#btn-class{
 	
 		width:100%;
@@ -101,41 +56,126 @@
   		border-radius:5px;
   }
   
-  input[type=button]:hover{
-  	background-color:#c0c0c0;
-  
-  }
+  input[type=button]:hover{ background-color:#c0c0c0;}
 
+	#search_top{
+		width:90%;
+		height:80px;
+		padding-top:30px;
+		padding-bottom:10px;
+		margin:auto;
+	}
+	#search_top ul{
+		list-style:none;
+		height:30px;
+	}
+	#search_top il li{
+		display:block;
+	}
+	#search_top ul li:nth-child(1){
+		float:left;
+		width:20%;
+		font-size:14px;
+		font-weight:500;
+		height:30px;
+		line-height:30px;
+		text-align:left;
+	}
+	#search_top ul li:nth-child(2){
+		float:left;
+		width:45%;
+		text-align:right;
+	}
+	#search_top ul li:nth-child(3){
+		float:left;
+		width:30%;
+	}
+	#search_top ul li:nth-child(4){
+		float:left;
+		width:5%;
+	}
+	
+	input[type=text]{
+		width:300px;
+		height:30px;
+		border-bottom:1px solid #ccc;
+	}
+	.btn-search{
+		width:50px;
+		height:30px;
+		line-height:30px;
+		display:block;
+		border:1px solid #ccc;
+	}
+	.btn-search:hover{
+		background-color:#c0c0c0;
+	}
+	select{
+		font-size:14px;
+		height:30px;
+	}
+	#pagenum{
+		margin-top:15px;
+	}
 </style>
 </head>
 <body>
 	<div id = "titlename">사용자관리</div>
 	<div id = "UserProfile">
-		<span id="totaluser">전체 사용자&nbsp;&nbsp;<c:out value="${page.list.size()}"/>명</span>
 		<form id="form" action="user.ur" method="post">
 		<input type="hidden" name="curPage" value="1" />
+		<div id="search_top">
+			<!-- 항목별 검색 처리 부분 -->
+			<ul>
+				<li>전체 사용자&nbsp;&nbsp;<c:out value="${page.list.size()}"/>명</li>
+				<li>
+					<select name="search" >
+						<option value="all" ${page.search eq 'all' ? 'selected' : ''}>전체</option>
+						<option value="user_name" ${page.search eq 'user_name' ? 'selected' : ''}>이름</option>
+						<option value="user_id" ${page.search eq 'user_id' ? 'selected' : ''}>계정</option>
+						</select>
+				</li>
+				<!-- 검색 키워드를 입력할 input 태그 -->
+				<li ><input type="text" placeholder="검색 내용을 입력하세요" name="keyword" value="${page.keyword}" /></li>
+				<!-- 검색 버튼 생성 -->
+				<li><a class="btn-search" onclick="$('form').submit()">검색</a></li>
+
+			</ul>
+		</div>
 		</form>
 		<table>
 			<tr>
-				<td>No</td>
-				<td>이름</td>
-				<td>계정</td>
-				<td>회원 유형</td>
-				<td>가입일</td>
-				<td>Q&A/구매평</td>
-				<td>메모</td>
+				<th>No</th>
+				<th>이름</th>
+				<th>계정</th>
+				<th>회원 유형</th>
+				<th>가입일</th>
+				<th>Q&A/구매평</th>
+				<th>메모</th>
 			</tr>
+			<c:if test="${empty page.list }">
+				<tr>
+					<td colspan="7" style="font-weight:500; font-size:14px; color:black">검색 결과가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${page.list}" var="vo">
-			<tr>
-				<td>${vo.no }</td>
-				<td>${vo.user_name}</td>
-				<td>${vo.user_id }</td>
-				<td>${vo.admin eq 'Y' ? '관리자':'일반회원'}</td>
-				<td>${vo.join_date }</td>
-				<td>${vo.qCnt}&nbsp;/&nbsp;${vo.brCnt }</td>
-				<td><a onclick="show('${vo.memo}','${vo.user_id}')"><i class="fa-solid fa-square-pen"></i></a></td>
-			</tr>
-			<div id="modal">
+					<tr>
+						<td>${vo.no }</td>
+						<td>${vo.user_name}</td>
+						<td>${vo.user_id }</td>
+						<td>${vo.admin eq 'Y' ? '관리자':'일반회원'}</td>
+						<td>${vo.join_date }</td>
+						<td>${vo.qCnt}&nbsp;/&nbsp;${vo.brCnt }</td>
+						<c:if test="${! empty vo.memo }"> <!-- 메모가 있을때 초록색으로 표시 -->
+						<td><a onclick="show('${vo.memo}','${vo.user_id}')"><i class="fa-solid fa-square-pen" style="color:green;"></i></a></td>
+						</c:if>
+						<c:if test="${empty vo.memo }">
+						<td><a onclick="show('${vo.memo}','${vo.user_id}')"><i class="fa-solid fa-square-pen" ></i></a></td>
+						</c:if>
+					</tr>
+			</c:forEach>	
+		</table>
+		<div id="modal">
 			<div id="memo_content">
 				<a id="close-btn"><i class="fa-solid fa-xmark"></i></a>
 				<span>Memo</span>
@@ -146,19 +186,18 @@
 				</div>
 			</div> 
 		</div>
-		<div>
-			</c:forEach>
-		</table>
-		<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		<div id="pagenum">
 		<!-- jsp 표준 include를 사용하여 설정 -->
-	</div>
+		<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		</div>
 	</div>
 <script>
 	var user_id = '';
 	function show(memo,id){
 		user_id = id;
 		if(memo != ''){
-			memo = memo.replace(/(?:\r\n|\r|\n)/g, '<br />'); // 줄바꿈 표현
+			memo = memo.replaceAll("<br>", "\r\n") // 줄바꿈 표현
+			console.log(memo);
 			$('textarea').text(memo);
 		}
 		$('#modal').css("display","block");
@@ -176,7 +215,7 @@
 			data:{userid:user_id},
 			success: function(response){
 				alert("메모가 삭제되었습니다");
-				
+				location="<c:url value='/user.ur' />";
 			},error : function(req,text){
 				alert(text+' : '+req.status);
 			}
@@ -186,9 +225,10 @@
 	function save_memo(){
 		$.ajax({
 			url:'save.memo',
-			data:{userid:user_id,memo:$('textarea').val()},
+			data:{userid:user_id,memo:$('textarea').val().replace(/\r\n|\n/g , "<br>")},
 			success: function(response){
 				alert("메모가 저장되었습니다.");
+				location="<c:url value='/user.ur' />";
 			},error : function(req,text){
 				alert(text+' : '+req.status);
 			}

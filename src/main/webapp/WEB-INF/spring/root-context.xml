@@ -11,7 +11,8 @@
 
 
 
-	<context:component-scan base-package="user,hp,pill,drug,common,schedule,review,web_notice,web_customer,web_user, web_shop, IoT,ad_contents, ad_shop" />
+
+	<context:component-scan base-package="user,hp,pill,drug,common,schedule,review,web_notice,web_customer,web_user, web_shop, IoT,ad_contents, ad_shop, my_shop" />
 
 
 	

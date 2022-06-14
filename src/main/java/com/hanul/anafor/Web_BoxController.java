@@ -97,8 +97,6 @@ public class Web_BoxController {
 		return "shop/shop";
 	}
 
-	
-	
 	@RequestMapping("/a.pr")
 	public String a(BasketVO vo, HttpSession session) {
 		
@@ -123,18 +121,21 @@ public class Web_BoxController {
 	}
 	
 	@RequestMapping("/order_result.pr")
-	public String b(ShopDetailVO vo, HttpSession session) {
+	public String order_result(ShopDetailVO vo, HttpSession session) {
 		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
 		UserVO vo3 = (UserVO) session.getAttribute("loginInfo");
 		vo.setCnt(vo2.getBk_cnt());
 		vo.setPrice(vo2.getBk_price());
 		vo.setUser_id(vo3.getUser_id());
+		String tel = vo.getTel();
+		tel = tel.replaceAll(",", "-");
+		vo.setTel(tel);
 		service.order_insert(vo);
+		System.out.println(vo.getTel());
 		System.out.println("order.mapper.insert");
 		
 		return "redirect:/";
 	}
-	
 }
 

@@ -1,11 +1,14 @@
 package com.hanul.anafor;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,6 @@ import ad_contents.ContentsServiceImpl;
 import ad_contents.ContentsVO;
 import common.CommonService;
 import user.UserVO;
-import web_customer.CustomerVO;
 import web_user.WuserServiceImpl;
 
 @Controller
@@ -27,23 +29,36 @@ public class Ad_ContentsController {
 	@Autowired private CommonService common;
 	@Autowired private ContentsPage page;
 	@Autowired private WuserServiceImpl user;
+	@Autowired @Qualifier ("ateam") SqlSession sql;
 	
-	/* 게시판 전체 글 목록조회 */
-	@RequestMapping ("/list.co")
-	public String list(HttpSession session, @RequestParam (defaultValue = "1") 
-	int curPage, Model model, String search, String keyword) {
-		
-		session.setAttribute("category", "co");
+	
+	   /* 게시판 전체 글 목록조회 */
+	   @RequestMapping ("/list.co")
+	   public String list(HttpSession session, Model model,      
+	                  @RequestParam (defaultValue = "1") int curPage, 
+	                  @RequestParam(defaultValue = "10") int pageList,                  
+	                  String search, String keyword, String code_name) {
+	      
+	      session.setAttribute("category", "co");
 
-		// curPage를 입력받지 않았지만 @RequestParam 어노테이션을 통해 기본값 1을 부여
-		page.setCurPage(curPage); // 현재 페이지에 대한 정보를 담기 위한 처리
-		// 검색조건, 검색어 정보를 담음
-		page.setSearch(search);	
-		page.setKeyword(keyword);
-		model.addAttribute("page",service.con_list(page));
-		
-		return "admin_contents/list";
-	}
+	      // curPage를 입력받지 않았지만 @RequestParam 어노테이션을 통해 기본값 1을 부여
+	      page.setCurPage(curPage); // 현재 페이지에 대한 정보를 담기 위한 처리
+	      // 검색조건, 검색어 정보를 담음
+	      page.setSearch(search);   
+	      page.setKeyword(keyword);
+	      page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
+	      page.setCode(code_name);
+
+	      model.addAttribute("codes",service.code());
+	      
+	      if(code_name == null || code_name.equals("all")) {
+		      model.addAttribute("page",service.con_list(page)); 	  
+	      }else {
+	    	  model.addAttribute("page",service.con_list2(page));
+	      }    
+	      return "admin_contents/list";
+	   }
+
 	
 	/* 글 상세 조회 */
 	@RequestMapping ("/detail.co")
@@ -107,7 +122,7 @@ public class Ad_ContentsController {
 	
 	/* 글삭제 */
 	@RequestMapping("/delete.co")
-	public String delete(int id, HttpSession session) {
+	public String delete(int id, HttpSession session, Model model) {
 		ContentsVO contents = service.con_detail(id);
 		String uuid = session.getServletContext().getRealPath("resources")+"/"+contents.getFilepath();
 		
@@ -116,8 +131,11 @@ public class Ad_ContentsController {
 			if(file.exists()) file.delete();
 		}
 		
+		model.addAttribute("url", "list.co");
+		model.addAttribute("page", page);
+		
 		service.con_delete(id);
-		return "redirect:list.co";
+		return "admin_contents/redirect";
 	}
 	
 	/* 답글 작성화면 요청 */

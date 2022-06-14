@@ -4,8 +4,11 @@ import java.util.List;
 
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
+import web_shop.ShopDetailVO;
 
 public interface ad_ShopService {
+	
+	ShopDetailVO order_detail(int id);
 
 	
 	//관리자 shop 제품 리스트, 리뷰 리스트=====================================================================================
