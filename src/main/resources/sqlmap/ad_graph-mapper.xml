@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ad_graph.mapper">
+
+	<select id="select" resultType="ad_main.graphVO">
+		 select count(*) as cnt, join_date as gdate from anafor_user where join_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') Group by join_date
+	</select> 
+
+
+
+
+</mapper>
+

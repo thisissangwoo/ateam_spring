@@ -24,20 +24,21 @@
 #dormammu ul li img{margin-right: 30px;}
 
 #container{width: 100%; height: auto; position: relative; }
-#container ul{position:absolute; width: 100%; height: auto; left: 20px; top: 100px; }
+#container ul{position:absolute; width: 100%; height: auto; left: 0; top: 100px; margin-left: 15px;}
 #container ul li a{font-weight: 600; font-size: 18px; line-height: 40px; text-align: center;}
+#container ul li a:hover{font-weight: bold; color : #b0b0b0;}
 #container ul li img{margin-right: 30px;}
 
 /*v1*/
 #nav-v1{position:relative; width:100%;text-align: left; }
 .menu-v1{	line-height:0;}
-.menu-v1:hover{background-color:#414141;}
+/* .menu-v1:hover{background-color:#414141;}
 .menu-v1:hover>a{color:white;font-weight:bold;}
-
+ */
 .menu-v1 .submenu{background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;}
 /* .menu-v1 .submenu{position:absolute; top: 80px; background-color:#414141;	display:none; margin-left: 30px; margin-top: 30px;} */
 
-.menu-v1 .submenu li:hover{	background-color:#000;color:#414141;font-weight:bold;}
+/* .menu-v1 .submenu li:hover{	background-color:#000;color:#414141;font-weight:bold;} */
 
 /* #dormammu ul li a:hover, header .category ul li a.active {font-weight: bold; color : #b0b0b0;} */
 #dormammu ul li a:hover, #dormammu ul li a:active {font-weight: bold; color : #b0b0b0;}

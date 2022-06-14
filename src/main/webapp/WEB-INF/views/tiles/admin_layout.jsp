@@ -46,7 +46,7 @@
 /* 	left:15%; */
 	width: 85%;
 /* 	height: 100%; */
-	background: #ccc;
+	background: #e5e5e5;
 /* 	float: right; */
 	
    
