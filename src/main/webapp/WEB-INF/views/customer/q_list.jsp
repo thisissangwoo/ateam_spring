@@ -179,14 +179,21 @@ select {
 				<th class="w-px120">작성일자</th>
 				<th class="w-px100">조회수</th>
 			</tr>
+			<c:if test="${ empty page.list }">
+				<tr>
+					<td colspan="6">게시글 정보가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td>${vo.no }</td>
 					<td>${vo.sort}</td>
-					<td class='left'><c:forEach begin="1" end="${vo.indent }"
-							var="i">
-						${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
-					</c:forEach> <a href='detail.cu?id=${vo.id }'>${vo.title }</a></td>
+					<td class='left'>
+						<c:forEach begin="1" end="${vo.indent }" var="i">
+							${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
+						</c:forEach> 
+						<a href='detail.cu?id=${vo.id }'>${vo.title }</a>
+					</td>
 					<td>${vo.name}</td>
 					<td>${vo.writedate}</td>
 					<td>${vo.readcnt}</td>

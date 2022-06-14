@@ -54,6 +54,10 @@ function go_page(page) {
 		padding: 0 5px 2px;
 	}
 	
+	.page_list{
+		margin-top:20px;
+		margin-bottom: 130px;
+	}
 </style>
 
 
