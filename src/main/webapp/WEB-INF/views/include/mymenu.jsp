@@ -67,7 +67,7 @@
 		<div class="my_information">
 			<ul>
 				<li class="menu_title3">MY정보</li>
-				<li class="menu_4"><a href="check.pw"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
+				<li class="menu_4"><a href="checkpw.ur"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
 			</ul>	
 		</div>		
 		

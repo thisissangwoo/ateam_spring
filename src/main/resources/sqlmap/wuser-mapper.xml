@@ -10,9 +10,16 @@
 
 </insert>
 
+<!-- 회원 정보 업데이트 -->
+<update id="update">
+	update anafor_user set user_name = #{user_name}, user_tel = #{user_tel}, user_pw = #{user_pw}, user_gender = #{user_gender} where user_id = #{user_id}
+
+</update>
+
 <!-- 로그인 기능 -->
 <select id="login" resultType="user.UserVO">
-	select * from anafor_user where user_id = #{user_id} and user_pw = #{user_pw}
+	select user_id, user_pw, user_name, to_char(user_birth,'YYYYMMdd') user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 
+	 memo, join_date from anafor_user  where user_id = #{user_id} and user_pw = #{user_pw}
 </select>
 
 <!-- 회원 이메일 중복 여부 -->

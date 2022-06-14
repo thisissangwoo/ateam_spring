@@ -225,7 +225,7 @@
 		$.ajax({					//ajax 통신
 			
 			url: 'userLoginChk' ,
-			data : {userid:$("#userid").val(), userpw:$("#userpw").val()},
+			data : {user_id:$("#userid").val(), user_pw:$("#userpw").val()},
 			success : function(response){
 				if(response){
 					//location = "<c:url value='/' />";

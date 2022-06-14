@@ -16,6 +16,8 @@
  		else if (tag == 'user_name') return this.name_status(data);
 		else if (tag == 'user_birth') return this.birth_status(data);
 		else if	(tag=='user_tel')	return this.tel_status(data);
+		else if (tag=='new_pw')		return this.new_pw_status(data);
+		else if (tag=='new_pwchk')	return this.new_pwchk_status(data);
 	}
 	, id_status : function ( id ) {
 		var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
@@ -117,9 +119,31 @@
 		empty:{code:'invalid',desc:"번호를 입력하세요. '-'없이 번호만 입력 예)01012345678"},
 		valid:{code:'valid',desc:''},
 		invalid:{code:'invalid',desc:"번호를 형식에 맞게 입력해주세요. '-'없이 번호만 입력 예)01012345678"}
-		
 	}
-
+	, new_pw_status : function ( pw ) {
+		// 비밀번호를 영문 대/소문자, 숫자 외 입력시
+		var reg = /[^A-Za-z0-9]/g;
+		var upper = /[A-Z]/g, lower = /[a-z]/g, digit = /[0-9]/g;
+		if ( pw.match(space))		return this.common.space;
+		else if (reg.test(pw))			return this.n_pw.invalid;
+		else if (pw.length > 0 && pw.length < 8 )		return this.common.min;
+		else if (pw.length > 16)		return this.common.max;
+		else if (!upper.test(pw) || !lower.test(pw) || !digit.test(pw))	return this.n_pw.lack;
+		else							return this.n_pw.valid;
+	}
+	, n_pw : {
+		 empty_pwchk:{ code:'invalid', desc:'비밀번호를 다시 한번 입력해주세요.'}
+		, valid : { code : 'valid', desc : '사용 가능한 비밀번호 입니다.'}
+		, equal : { code : 'valid', desc : '비밀번호가 일치합니다.'}
+		, notEqual : { code : 'invalid', desc : '비밀번호가 일치하지 않습니다.'}
+		, lack : { code : 'invalid', desc : '영문 대/소문자, 숫자를 모두 포함해야 합니다.'}
+		, invalid : { code : 'invalid' , desc : '비밀번호를 영문 대/소문자, 숫자를 모두 포함해야합니다.'}
+	} 
+	,pw_chk_status : function ( pw_ck ) {
+		if ( $(['name=new_pwchk']).val()!=''&& pw_ck == '' )	return this.pw.empty_pwchk;
+		else if (pw_ck == $('[name=new_pwchk]').val())			return this.pw.equal;
+		else 													return this.pw.notEqual;
+	}
 }
 
 
