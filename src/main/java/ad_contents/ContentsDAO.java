@@ -71,7 +71,7 @@ public class ContentsDAO implements ContentsService {
 
 	@Override
 	public ContentsPage con_list2(ContentsPage page) {
-		int pagecnt = sql.selectOne("ad_contents.mapper.con_totalList", page);
+		int pagecnt = sql.selectOne("ad_contents.mapper.con_totalList2", page);
 		page.setTotalList(pagecnt);
 		
 		List<ContentsVO> list = sql.selectList("ad_contents.mapper.con_list2", page);
