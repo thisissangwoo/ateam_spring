@@ -12,22 +12,23 @@
 <style type="text/css">
 
 /*style.css*/
-#wrap{width: 100%; height: auto;}
+#wrap{width: 100%; height: auto; color: white;}
 #logo{width: 100%; height: 60px; position: relative; border-bottom: 1px solid #d9d9d9;}
 
-#logo h3{color: #fff; position: absolute; left: 80px; top: 5px; font-weight: 600; font-size: 30px; line-height: 32px;}
-#logo p{display: block; color: #fff; position: absolute; left: 115px; top: 30px; font-weight: 600; font-size: 14px;line-height: 20px}
+#logo h3{color: white; position: absolute; left: 80px; top: 5px; font-weight: 600; font-size: 30px; line-height: 32px;}
+#logo p{display: block; color: white; position: absolute; left: 115px; top: 30px; font-weight: 600; font-size: 14px;line-height: 20px}
 
 #dormammu{width: 100%; height: auto; position: relative; }
 #dormammu ul{position: absolute; left: 40px; top: 10px;}
-#dormammu ul li a{font-size: 20px; color: b0b0b0; font-weight: 600; margin-left: 20px; line-height: 25px; text-decoration: none;}
-#dormammu ul li a:hover{font-weight: bold; color : #fff;}
+#dormammu ul li a{font-size: 20px; color: white; font-weight: 600; margin-left: 20px; line-height: 25px; text-decoration: none;}
+#dormammu ul li a:hover{font-weight: bold; color : #b0b0b0;}
 
 #container{width: 100%; height: auto; position: relative; top: 100px; text-align: left; padding: 20px;}
-#container div ul li{font-size: 18px; color: #b0b0b0; line-height: 30px; font-weight: 600;}
-#container .menu_1, .menu_2, .menu_3, .menu_4{margin-left: 20px;} 
+#container div ul li{font-size: 18px; color: white; line-height: 30px; font-weight: 600;}
+#container div ul li a{color: white;}
+#container .menu_1, .menu_2, .menu_3, .menu_4{margin-left: 20px; } 
 #container ul{margin-bottom: 20px;}
-#container ul li a:hover{font-weight: bold; color : #fff;}
+#container ul li a:hover{font-weight: bold; color : #b0b0b0;}
 </style>
 
 
@@ -59,7 +60,7 @@
 		<div class="my_activity">
 			<ul>
 				<li class="menu_title2">MY활동</li>
-				<li class="menu_2"><a>문의내역 확인</a></li>
+				<li class="menu_2"><a href="list.qu"  ${category eq 'userjoin' ? 'class="active"' : '' }>문의내역 확인</a></li>
 				<li class="menu_3"><a>리뷰관리</a></li>
 			</ul>	
 		</div>		
