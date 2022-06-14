@@ -33,7 +33,10 @@ public class ad_ShopDAO implements ad_ShopService {
 		return page;
 	}
 	
-	
+	@Override
+	public WReviewVO review_detail(int id) {
+		return sql.selectOne("ad_shop.mapper.detail", id);
+	}
 	
 	
 	
@@ -46,5 +49,7 @@ public class ad_ShopDAO implements ad_ShopService {
 		// TODO Auto-generated method stub
 		return sql.selectOne("shop_detail.mapper.detail", id);
 	}
+
+	
 
 }

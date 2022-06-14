@@ -136,7 +136,9 @@ public class Ad_ShopController {
 		
 	
 //		service.review_list();
+		service.review_detail(id);
 		
+		model.addAttribute("vo", service.review_detail(id));
 		
 		
 		

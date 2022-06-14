@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,11 +124,15 @@
 			</tr>
 			
 			
-			<c:forEach items="${vo.list }" var="vo">
+			<%-- <c:forEach items="${vo.list }" var="vo">
 
 				<div style="height: 200px; text-align: left;">
-					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
+					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.name }</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					
+					<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
+					
 					<div style="height: 30px; font-size: 20px; line-height: 30px;">
 						<c:choose>
 							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
@@ -143,7 +148,7 @@
 						${vo.rev_content }
 					</div>
 				</div>
-			</c:forEach>
+			</c:forEach> --%>
 			
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
@@ -159,7 +164,10 @@
 							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
 						</c:choose>
 					</td>
-					<td>${vo.rev_date }</td>
+					<td>
+						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

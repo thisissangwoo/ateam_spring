@@ -25,6 +25,11 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 		return dao.review_list(page);
 	}
 	
+	@Override
+	public WReviewVO review_detail(int id) {
+		return dao.review_detail(id);
+	}
+	
 	
 	//===============================================================================================
 	@Override
@@ -32,6 +37,9 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 		// TODO Auto-generated method stub
 		return dao.order_detail(id);
 	}
+
+	
+	
 	
 
 
