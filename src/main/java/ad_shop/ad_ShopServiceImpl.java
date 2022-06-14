@@ -32,6 +32,18 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 		// TODO Auto-generated method stub
 		return dao.order_detail(id);
 	}
+
+	@Override
+	public List<ShopDetailVO> order_list() {
+		// TODO Auto-generated method stub
+		return dao.order_list();
+	}
+
+	@Override
+	public ad_ShopDetailPage order_list(ad_ShopDetailPage page1) {
+		// TODO Auto-generated method stub
+		return dao.order_list(page1);
+	}
 	
 
 

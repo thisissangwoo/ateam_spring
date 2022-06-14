@@ -4,6 +4,6 @@ import web_shop.ShopDetailVO;
 
 public interface my_ShopService {
 	
-	ShopDetailVO order_detail(int id);
+	ShopDetailVO order_detail(String user_id);
 
 }
