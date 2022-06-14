@@ -162,13 +162,13 @@ select {
 				</ul>
 
  				<ul>
-<%-- 					<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
+				<!-- 관리자로 로그인된 경우만 글쓰기 가능 -->
 					<!-- 로그인 시 정보를 담고 있는 session.setAttribute("loginInfo", vo);
 					 을 통해 admin 값을 가져와 비교 -->
 					<!-- 로그인한 경우 -->
 					<c:if test="${ !empty loginInfo }">
 						<li><a class='btn-empty' href='new.cu'>글쓰기</a></li>
-					</c:if> --%>
+					</c:if>
 				</ul>
 			</div>
 		</div>
