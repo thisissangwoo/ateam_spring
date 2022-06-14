@@ -1,5 +1,9 @@
 package common;
 
+import java.util.List;
+
+import ad_contents.CodeVO;
+
 public class PageVO {
 
 	int totalList;			// 총 글의 건수(DB에서 조회해 온 전체 글수)
@@ -14,7 +18,7 @@ public class PageVO {
 	
 	String search, keyword;	// 검색조건, 검색어
 	private String viewType = "list"; //게시판 형태 기본리스트
-	
+	String code, code_name;
 	
 	
 	public String getViewType() {
@@ -140,5 +144,23 @@ public class PageVO {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getCode_name() {
+		return code_name;
+	}
+
+	public void setCode_name(String code_name) {
+		this.code_name = code_name;
+	}
+
+	
 	
 }

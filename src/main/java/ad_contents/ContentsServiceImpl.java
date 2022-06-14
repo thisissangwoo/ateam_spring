@@ -50,4 +50,19 @@ public class ContentsServiceImpl implements ContentsService {
 		dao.con_read(id);
 	}
 
+	@Override
+	public List<CodeVO> code() {
+		return dao.code();
+	}
+
+	@Override
+	public List<ContentsVO> con_list(String code) {
+		return dao.con_list(code);
+	}
+
+	@Override
+	public ContentsPage con_list2(ContentsPage page) {
+		return dao.con_list2(page);
+	}
+
 }
