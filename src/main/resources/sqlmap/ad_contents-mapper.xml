@@ -30,13 +30,14 @@
 		select *
 		from (select rownum no, n.*, (select code_name from type t where t.code = n.code) category, (select user_name from anafor_user where user_id = n.writer)name 
 		      from (select * 
-		      		from notice 
+		      		from notice
+ 		      <include refid="where_search3" />
+        	  <include refid="and_search" />	      
                     order by root, step desc)n 
-		      where code = #{code}
 		      order by no desc)
 		where no between #{beginList} and #{endList}      
 	</select>
-	
+			
 <!-- 글 상세 조회 -->
 	<select id="con_detail" resultType="ad_contents.ContentsVO">
 		select n.*, (select code_name from type t where t.code = n.code) category, (select user_name from anafor_user where user_id = n.writer) name
@@ -52,13 +53,16 @@
 		where id = #{id}
 	</update>
 
-<!-- 해당 ID의 글 삭제 -->
-	<delete id="con_delete">
-		delete from notice
-		where id = #{id}
-		or root = #{id}
-	</delete>
+	<update id="con_update_qna">
+		update notice set reply = 'N'
+		where id = #{root}
+	</update>
 
+
+<!-- 해당 ID의 글 삭제 -->
+	<delete id="con_delete">						
+		delete from notice where id = #{id} or root = #{id}
+	</delete>
 
 <!-- Q&A에 대한 신규 답글 등록 -->
 	<insert id="con_reply_insert">
@@ -78,12 +82,15 @@
 		{
 			call declare
 			begin
+			
+				update notice set reply = 'Y' where id = #{root};			
+			
 				update notice set step = step +1 where root = #{root} and step > #{step};
 				         
-				insert into notice ( id, title, content, writer, filename, filepath, root, step, indent, code)
+				insert into notice ( id, title, content, writer, filename, filepath, root, step, indent, code, reply, sort)
 				values (notice_seq.nextval, #{title}, #{content}, #{writer},
 						#{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR}, 
-						#{root}, #{step}+1, #{indent}+1, 'N03');
+						#{root}, #{step}+1, #{indent}+1, 'N03','Y', #{sort});
 			end
 		}
 	]]>
@@ -98,17 +105,25 @@
 <!-- 전체 글 수 조회 -->
 	<select id="con_totalList" resultType="integer">
 		select count(*) 
-		from (select * from notice)n 		
+		from notice 		
 		<include refid="where_search" /> 
 	</select>	
 
 <!-- 전체 글 수 조회 -->
 	<select id="con_totalList2" resultType="integer">
 		select count(*) 
-		from (select * from notice)n 		
+		from notice		
 		<include refid="where_search2" /> 
 	</select>	
-			
+
+<!-- 전체 글 수 조회 -->
+	<select id="con_totalList3" resultType="integer">
+		select count(*) 
+		from notice 
+		<include refid="where_search3" />
+		<include refid="and_search" />
+	</select>
+					
 <!-- 신규 글 등록 처리 -->
 	<insert id="con_insert">
 		insert into notice (id, root, title, content, writer, filename, filepath, code)
@@ -144,7 +159,7 @@
 			or writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' )	
 		</if>
 	</sql>
-		<sql id="where_search2">
+	<sql id="where_search2">
 		<!-- 제목에 '테스트' 문자가 있는 것을 조회한다면.. where title like '테스트'  -->
 		<if test="search == 'title' or search == 'content'">
 			where ${search} like '%'||#{keyword}||'%'
@@ -163,5 +178,45 @@
 			or content  like '%'||#{keyword}||'%'
 			or writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' ))	
 		</if>
-	</sql>		
+	</sql>
+	
+	<sql id="where_search3">
+		<if test="sort == 'all' and reply == 'all' ">
+			where code='N03'			
+		</if>
+		
+		<if test="sort != 'all' and reply == 'all' ">
+			where code='N03'
+			and sort = #{sort}			
+		</if>
+		
+		<if test="sort == 'all' and reply != 'all' ">
+			where code='N03'
+			and reply = #{reply}			
+		</if>
+		
+		<if test="sort != 'all' and reply != 'all' ">
+			where code='N03'
+			and sort = #{sort}
+			and reply = #{reply}			
+		</if>
+	</sql>	
+	<sql id="and_search">
+		<!-- 제목에 '테스트' 문자가 있는 것을 조회한다면.. where title like '테스트'  -->
+		<if test="search == 'title' or search == 'content'">
+			and ${search} like '%'||#{keyword}||'%'
+		</if>
+		
+		<!-- 작성자에 '자' 문자가 있는 것을 조회한다면...  -->
+		<if test="search == 'writer' ">
+			and writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' )
+		</if>
+		
+		<if test="search == 'all' ">
+			and (title like '%'||#{keyword}||'%'
+			or content  like '%'||#{keyword}||'%'
+			or writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' ))	
+		</if>
+	</sql>	
+			
 </mapper>
