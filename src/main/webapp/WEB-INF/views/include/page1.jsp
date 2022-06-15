@@ -44,7 +44,7 @@ function go_page(page) {
 	}
 	
 	.page_on {
-
+		margin-top: 30px;
 		color: black;
 		font-weight: bold;
 	}

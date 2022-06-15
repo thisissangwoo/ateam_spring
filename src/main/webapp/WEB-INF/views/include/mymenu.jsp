@@ -53,7 +53,7 @@
 		<div class="my_shopping">
 			<ul>
 				<li class="menu_title1">MY쇼핑</li>
-				<li class="menu_1"><a href="order.my" >주문활동/배송조회</a></li>
+				<li class="menu_1"><a href="shopList.my" >주문활동/배송조회</a></li>
 			</ul>	
 		</div>		
 		

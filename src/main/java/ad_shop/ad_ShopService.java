@@ -1,5 +1,6 @@
 package ad_shop;
 
+import java.util.HashMap;
 import java.util.List;
 
 import ad_contents.ContentsPage;
@@ -43,4 +44,5 @@ public interface ad_ShopService {
 	
 	List<web_shop.ShopDetailVO> order_list();
 	ad_ShopDetailPage order_list(ad_ShopDetailPage page);
+	boolean update(HashMap<String, Object> map);
 }
