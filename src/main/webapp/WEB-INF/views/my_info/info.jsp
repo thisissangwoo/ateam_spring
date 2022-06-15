@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +9,9 @@
 <script type="text/javascript" src="js/join-check.js"></script>
 <style>
 	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
-	table { width: 70%; border:1px solid black; }
+	table { width: 70%;  }
 	table th, table td {text-align:left;}
+	table th, table td {border:1px solid #ccc; padding: 5px 10px; color: gray; }
 	#userInfo{
 		margin-top:50px;
 	}
@@ -48,7 +49,7 @@
 		cursor:pointer;
 	}
 	
-		input[type="button"]:nth-child(1){
+	input[type="button"]:nth-child(1){
 		background:#696AAD;
 	}
 	input[type="button"]:nth-child(2){
@@ -56,6 +57,12 @@
 	}
 	.invalid{color:red;}
 	valid{color:green;}
+	
+	#delete-user{
+		background:#ccc;
+		color:white;
+		padding:5px;
+	}
 	
 </style>
 </head>
@@ -79,12 +86,12 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-						<td><input type="password" name="new_pw" class="chk"/><span id="pwmsg"></span></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td><span id="pwcond">*8~16자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span><br/>
-					<span id="pwcond">*비밀번호 변경 시에만 입력해주세요</span></td>
+					<td><input type="password" name="new_pw" class="chk"/><span id="pwmsg"></span>
+						<div>
+						<span id="pwcond">*8~16자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span><br/>
+						<span id="pwcond">*비밀번호 변경 시에만 입력해주세요</span>
+						</div>						
+					</td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
@@ -95,9 +102,12 @@
 					<td><input type="text" value="${loginInfo.user_birth }" id="user_birth" readonly="readonly"/></td> 
 				</tr>
 				<tr>
-					<th style="border-bottom:1px solid black;">성별</th>
-					<td style="border-bottom:1px solid black;"><label><input type="radio" name="user_gender" value="남" ${loginInfo.user_gender eq "남" ? 'checked':'' }/>&nbsp;&nbsp;남</label>
+					<th>성별</th>
+					<td><label><input type="radio" name="user_gender" value="남" ${loginInfo.user_gender eq "남" ? 'checked':'' }/>&nbsp;&nbsp;남</label>
 					<label><input type="radio" name="user_gender" value="여" ${loginInfo.user_gender eq "여" ? 'checked':'' } />&nbsp;&nbsp;여</label></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="border:0px; text-align:right;"><span>탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요&nbsp;&nbsp;<a onclick='delete_user(); return false;' id="delete-user">회원탈퇴</a></span></td>
 				</tr>
 			</table>
 			<div id="btn-class">
@@ -128,7 +138,6 @@
 				}
 				return true;
 			}
-
 			
 			$('.chk').on('keyup', function (e) {
 				//id 입력 후 enter를 누르면 아이디 중복확인 버튼 실행 
@@ -141,6 +150,26 @@
 					location="userinfo.ur";
 			}
 		
+			function delete_user(){
+				if(confirm("정말 탈퇴하시겠습니까?")){
+					$.ajax({					//ajax 통신
+						
+						url: 'userDelete' ,
+						data : {user_id:$("[name=user_id]").val()},
+						success : function(response){
+							if(response){
+								alert("탈퇴가 완료되었습니다.");
+								location = "<c:url value='/' />";
+							}
+						}, error : function(req,text){
+							alert(text+' : '+req.status);
+						}
+					});//ajaxs
+					
+				}else{
+					alert("취소되었습니다.");
+				}
+			}
 		</script>
 </body>
 </html>

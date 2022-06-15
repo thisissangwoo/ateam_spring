@@ -16,6 +16,11 @@
 
 </update>
 
+<!-- 회원 정보 삭제 -->
+<delete id="delete">
+	delete from anafor_user where user_id = #{id}
+</delete>
+
 <!-- 로그인 기능 -->
 <select id="login" resultType="user.UserVO">
 	select user_id, user_pw, user_name, to_char(user_birth,'YYYYMMdd') user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 

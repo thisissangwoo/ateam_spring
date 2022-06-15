@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import user.UserVO;
 import web_user.WuserServiceImpl;
@@ -35,11 +36,21 @@ public class My_UserController {
 	@RequestMapping("/userinfoUpdate")
 	public String userInfoUpdate(HttpSession session,UserVO vo, String new_pw) {
 	
-		if(new_pw != null) {
-			vo.setUser_pw(new_pw);}
-		service.user_update(vo);
-		session.setAttribute("loginInfo",service.user_login(vo));
+		 if(!new_pw.equals("")) { vo.setUser_pw(new_pw);} 
+		  service.user_update(vo);
+		  session.setAttribute("loginInfo",service.user_login(vo));
+		 
 		return "redirect:userinfo.ur";
+	}
+	
+	//회원탈퇴
+	@ResponseBody
+	@RequestMapping("/userDelete")
+	public boolean userDelete(HttpSession session, String user_id) {
+		System.out.println(user_id);
+		service.user_delete(user_id);
+		session.removeAttribute("loginInfo");
+		return true;
 	}
 	
 }

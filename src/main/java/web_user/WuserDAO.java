@@ -30,15 +30,14 @@ public class WuserDAO implements WuserService {
 	}
 
 	@Override
-	public boolean user_update(UserVO vo) {
+	public void user_update(UserVO vo) {
 		
-		return sql.selectOne("wuser.mapper.update",vo);
+		sql.update("wuser.mapper.update",vo);
 	}
 
 	@Override
-	public boolean user_delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_delete(String id) {
+		sql.delete("wuser.mapper.delete",id);
 	}
 
 
