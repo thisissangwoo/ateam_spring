@@ -29,7 +29,7 @@
 		border:0px;
 	}
 	span{
-		font-size:10px;
+		font-size:12px;
 		margin-left:10px;
 	}
 	#pwcond{
