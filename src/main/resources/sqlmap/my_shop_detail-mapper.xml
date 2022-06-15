@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="shop_detail.mapper">
+<mapper namespace="my_order.mapper">
 <!-- ============================================================================================================ -->
 <select id="detail" resultType="web_shop.ShopDetailVO">
 	select * 
-	from shop 
-	where id = #{id}
+	from shop
+	where user_id = #{user_id}
 </select>
 
 </mapper>

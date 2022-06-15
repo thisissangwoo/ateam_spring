@@ -46,6 +46,10 @@ a.btn-fill-s {
 }
 table{margin-top:30px;}
 p{font-size:30px; margin-top:100px; font-weight: bold;}
+
+#select_td{
+	padding-left: 26px;
+}
 </style>
 </head>
 <body>
@@ -61,6 +65,18 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 				<th class='w-px120'>제목</th>
 				<td>
 					<input type="text" name="title" title="제목" class="chk"/>
+				</td>
+			</tr>
+			<tr>
+				<th class='w-px120'>문의사항</th>
+				<td id="select_td" class="left">
+					<select name="sort" class="left">
+						<option value="제품문의">제품문의</option>
+						<option value="결제문의">결제문의</option>
+						<option value="배송문의">배송문의</option>
+						<option value="교환/환불/반품">교환/환불/반품</option>
+						<option value="기타">기타</option>
+					</select>
 				</td>
 			</tr>
 			<tr>

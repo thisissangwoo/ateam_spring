@@ -1,13 +1,13 @@
-package web_customer;
+package my_qna;
 
 import java.sql.Date;
 
-public class CustomerVO {
+public class MyqVO {
 
 	private int id, readcnt, no, root, step, indent;
-	private String title, content, writer, name, sort;
+	private String title, content, writer, name;
 	private Date writedate;
-	private String filename, filepath;
+	private String filename, filepath, code, category, sort;
 	
 	public int getId() {
 		return id;
@@ -69,12 +69,6 @@ public class CustomerVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSort() {
-		return sort;
-	}
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
 	public Date getWritedate() {
 		return writedate;
 	}
@@ -93,5 +87,24 @@ public class CustomerVO {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	
 	
 }

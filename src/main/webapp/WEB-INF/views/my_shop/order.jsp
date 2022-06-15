@@ -10,13 +10,13 @@
 .product {
    width: 1451px; 
    height: 1080px;  
+   background: white;
 }
 
 .product_textarea {
    position: absolute;
    width: 1240px;
    height: 40%;
-   left: 150px;
    top: 70px;
 }
 
@@ -86,8 +86,7 @@
 .order_detail {
    position: absolute; 
    width: 1239px; 
-   height: 350px; 
-   left: 150px; 
+   height: 350px;  
    top: 350px;
 }
 
@@ -107,7 +106,7 @@
    position: absolute; 
    width: 127px; 
    height: 237px; 
-   left: 400px; 
+   left: 250px; 
    top: 410px; 
    line-height: 50px; 
    letter-spacing: -0.05em;
@@ -141,7 +140,7 @@
 
 #textarea {
    position: absolute; 
-   background: #ccc; 
+   background: white; 
    border: none; 
    top: 182px; 
    left: 150px; 
@@ -296,14 +295,23 @@
 </head>
 <body>
 <form action="order_result.pr" method="post">
-<div class="product" >
+<div class="product">
 
-<div style="position: absolute; width: 100%; height: 59px; background: #929292;">
-	<p style="position: absolute; width: 106px; left: 20px; top: 20px; font-weight: bold; font-size: 21px; letter-spacing: 0.5px; color: white;">주문 상세</p>
-</div>
+	<div style="position: absolute; width: 100%; height: 59px; background: #929292;">
+		<p style="position: absolute; width: 106px; left: 20px; top: 20px; font-weight: bold; font-size: 21px; letter-spacing: 0.5px; color: white;">주문 상세</p>
+	</div>
+	
+	<div style="position: absolute; width: 1000px; height: 45px; left: 246px; top: 90px; background: #E5E5E5;">
+		<p style="position: absolute; width: 60px; height: 25px; left: 70px; top: 10px; font-weight: bold; font-size: 17px; line-height: 27px; color: #84A296;">배송중</p>
+		<p style="position: absolute; width: 66px; height: 25px; left: 450px; top: 10px; font-weight: bold; font-size: 17px; line-height: 27px;">상품정보</p>
+	</div>
+	
+	<div style="position: absolute; width: 267px; height: 0px; left: 900px; top: 267px; border: 1px solid #ccc; transform: rotate(90deg); "></div>
+	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 180px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">배송조회</button>
+	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 240px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">리뷰작성</button>
+	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 300px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">문의하기</button>
 
    <div class="product_textarea">
-      <p id="product_text" >주문자 상세정보</p>
       <img src="imgs/shopbox.png" style="position: absolute; width: 200px; height: 190px; left: 246px; top: 80px; border-radius: 11px;">
       <p id="box_text">아나포 스마트 약통 AnaFor Smart IoT 알약/영양제</p>
       <p id="price"><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></p>
@@ -316,13 +324,13 @@
    
    <div class="order_detail_category">
       <p id="person_receive_text">받는사람</p>
-      <input type="text"  readonly value="${vo.name }" name="name" id="person_receive" style="position: absolute; background: #ccc; width: 200px; height: 25px; left: 150px; top: 10px; border: none; border-radius: 5px; font-size: 12px"/>
+      <input type="text"  readonly value="${vo.name }" name="name" id="person_receive" style="position: absolute; background: white; width: 200px; height: 25px; left: 150px; top: 10px; border: none; border-radius: 5px; font-size: 12px"/>
          
       <p id="phone_text">연락처</p>
-      <input id="phone" value="${vo.tel }" readonly type="text" name="tel" style="position: absolute; background: #ccc; border: none; width: 105px; height: 25px; left: 150px; top: 60px; border-radius: 5px;"/>
+      <input id="phone" value="${vo.tel }" readonly type="text" name="tel" style="position: absolute; background: white; border: none; width: 105px; height: 25px; left: 150px; top: 60px; border-radius: 5px;"/>
       
       <p class="addr_receive_text">받는주소</p>
-      <input type="text" value="${vo.addr }" id="default" name="addr" readonly style="background: #ccc; border: none; position: absolute; left: 150px; top: 110px; height: 25px; width: 400px; "/><br/>
+      <input type="text" value="${vo.addr }" id="default" name="addr" readonly style="background: white; border: none; position: absolute; left: 150px; top: 110px; height: 25px; width: 400px; "/><br/>
    
       <p id="delivery_request_text">배송요청사항</p>
       <input id="textarea" name="coment" value="${vo.coment }" />
@@ -362,22 +370,22 @@
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 230px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 76px; left: 23px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">상품준비중</p>
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 430px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송시작</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송중</p>
+      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; background: #E0E0E0; border-radius: 50%; background: #696aad;">
+      	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: white; font-size: 16px;">배송중</p>
       </div>
       
       <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 830px; background: #E0E0E0; border-radius: 50%;">
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송완료</p>
       </div>
    </div>

@@ -33,7 +33,8 @@
 	position: absolute; 
 	width: 15%;
 	height: 100%;
-	background:#414141;
+	background:#696aad;
+	color:white;
 	float: left;
 }
 
@@ -42,10 +43,8 @@
 	left:15%;
 	width: 85%;
 	height: 100%;
-	background: #FFFFFF;
+	background:white;
 	float: right;
-	
-   
 }
 
 </style>
