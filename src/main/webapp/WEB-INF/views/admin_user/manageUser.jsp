@@ -128,7 +128,7 @@
 		<div id="search_top">
 			<!-- 항목별 검색 처리 부분 -->
 			<ul>
-				<li>전체 사용자&nbsp;&nbsp;<c:out value="${page.list.size()}"/>명</li>
+				<li></li>
 				<li>
 					<select name="search" >
 						<option value="all" ${page.search eq 'all' ? 'selected' : ''}>전체</option>
