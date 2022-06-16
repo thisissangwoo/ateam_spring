@@ -1,5 +1,7 @@
 package my_review;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,8 +34,12 @@ public class my_reviewDAO implements my_reviewService {
 
 	@Override
 	public MyReviewPage review_list(MyReviewPage page) {
-		// TODO Auto-generated method stub
-		return null;
+		int pagecnt = sql.selectOne("my_review.mapper.totalList", page);
+		page.setTotalList(pagecnt);
+		
+		List<WReviewVO> list = sql.selectList("my_review.mapper.list", page);
+		page.setList(list);
+		return page;
 	}
 
 }

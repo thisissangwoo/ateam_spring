@@ -19,9 +19,17 @@ public class PageVO {
 	String search, keyword;	// 검색조건, 검색어
 	private String viewType = "list"; //게시판 형태 기본리스트
 	String code, code_name;
-	String writer, sort, reply;
+	String writer, sort, reply, user_id;
 	
 	
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	public String getSort() {
 		return sort;
 	}

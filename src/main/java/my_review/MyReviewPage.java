@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import common.PageVO;
+
 
 @Component
-public class MyReviewPage {
+public class MyReviewPage extends PageVO{
 
 private List<web_shop.WReviewVO> list;
 	

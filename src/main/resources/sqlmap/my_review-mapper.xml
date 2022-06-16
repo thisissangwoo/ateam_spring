@@ -3,9 +3,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="my_review.mapper">
 
-	
-	
-	
+	<select id="totalList" resultType="integer">
+		select count(*) from box_review	
+		where user_id = #{user_id}
+	</select>
+			
+	<select id="list" resultType="web_shop.WReviewVO">
+		select * 
+		from (select rownum no, r.*, (select user_name from anafor_user where user_id = r.user_id) name  
+	    	  from (select * 
+	      			from BOX_REVIEW 
+                	order by rev_id desc) r           
+	   		  order by no desc)
+	    where no between #{beginList} and #{endList}
+	    and user_id = #{user_id}
+	</select>
 
+		
 	
 </mapper>

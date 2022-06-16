@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import my_review.MyReviewPage;
 import my_review.my_reviewServiceImpl;
+import user.UserVO;
 
 @Controller
 public class My_ReviewController {
@@ -24,8 +25,14 @@ public class My_ReviewController {
 		
 		session.setAttribute("category", "rev");
 		
-		page.setCurPage(curPage);
+		UserVO user = (UserVO) session.getAttribute("loginInfo");
 		
+		page.setCurPage(curPage);
+		page.setPageList(pageList);
+		page.setUser_id(user.getUser_id());
+		
+		
+		model.addAttribute("page", service.review_list(page));
 		
 		return "my_review/list";
 		

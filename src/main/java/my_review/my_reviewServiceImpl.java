@@ -30,8 +30,7 @@ public class my_reviewServiceImpl implements my_reviewService {
 
 	@Override
 	public MyReviewPage review_list(MyReviewPage page) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.review_list(page);
 	}
 
 }
