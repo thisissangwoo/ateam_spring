@@ -82,14 +82,12 @@ public class Web_UserController {
 		//로그인 처리 (ajax 사용시 ResponseBody )
 		@ResponseBody
 		@RequestMapping("/userLoginChk")
-		public boolean userLoginChk(HttpSession session, String userid, String userpw) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("user_id", userid);
-			map.put("user_pw", userpw);
-			UserVO vo = service.user_login(map);
-			session.setAttribute("loginInfo", vo);
+		public boolean userLoginChk(HttpSession session, UserVO vo) {
+		
+			UserVO vo1 = service.user_login(vo);
+			session.setAttribute("loginInfo", vo1);
 			
-			return vo == null ? false: true;   //로그인 실패 했을시 false, 맞으면 true
+			return vo1 == null ? false: true;   //로그인 실패 했을시 false, 맞으면 true
 		}
 		
 		//로그아웃 처리
