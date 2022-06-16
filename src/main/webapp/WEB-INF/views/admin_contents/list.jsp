@@ -11,9 +11,9 @@ body{
 }
 #header {
    width:100%;
-   height:59px;
+   height:60px;
    padding: 20px;
-   background-color:#929292;
+   background-color:#929292; 
 }
 
 #header h3{
@@ -68,7 +68,7 @@ body{
 }
 
 #list-board table{
-   width:88%;
+   width:80%;
    margin-top:30px;
    margin-bottom:30px;
    border-top: 1px solid #e0e0e0;
@@ -120,10 +120,9 @@ table tr td:nth-child(7) img {
    margin-right: 30px;
 }
 
-select[name=pageList],select[name=sort],select[name=reply]{
-   width: 120px;
+select[name=pageList]{
+   width: 100px;
    height: 30px;
-   margin-right:2px;
    border: 1px solid #b0b0b0;
 }
 
@@ -139,12 +138,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 }
 
 #write{
-	margin-top: 5px;
-	margin-left: 700px;
-}
-
-#page{
-	margin-bottom: -80px;
+	margin-left: 850px;
 }
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -175,7 +169,6 @@ select[name=pageList],select[name=sort],select[name=reply]{
                <option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
             </select>
          </tr>
-
          <!-- 검색 키워드를 입력할 input 태그  -->
          <tr>
             <input type="text" name='keyword' value="${page.keyword }" placeholder="검색 키워드를 입력하세요"/>
@@ -201,29 +194,9 @@ select[name=pageList],select[name=sort],select[name=reply]{
                   <option value="30" ${page.pageList eq 30 ? 'selected' : '' }>30개씩</option>               
                </select>
             </li>
-            <c:if test="${page.code eq 'N03'}"> 
-            <li class="left">     
-            <select name='sort' class='w-px150' onchange="$('form').submit()">
-                <option value="all" ${page.sort eq 'all' ? 'selected' : '' }>전체</option>
-               <option value="제품문의" ${page.sort eq '제품문의' ? 'selected' : '' }>제품문의</option>
-               <option value="결제문의" ${page.sort eq '결제문의' ? 'selected' : '' }>결제문의</option>
-               <option value="배송문의" ${page.sort eq '배송문의' ? 'selected' : '' }>배송문의</option>
-               <option value="교환/환불/반품" ${page.sort eq '교환/환불/반품' ? 'selected' : '' }>교환/환불/반품</option>
-               <option value="기타" ${page.sort eq '기타' ? 'selected' : '' }>기타</option>
-            </select>
-        	</li>
-        	
-            <li class="left">     
-            <select name='reply' class='w-px150' onchange="$('form').submit()">
-                <option value="all" ${page.reply eq 'all' ? 'selected' : '' }>전체</option>
-               <option value="N" ${page.reply eq 'N' ? 'selected' : ' ' }>미답변</option>
-               <option value="Y" ${page.reply eq 'Y' ? 'selected' : ' ' }>답변완료</option>
-            </select>
-        	</li>
-         	</c:if>
 	         <!-- 관리자로 로그인된 경우만 글쓰기 가능 -->                  
-	         <c:if test="${loginInfo.admin eq 'Y'}">  
-	           	 <li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li> 
+	         <c:if test="${loginInfo.admin eq 'Y' }">      
+	            <li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li>
 	         </c:if>   
         	</ul>
         </div>   
@@ -233,11 +206,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 	        <tr>
 	           <th class="w-px70">NO</th>
 	           <th class="w-px80">카테고리</th>
-    		 <c:if test="${page.code eq 'N03'}">    			
-	           <th class="w-px100">문의사항</th>
-	           <th class="w-px90">답변상태</th>
-	         </c:if>
-	           <th class="w-px150">제목</th>
+	           <th>제목</th>
 	           <th class="w-px100">작성자</th>
 	           <th class="w-px120">작성일자</th>
 	           <th class="w-px100">조회수</th>
@@ -247,20 +216,16 @@ select[name=pageList],select[name=sort],select[name=reply]{
 		<tbody> 
 			<c:if test="${ empty page.list }">
 				<tr>
-					<td colspan="9">게시글 정보가 없습니다.</td>
+					<td colspan="7">게시글 정보가 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:forEach items="${page.list }" var="vo">
 			   <tr>
 			      <td>${vo.no }</td>
 			      <td>${vo.category}</td>
-	   		 <c:if test="${page.code eq 'N03'}">     
-			      <td>${vo.sort }</td>
-			      <td>${vo.reply}</td>
-			 </c:if>
-			      <td class="left">
+			      <td class='left'>
 			         <c:forEach begin="1" end="${vo.indent }" var="i">      
-			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }  
+			            ${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }  
 			         </c:forEach>
 			         <a href='detail.co?id=${vo.id }'>${vo.title }</a>         
 			      </td>
@@ -269,17 +234,73 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			      <td>${vo.readcnt}</td>
 			      <td>
 			         <c:if test="${loginInfo.admin eq 'Y' }">
-			            <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}'}"><img src="imgs/notice_delete.png"> </a>
+			            <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}"><img src="imgs/notice_delete.png"> </a>
 			         </c:if>
 			      </td>
 			   </tr>
 			</c:forEach>
    		</tbody>
       </table>
-   <div id="page">
+   <div>
       <jsp:include page="/WEB-INF/views/include/page.jsp" />
       <!-- jsp 표준 include를 사용하여 설정 -->
    </div>
 </div>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+$('[name=date1]').change(function () {
+   $('#delete1').css('display', 'inline');
+});
+
+$('#delete1').click(function () {
+   $('[name=date1]').val('');
+   $('#delete1').css('display', 'none');
+});
+
+
+$(function() {
+   var today = new Date();   // 오늘 날짜 선언 (today)
+   var startDay = new Date( today.getFullYear() - 1, today.getMonth(), today.getDate());
+   
+    $( "[name=date1]" ).datepicker({
+       dayNamesMin:['일', '월', '화', '수', '목', '금', '토']
+       , monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+       , changeMonth : true
+       , changeYear : true
+       , dateFormat : 'yy-mm-dd'
+       , showMonthAfterYear : true
+       , minDate: startDay
+       , maxDate: today  /* 달력에 나타날 최대 일자 지정 */
+    });
+        
+});
+
+$('[name=date2]').change(function () {
+	   $('#delete2').css('display', 'inline');
+	});
+
+	$('#delete2').click(function () {
+	   $('[name=date2]').val('');
+	   $('#delete2').css('display', 'none');
+	});
+
+
+	$(function() {
+	   var today = new Date();   // 오늘 날짜 선언 (today)
+	   var startDay = new Date( today.getFullYear() - 1, today.getMonth(), today.getDate());
+	   
+	    $( "[name=date2]" ).datepicker({
+	       dayNamesMin:['일', '월', '화', '수', '목', '금', '토']
+	       , monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+	       , changeMonth : true
+	       , changeYear : true
+	       , dateFormat : 'yy-mm-dd'
+	       , showMonthAfterYear : true
+	       , minDate: startDay
+	       , maxDate: today  /* 달력에 나타날 최대 일자 지정 */
+	    });
+	        
+	});
+</script>   
 </body>
 </html>

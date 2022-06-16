@@ -1,7 +1,6 @@
 package com.hanul.anafor;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -38,9 +37,7 @@ public class Ad_ContentsController {
 	   public String list(HttpSession session, Model model,      
 	                  @RequestParam (defaultValue = "1") int curPage, 
 	                  @RequestParam(defaultValue = "10") int pageList,                  
-	                  String search, String keyword, String code_name, 
-	                  @RequestParam (defaultValue = "all") String sort, 
-	                  @RequestParam (defaultValue = "all") String reply) {
+	                  String search, String keyword, String code_name) {
 	      
 	      session.setAttribute("category", "co");
 
@@ -51,18 +48,14 @@ public class Ad_ContentsController {
 	      page.setKeyword(keyword);
 	      page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
 	      page.setCode(code_name);
-	      page.setSort(sort);
-	      page.setReply(reply);
-	      
+
 	      model.addAttribute("codes",service.code());
 	      
 	      if(code_name == null || code_name.equals("all")) {
-		      model.addAttribute("page",service.con_list(page));    	  
-	      }else if(code_name.equals("N03")){
-	    	  model.addAttribute("page",service.con_list3(page));	
+		      model.addAttribute("page",service.con_list(page)); 	  
 	      }else {
-	    	  model.addAttribute("page",service.con_list2(page));	
-	      }       
+	    	  model.addAttribute("page",service.con_list2(page));
+	      }    
 	      return "admin_contents/list";
 	   }
 
@@ -129,7 +122,7 @@ public class Ad_ContentsController {
 	
 	/* 글삭제 */
 	@RequestMapping("/delete.co")
-	public String delete(int id, int root, HttpSession session, Model model) {
+	public String delete(int id, HttpSession session, Model model) {
 		ContentsVO contents = service.con_detail(id);
 		String uuid = session.getServletContext().getRealPath("resources")+"/"+contents.getFilepath();
 		
@@ -141,11 +134,7 @@ public class Ad_ContentsController {
 		model.addAttribute("url", "list.co");
 		model.addAttribute("page", page);
 		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("id", id);
-		map.put("root", root);
-		
-		service.con_delete(map);
+		service.con_delete(id);
 		return "admin_contents/redirect";
 	}
 	

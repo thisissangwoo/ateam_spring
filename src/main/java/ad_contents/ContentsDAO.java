@@ -1,6 +1,5 @@
 package ad_contents;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -51,9 +50,8 @@ public class ContentsDAO implements ContentsService {
 	}
 
 	@Override
-	public void con_delete(HashMap<String, Integer> map) {
-		sql.delete("ad_contents.mapper.con_delete", map);
-		sql.update("ad_contents.mapper.con_update_qna",map);
+	public void con_delete(int id) {
+		sql.delete("ad_contents.mapper.con_delete", id);
 	}
 
 	@Override
@@ -81,14 +79,5 @@ public class ContentsDAO implements ContentsService {
 		return page;
 	}
 
-	@Override
-	public ContentsPage con_list3(ContentsPage page) {
-		int pagecnt = sql.selectOne("ad_contents.mapper.con_totalList3", page);
-		page.setTotalList(pagecnt);
-		
-		List<ContentsVO> list = sql.selectList("ad_contents.mapper.con_list3", page);
-		page.setList(list);
-		return page;
-	}
 
 }

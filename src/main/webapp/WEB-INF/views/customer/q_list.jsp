@@ -190,7 +190,7 @@ select {
 					<td>${vo.sort}</td>
 					<td class='left'>
 						<c:forEach begin="1" end="${vo.indent }" var="i">
-							${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }
+							${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }
 						</c:forEach> 
 						<a href='detail.cu?id=${vo.id }'>${vo.title }</a>
 					</td>

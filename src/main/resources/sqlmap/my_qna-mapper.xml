@@ -5,25 +5,41 @@
 
 <!-- 게시판 전체 글 목록조회 -->  
 	<select id="myq_list" resultType="my_qna.MyqVO">
-	select * 
-	from (select rownum no, n.*, (select user_name from anafor_user where user_id = n.writer) name  
-	      from (select * 
-	      		from notice  
-	            where root in (select root 
-	            			   from notice
-	                           where code = 'N03'
-	                           and writer = #{writer})
-	                           order by root, step desc) n           
-	   			order by no desc)
-	    where no between #{beginList} and #{endList}
+		select *
+		from (select rownum no, n.*, (select user_name from anafor_user where user_id = n.writer)name 
+		      from (select * 
+		      		from notice 
+		      		where code='N03'
+		      		and writer = #{writer}
+                    order by root, step desc)n
+              <include refid="where_search" />        
+		      order by no desc)
+		where no between #{beginList} and #{endList}    
 	</select>
 	
 	<!-- 전체 공지사항 글 수 조회 -->
 	<select id="myq_totalList" resultType="integer">
 		select count(*) 
-		from notice
-		where root in (select root from notice
-					   where code = 'N03'
-			           and writer = #{writer})            
+		from (select * from notice where code='N03' and writer = #{writer})n 		
+		<include refid="where_search" /> 
 	</select>	
+	
+<!-- myBatis에서 sql 구문을 작성하여 id 를 참조하는 include기능을 사용해서 처처리할 수 있음.-->
+	<sql id="where_search">
+		<!-- 제목에 '테스트' 문자가 있는 것을 조회한다면.. where title like '테스트'  -->
+		<if test="search == 'title' or search == 'content'">
+			where ${search} like '%'||#{keyword}||'%'
+		</if>
+		
+		<!-- 작성자에 '자' 문자가 있는 것을 조회한다면...  -->
+		<if test="search == 'writer' ">
+			where writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' )
+		</if>
+		
+		<if test="search == 'all' ">
+			where title like '%'||#{keyword}||'%'
+			or content  like '%'||#{keyword}||'%'
+			or writer in ( select user_id from anafor_user where user_name like '%'||#{keyword}||'%' )	
+		</if>
+	</sql>	
 </mapper>

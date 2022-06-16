@@ -70,13 +70,11 @@ a.btn-empty {
 		<table>
 			<tr>
 				<th class="w-px120">제목</th>
-				<td class="left" colspan="7">${vo.title }</td>
+				<td class="left" colspan="5">${vo.title }</td>
 			</tr>
 			<tr>
 				<th>글쓴이</th>
 				<td>${vo.name }</td>
-				<th>문의사항</th>
-				<td>${vo.sort}</td>
 				<th>날짜</th>
 				<td>${vo.writedate }</td>
 				<th>조회수</th>
@@ -84,11 +82,11 @@ a.btn-empty {
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td class="left" colspan="7">${fn:replace(vo.content,crlf,'<br>') }</td>
+				<td class="left" colspan="5">${fn:replace(vo.content,crlf,'<br>') }</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td class="left" colspan="7">${vo.filename }
+				<td class="left" colspan="5">${vo.filename }
 					<c:if test="${not empty vo.filename}">
 						<!-- 첨부파일이 없지 않으면 아이콘 표시 -->
 						<a href="download.co?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
@@ -97,13 +95,9 @@ a.btn-empty {
 			</tr>
 		</table>
 		<div>
-				<a class='btn-empty' href='list.co?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
-			<c:if test="${loginInfo.user_id eq vo.writer }">
-				<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a>
-			</c:if>
-			<c:if test="${loginInfo.admin eq 'Y' }"> 
+			<a class='btn-empty' href='list.co?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
+			<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a> 
 			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}">삭제</a>
-			</c:if>			
 			<c:if test="${vo.code eq 'N03'}">
 				<a class='btn-empty' href='reply.co?id=${vo.id }'>답글쓰기</a>
 			</c:if>
