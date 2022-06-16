@@ -11,6 +11,7 @@
 	<c:when test="${category eq 'login' }"><c:set var='title' value='로그인' /></c:when>
 	<c:when test="${category eq 'join' }"><c:set var='title' value='회원가입' /></c:when>
 	<c:when test="${category eq 'usercheck'}"><c:set var='title' value="회원정보확인"/></c:when>
+	<c:when test="${category eq 'userjoin'}"><c:set var='title' value="회원정보수정"/></c:when>
 </c:choose>
 
 <!DOCTYPE html>
@@ -32,7 +33,8 @@
 	position: absolute; 
 	width: 15%;
 	height: 100%;
-	background:#414141;
+	background:#696aad;
+	color:white;
 	float: left;
 }
 
@@ -41,10 +43,8 @@
 	left:15%;
 	width: 85%;
 	height: 100%;
-	background: #ccc;
+	background:white;
 	float: right;
-	
-   
 }
 
 </style>

@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 
-	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
-	#UserProfile{ width:90%; margin:30px auto; background-color: #FFFFFF; border-radius:10px; height:80%; }
+	#titlename{ width:100%; background:#929292; height:60px; padding:20px; }
+	#titlename h3{font-size:25px;  text-align:left; font-weight:bold; color:white;  }
+	#UserProfile{ margin:1%; height:100%;  max-height:850px; background-color: #FFFFFF; }
 	table{ width:90%; border:0px; }
 	td{font-size:14px; color:#929292;}
 	#totaluser{width:150px; height:40px; display:block; text-align:left; line-height:40px;	margin-left:30px; padding:10px; font-size:15px; font-weight:700; margin-top:15px; margin-bottom:15px;}
@@ -75,8 +76,8 @@
 	#search_top ul li:nth-child(1){
 		float:left;
 		width:20%;
-		font-size:14px;
-		font-weight:500;
+		font-size:20px;
+		font-weight:bold;
 		height:30px;
 		line-height:30px;
 		text-align:left;
@@ -120,7 +121,7 @@
 </style>
 </head>
 <body>
-	<div id = "titlename">사용자관리</div>
+	<div id = "titlename"><h3>사용자관리</h3></div>
 	<div id = "UserProfile">
 		<form id="form" action="user.ur" method="post">
 		<input type="hidden" name="curPage" value="1" />

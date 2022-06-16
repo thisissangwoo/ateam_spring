@@ -19,21 +19,20 @@ public class WuserServiceImpl implements WuserService {
 	}
 
 	@Override
-	public UserVO user_login(HashMap<String, String> map) {
+	public UserVO user_login(UserVO vo) {
 		
-		return dao.user_login(map);
+		return dao.user_login(vo);
 	}
 
 	@Override
-	public boolean user_update(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_update(UserVO vo) {
+		dao.user_update(vo);
 	}
 
 	@Override
-	public boolean user_delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_delete(String id) {
+	
+		dao.user_delete(id);
 	}
 
 
