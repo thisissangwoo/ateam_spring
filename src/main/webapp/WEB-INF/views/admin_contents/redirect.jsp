@@ -7,6 +7,9 @@
 	<input type="hidden" name ="pageList" value="${page.pageList }" /> 	<!-- 페이지당 보여질 목록 수 -->
 	<input type="hidden" name ="curPage" value="${page.curPage }" />	<!-- 현재 페이지 -->
 	<input type="hidden" name ="viewType" value="${page.viewType }" />	<!-- 게시판 형태 -->
+	<input type="hidden" name ="code" value="${page.code }" />			<!-- 카테고리 -->
+	<input type="hidden" name ="sort" value="${page.sort }" />			<!-- Q&A 카테고리 -->
+	<input type="hidden" name ="reply" value="${page.reply }" />		<!-- Q&A 답변상태 -->
 </form>
 
 <script>
