@@ -73,7 +73,7 @@ public class Web_NoticeController {
 		service.notice_read(id);
 		model.addAttribute("vo", service.notice_detail(id));
 		model.addAttribute("crlf", "\r\n");
-		
+		model.addAttribute("page", page);
 		return "notice/detail";
 	}
 	

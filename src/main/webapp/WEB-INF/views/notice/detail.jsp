@@ -66,7 +66,7 @@ a.btn-empty {
 	</table>
 	<div class='btnSet'>
 		<a class='btn-empty'
-			href='list.no?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
+			href='list.no?curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }'>목록으로</a>
 	</div>
 </body>
 </html>
