@@ -97,9 +97,9 @@ a.btn-empty {
 			</tr>
 		</table>
 		<div>
-<!--			<a class='btn-empty' href='list.co?curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }&code=${page.code}'>목록으로</a>-->
+			<a class='btn-empty' href='list.co?&curPage=${page.curPage }&pageList=${page.pageList}&search=${page.search}&keyword=${page.keyword }&code=${page.code}&sort=${page.sort}&reply=${page.reply}'>목록으로</a>
 <!--  			<a class='btn-empty' onclick="toList()">목록으로</a>  -->
- 			<a class='btn-empty' onclick="history.back(-1)">목록으로</a> 
+<!--  			<a class='btn-empty' onclick="history.back(-1)">목록으로</a>  -->
 			<c:if test="${loginInfo.user_id eq vo.writer }">
 				<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a>
 			</c:if>
