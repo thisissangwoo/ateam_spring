@@ -5,17 +5,18 @@ var context = document
             var myChart = new Chart(context, {
                 type: 'line', // 차트의 형태
                 data: { // 차트에 들어갈 데이터
-                    labels: [
+                    labels: 
                         //x 축
-                        '1','2','3','4','5','6','7'
-                    ],
+                        //'1','2','3','4','5','6','7'
+                        aweekArray
+                    ,
                     datasets: [
                         { //데이터
-                            label: 'test1', //차트 제목
+                            label: '회원가입', //차트 제목
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
-                            data: [
-                                21,19,25,20,23,26,25 //x축 label에 대응되는 데이터 값
-                            ],
+                            data: usergArray
+                               // 21,19,25,20,23,26,25 //x축 label에 대응되는 데이터 값
+                            ,
                             backgroundColor: [
                                 //색상
                                 'rgba(255, 99, 132, 0.2)',
@@ -35,16 +36,14 @@ var context = document
                                 'rgba(255, 159, 64, 1)'
                             ],
                             borderWidth: 1 //경계선 굵기
-                        }/* ,
+                        } ,
                         {
-                            label: 'test2',
+                            label: '주문수량',
                             fill: false,
-                            data: [
-                                8, 34, 12, 24
-                            ],
+                            data: ordergArray,
                             backgroundColor: 'rgb(157, 109, 12)',
                             borderColor: 'rgb(157, 109, 12)'
-                        } */
+                        } 
                     ]
                 },
                 options: {

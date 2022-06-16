@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.core.format.DataFormatDetector;
+import com.google.gson.Gson;
 
 import ad_main.GraphServiceImpl;
 import web_notice.NoticeServiceImpl;
@@ -38,16 +39,25 @@ public class Ad_MainController {
 		Calendar calendar = new GregorianCalendar();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String today = format.format(calendar.getTime());  //오늘
-		calendar.add(Calendar.DATE, -7);
-		String lWeek = format.format(calendar.getTime());
-		System.out.println(today);
-		System.out.println(lWeek);
+		String aweek[] = new String[8]; //일주일 기간 (x축)
+		aweek[7]=today;
+		for(int i=1; i<=7; i++) {
+			calendar.add(Calendar.DATE, -1); //1씩 빠짐 
+			aweek[7-i]= format.format(calendar.getTime());
+		}
 		
+		String lWeek = format.format(calendar.getTime());  //지난주(7일 전)
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("today", today);
 		map.put("lWeek", lWeek);
-		model.addAttribute("list",service.search(map));
-		System.out.println(service.search(map).get(0).getCnt());
+		model.addAttribute("aweek",new Gson().toJson(aweek));  //한번만
+		model.addAttribute("list",new Gson().toJson(service.search(map)));
+		model.addAttribute("order",new Gson().toJson(service.search2(map)));
+		model.addAttribute("sorder",service.sorder(today));
+		model.addAttribute("inquiry",service.inquiry(today));
+		model.addAttribute("newuser",service.newuser(today));
+		
+		session.setAttribute("category", "bo");
 		return "admin_main/list";
 	}
 	

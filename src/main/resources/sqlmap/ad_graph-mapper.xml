@@ -4,10 +4,24 @@
 <mapper namespace="ad_graph.mapper">
 
 	<select id="select" resultType="ad_main.graphVO">
-		 select count(*) as cnt, join_date as gdate from anafor_user where join_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') Group by join_date
+		 select count(*) as cnt, to_Char(join_date,'YYYY-MM-dd') as gdate from anafor_user where join_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') +1 Group by join_date
 	</select> 
 
+	<select id="select2" resultType="ad_main.graphVO">
+		 select sum(cnt) as cnt, to_Char(order_date,'YYYY-MM-dd') as gdate from shop where order_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') +1 Group by order_date
+	</select>
+	
+	<select id="select3" resultType="web_shop.ShopDetailVO">
+		select rownum no, name,cnt, to_Char(order_date,'YYYY-MM-dd') order_date from shop where to_char(order_date,'YYYY-MM-DD') = #{date}
+	</select>
 
+	<select id="select4" resultType="web_customer.CustomerVO">
+		select rownum no, writer, title, to_Char(writedate,'YYYY-MM-dd') writedate from notice where to_char(writedate,'YYYY-MM-DD') = #{date} and code= 'N03'
+	</select>
+
+	<select id="select5" resultType="user.UserVO">
+		select rownum no, user_name, user_id, user_gender, to_Char(join_date,'YYYY-MM-dd') join_date from anafor_user where to_char(join_date,'YYYY-MM-DD') = #{date} 
+	</select>
 
 
 </mapper>
