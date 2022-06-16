@@ -1,6 +1,5 @@
 package ad_shop;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +43,7 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 		return dao.order_list(page1);
 	}
 	
+
 //============ 관리자 페이지 사용자 주문 리스트 해당 id 상세 조회 ===========
 	@Override
 	public ShopDetailVO order_detail(int id) {

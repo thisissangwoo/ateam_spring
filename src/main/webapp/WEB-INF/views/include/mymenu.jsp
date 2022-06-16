@@ -53,7 +53,7 @@
 		<div class="my_shopping">
 			<ul>
 				<li class="menu_title1">MY쇼핑</li>
-				<li class="menu_1"><a href="shopList.my" >주문활동/배송조회</a></li>
+				<li class="menu_1"><a href="order.my" >주문활동/배송조회</a></li>
 			</ul>	
 		</div>		
 		
@@ -68,7 +68,7 @@
 		<div class="my_information">
 			<ul>
 				<li class="menu_title3">MY정보</li>
-				<li class="menu_4"><a href="check.pw"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
+				<li class="menu_4"><a href="checkpw.ur"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
 			</ul>	
 		</div>		
 		

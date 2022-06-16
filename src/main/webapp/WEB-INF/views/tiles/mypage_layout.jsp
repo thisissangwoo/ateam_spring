@@ -11,6 +11,7 @@
 	<c:when test="${category eq 'login' }"><c:set var='title' value='로그인' /></c:when>
 	<c:when test="${category eq 'join' }"><c:set var='title' value='회원가입' /></c:when>
 	<c:when test="${category eq 'usercheck'}"><c:set var='title' value="회원정보확인"/></c:when>
+	<c:when test="${category eq 'userjoin'}"><c:set var='title' value="회원정보수정"/></c:when>
 </c:choose>
 
 <!DOCTYPE html>
@@ -44,8 +45,6 @@
 	height: 100%;
 	background:white;
 	float: right;
-	
-   
 }
 
 </style>

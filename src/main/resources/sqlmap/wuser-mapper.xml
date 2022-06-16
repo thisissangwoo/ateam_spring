@@ -10,9 +10,21 @@
 
 </insert>
 
+<!-- 회원 정보 업데이트 -->
+<update id="update">
+	update anafor_user set user_name = #{user_name}, user_tel = #{user_tel}, user_pw = #{user_pw}, user_gender = #{user_gender} where user_id = #{user_id}
+
+</update>
+
+<!-- 회원 정보 삭제 -->
+<delete id="delete">
+	delete from anafor_user where user_id = #{id}
+</delete>
+
 <!-- 로그인 기능 -->
 <select id="login" resultType="user.UserVO">
-	select * from anafor_user where user_id = #{user_id} and user_pw = #{user_pw}
+	select user_id, user_pw, user_name, to_char(user_birth,'YYYYMMdd') user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 
+	 memo, join_date from anafor_user  where user_id = #{user_id} and user_pw = #{user_pw}
 </select>
 
 <!-- 회원 이메일 중복 여부 -->
@@ -23,12 +35,12 @@
 
 <!-- 소셜 회원 정보 입력-->
 <insert id="social_insert">
-	insert into anafor_user (user_id, user_name, user_birth, user_tel, user_gender, ${social_type} )
-	values(#{user_id}, #{user_name}, #{user_birth,jdbcType=DATE}, #{user_tel,jdbcType=VARCHAR}, #{user_gender}, #{social_id})
+	insert into anafor_user (user_id, user_name, user_pw, user_birth, user_tel, user_gender, ${social_type} )
+	values(#{user_id}, #{user_name}, #{user_pw}, #{user_birth,jdbcType=DATE}, #{user_tel,jdbcType=VARCHAR}, #{user_gender}, #{social_id})
 </insert>
 <!-- 소셜 회원 정보 업데이트 -->
 <update id="social_update">
-	update anafor_user set user_name = #{user_name}, user_tel = #{user_tel,jdbcType=VARCHAR}, user_gender = #{user_gender}
+	update anafor_user set user_name = #{user_name}, user_tel = #{user_tel,jdbcType=VARCHAR}, user_gender = #{user_gender},  user_pw = #{user_pw}
 	where ${social_type} = #{social_id}
 </update>
 <!-- 소셜 회원 존재 여부 조회 -->

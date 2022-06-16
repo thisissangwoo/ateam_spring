@@ -2,6 +2,9 @@ package web_shop;
 
 import java.util.List;
 
+import user.UserVO;
+
+
 public interface ShopService {
 	
 void Review_insert(WReviewVO vo);

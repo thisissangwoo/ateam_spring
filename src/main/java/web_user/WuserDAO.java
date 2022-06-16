@@ -25,20 +25,19 @@ public class WuserDAO implements WuserService {
 
 	//로그인 
 	@Override
-	public UserVO user_login(HashMap<String, String> map) {
-		return sql.selectOne("wuser.mapper.login",map);
+	public UserVO user_login(UserVO vo) {
+		return sql.selectOne("wuser.mapper.login",vo);
 	}
 
 	@Override
-	public boolean user_update(UserVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_update(UserVO vo) {
+		
+		sql.update("wuser.mapper.update",vo);
 	}
 
 	@Override
-	public boolean user_delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void user_delete(String id) {
+		sql.delete("wuser.mapper.delete",id);
 	}
 
 

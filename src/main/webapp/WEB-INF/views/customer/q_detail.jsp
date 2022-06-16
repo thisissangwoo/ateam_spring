@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -66,18 +65,31 @@ p {
 			<td class="left" colspan="7">${vo.filename }<c:if
 					test="${not empty vo.filename}">
 					<!-- 첨부파일이 없지 않으면 아이콘 표시 -->
-					<a href="download.cu?id=${vo.id}"><i
-						class="fa-solid fa-download"></i></a>
+					<a href="download.cu?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
 				</c:if>
 			</td>
 		</tr>
 	</table>
 	<div class="btnSet">
-		<a class='btn-empty' href='list.cu?curPage=${page.curPage }&serch=${page.search}&keyword=${page.keyword }'>목록으로</a>
+		<c:if test="${category eq 'cu'}">
+			<a class='btn-empty' href='list.cu?curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }'>목록으로</a>
+		</c:if>
+		<c:if test="${category eq 'qu'}">
+			<a class='btn-empty' href='list.qu?curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }'>목록으로</a>
+<!-- 			<a class='btn-empty' onclick="to_list()">목록으로</a> -->
+		</c:if>
 		<c:if test="${loginInfo.user_id eq vo.writer }">
 			<a class='btn-empty' href='modify.cu?id=${vo.id}'>수정</a> 
 			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
 		</c:if>
 	</div>
+
+<script type="text/javascript">
+function to_list() {
+	location.href = document.referrer;
+}
+ 
+</script>
+
 </body>
 </html>

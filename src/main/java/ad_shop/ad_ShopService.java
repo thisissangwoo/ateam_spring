@@ -1,6 +1,5 @@
 package ad_shop;
 
-import java.util.HashMap;
 import java.util.List;
 
 import web_shop.WReviewPage;
@@ -33,10 +32,12 @@ public interface ad_ShopService {
 	
 	// 관리자 페이지 사용자 주문 목록 리스트
 	ad_ShopDetailPage order_list(ad_ShopDetailPage page);
+
 	
 	// 관리자 페이지 사용자 주문 리스트 해당 id 상세 조회
 	ShopDetailVO order_detail(int id);
 	
 	// 관리자 페이지 사용자 주문 목록 진행현황 옵션 업데이트
 	boolean update(HashMap<String, Object> map);
+
 }
