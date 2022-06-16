@@ -2,6 +2,8 @@ package com.hanul.anafor;
 
 
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import ad_shop.ad_ShopDetailPage;
 import ad_shop.ad_ShopServiceImpl;
@@ -26,8 +29,6 @@ public class Ad_ShopController {
 	@Autowired private WReviewPage page;
 	@Autowired private ad_ShopDetailPage page1;
 	
-	//@Autowired private WReviewPage page1;
-	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 
 //============================== 주문 상세 ==============================	
@@ -39,7 +40,7 @@ public class Ad_ShopController {
 		
 		return "admin_shop/shopDetail";
 	}
-	
+//============================== 관리자 주문 목록 ==============================		
 	@RequestMapping("/shopList.sp")
 	public String shop(HttpSession session, @RequestParam (defaultValue = "1") 
 	int curPage, Model model) {
@@ -53,16 +54,22 @@ public class Ad_ShopController {
 		return "admin_shop/shopList";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//============================== 관리자 주문현황 갱신요청 ==============================
+	@ResponseBody
+	@RequestMapping("/order_state_update.sp")
+	public boolean order_state_update(int id, String code) {
+		
+		// 앞에는 key (가서 사용할 이름), 뒤에는 value (가서 사용할 값)
+		// 보통 로그인 할 때 id, pw 는 String String 으로 사용하였는데
+		// int, String 같이 사용하여야 하므로 타입이 서로 다르니까 Object 타입으로 하였음
+
+		HashMap<String, Object> map = new HashMap<String, Object>(); 
+		map.put("id", id);			
+		map.put("code", code);
+		
+		return service.update(map);
+	}
+
 //===============================================================================================================================
 
 
@@ -78,11 +85,6 @@ public class Ad_ShopController {
 //		service.review_list();
 		
 		model.addAttribute("page", service.review_list(page));
-		
-		
-		
-		
-		
 		
 		return "admin_shop/list";
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +63,7 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 439px; 
+   left: 438px; 
    top: 150px; 
    font-weight: bold; 
    font-size: 17px; 
@@ -288,12 +289,14 @@
    background: #888888;
 }
 
-
-
+.active {
+	background: #696aad;
+}
 
 </style>
 </head>
 <body>
+
 <form action="order_result.pr" method="post">
 <div class="product">
 
@@ -302,24 +305,21 @@
 	</div>
 	
 	<div style="position: absolute; width: 1000px; height: 45px; left: 246px; top: 90px; background: #E5E5E5;">
-		<p style="position: absolute; width: 60px; height: 25px; left: 70px; top: 10px; font-weight: bold; font-size: 17px; line-height: 27px; color: #84A296;">배송중</p>
 		<p style="position: absolute; width: 66px; height: 25px; left: 450px; top: 10px; font-weight: bold; font-size: 17px; line-height: 27px;">상품정보</p>
 	</div>
 	
-	<div style="position: absolute; width: 267px; height: 0px; left: 900px; top: 267px; border: 1px solid #ccc; transform: rotate(90deg); "></div>
-	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 180px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">배송조회</button>
-	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 240px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">리뷰작성</button>
-	<button type="button" style="position: absolute; width: 170px; height: 40px; left: 1065px; top: 300px; background: #E5E5E5; border-radius: 5px; border: none; font-weight: bold; cursor: pointer;">문의하기</button>
-
    <div class="product_textarea">
       <img src="imgs/shopbox.png" style="position: absolute; width: 200px; height: 190px; left: 246px; top: 80px; border-radius: 11px;">
       <p id="box_text">아나포 스마트 약통 AnaFor Smart IoT 알약/영양제</p>
       <p id="price"><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></p>
       <p id="cnt"><fmt:formatNumber value="${vo.cnt }" pattern="#,##0개" /></p>
    </div>
-   
+
    <div class="order_detail">
       <p id="detail">주문자 정보</p>
+      <c:if test="${vo.code eq 'so1' || vo.code eq 'so2'}">
+		<a class="btn-fill">수정</a>
+      </c:if>
    </div>
    
    <div class="order_detail_category">
@@ -364,39 +364,32 @@
       
       <p id="order_situation_text">주문 상태 확인</p>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 30px; background: #E0E0E0; border-radius: 50%;">
+      <div ${vo.code eq 'so1' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 30px; border-radius: 50%;">
       	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">결제완료</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 230px; background: #E0E0E0; border-radius: 50%;">
+      <div ${vo.code eq 'so2' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 230px; border-radius: 50%;">
       	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 76px; left: 23px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">상품준비중</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 430px; background: #E0E0E0; border-radius: 50%;">
+      <div ${vo.code eq 'so3' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 430px; border-radius: 50%;">
       	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송시작</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; background: #E0E0E0; border-radius: 50%; background: #696aad;">
+      <div ${vo.code eq 'so4' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; border-radius: 50%;">
       	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: white; font-size: 16px;">배송중</p>
+      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송중</p>
       </div>
       
-      <div style="position: absolute; width: 120px; height: 120px; top: 540px; left: 830px; background: #E0E0E0; border-radius: 50%;">
+      <div ${vo.code eq 'so5' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 830px; border-radius: 50%;">
       	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
       	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; color: #929292; font-size: 16px;">배송완료</p>
       </div>
    </div>
 </div>
 </form>
-
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script type="text/javascript">
-
-
-
-</script>
 </body>
 </html>
