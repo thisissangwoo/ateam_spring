@@ -57,13 +57,12 @@ body{
    margin-top:15px;
    border-radius: 5px;
    background-color: white;
-   padding-top: 10px;
+   padding-top: 40px;
    padding-bottom: 30px;
 }
 
 #list-board ul{
    width:90%;
-   margin-top: 30px;
    text-align: right;
 }
 
@@ -74,20 +73,26 @@ body{
    border-top: 1px solid #e0e0e0;
 }
 
-#list-page{
-	width: 1200px;
-	height: 30px;
-	border: 1px black;
+#list-page1{
+	display:inline-block;
+    padding: 10px;
+	width: 60%;
+	height: 50px;
 }
 
-#list-page ul{
- 	width: 1200px;
- 	margin-left:150px;
- 	margin-right:150px;
+#list-page1 ul li{
+   float: left;
 }
 
-#list-page ul li{
-	float: left;
+#list-page2 ul li{
+   float: right;
+}
+
+#list-page2{
+    padding: 10px;
+	display:inline-block;
+	width: 20%;
+	height: 50px;
 }
 a.btn-empty {
    background: #D9D9D9;
@@ -140,7 +145,6 @@ select[name=pageList],select[name=sort],select[name=reply]{
 
 #write{
 	margin-top: 5px;
-	margin-left: 700px;
 }
 
 #page{
@@ -161,7 +165,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
    <div id='list-select'>       
       <ul>
          <tr>
-            <select name='code_name' class='w-px150' onchange="$('form').submit()">
+            <select name='code' class='w-px150' onchange="$('form').submit()">
                <option value="all"  ${page.code eq 'all' ? 'selected' : '' }>카테고리</option>
               <c:forEach items="${codes }" var="vo">
 			   <option ${page.code ne 'all' and page.code eq vo.code ? 'selected' : '' } value="${vo.code }" >${vo.code_name }</option>
@@ -190,9 +194,9 @@ select[name=pageList],select[name=sort],select[name=reply]{
 
 <input type="hidden" name="curPage" value="1" />      
    <div id="list-board">
-      <div id="list-page">
-		 <ul>
-            <li class="left">
+      <div id="list-page1">
+		<ul>
+		   <li class="left">
                <select name="pageList" class='w-px90' onchange="$('form').submit()">
                   <option value="10" ${page.pageList eq 10 ? 'selected' : '' }>10개씩</option>
                   <option value="15" ${page.pageList eq 15 ? 'selected' : '' }>15개씩</option>
@@ -211,22 +215,24 @@ select[name=pageList],select[name=sort],select[name=reply]{
                <option value="교환/환불/반품" ${page.sort eq '교환/환불/반품' ? 'selected' : '' }>교환/환불/반품</option>
                <option value="기타" ${page.sort eq '기타' ? 'selected' : '' }>기타</option>
             </select>
-        	</li>
-            <li class="left">     
+           </li>
+           <li class="left">     
             <select name='reply' class='w-px150' onchange="$('form').submit()">
                 <option value="all" ${page.reply eq 'all' ? 'selected' : '' }>전체</option>
                <option value="N" ${page.reply eq 'N' ? 'selected' : ' ' }>미답변</option>
                <option value="Y" ${page.reply eq 'Y' ? 'selected' : ' ' }>답변완료</option>
             </select>
-        	</li>
-         	</c:if>
-	         <!-- 관리자로 로그인된 경우만 글쓰기 가능 -->    
-	         <!-- 관리자로 로그인된 경우만 글쓰기 가능 -->                  
-	         <c:if test="${loginInfo.admin eq 'Y' }">      
-	            <li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li>
-	         </c:if>   
-        	</ul>
-        </div>   
+           </li>
+           </c:if>	
+		</ul>
+      </div>
+      <div id="list-page2">
+      	<ul>
+      	  <c:if test="${loginInfo.admin eq 'Y' }">      
+            <li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li>
+          </c:if>
+      	</ul>  	
+      </div>   
    </form>   
       <table>
       	<thead>
@@ -269,7 +275,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			      <td>${vo.readcnt}</td>
 			      <td>
 			         <c:if test="${loginInfo.admin eq 'Y' }">
- 					   <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}'}"><img src="imgs/notice_delete.png"> </a>
+ 					   <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}&curPage=${page.curPage }&pageList=${page.pageList}&search=${page.search}&keyword=${page.keyword }&code=${page.code}&sort=${page.sort}&reply=${page.reply}'}"><img src="imgs/notice_delete.png"> </a>
 			         </c:if>
 			      </td>
 			   </tr>
