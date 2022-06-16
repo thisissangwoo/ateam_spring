@@ -102,7 +102,7 @@ a.btn-empty {
 				<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a>
 			</c:if>
 			<c:if test="${loginInfo.admin eq 'Y' }"> 
-				<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}">삭제</a>
+			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}'}">삭제</a>
 			</c:if>			
 			<c:if test="${vo.code eq 'N03'}">
 				<a class='btn-empty' href='reply.co?id=${vo.id }'>답글쓰기</a>

@@ -95,8 +95,6 @@ select {
 								${page.search eq 'title' ? 'selected' : '' }>제목</option>
 							<option value="content"
 								${page.search eq 'content' ? 'selected' : '' }>내용</option>
-							<option value="writer"
-								${page.search eq 'writer' ? 'selected' : '' }>글쓴이</option>
 						</select>
 					</tr>
 					<!-- 검색 키워드를 입력할 input 태그  -->
@@ -116,22 +114,18 @@ select {
 		<tr>
 			<th class="w-px70">NO</th>
 			<th>제목</th>
-			<th class="w-px100">작성자</th>
 			<th class="w-px120">작성일자</th>
-			<th class="w-px100">조회수</th>
 		</tr>
 		<c:if test="${ empty page.list }">
 			<tr>
-				<td colspan="5">게시글 정보가 없습니다.</td>
+				<td colspan="4">게시글 정보가 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${page.list }" var="vo">
 			<tr>
 				<td>${vo.no }</td>
 				<td><a href='detail.no?id=${vo.id }'>${vo.title }</a></td>
-				<td>${vo.name}</td>
 				<td>${vo.writedate}</td>
-				<td>${vo.readcnt}</td>
 			</tr>
 		</c:forEach>
 	</table>
