@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -66,8 +65,7 @@ p {
 			<td class="left" colspan="7">${vo.filename }<c:if
 					test="${not empty vo.filename}">
 					<!-- 첨부파일이 없지 않으면 아이콘 표시 -->
-					<a href="download.cu?id=${vo.id}"><i
-						class="fa-solid fa-download"></i></a>
+					<a href="download.cu?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
 				</c:if>
 			</td>
 		</tr>
