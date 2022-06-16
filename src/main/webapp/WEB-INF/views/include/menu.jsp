@@ -89,7 +89,7 @@
 				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="list.sp">리뷰관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="#">통계</a>
+				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="statistics.st">통계</a>
 									
 				</li>
 			</ul>	
