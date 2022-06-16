@@ -125,12 +125,13 @@
 		var reg = /[^A-Za-z0-9]/g;
 		var upper = /[A-Z]/g, lower = /[a-z]/g, digit = /[0-9]/g;
 		if ( pw != '' ){
-			if ( pw.match(space))		return this.common.space;
-		else if (reg.test(pw))			return this.n_pw.invalid;
-		else if (pw.length > 0 && pw.length < 8 )		return this.common.min;
-		else if (pw.length > 16)		return this.common.max;
-		else if (!upper.test(pw) || !lower.test(pw) || !digit.test(pw))	return this.n_pw.lack;
-		else							return this.n_pw.valid;
+			if(pw == $('[name=user_pw]').val()) return this.n_pw.prevEqual;
+			else if ( pw.match(space))		return this.common.space;
+			else if (reg.test(pw))			return this.n_pw.invalid;
+			else if (pw.length > 0 && pw.length < 8 )		return this.common.min;
+			else if (pw.length > 16)		return this.common.max;
+			else if (!upper.test(pw) || !lower.test(pw) || !digit.test(pw))	return this.n_pw.lack;
+			else							return this.n_pw.valid;
 		}else{
 			return this.n_pw.notChange;
 		}				
@@ -144,12 +145,33 @@
 		, lack : { code : 'invalid', desc : '영문 대/소문자, 숫자를 모두 포함해야 합니다.'}
 		, invalid : { code : 'invalid' , desc : '비밀번호를 영문 대/소문자, 숫자를 모두 포함해야합니다.'}
 		, notChange : {code:'valid',desc:''}
+		, prevEqual : {code:'invalid', desc:'기존의 비밀번호과 같은 비밀번호를 사용할 수 없습니다.'}
+		, chknewpw : { code:'invalid', desc:'비밀번호를 먼저 확인해주세요'	}
 	} 
 	,new_pwchk_status : function ( pw_ck ) {
-		if (  $('[name=new_pw]').val() != '' && pw_ck == '' )	return this.pw.empty_pwchk;
-		else if (pw_ck == $('[name=new_pw]').val())			return this.pw.equal;
-		else if($(['name=new_pw']).val() == '' && pw_ck == '' )	return this.n_pw.notChange;
-		else 													return this.pw.notEqual;
+		if($('[name=new_pw]').val() == '' && pw_ck == ''){     //비밀번호 변경 안할때
+			return this.n_pw.notChange;
+		}else if($('#pwmsg').hasClass("valid")){
+			if($('[name=new_pw]').val() == '' && pw_ck == '' )	return this.n_pw.notChange;
+			else if($('[name=new_pw]').val() == pw_ck) return this.pw.equal;
+			else if(pw_ck == '')return this.pw.empty_pwchk;
+			else{
+				return this.pw.notEqual;
+			}
+		}else{
+			return this.n_pw.chknewpw;
+		}
+		/*if($('[name=new_pw]').hasClass('valid')){
+			if($('[name=new_pw]').val() == '' && pw_ck == '' )	return this.n_pw.notChange;
+			else if($('[name=new_pw]').val() == pw_ck) return this.pw.equal;
+			else return this.pw.empty_pwchk;
+		}else if ($('[name=new_pw]').val() == '' && pw_ck == ''){
+			return this.n_pw.notChange;
+		}
+		else{
+			if(pw_ck=='') return this.pw.empty_pwchk;
+			else return this.pw.notEqual;
+		}*/
 	}
 }
 
