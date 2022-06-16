@@ -38,7 +38,7 @@ public class Ad_ContentsController {
 	   public String list(HttpSession session, Model model,      
 	                  @RequestParam (defaultValue = "1") int curPage, 
 	                  @RequestParam(defaultValue = "10") int pageList,                  
-	                  String search, String keyword, String code_name, 
+	                  String search, String keyword, String code, 
 	                  @RequestParam (defaultValue = "all") String sort, 
 	                  @RequestParam (defaultValue = "all") String reply) {
 	      
@@ -50,15 +50,15 @@ public class Ad_ContentsController {
 	      page.setSearch(search);   
 	      page.setKeyword(keyword);
 	      page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
-	      page.setCode(code_name);
+	      page.setCode(code);
 	      page.setSort(sort);
 	      page.setReply(reply);
 
 	      model.addAttribute("codes",service.code());
 	      
-	      if(code_name == null || code_name.equals("all")) {
+	      if(code == null || code.equals("all")) {
 		      model.addAttribute("page",service.con_list(page));    	  
-	      }else if(code_name.equals("N03")){
+	      }else if(code.equals("N03")){
 	    	  model.addAttribute("page",service.con_list3(page));		  
 	      }else {
 	    	  model.addAttribute("page",service.con_list2(page));
@@ -130,7 +130,13 @@ public class Ad_ContentsController {
 	
 	/* 글삭제 */
 	@RequestMapping("/delete.co")
-	public String delete(int id, int root, HttpSession session, Model model) {
+	public String delete(int id, int root, HttpSession session, Model model,
+				        @RequestParam (defaultValue = "1") int curPage, 
+				        @RequestParam(defaultValue = "10") int pageList,                  
+				        String search, String keyword, String code, 
+				        @RequestParam (defaultValue = "all") String sort, 
+				        @RequestParam (defaultValue = "all") String reply) {
+
 		ContentsVO contents = service.con_detail(id);
 		String uuid = session.getServletContext().getRealPath("resources")+"/"+contents.getFilepath();
 		
@@ -138,6 +144,17 @@ public class Ad_ContentsController {
 			File file = new File(uuid);
 			if(file.exists()) file.delete();
 		}
+		
+		// curPage를 입력받지 않았지만 @RequestParam 어노테이션을 통해 기본값 1을 부여
+		page.setCurPage(curPage); // 현재 페이지에 대한 정보를 담기 위한 처리
+		// 검색조건, 검색어 정보를 담음
+		page.setSearch(search);   
+		page.setKeyword(keyword);
+		page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
+		page.setCode(code);
+		page.setSort(sort);
+		page.setReply(reply);
+
 		
 		model.addAttribute("url", "list.co");
 		model.addAttribute("page", page);

@@ -161,7 +161,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
    <div id='list-select'>       
       <ul>
          <tr>
-            <select name='code_name' class='w-px150' onchange="$('form').submit()">
+            <select name='code' class='w-px150' onchange="$('form').submit()">
                <option value="all"  ${page.code eq 'all' ? 'selected' : '' }>카테고리</option>
               <c:forEach items="${codes }" var="vo">
 			   <option ${page.code ne 'all' and page.code eq vo.code ? 'selected' : '' } value="${vo.code }" >${vo.code_name }</option>
@@ -269,7 +269,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			      <td>${vo.readcnt}</td>
 			      <td>
 			         <c:if test="${loginInfo.admin eq 'Y' }">
- 					   <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}'}"><img src="imgs/notice_delete.png"> </a>
+ 					   <a onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}&curPage=${page.curPage }&pageList=${page.pageList}&search=${page.search}&keyword=${page.keyword }&code=${page.code}&sort=${page.sort}&reply=${page.reply}'}"><img src="imgs/notice_delete.png"> </a>
 			         </c:if>
 			      </td>
 			   </tr>

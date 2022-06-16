@@ -1,9 +1,5 @@
 package common;
 
-import java.util.List;
-
-import ad_contents.CodeVO;
-
 public class PageVO {
 
 	int totalList;			// 총 글의 건수(DB에서 조회해 온 전체 글수)
