@@ -34,18 +34,9 @@ body{
    padding-bottom: 30px;
 }
 
-#list-select{
-   width:80%;
-   margin-top: 50px;
-}
-
-#list-select ul{
-	margin-left: 200px;
-}
-
 table{
 	width:80%;
-	margin-top: 20px;
+	margin-top: 50px;
 }
 
 </style>
@@ -59,26 +50,6 @@ table{
 <input type="hidden" name="curPage" value="1" />  
    
    <div id="list-board">
-	   <div id='list-select'>       
-	      <ul class="left">
-	         <tr>
-	            <select name='search' class='w-px150'>
-	               <option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-	               <option value="title" ${page.search eq 'title' ? 'selected' : '' }>제목</option>
-	               <option value="content" ${page.search eq 'content' ? 'selected' : '' }>내용</option>
-	               <option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
-	            </select>
-	         </tr>
-	         <!-- 검색 키워드를 입력할 input 태그  -->
-	         <tr>
-	            <input type="text" name='keyword' value="${page.keyword }" placeholder="검색 키워드를 입력하세요"/>
-	         </tr>
-	         <!-- 검색 버튼 생성 -->
-	         <tr>
-	            <a onclick="$('form').submit()" id="search_btn"><img src="imgs/notice_search.png"></a>
-	         </tr>
-	      </ul>
-	   </div> 
        <table>
       	<thead>
 	        <tr>
@@ -102,7 +73,7 @@ table{
 			      <td>${vo.sort}</td>
 			      <td class='left'>
 			      	 <c:forEach begin="1" end="${vo.indent }" var="i">      
-			            ${i eq vo.indent ? "<img src='imgs/re.gif' />" : "&nbsp;&nbsp;" }  
+			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }   
 			         </c:forEach>
 			         <a href='detail.cu?id=${vo.id }'>${vo.title }</a>         
 			      </td>
