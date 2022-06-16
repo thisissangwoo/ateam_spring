@@ -2,8 +2,10 @@ package web_shop;
 
 public class ShopDetailVO {
 	
-	private int id, cnt, price;
-	private String user_id, name, tel, addr, coment, code, code_name;
+
+	private int id, cnt, price, no;
+	private String user_id, name, tel, addr, coment, code, order_date,code_name;
+
 	
 	public String getCode_name() {
 		return code_name;
@@ -65,6 +67,19 @@ public class ShopDetailVO {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	public String getOrder_date() {
+		return order_date;
+	}
+	public void setOrder_date(String order_date) {
+		this.order_date = order_date;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	
 	
 	
 
