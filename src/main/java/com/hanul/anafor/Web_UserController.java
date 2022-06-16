@@ -174,6 +174,7 @@ public class Web_UserController {
 				json = json.getJSONObject("kakao_account");
 				System.out.println(json);
 				vo.setUser_id(json.getString("email"));
+				vo.setUser_pw(json.getString("email"));
 				vo.setSocial_type("user_kakao");
 				vo.setUser_name(json.getJSONObject("profile").getString("nickname"));
 				vo.setUser_gender(json.has("gender") && json.getString("gender").equals("female")? "여": "남");
@@ -181,6 +182,7 @@ public class Web_UserController {
 				 if(service.user_social_email(vo)) { 
 					 service.user_social_update(vo); 
 				}else{ service.user_social_insert(vo); } //vo에 담은 데이터를 session의 loginInfo에 담음
+				 vo.setAdmin("N");
 				 session.setAttribute("loginInfo", vo);
 			}
 			return "redirect:/";
@@ -283,6 +285,7 @@ public class Web_UserController {
 				UserVO vo = new UserVO();
 				vo.setSocial_type("user_naver");
 				vo.setUser_id(json.getString("email"));
+				vo.setUser_pw(json.getString("email"));
 				vo.setUser_name(json.getString("name"));
 				vo.setSocial_id(json.getString("id"));
 				String phone = json.getString("mobile"); //전화번호 하이픈 제거
@@ -292,7 +295,6 @@ public class Web_UserController {
 				birthday = birthday.replace("-", "");		//생년월일 날짜 하이픈 제거
 				vo.setUser_birth(json.getString("birthyear")+birthday);
 				vo.setUser_gender(json.has("gender") && json.getString("gender").equals("F") ? "여" : "남");
-				
 				if(service.user_social_email(vo)) {
 					System.out.println("업데이트");
 					service.user_social_update(vo);
@@ -300,6 +302,7 @@ public class Web_UserController {
 					System.out.println("처음입력");
 					service.user_social_insert(vo);
 				}		
+				vo.setAdmin("N");
 				
 				session.setAttribute("loginInfo", vo);
 				
