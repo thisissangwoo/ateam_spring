@@ -16,8 +16,20 @@
 		
 		<table style="width: 100%;">
 			<tr>
+				<td style="width: 300px;">제품명</td>
+				<td style="width: 150px;">리뷰제목</td>
 				<td>리뷰내용</td>
+				<td style="width: 150px;">작성자</td>
+				<td style="width: 150px;">작성 일자</td>
 			</tr>		
+			<tr>
+				<td style="width: 300px;">제품명</td>
+				<td style="width: 150px;">리뷰제목</td>
+				<td>리뷰내용</td>
+				<td style="width: 150px;">작성자</td>
+				<td style="width: 150px;">작성 일자</td>
+			
+			</tr>
 		</table>
 	</div>
 	
