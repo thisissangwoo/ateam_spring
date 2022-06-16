@@ -52,19 +52,19 @@
 
 <!-- 관리자 회원 관리 -->
 <select id="admin_select" resultType="user.UserVO">
-	select *
-	from(select rownum no, a.user_id, a.user_name, a.admin, to_char(a.join_date, 'YYYY-MM-DD') join_date, a.memo, 
-	(select count(*) from notice n where a.user_id = n.writer and code='N03' ) qCnt, 
-	(select count(*) from box_review b where a.user_id = b.user_id) brCnt
-	 from  (select * from anafor_user order by CASE when admin = 'Y' then 1 else 2 end ) a
-	 <include refid="where_search" />)
-	where no between #{beginList} and #{endList} 
+select *
+   from(select rownum no, a.user_id, a.user_name, a.admin, to_char(a.join_date, 'YYYY-MM-DD') join_date, a.memo, 
+   (select count(*) from notice n where a.user_id = n.writer and code='N03' ) qCnt, 
+   (select count(*) from box_review b where a.user_id = b.user_id) brCnt
+    from  (select * from anafor_user) a
+    <include refid="where_search" /> )
+   where no between #{beginList} and #{endList} 
 </select>
 
 <!-- 전체 회원 인원 수 조회 -->
 <select id="usertotalList" resultType="integer">
 	select count(*) 
-		from anafor_user	
+		from anafor_user <include refid="where_search"/>
 </select>
 
 <!-- 회원 메모 삭제 -->

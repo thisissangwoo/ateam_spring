@@ -10,6 +10,8 @@
 <style>
 	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
 	table { width: 70%;  }
+	table th{width:20%;}
+	table td{width:80%;}
 	table th, table td {text-align:left;}
 	table th, table td {border:1px solid #ccc; padding: 5px 10px; color: gray; }
 	#userInfo{
@@ -56,7 +58,7 @@
 		color:#000000;
 	}
 	.invalid{color:red;}
-	valid{color:green;}
+	.valid{color:green;}
 	
 	#delete-user{
 		background:#ccc;
@@ -64,6 +66,13 @@
 		padding:5px;
 	}
 	
+	#namemsg, #telmsg, #pwmsg, #pwchkmsg{
+		display:inline-block;
+		width:300px;
+	}
+	input:focus{
+		border:1px solid #696AAD;
+	}
 </style>
 </head>
 <body>

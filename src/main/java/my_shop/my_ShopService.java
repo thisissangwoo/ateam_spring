@@ -10,6 +10,6 @@ public interface my_ShopService {
 	List<web_shop.ShopDetailVO> order_list(String user_id);
 	
 	// My 해당 주문 목록 상세 조회 (R) 
-	ShopDetailVO order_detail(String user_id);
+	ShopDetailVO order_detail(int id);
 
 }

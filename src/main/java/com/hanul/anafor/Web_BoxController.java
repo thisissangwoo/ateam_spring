@@ -37,12 +37,9 @@ public class Web_BoxController {
 		page.setCurPage(curPage);
 		page.setPageList(pageList);
 		model.addAttribute("page", service.review_list(page));
-		
 			
 		return "shop/box";
 	}
-	
-	
 	
 	@RequestMapping ("/basket.pr")
 	public String basket(BasketVO vo, HttpSession session, Model model) {
@@ -58,14 +55,9 @@ public class Web_BoxController {
 		
 		model.addAttribute("list", service.basket_list(user_id));
 		
-		
 		return "shop/basket";
 	}
 
-	
-	
-	
-	
 	@RequestMapping("/b.pr")
 	public String b(BasketVO vo, HttpSession session) {
 		
@@ -79,10 +71,6 @@ public class Web_BoxController {
 		
 		return "redirect:basket.pr";
 	}
-	
-	
-	
-	
 	
 	
 	
