@@ -1,5 +1,6 @@
 package ad_contents;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class ContentsServiceImpl implements ContentsService {
 	}
 
 	@Override
-	public void con_delete(int id) {
-		dao.con_delete(id);
+	public void con_delete(HashMap<String, Integer> map) {
+		dao.con_delete(map);
 	}
 
 	@Override
@@ -63,6 +64,11 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public ContentsPage con_list2(ContentsPage page) {
 		return dao.con_list2(page);
+	}
+
+	@Override
+	public ContentsPage con_list3(ContentsPage page) {
+		return dao.con_list3(page);
 	}
 
 }

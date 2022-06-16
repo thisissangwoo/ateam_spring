@@ -66,6 +66,11 @@ textarea {
 }
 input[name=title], textarea[name=content] { width: calc(100% - 24px) }
 input[type=file], #delete-file { display: none; }
+
+#sort_a{
+ cursor: auto;
+ margin-left: 15px;
+}
 </style>
 </head>
 <body>
@@ -79,6 +84,7 @@ input[type=file], #delete-file { display: none; }
 		<input type="hidden" name='root' value="${vo.root }">
 		<input type="hidden" name='step' value="${vo.step }">
 		<input type="hidden" name='indent' value="${vo.indent }">
+		<input type="hidden" name='sort' value="${vo.sort }">
 		<p>${vo.category} 답글쓰기</p>
 		<table>
 			<tr>
@@ -87,6 +93,12 @@ input[type=file], #delete-file { display: none; }
 					<input type="text" name="title" title="제목" class="chk"/>
 				</td>
 			</tr>
+			<tr>
+				<th class='w-px120'>문의사항</th>
+				<td class="left" >
+					<a id="sort_a" class="left" readonly>${vo.sort }</a>
+				</td>
+			</tr>			
 			<tr>
 				<th>내용</th>
 				<td>
