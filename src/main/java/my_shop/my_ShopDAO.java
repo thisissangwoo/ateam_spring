@@ -14,9 +14,9 @@ public class my_ShopDAO implements my_ShopService {
 	
 	@Autowired @Qualifier("ateam") private SqlSession sql;
 
-	public ShopDetailVO order_detail(String user_id) {
+	public ShopDetailVO order_detail(int id) {
 		// TODO Auto-generated method stub
-		return sql.selectOne("my_shop.mapper.detail", user_id);
+		return sql.selectOne("my_shop.mapper.detail", id);
 	}
 
 	@Override
@@ -25,5 +25,4 @@ public class my_ShopDAO implements my_ShopService {
 		List<ShopDetailVO> list = sql.selectList("my_shop.mapper.list", user_id);
 		return list;
 	}
-
 }

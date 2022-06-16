@@ -140,7 +140,7 @@
 
 #textarea {
    position: absolute; 
-   background: #ccc; 
+   background: #e5e5e5; 
    border: none; 
    top: 161px; 
    left: 150px; 
@@ -325,13 +325,13 @@
    
    <div class="order_detail_category">
       <p id="person_receive_text">받는사람</p>
-      <input type="text"  readonly value="${vo.name }" name="name" id="person_receive" style="position: absolute; background: #ccc; width: 200px; height: 25px; left: 150px; top: 10px; border: none; border-radius: 5px; font-size: 12px"/>
+      <input type="text"  readonly value="${vo.name }" name="name" id="person_receive" style="position: absolute; background: #e5e5e5; width: 200px; height: 25px; left: 150px; top: 10px; border: none; border-radius: 5px; font-size: 12px"/>
          
       <p id="phone_text">연락처</p>
-      <input id="phone" value="${vo.tel }" readonly type="text" name="tel" style="position: absolute; background: #ccc; border: none; width: 105px; height: 25px; left: 150px; top: 60px; border-radius: 5px;"/>
+      <input id="phone" value="${vo.tel }" readonly type="text" name="tel" style="position: absolute; background: #e5e5e5; border: none; width: 105px; height: 25px; left: 150px; top: 60px; border-radius: 5px;"/>
       
       <p class="addr_receive_text">받는주소</p>
-      <input type="text" value="${vo.addr }" id="default" name="addr" readonly style="background: #ccc; border: none; position: absolute; left: 150px; top: 110px; height: 25px; width: 400px; "/><br/>
+      <input type="text" value="${vo.addr }" id="default" name="addr" readonly style="background: #e5e5e5; border: none; position: absolute; left: 150px; top: 110px; height: 25px; width: 400px; "/><br/>
    
       <p id="delivery_request_text">배송요청사항</p>
       <input id="textarea" name="coment" value="${vo.coment }" />

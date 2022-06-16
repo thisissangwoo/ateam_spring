@@ -19,8 +19,8 @@ public class my_ShopServiceImpl implements my_ShopService {
 		return dao.order_list(user_id);
 	}
 //==================== My 해당 주문 목록 상세 조회 =================
-	public ShopDetailVO order_detail(String user_id) {
+	public ShopDetailVO order_detail(int id) {
 		// TODO Auto-generated method stub
-		return dao.order_detail(user_id);
+		return dao.order_detail(id);
 	}
 }
