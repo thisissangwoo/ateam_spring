@@ -44,15 +44,11 @@ a.btn-empty {
 	<table>
 		<tr>
 			<th class="w-px120">제목</th>
-			<td class="left" colspan="5">${vo.title }</td>
+			<td class="left" >${vo.title }</td>
 		</tr>
 		<tr>
-			<th>글쓴이</th>
-			<td>${vo.name }</td>
 			<th>날짜</th>
-			<td>${vo.writedate }</td>
-			<th>조회수</th>
-			<td>${vo.readcnt }</td>
+			<td class="left" >${vo.writedate }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -60,7 +56,7 @@ a.btn-empty {
 		</tr>
 		<tr>
 			<th>첨부파일</th>
-			<td class="left" colspan="5">${vo.filename }
+			<td class="left" >${vo.filename }
 				<c:if test="${not empty vo.filename}">
 					<!-- 첨부파일이 없지 않으면 아이콘 표시 -->
 					<a href="download.no?id=${vo.id}"><i class="fa-solid fa-download"></i></a>
