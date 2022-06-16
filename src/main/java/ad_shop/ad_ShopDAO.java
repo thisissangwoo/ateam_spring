@@ -1,6 +1,5 @@
 package ad_shop;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -65,14 +64,6 @@ public class ad_ShopDAO implements ad_ShopService {
 		page1.setList(list);		
 		return page1;
 		
-		
-	}
-
-
-
-	@Override
-	public boolean update(HashMap<String, Object> map) {
-		return sql.update("ad_order.mapper.update", map) == 0 ? false : true;
 		
 	}
 

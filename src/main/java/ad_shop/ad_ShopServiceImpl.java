@@ -1,6 +1,5 @@
 package ad_shop;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +43,6 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 	public ad_ShopDetailPage order_list(ad_ShopDetailPage page1) {
 		// TODO Auto-generated method stub
 		return dao.order_list(page1);
-	}
-
-
-	@Override
-	public boolean update(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return dao.update(map);
 	}
 	
 

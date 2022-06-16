@@ -3,14 +3,8 @@ package web_shop;
 public class ShopDetailVO {
 	
 	private int id, cnt, price;
-	private String user_id, name, tel, addr, coment, code, code_name, order_date ;
+	private String user_id, name, tel, addr, coment, code, code_name;
 	
-	public String getOrder_date() {
-		return order_date;
-	}
-	public void setOrder_date(String order_date) {
-		this.order_date = order_date;
-	}
 	public String getCode_name() {
 		return code_name;
 	}

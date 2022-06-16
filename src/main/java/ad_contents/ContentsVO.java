@@ -7,7 +7,7 @@ public class ContentsVO {
 	private int id, readcnt, no, root, step, indent;
 	private String title, content, writer, name;
 	private Date writedate;
-	private String filename, filepath, code, category, sort, reply;
+	private String filename, filepath, code, category;
 	
 	public int getId() {
 		return id;
@@ -99,19 +99,6 @@ public class ContentsVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getSort() {
-		return sort;
-	}
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
-	public String getReply() {
-		return reply;
-	}
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
-
 	
 	
 }

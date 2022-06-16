@@ -26,11 +26,6 @@
 	where no between #{beginList} and #{endList}
 </select>
 
-<update id="update">
-	update shop set code = #{code}
-	where id = #{id}
-</update>
-
 
 
 
