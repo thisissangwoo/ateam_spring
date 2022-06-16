@@ -1,5 +1,7 @@
 package my_shop;
 
+import java.util.List;
+
 import web_shop.ShopDetailVO;
 
 public interface my_ShopService {

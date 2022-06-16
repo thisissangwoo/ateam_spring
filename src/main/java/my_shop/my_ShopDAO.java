@@ -1,5 +1,7 @@
 package my_shop;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +17,12 @@ public class my_ShopDAO implements my_ShopService {
 	public ShopDetailVO order_detail(String user_id) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("my_order.mapper.detail", user_id);
+	}
+
+	@Override
+	public List<ShopDetailVO> order_list(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

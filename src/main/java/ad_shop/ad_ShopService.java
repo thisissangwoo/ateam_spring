@@ -1,5 +1,6 @@
 package ad_shop;
 
+import java.util.HashMap;
 import java.util.List;
 
 import web_shop.WReviewPage;

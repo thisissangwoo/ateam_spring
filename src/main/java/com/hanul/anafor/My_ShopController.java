@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import my_shop.my_ShopServiceImpl;
 import user.UserVO;
+import web_shop.ShopDetailVO;
 
 @Controller
 public class My_ShopController {
