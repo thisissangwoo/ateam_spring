@@ -42,8 +42,8 @@
 					</td>
 					<td>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
-						<a class="btn-fill" href="shopDetail.sp?id=${vo.id }" style="margin: 5px;">리뷰</a>
-						<a class="btn-fill" href="shopDetail.sp?id=${vo.id }">문의</a>
+						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">리뷰</a>
+						<a class="btn-fill" href="shopDetail.my?id=${vo.id }">문의</a>
 					</td>
 				</tr>
 			</c:forEach>

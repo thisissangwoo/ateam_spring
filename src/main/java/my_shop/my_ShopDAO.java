@@ -16,13 +16,14 @@ public class my_ShopDAO implements my_ShopService {
 
 	public ShopDetailVO order_detail(String user_id) {
 		// TODO Auto-generated method stub
-		return sql.selectOne("my_order.mapper.detail", user_id);
+		return sql.selectOne("my_shop.mapper.detail", user_id);
 	}
 
 	@Override
 	public List<ShopDetailVO> order_list(String user_id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<ShopDetailVO> list = sql.selectList("my_shop.mapper.list", user_id);
+		return list;
 	}
 
 }
