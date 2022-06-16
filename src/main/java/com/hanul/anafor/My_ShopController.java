@@ -30,11 +30,10 @@ public class My_ShopController {
 	}
 //============================== My 주문 해당 목록 상세 조회 ===========================
 	@RequestMapping("/shopDetail.my")
-	public String adminShopDetail(HttpSession session, Model model) {
+	public String adminShopDetail(int id, Model model) {
 		
-		String user_id = ((UserVO) session.getAttribute("loginInfo")).getUser_id();
-		service.order_detail(user_id);
-		model.addAttribute("vo", service.order_detail(user_id));
+		service.order_detail(id);
+		model.addAttribute("vo", service.order_detail(id));
 		
 		return "my_shop/shopDetail";
 	}
