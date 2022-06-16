@@ -17,32 +17,32 @@
 
 		<table style="width: 100%; top: 20px;">
 			<tr>
-				<td class="w-px160">주문일</td>
 				<td>제품명</td>
-				<td class="w-px100">금액</td>
-				<td class="w-px100">수량</td>
-				<td class="w-px120">진행현황</td>
-				<td class="w-px200">기타</td>
+				<td class="w-px400">주문일</td>
+				<td class="w-px140">금액</td>
+				<td class="w-px140">수량</td>
+				<td class="w-px140">진행현황</td>
+				<td class="w-px230">기타</td>
 			</tr>
 			
 			<c:forEach items="${list }" var="vo">
 				<tr>
-					<td>${vo.order_date }</td>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
+					<td>${vo.order_date }</td>
 					<td ><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
 					<td>
 						<c:choose>
 							<c:when test="${vo.code eq 'so1' }">결제완료</c:when>
-							<c:when test="${vo.code eq 'so2' }">상품준비</c:when>
+							<c:when test="${vo.code eq 'so2' }">상품준비중</c:when>
 							<c:when test="${vo.code eq 'so3' }">배송시작</c:when>
 							<c:when test="${vo.code eq 'so4' }">배송중</c:when>
 							<c:when test="${vo.code eq 'so5' }">배송완료</c:when>
 						</c:choose>
 					</td>
 					<td>
-						<a class="btn-fill" href="shopDetail.my?id=${vo.id }">조회</a>
-						<a class="btn-fill" href="shopDetail.sp?id=${vo.id }">리뷰</a>
+						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
+						<a class="btn-fill" href="shopDetail.sp?id=${vo.id }" style="margin: 5px;">리뷰</a>
 						<a class="btn-fill" href="shopDetail.sp?id=${vo.id }">문의</a>
 					</td>
 				</tr>

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import web_notice.NoticeVO;
 import web_shop.ShopDetailVO;
 import web_shop.WReviewPage;
 import web_shop.WReviewVO;
@@ -34,27 +33,15 @@ public class ad_ShopDAO implements ad_ShopService {
 		page.setList(list);
 		return page;
 	}
+
 	
-	
-	
-	
-	
-	
-	
-	
-	//========================================================================================================
+//==================== 관리자 주문 목록 페이지 해당 id 상세 조회 ====================
 	@Override
 	public ShopDetailVO order_detail(int id) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("ad_order.mapper.detail", id);
 	}
-
-	@Override
-	public List<ShopDetailVO> order_list() {
-		// TODO Auto-generated method stub
-		return sql.selectList("ad_order.mapper.list");
-	}
-
+//================ 관리자 주문 목록 리스트 조회와 더불어 페이징처리 =================
 	@Override
 	public ad_ShopDetailPage order_list(ad_ShopDetailPage page1) {
 		// TODO Auto-generated method stub
@@ -64,16 +51,28 @@ public class ad_ShopDAO implements ad_ShopService {
 		List<ShopDetailVO> list = sql.selectList("ad_order.mapper.list", page1);
 		page1.setList(list);		
 		return page1;
-		
-		
 	}
-
-
-
+	
+//	@Override
+//	public List<ShopDetailVO> order_list() {
+//		// TODO Auto-generated method stub
+//		return sql.selectList("ad_order.mapper.list");
+//	}
+	
+//=============== 관리자 리스트 페이지 진행 현황 옵션 업데이트 ===============
 	@Override
 	public boolean update(HashMap<String, Object> map) {
 		return sql.update("ad_order.mapper.update", map) == 0 ? false : true;
-		
 	}
-
+//============================================================================	
 }
+
+
+
+
+
+
+
+
+
+

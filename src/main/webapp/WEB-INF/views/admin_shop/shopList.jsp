@@ -18,11 +18,11 @@
 		<table style="width: 100%; top: 20px;">
 			<tr>
 				<td class="w-px80">이름</td>
-				<td>주소</td>
+				<td class="w-px400">주소</td>
 				<td class="w-px160">연락처</td>
-				<td class="w-px160">주문일</td>
-				<td class="w-px450">제품명</td>
-				<td class="w-px100">금액</td>
+				<td class="w-px180">주문일</td>
+				<td>제품명</td>
+				<td class="w-px120">금액</td>
 				<td class="w-px60">수량</td>
 				<td class="w-px80">진행상황</td>
 			</tr>
@@ -34,7 +34,7 @@
 					<td>${vo.tel }</td>
 					<td>${vo.order_date }</td>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
-					<td class='right'><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
+					<td><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
 					<%-- <td>${vo.code_name }</td> --%>
 					<td><select name="code" onchange="go_detail(this, ${vo.id })">

@@ -27,32 +27,43 @@ public class ad_ShopServiceImpl implements ad_ShopService {
 	}
 	
 	
-	//===============================================================================================
-	@Override
-	public ShopDetailVO order_detail(int id) {
-		// TODO Auto-generated method stub
-		return dao.order_detail(id);
-	}
-
-	@Override
-	public List<ShopDetailVO> order_list() {
-		// TODO Auto-generated method stub
-		return dao.order_list();
-	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+//============================== 관리자 shop ==============================
+	
+//================== 관리자 페이지 사용자 주문 목록 리스트 ==================
 	@Override
 	public ad_ShopDetailPage order_list(ad_ShopDetailPage page1) {
 		// TODO Auto-generated method stub
 		return dao.order_list(page1);
 	}
-
-
+	
+//============ 관리자 페이지 사용자 주문 리스트 해당 id 상세 조회 ===========
+	@Override
+	public ShopDetailVO order_detail(int id) {
+		// TODO Auto-generated method stub
+		return dao.order_detail(id);
+	}
+	
+//	@Override
+//	public List<ShopDetailVO> order_list() {
+//		// TODO Auto-generated method stub
+//		return dao.order_list();
+//	}
+	
+//========== 관리자 페이지 사용자 주문 목록 진행현황 옵션 업데이트 ==========
 	@Override
 	public boolean update(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return dao.update(map);
 	}
-	
+//===========================================================================	
 
 
 }

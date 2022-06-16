@@ -8,8 +8,7 @@
 <style type="text/css">
 
 .product {
-   width: 1451px; 
-   height: 1080px;  
+   width: 1451px;  
 }
 
 .product_textarea {
@@ -50,8 +49,8 @@
    position: absolute;
    width: 593px; 
    height: 50px; 
-   left: 359px; 
-   top: 120px; 
+   left: 300px; 
+   top: 85px; 
    font-weight: bold; 
    font-size: 17px; 
    line-height: 50px; 
@@ -62,8 +61,8 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 439px; 
-   top: 150px; 
+   left: 380px; 
+   top: 115px; 
    font-weight: bold; 
    font-size: 17px; 
    line-height: 50px; 
@@ -75,8 +74,8 @@
    position: absolute; 
    width: 147px; 
    height: 50px; 
-   left: 416px; 
-   top: 180px; 
+   left: 359px; 
+   top: 145px; 
    font-weight: bold; 
    font-size: 16px; 
    line-height: 50px; 
@@ -88,7 +87,7 @@
    width: 1239px; 
    height: 350px; 
    left: 150px; 
-   top: 350px;
+   top: 290px;
 }
 
 #detail {
@@ -108,7 +107,7 @@
    width: 127px; 
    height: 237px; 
    left: 400px; 
-   top: 410px; 
+   top: 350px; 
    line-height: 50px; 
    letter-spacing: -0.05em;
 }
@@ -133,7 +132,7 @@
 
 #delivery_request_text {
    position: absolute; 
-   top: 170px; 
+   top: 150px; 
    left: 30px; 
    font-size: 14px; 
    font-weight: bold;
@@ -143,7 +142,7 @@
    position: absolute; 
    background: #ccc; 
    border: none; 
-   top: 182px; 
+   top: 161px; 
    left: 150px; 
    width: 400px; 
    height: 25px; 
@@ -155,7 +154,7 @@
    position: absolute; 
    width: 85px; 
    height: 46px; 
-   top: 240px; 
+   top: 200px; 
    font-weight: bold; 
    font-size: 20px; 
    line-height: 50px; 
@@ -174,7 +173,7 @@
 #bank_text {
    position: absolute; 
    height: 46px; 
-   top: 290px; 
+   top: 250px; 
    font-size: 13px; 
    line-height: 50px; 
    letter-spacing: -0.05em; 
@@ -294,6 +293,13 @@
 	background: #696aad;
 }
 
+.active img {
+	filter : brightness(2.5);
+}
+.active p{
+	color: #fff;
+}
+
 
 </style>
 </head>
@@ -307,7 +313,7 @@
 
    <div class="product_textarea">
       <p id="product_text" >주문자 상세정보</p>
-      <img src="imgs/shopbox.png" style="position: absolute; width: 200px; height: 190px; left: 246px; top: 80px; border-radius: 11px;">
+      <img src="imgs/shopbox.png" style="position: absolute; width: 150px; height: 140px; left: 246px; top: 70px; border-radius: 11px;">
       <p id="box_text">아나포 스마트 약통 AnaFor Smart IoT 알약/영양제</p>
       <p id="price"><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></p>
       <p id="cnt"><fmt:formatNumber value="${vo.cnt }" pattern="#,##0개" /></p>
@@ -333,7 +339,7 @@
       <p id="payment_text">결제 수단</p>
       <p id="bank_text">농협은행(무통장입금)</p>
       
-      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 292px; background: #C4C4C4;">
+      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 252px; background: #C4C4C4;">
          <div style="width: 93px; height: 93px; left: 987px; top: 866px;">
             <p id="total_result_text">총 상품가격</p>
             <p id="delivery_text">배송비</p>
@@ -345,7 +351,7 @@
          </div>
       </div>
       
-      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 385px; background: #C4C4C4;">
+      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 345px; background: #C4C4C4;">
          <div style="height: 93px; left: 987px; top: 866px;">
             <p id="bank_number_text">농협은행(무통장입금)</p>
             <p id="total_detail_result_text">총 결제금액</p>
@@ -357,31 +363,31 @@
          </div>
       </div>
       
-      <p id="order_situation_text">주문 상태 확인</p>
+      <!-- <p id="order_situation_text">주문 상태 확인</p> -->
       
-      <div ${vo.code eq 'so1' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 30px; border-radius: 50%;" >
-      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; left: 25px; top: 60px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">결제완료</p>
+      <div ${vo.code eq 'so1' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 30px; border-radius: 50%;" >
+      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 70px; left: 18px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">결제완료</p>
       </div>
       
-      <div ${vo.code eq 'so2' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 230px; border-radius: 50%;">
-      	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 76px; left: 23px; top: 65px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">상품준비중</p>
+      <div ${vo.code eq 'so2' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 230px; border-radius: 50%;">
+      	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 76px; left: 18px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">상품준비중</p>
       </div>
       
-      <div ${vo.code eq 'so3' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 430px; border-radius: 50%;">
-      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 65px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송시작</p>
+      <div ${vo.code eq 'so3' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 430px; border-radius: 50%;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송시작</p>
       </div>
       
-      <div ${vo.code eq 'so4' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 630px; border-radius: 50%;">
-      	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 62px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송중</p>
+      <div ${vo.code eq 'so4' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 630px; border-radius: 50%;">
+      	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송중</p>
       </div>
       
-      <div ${vo.code eq 'so5' ? "class = 'active'" : '' } style="position: absolute; width: 120px; height: 120px; top: 540px; left: 830px; border-radius: 50%;">
-      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 70px; height: 70px; left: 25px; top: 10px;">
-      	<p style="position: absolute; width: 70px; height: 70px; left: 25px; top: 65px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송완료</p>
+      <div ${vo.code eq 'so5' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 830px; border-radius: 50%;">
+      	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송완료</p>
       </div>
    </div>
 </div>
