@@ -55,6 +55,8 @@ public class Web_CustomerController {
 		service.qna_read(id);
 		model.addAttribute("vo", service.qna_detail(id));
 		model.addAttribute("crlf", "\r\n");	
+		// 페이징 처리한 결과값을 model에 담아 보냄
+		model.addAttribute("page", page);
 		return "customer/q_detail";
 	}
 	

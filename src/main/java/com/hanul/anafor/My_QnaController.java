@@ -46,4 +46,5 @@ public class My_QnaController {
  
 	  return "my_qna/list";
    }
+   
 }
