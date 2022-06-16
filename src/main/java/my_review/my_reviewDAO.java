@@ -22,8 +22,7 @@ public class my_reviewDAO implements my_reviewService {
 
 	@Override
 	public void review_update(WReviewVO vo) {
-		// TODO Auto-generated method stub
-
+		sql.update("my_review.mapper.update", vo);
 	}
 
 	@Override
@@ -40,6 +39,11 @@ public class my_reviewDAO implements my_reviewService {
 		List<WReviewVO> list = sql.selectList("my_review.mapper.list", page);
 		page.setList(list);
 		return page;
+	}
+
+	@Override
+	public WReviewVO review_detail(int id) {
+		return sql.selectOne("my_review.mapper.detail", id);
 	}
 
 }

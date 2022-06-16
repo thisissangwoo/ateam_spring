@@ -20,5 +20,18 @@
 	</select>
 
 		
+	<select id="detail" resultType="web_shop.WReviewVO">
+		select r.*, (select user_name from anafor_user where user_id = r.user_id) name
+		from box_review r
+		where rev_id = #{rev_id}	
+	</select>	
+		
+		
+	<update id="update">
+		update box_review set 	rev_grade = #{rev_grade}, rev_content = #{rev_content},
+								rev_title = #{rev_title}, rev_date = sysdate
+		where user_id = #{user_id}
+	</update>	
+	
 	
 </mapper>

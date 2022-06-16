@@ -18,8 +18,7 @@ public class my_reviewServiceImpl implements my_reviewService {
 
 	@Override
 	public void review_update(WReviewVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.review_update(vo);
 	}
 
 	@Override
@@ -31,6 +30,11 @@ public class my_reviewServiceImpl implements my_reviewService {
 	@Override
 	public MyReviewPage review_list(MyReviewPage page) {
 		return dao.review_list(page);
+	}
+
+	@Override
+	public WReviewVO review_detail(int id) {
+		return dao.review_detail(id);
 	}
 
 }

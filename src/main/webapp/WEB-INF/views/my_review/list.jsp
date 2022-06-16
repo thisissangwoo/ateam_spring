@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +25,18 @@
 				<td style="width: 150px;">작성자</td>
 				<td style="width: 150px;">작성 일자</td>
 			</tr>		
-			<tr>
-				<td style="width: 300px;">제품명</td>
-				<td style="width: 150px;">리뷰제목</td>
-				<td>리뷰내용</td>
-				<td style="width: 150px;">작성자</td>
-				<td style="width: 150px;">작성 일자</td>
-			
-			</tr>
+			<c:forEach items="${page.list }" var="vo">
+				<tr>
+					<td style="width: 300px;">아나포 스마트 약통 AnaFor SmartBOX</td>
+					<td style="width: 150px;">${vo.rev_title }</td>
+					<td><a href="reviewDetail.rev?id=${vo.rev_id }">${vo.rev_content }</a></td>
+					<td style="width: 150px;">${vo.user_id }</td>
+					<td style="width: 150px;">
+						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
+					</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 	
