@@ -99,7 +99,7 @@
 		else if(birth.length!=0 && dt.getMonth()+1 != m )  return this.birth.invalid;
 		else if(birth.length!=0 && dt.getFullYear() != y)  return this.birth.invalid;
 		else if(y < 1922 || y >today.getFullYear()-13)			 return this.birth.invalid;
-		else if((y == today.getFullYear() && m > today.getMonth()+1)|| (y == today.getFullYear() && m == today.getMonth()+1 && d > today.getDate() ))  return this.birth.invalid;
+		else if((y == today.getFullYear() && m > today.getMonth()+1)|| (y == today.getFullYear() && m == today.getMonth()+1 && d > today.getDate() ))  return this.birth.notAge;
 		else if(birth=='') return this.birth.empty;
 		else return this.birth.valid;
 		
@@ -107,18 +107,19 @@
 	, birth:{
 		empty:{code:'invalid',desc:'생년월일을 입력하세요. 예)19990101'},
 		valid:{code:'valid',desc:''},
-		invalid:{code:'invalid',desc:"생년월일을 형식에 맞게 입력해주세요. 예)19990101"}
+		invalid:{code:'invalid',desc:"생년월일을 형식에 맞게 입력해주세요. 예)19990101"},
+		notAge :{code:'invalid',desc:"13살 이상만 가입이 가능합니다."}
 	}
 	, tel_status:function(tel){
-		var reg = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+		var reg = /^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$/;
 		if(tel=='') return this.tel.empty;
 		else if(reg.test(tel)) return this.tel.valid;
 		else return this.tel.invalid;
 	}
 	, tel:{
-		empty:{code:'invalid',desc:"번호를 입력하세요. '-'없이 번호만 입력 예)01012345678"},
+		empty:{code:'invalid',desc:"휴대폰번호를 입력하세요. '-'을 입력해주세요 예)010-1234-5678"},
 		valid:{code:'valid',desc:''},
-		invalid:{code:'invalid',desc:"번호를 형식에 맞게 입력해주세요. '-'없이 번호만 입력 예)01012345678"}
+		invalid:{code:'invalid',desc:"휴대폰번호를 형식에 맞게 입력해주세요. '-'을 입력해주세요 예)010-1234-5678"}
 	}
 	, new_pw_status : function ( pw ) {
 		// 비밀번호를 영문 대/소문자, 숫자 외 입력시
