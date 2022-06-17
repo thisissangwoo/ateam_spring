@@ -86,7 +86,7 @@ input[type=file], #delete-file { display: none; }
 				<tr>
 					<th class='w-px120'>제목</th>
 					<td>
-						<input type="text" name="title" title="제목" class="chk"/>
+						<input type="text" name="title" title="제목" class="chk" autofocus/>
 					</td>
 				</tr>
   				<tr>

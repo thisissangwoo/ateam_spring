@@ -159,10 +159,9 @@ select {
 						<a class='btn-empty' onclick="$('form').submit()">검색</a>
 					</tr>
 				</ul>
-
  				<ul>
 					<!-- 로그인한 경우 -->
-					<c:if test="${ !empty loginInfo }">
+					<c:if test="${ !empty loginInfo and loginInfo.admin eq 'N'}">
 						<li><a class='btn-empty' href='new.cu'>글쓰기</a></li>
 					</c:if>
 				</ul>
@@ -174,6 +173,7 @@ select {
 			<tr>
 				<th class="w-px70">NO</th>				
 				<th class="w-px120">문의사항</th>
+	            <th class="w-px100">답변상태</th>
 				<th>제목</th>
 				<th class="w-px100">작성자</th>
 				<th class="w-px120">작성일자</th>
@@ -181,13 +181,19 @@ select {
 			</tr>
 			<c:if test="${ empty page.list }">
 				<tr>
-					<td colspan="6">게시글 정보가 없습니다.</td>
+					<td colspan="7">게시글 정보가 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td>${vo.no }</td>
 					<td>${vo.sort}</td>
+ 			        <td>
+						<c:choose>
+							<c:when test="${vo.reply eq 'Y'}">답변완료</c:when>
+							<c:otherwise> 미답변 </c:otherwise>        
+ 			        	</c:choose>
+ 			        </td>
 					<td class='left'>
 						<c:forEach begin="1" end="${vo.indent }" var="i">
 							${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }

@@ -90,7 +90,16 @@ public class IoTController {
 	      System.out.println(vo.getCase_date1());
 	      
 	      return "";
-	   }   
+	   }  
+	
+	@ResponseBody
+	@RequestMapping(value ="/iot_list", produces = "application/json;charset=UTF-8")
+	public String list(HttpServletRequest req ) {
+		String data = req.getParameter("data");
+		System.out.println(data);
+		List<IoTVO> list = sql.selectList("IoT.mapper.iot_list",data);
+		return gson.toJson(list);
+	}
 
 }
 
