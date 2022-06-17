@@ -70,7 +70,12 @@ table{
 			<c:forEach items="${page.list }" var="vo">
 			   <tr>
 			      <td>${vo.no }</td>
-			      <td>${vo.sort}</td>
+					<c:if test="${ vo.writer ne 'admin' }">
+						<td>${vo.sort}</td>
+ 			        </c:if> 			        
+					<c:if test="${ vo.writer eq 'admin' }">
+						<td></td>						
+					</c:if>
 			      <td class='left'>
 			      	 <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }   
