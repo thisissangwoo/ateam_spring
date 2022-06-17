@@ -288,13 +288,14 @@ public class Web_UserController {
 				vo.setUser_pw(json.getString("email"));
 				vo.setUser_name(json.getString("name"));
 				vo.setSocial_id(json.getString("id"));
-				String phone = json.getString("mobile"); //전화번호 하이픈 제거
-				phone=phone.replace("-", "");
-				vo.setUser_tel(phone);
+				vo.setUser_tel(json.getString("mobile"));
+				
 				String birthday= json.getString("birthday");
 				birthday = birthday.replace("-", "");		//생년월일 날짜 하이픈 제거
+				
 				vo.setUser_birth(json.getString("birthyear")+birthday);
 				vo.setUser_gender(json.has("gender") && json.getString("gender").equals("F") ? "여" : "남");
+				
 				if(service.user_social_email(vo)) {
 					System.out.println("업데이트");
 					service.user_social_update(vo);
@@ -303,9 +304,7 @@ public class Web_UserController {
 					service.user_social_insert(vo);
 				}		
 				vo.setAdmin("N");
-				
-				session.setAttribute("loginInfo", vo);
-				
+				session.setAttribute("loginInfo", vo);	
 			}
 //			{
 //				  "resultcode": "00",
