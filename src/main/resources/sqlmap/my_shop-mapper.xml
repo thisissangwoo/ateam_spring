@@ -14,7 +14,7 @@
 <select id="detail" resultType="web_shop.ShopDetailVO">
 	select * 
 	from shop
-	where user_id = #{user_id}
+	where id = #{id}
 </select>
 
 </mapper>
