@@ -34,8 +34,13 @@ body{
    padding-bottom: 30px;
 }
 
+#list-board h3{
+   font-size: 22px;
+   font-weight: bold;
+}
+
 table{
-	width:80%;
+	width:70%;
 	margin-top: 50px;
 }
 
@@ -48,8 +53,8 @@ table{
    <h3>문의내역 확인</h3>
 </div>
 <input type="hidden" name="curPage" value="1" />  
-   
    <div id="list-board">
+   	 <h3> < 나의 게시글 > </h3>
        <table>
       	<thead>
 	        <tr>
@@ -62,15 +67,15 @@ table{
 	        </tr>
 	     </thead>
 		<tbody> 
-			<c:if test="${ empty page.list }">
-				<tr>
-					<td colspan="6">게시글 정보가 없습니다.</td>
-				</tr>
-			</c:if>
 			<c:forEach items="${page.list }" var="vo">
 			   <tr>
 			      <td>${vo.no }</td>
-			      <td>${vo.sort}</td>
+					<c:if test="${ vo.writer ne 'admin' }">
+						<td>${vo.sort}</td>
+ 			        </c:if> 			        
+					<c:if test="${ vo.writer eq 'admin' }">
+						<td></td>						
+					</c:if>
 			      <td class='left'>
 			      	 <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }   

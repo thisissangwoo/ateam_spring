@@ -4,11 +4,25 @@
 <mapper namespace="ad_graph.mapper">
 
 	<select id="select" resultType="ad_main.graphVO">
-		 select count(*) as cnt, to_Char(join_date,'YYYY-MM-dd') as gdate from anafor_user where join_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') +1 Group by join_date
+		select *
+		from (SELECT  TO_CHAR(TO_DATE(join_date,'yy/MM/dd')) AS gdate,
+		      COUNT(*) AS cnt 
+		      FROM anafor_user
+		      GROUP BY TO_CHAR(TO_DATE(join_date,'yy/MM/dd'))
+		      ORDER BY gdate)
+		where  gdate between to_char(to_Date(#{lWeek},'yy/MM/dd')) 
+		and to_char(to_Date(#{today},'yy/MM/dd') +1)  
 	</select> 
 
 	<select id="select2" resultType="ad_main.graphVO">
-		 select sum(cnt) as cnt, to_Char(order_date,'YYYY-MM-dd') as gdate from shop where order_date between to_Date(#{lWeek},'YYYY-MM-DD') and to_Date(#{today},'YYYY-MM-DD') +1 Group by order_date
+		select *
+		from (SELECT  TO_CHAR(TO_DATE(order_date,'yy/MM/dd')) AS gdate,
+		      SUM(cnt) AS cnt 
+		      FROM shop
+		      GROUP BY TO_CHAR(TO_DATE(order_date,'yy/MM/dd'))
+		      ORDER BY gdate)
+		where  gdate between to_char(to_Date(#{lWeek},'yy/MM/dd')) 
+		and to_char(to_Date(#{today},'yy/MM/dd') +1)  
 	</select>
 	
 	<select id="select3" resultType="web_shop.ShopDetailVO">
@@ -16,7 +30,7 @@
 	</select>
 
 	<select id="select4" resultType="web_customer.CustomerVO">
-		select rownum no, writer, title, to_Char(writedate,'YYYY-MM-dd') writedate from notice where to_char(writedate,'YYYY-MM-DD') = #{date} and code= 'N03'
+		select rownum no, writer, title, to_Char(writedate,'YYYY-MM-dd') writedate from notice where to_char(writedate,'YYYY-MM-DD') = #{date} and code= 'N03' and reply='N'
 	</select>
 
 	<select id="select5" resultType="user.UserVO">
