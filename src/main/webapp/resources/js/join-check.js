@@ -161,17 +161,7 @@
 		}else{
 			return this.n_pw.chknewpw;
 		}
-		/*if($('[name=new_pw]').hasClass('valid')){
-			if($('[name=new_pw]').val() == '' && pw_ck == '' )	return this.n_pw.notChange;
-			else if($('[name=new_pw]').val() == pw_ck) return this.pw.equal;
-			else return this.pw.empty_pwchk;
-		}else if ($('[name=new_pw]').val() == '' && pw_ck == ''){
-			return this.n_pw.notChange;
-		}
-		else{
-			if(pw_ck=='') return this.pw.empty_pwchk;
-			else return this.pw.notEqual;
-		}*/
+	
 	}
 }
 
