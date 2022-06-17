@@ -45,7 +45,7 @@
 <body>
 	<div id = "titlename">회원정보확인</div>
 	<div id = "msg_user">
-		<span id="spanid">${loginInfo.user_id}</span>
+		<span id="spanid">${loginInfo.user_name}</span>
 		<span>&nbsp;님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.(* 소셜로그인의 경우 비밀번호란에 아이디를 그대로 입력하시면 됩니다.)</span>
 		<input type="hidden" name="userid" id="userid" value="${loginInfo.user_id}"/>
 	</div>
