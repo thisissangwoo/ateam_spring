@@ -32,14 +32,15 @@
 }
 
 table {
+	width: 1000px;
 	margin-bottom: 10px;
 }
 
 #list-top{
 	padding-top:115px;
-	padding-left:10px;
+	padding-left:470px;
 	padding-right:220px;
-	width: 1500px;
+	width: 1000px;
 	display: block;
 	margin: 0 auto;
 }
@@ -124,7 +125,7 @@ select {
 		<c:forEach items="${page.list }" var="vo">
 			<tr>
 				<td>${vo.no }</td>
-				<td><a href='detail.no?id=${vo.id }'>${vo.title }</a></td>
+				<td class="left"><a href='detail.no?id=${vo.id }'>${vo.title }</a></td>
 				<td>${vo.writedate}</td>
 			</tr>
 		</c:forEach>

@@ -9,11 +9,10 @@
 		 #{case_date2, jdbcType=VARCHAR}, #{case_date3, jdbcType=VARCHAR}, #{case_date4, jdbcType=VARCHAR})
 	</insert>
 	
-	<!-- <select id="select" resultType="schedule.ScheduleVO">
+	<select id="iot_list" resultType="IoT.IoTVO">
 		select *
-		from schedule
-		where user_id = #{data}
-	</select> -->
-
+		from IOT_BOX
+		where user_id = #{user_id}
+	</select>
 
 </mapper>
