@@ -25,6 +25,12 @@
 				<td style="font-weight: bold;" class="w-px300">기타</td>
 			</tr>
 			
+			<c:if test="${ empty list }">
+				<tr>
+					<td colspan="6">주문 내역이 없습니다.</td>
+				</tr>
+			</c:if>
+			
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
@@ -33,6 +39,7 @@
 					<td>${vo.cnt }</td>
 					<td style="color: red; font-weight: bold;">
 						<c:choose>
+							<c:when test="${vo.code eq 'so0' }">입금전</c:when>
 							<c:when test="${vo.code eq 'so1' }">결제완료</c:when>
 							<c:when test="${vo.code eq 'so2' }">상품준비중</c:when>
 							<c:when test="${vo.code eq 'so3' }">배송시작</c:when>
@@ -40,6 +47,8 @@
 							<c:when test="${vo.code eq 'so5' }">배송완료</c:when>
 						</c:choose>
 					</td>
+					
+			
 					<td>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">리뷰</a>
