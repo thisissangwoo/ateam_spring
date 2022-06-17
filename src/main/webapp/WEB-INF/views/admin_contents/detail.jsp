@@ -75,8 +75,10 @@ a.btn-empty {
 			<tr>
 				<th>글쓴이</th>
 				<td>${vo.name }</td>
+				<c:if test="${vo.code eq 'N03'}">
 				<th>문의사항</th>
 				<td>${vo.sort}</td>
+				</c:if>
 				<th>날짜</th>
 				<td>${vo.writedate }</td>
 				<th>조회수</th>
@@ -101,7 +103,7 @@ a.btn-empty {
 <!--  			<a class='btn-empty' onclick="toList()">목록으로</a>  -->
 <!--  			<a class='btn-empty' onclick="history.back(-1)">목록으로</a>  -->
 			<c:if test="${loginInfo.user_id eq vo.writer }">
-				<a class='btn-empty' href='modify.co?id=${vo.id}'>수정</a>
+				<a class='btn-empty' href='modify.co?id=${vo.id}&code=${vo.code}'>수정</a>
 			</c:if>
 			<c:if test="${loginInfo.admin eq 'Y' }"> 
 			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.co?id=${vo.id}&root=${vo.root}'}">삭제</a>

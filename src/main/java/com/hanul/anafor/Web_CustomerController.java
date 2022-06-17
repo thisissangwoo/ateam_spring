@@ -25,18 +25,19 @@ import web_user.WuserServiceImpl;
 public class Web_CustomerController {
 
 	@Autowired private CustomerServiceImpl service;
-	
 	@Autowired private CommonService common;
-	
 	@Autowired private CustomerPage page;
-	
 	@Autowired private WuserServiceImpl user;
 	
 	
 	/*페이징 처리된 Q&A 목록*/
 	@RequestMapping ("/list.cu")
-	public String list(HttpSession session, @RequestParam (defaultValue = "1") 
-		int curPage, Model model, String search, String keyword) {
+	   public String list(HttpSession session, Model model,      
+               @RequestParam (defaultValue = "1") int curPage, 
+               @RequestParam(defaultValue = "10") int pageList,                  
+               String search, String keyword, String code, 
+               @RequestParam (defaultValue = "all") String sort, 
+               @RequestParam (defaultValue = "all") String reply) {
 		
 		session.setAttribute("category", "cu");
 		
@@ -45,8 +46,14 @@ public class Web_CustomerController {
 		// 검색조건, 검색어 정보를 담음
 		page.setSearch(search);	
 		page.setKeyword(keyword);
-		model.addAttribute("page",service.qna_list(page));
-		return "customer/q_list";
+	    page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
+	    page.setCode(code);
+	    page.setSort(sort);
+	    page.setReply(reply);
+		
+	    model.addAttribute("page",service.qna_list(page));
+		   
+	    return "customer/q_list";
 	}
 	
 	/*Q&A 상세글 조회*/
