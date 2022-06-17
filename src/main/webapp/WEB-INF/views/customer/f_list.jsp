@@ -205,7 +205,7 @@ summary::-webkit-details-marker {
    	      	</c:forEach>
 	   	</div>
 	</div>
-	</div>
+</div>
 	<div>
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		<!-- jsp 표준 include를 사용하여 설정 -->

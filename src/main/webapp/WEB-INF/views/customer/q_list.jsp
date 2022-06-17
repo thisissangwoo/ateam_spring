@@ -34,15 +34,38 @@
 }
 
 table {
+	margin-top:20px;
 	margin-bottom: 20px;
 }
 
-#list-top{
-	width: 1500px;
+#list-t{
 	display: block;
 	margin: 0 auto;
-	padding-left:5px;
-	padding-right:30px;
+	width: 1500px;
+	height: 50px;
+	padding:0px;
+}
+
+#list-top1{
+	display:inline-block;
+	width: 83%;
+	height:45px;
+}
+
+#list-top1 ul li{
+	float: left;
+	padding-top: 11px;
+}
+
+#list-top2{
+	display:inline-block;
+	width: 15%;
+	height:45px;
+}
+
+#list-top2 ul li{
+	float: right;
+	padding-top: 15px;
 }
 
 #list-content{
@@ -55,7 +78,7 @@ a.btn-empty {
 	background: #fff;
 	color: #929292;
 	text-align: center;
-	padding: 3px 10px;
+	padding: 5px 5px;
 	margin-left: 5px;
 	border: 1px solid #b0b0b0;
 }
@@ -113,6 +136,14 @@ select {
 	color: white;	
 }
 
+#sort,#reply{
+	margin-right: 5px;
+}
+
+#write{
+	margin-left: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -134,36 +165,53 @@ select {
 				</ul>
 			</div>
 		</div>
-		<div id='list-top'>
-			<div>
-				<!-- 항목별 검색 처리 부분 -->
+		<div id="list-t">
+			<div id="list-top1">
 				<ul>
+					<li>
 					<tr>
+			            <select id="sort" name='sort' class='w-px150' onchange="$('form').submit()">
+			               <option value="all" ${page.sort eq 'all' ? 'selected' : '' }>문의사항</option>
+			               <option value="제품문의" ${page.sort eq '제품문의' ? 'selected' : '' }>제품문의</option>
+			               <option value="결제문의" ${page.sort eq '결제문의' ? 'selected' : '' }>결제문의</option>
+			               <option value="배송문의" ${page.sort eq '배송문의' ? 'selected' : '' }>배송문의</option>
+			               <option value="교환/환불/반품" ${page.sort eq '교환/환불/반품' ? 'selected' : '' }>교환/환불/반품</option>
+			               <option value="기타" ${page.sort eq '기타' ? 'selected' : '' }>기타</option>
+			            </select>
+					</tr>
+					<tr>
+			            <select id='reply' name='reply' class='w-px150' onchange="$('form').submit()">
+			                <option value="all" ${page.reply eq 'all' ? 'selected' : '' }>답변상태</option>
+			               <option value="N" ${page.reply eq 'N' ? 'selected' : ' ' }>미답변</option>
+			               <option value="Y" ${page.reply eq 'Y' ? 'selected' : ' ' }>답변완료</option>
+			            </select>
+					</tr>
+						<tr>
 						<select name='search' class='w-px90'>
 							<option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-							<option value="title"
-								${page.search eq 'title' ? 'selected' : '' }>제목</option>
-							<option value="content"
-								${page.search eq 'content' ? 'selected' : '' }>내용</option>
-							<option value="writer"
-								${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
+							<option value="title" ${page.search eq 'title' ? 'selected' : '' }>제목</option>
+							<option value="content" ${page.search eq 'content' ? 'selected' : '' }>내용</option>
+							<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
 						</select>
 					</tr>
 					<!-- 검색 키워드를 입력할 input 태그  -->
 					<tr>
-						<input type="text" name='keyword' value="${page.keyword }"
-							class='w-px300' />
+						<input type="text" name='keyword' value="${page.keyword }" class='w-px300' />
 					</tr>
 					<!-- 검색 버튼 생성 -->
 					<tr>
 						<a class='btn-empty' onclick="$('form').submit()">검색</a>
 					</tr>
 				</ul>
- 				<ul>
-					<!-- 로그인한 경우 -->
-					<c:if test="${ !empty loginInfo and loginInfo.admin eq 'N'}">
-						<li><a class='btn-empty' href='new.cu'>글쓰기</a></li>
-					</c:if>
+			</div>
+			
+			<div id="list-top2">
+				<ul>
+					<li>
+						<c:if test="${ !empty loginInfo and loginInfo.admin eq 'N'}">
+							<tr id="write" ><a class='btn-empty' href='new.cu'>글쓰기</a></tr>
+						</c:if>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -187,13 +235,19 @@ select {
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td>${vo.no }</td>
-					<td>${vo.sort}</td>
- 			        <td>
-						<c:choose>
-							<c:when test="${vo.reply eq 'Y'}">답변완료</c:when>
-							<c:otherwise> 미답변 </c:otherwise>        
- 			        	</c:choose>
- 			        </td>
+					<c:if test="${ vo.writer ne 'admin' }">
+						<td>${vo.sort}</td>
+	 			        <td>
+							<c:choose>
+								<c:when test="${vo.reply eq 'Y'}">답변완료</c:when>
+								<c:otherwise> 미답변 </c:otherwise>        
+	 			        	</c:choose>
+	 			        </td>
+ 			        </c:if> 			        
+					<c:if test="${ vo.writer eq 'admin' }">
+						<td></td>
+						<td></td>						
+					</c:if>
 					<td class='left'>
 						<c:forEach begin="1" end="${vo.indent }" var="i">
 							${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }

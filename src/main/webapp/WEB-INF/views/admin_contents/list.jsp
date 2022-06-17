@@ -192,7 +192,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
    </div>
 </div>
 
-<input type="hidden" name="curPage" value="1" />      
+<input type="hidden" name="curPage" value="1" />         
    <div id="list-board">
       <div id="list-page1">
 		<ul>
@@ -208,7 +208,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
             <c:if test="${page.code eq 'N03'}"> 
             <li class="left">     
             <select name='sort' class='w-px150' onchange="$('form').submit()">
-                <option value="all" ${page.sort eq 'all' ? 'selected' : '' }>전체</option>
+               <option value="all" ${page.sort eq 'all' ? 'selected' : '' }>전체</option>
                <option value="제품문의" ${page.sort eq '제품문의' ? 'selected' : '' }>제품문의</option>
                <option value="결제문의" ${page.sort eq '결제문의' ? 'selected' : '' }>결제문의</option>
                <option value="배송문의" ${page.sort eq '배송문의' ? 'selected' : '' }>배송문의</option>
