@@ -202,6 +202,13 @@ html, body{min-height: 100%; height: 100%;}
 	
 </script>
 
+<script>
+var result = '${result}';
+if (result === 'OK') {
+	alert("주문이 정상적으로 처리되었습니다.");
+}
+</script>
+
 </div>
 
 </body>

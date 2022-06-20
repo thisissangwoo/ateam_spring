@@ -172,15 +172,13 @@ summary::-webkit-details-marker {
 			</ul>
 		</div>
 	</div>
-	<div id='list-top'>
+<%-- 	<div id='list-top'>
 		<div id='list-content'>
 			<!-- 항목별 검색 처리 부분 -->
 			<ul>
 				<tr>
 					<select name='search' class='w-px90'>
-						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-						<option value="title" ${page.search eq 'title' ? 'selected' : '' }>질문</option>
-						<option value="content" ${page.search eq 'content' ? 'selected' : '' }>답변</option>
+						<option value="all" ${page.search eq 'all' ? 'selected' : '' }>FAQ</option>
 					</select>			
 				</tr>		
 				<!-- 검색 키워드를 입력할 input 태그  -->
@@ -189,7 +187,7 @@ summary::-webkit-details-marker {
 				<tr><a class='btn-empty' onclick="$('form').submit()">검색</a></tr>
 			</ul>
 		</div>	
-	</div>
+	</div> --%>
 </form>	
 <div style="margin: auto; width: 1000px;">
 	<div class='faq'>
@@ -207,7 +205,7 @@ summary::-webkit-details-marker {
    	      	</c:forEach>
 	   	</div>
 	</div>
-	</div>
+</div>
 	<div>
 		<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		<!-- jsp 표준 include를 사용하여 설정 -->
