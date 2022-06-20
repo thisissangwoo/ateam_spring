@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import user.UserVO;
 import web_shop.BasketVO;
@@ -109,7 +110,7 @@ public class Web_BoxController {
 	}
 	
 	@RequestMapping("/order_result.pr")
-	public String order_result(ShopDetailVO vo, HttpSession session) {
+	public String order_result(ShopDetailVO vo, HttpSession session, RedirectAttributes rttr) {
 		
 		BasketVO vo2 = (BasketVO) session.getAttribute("orderInfo");
 		UserVO vo3 = (UserVO) session.getAttribute("loginInfo");
@@ -118,10 +119,20 @@ public class Web_BoxController {
 		vo.setUser_id(vo3.getUser_id());
 		String tel = vo.getTel();
 		tel = tel.replaceAll(",", "-");
+		tel = tel.substring(0, 8) + "-" + tel.substring(8);
+
 		vo.setTel(tel);
 		service.order_insert(vo);
 		System.out.println(vo.getTel());
 		System.out.println("order.mapper.insert");
+		
+		// redirect 페이지 이동 시 값을 가져가는 클래스 → RedirectAttributes
+		// 아래와 같이 담은 값은 redirect 되는 페이지에서만 일회성으로 사용할 수 있음.
+		// 현 페이지에선 redirect:/ 즉, home.jsp 에서만 사용할 수 있는 상태임.
+		// 만약 redirect:list.cu 라면
+		// 매핑이 list.cu 인 것을 찾아 로직을 수행 후 리턴되는 페이지(list.jsp)에서만
+		// 값을 사용할 수 있음.
+		rttr.addFlashAttribute("result", "OK");
 		
 		return "redirect:/";
 	}

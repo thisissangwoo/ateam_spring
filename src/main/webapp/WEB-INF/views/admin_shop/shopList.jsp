@@ -38,6 +38,7 @@
 					<td>${vo.cnt }</td>
 					<%-- <td>${vo.code_name }</td> --%>
 					<td><select name="code" onchange="go_detail(this, ${vo.id })">
+							<option value="so0" ${vo.code eq "so0" ? 'selected' : '' }>입금전</option>
 							<option value="so1" ${vo.code eq "so1" ? 'selected' : '' }>결제완료</option>
 							<option value="so2" ${vo.code eq "so2" ? 'selected' : '' }>상품준비</option>
 							<option value="so3" ${vo.code eq "so3" ? 'selected' : '' }>배송시작</option>
