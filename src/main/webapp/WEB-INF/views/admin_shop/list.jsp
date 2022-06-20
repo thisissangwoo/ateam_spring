@@ -13,8 +13,8 @@
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: auto; margin: 1%; max-height: 45%; padding: 10px;">
-		<h3 style="font-weight: bold; font-size: 20px; text-align: left;">리뷰 리스트</h3>
+	<div style=" background-color: white; height: 800px; margin: 1%; max-height: 800px; padding: 10px;">
+		<h3 style="font-weight: bold; font-size: 20px; text-align: left; margin: 20px;">리뷰 리스트</h3>
 	
 		<table style="width: 100%;">
 			<tr>
@@ -24,33 +24,11 @@
 				<td style="width: 200px;">별점</td>
 				<td style="width: 200px;">작성일</td>
 			</tr>
-			
-			<c:forEach items="${vo.list }" var="vo">
-				<div style="height: 200px; text-align: left;">
-					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
-					<div style="height: 30px; font-size: 20px; line-height: 30px;">
-						<c:choose>
-							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
-							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
-						</c:choose>
-					</div>
-					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
-					<div
-						style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
-						${vo.rev_content }
-					</div>
-				</div>
-			</c:forEach>
-			
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td style="width: 50px;">${vo.user_id }</td>
-					<td style="width: 300px;">${vo.rev_title }</td>
-					<td style="width: 150px;">${vo.rev_content }</td>
+					<td style="width: 150px;">${vo.rev_title }</td>
+					<td style="width: 500px;"><a href="reviewDetail.sp?id=${vo.rev_id }">${vo.rev_content }</a></td>
 					<td>
 						<c:choose>
 							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
@@ -60,17 +38,20 @@
 							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
 						</c:choose>
 					</td>
-					<td>${vo.rev_date }</td>
+					<td>
+						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
-	
-		<div>
+		</div>
+		<div style="margin-bottom: -120px;">
 			<form action="list.sp" method="post">
 				<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
 			</form>
 		</div>	
-	</div>
+	
 </body>
 </html>

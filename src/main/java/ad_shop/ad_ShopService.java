@@ -23,8 +23,8 @@ public interface ad_ShopService {
 	WReviewPage review_list(WReviewPage page);
 	
 	
-	
-	
+	//리뷰 디테일 화면
+	web_shop.WReviewVO review_detail(int id);
 	
 	
 //======================= 관리자 shop =======================
