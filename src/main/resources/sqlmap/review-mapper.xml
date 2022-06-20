@@ -21,7 +21,7 @@
 <!-- 해당 회원 리뷰 조회 -->
 <select id="selectMy" resultType= "review.ReviewVO">
 	select r.rev_num, r.user_id, r.rev_grade, r.hp_code, r.rev_text1, r.rev_text2, r.rev_text3, r.rev_text4, 
-			to_char(r.rev_date, 'YYYY-MM-DD') rev_date, (select hp_name from hp  where r.hp_code = hp_code) hp_name 
+			to_char(r.rev_date, 'YYYY-MM-DD') rev_date, (select hp_name from hp h where r.hp_code = h.hp_code) hp_name 
 			from review r  where user_id = #{user_id} order by rev_num desc
 </select>
 
