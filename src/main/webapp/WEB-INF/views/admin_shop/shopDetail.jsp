@@ -365,27 +365,32 @@
       
       <!-- <p id="order_situation_text">주문 상태 확인</p> -->
       
-      <div ${vo.code eq 'so1' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 30px; border-radius: 50%;" >
+      <div ${vo.code eq 'so0' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; border-radius: 50%;" >
+      	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
+      	<p style="position: absolute; width: 70px; left: 18px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">입금전</p>
+      </div>
+      
+      <div ${vo.code eq 'so1' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 170px; border-radius: 50%;" >
       	<img src="imgs/fluent_payment-20-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
       	<p style="position: absolute; width: 70px; left: 18px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">결제완료</p>
       </div>
       
-      <div ${vo.code eq 'so2' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 230px; border-radius: 50%;">
+      <div ${vo.code eq 'so2' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 350px; border-radius: 50%;">
       	<img src="imgs/fa6-solid_box-open.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
       	<p style="position: absolute; width: 76px; left: 18px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">상품준비중</p>
       </div>
       
-      <div ${vo.code eq 'so3' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 430px; border-radius: 50%;">
+      <div ${vo.code eq 'so3' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 530px; border-radius: 50%;">
       	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
       	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송시작</p>
       </div>
       
-      <div ${vo.code eq 'so4' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 630px; border-radius: 50%;">
+      <div ${vo.code eq 'so4' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 705px; border-radius: 50%;">
       	<img src="imgs/mdi_truck-fast-outline.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
       	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송중</p>
       </div>
       
-      <div ${vo.code eq 'so5' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 830px; border-radius: 50%;">
+      <div ${vo.code eq 'so5' ? "class = 'active'" : '' } style="position: absolute; width: 110px; height: 110px; top: 450px; left: 880px; border-radius: 50%;">
       	<img src="imgs/fluent_box-16-regular.png" style="position: absolute; width: 50px; height: 50px; left: 30px; top: 17px;">
       	<p style="position: absolute; width: 70px; left: 20px; top: 55px; font-weight: bold; line-height: 50px; letter-spacing: -0.05em; font-size: 16px;">배송완료</p>
       </div>
