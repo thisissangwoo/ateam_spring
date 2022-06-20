@@ -49,15 +49,22 @@
 			where ${social_type} = #{social_id}
 			<!-- ${social_type} 내 들어있는 동적 데이터 (즉, 네이버, 카카오) 를 불러옴 -->
 </select>
-
+<!-- <select id="list" resultType="notice.NoticeVO">
+	select * 
+	from ( select rownum no, n.*, (select name from member where id = n.writer) name 
+			from (select * from notice <include refid="where_search" />
+			order by root, step desc) n id -> root, step 변경
+			order by no desc )
+	where no between #{beginList} and #{endList}	
+	no 값이 페이지 시작 목록번호와 끝 목록 번호 사이에 있는 값을 조회
+</select> -->
 <!-- 관리자 회원 관리 -->
 <select id="admin_select" resultType="user.UserVO">
 select *
    from(select rownum no, a.user_id, a.user_name, a.admin, to_char(a.join_date, 'YYYY-MM-DD') join_date, a.memo, 
    (select count(*) from notice n where a.user_id = n.writer and code='N03' ) qCnt, 
    (select count(*) from box_review b where a.user_id = b.user_id) brCnt
-    from  (select * from anafor_user ) a
-    <include refid="where_search" /> )
+    from  (select * from anafor_user <include refid="where_search" /> ) a  order by no desc ) 
    where no between #{beginList} and #{endList} 
 </select>
 
