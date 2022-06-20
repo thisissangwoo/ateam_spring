@@ -28,10 +28,17 @@
 		
 		
 	<update id="update">
-		update box_review set 	rev_grade = #{rev_grade}, rev_content = #{rev_content},
+		update box_review set 	rev_content = #{rev_content},
 								rev_title = #{rev_title}, rev_date = sysdate
-		where user_id = #{user_id}
+		where rev_id = #{rev_id}
 	</update>	
-	
+		
+	<delete id="delete">
+	delete from box_review
+	where rev_id = #{rev_id}
+</delete>	
+		
+		
+		
 	
 </mapper>

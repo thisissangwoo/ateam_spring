@@ -40,18 +40,18 @@
 			
 			<div style="border-bottom: 1px solid; height: 1px; margin-bottom: 20px; margin-right: 20px;"></div>		
 			
-			<input type="text" value="${vo.rev_title }" name="rev_title"  
+			<input type="text" value="${vo.rev_title }" name="rev_title"  class="chk"
 				 style="height: 30px; font-size: 20px; line-height: 30px; text-align: left;" />
 		
 			<div style="border-bottom: 1px solid; height: 1px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;"></div>	
 		
-			<input type="text" value="${vo.rev_content }"  name="rev_content"
+			<input type="text" value="${vo.rev_content }"  name="rev_content" class="chk"
 				style="text-align: left; height: 500px; border: 1px solid; margin-bottom: 20px; padding: 20px; font-size: 15px; width: 98.5%; margin-right: 20px; font-size: 15px;" />
 			
 			
 			<div>
-				<a class="btn-fill" href="review_update.rev?id=${vo.rev_id }">저장하기</a>&nbsp;&nbsp;&nbsp;	
-				<a class="btn-empty" href="reviewDelete.rev?id=${vo.rev_id }">삭제하기</a>
+				<a class="btn-fill" onclick=" if(emptyCheck() ) { $('form').submit() }">저장하기</a>&nbsp;&nbsp;&nbsp;	
+				<a class="btn-empty" href="reviewDetail.rev?id=${vo.rev_id }">취소하기</a>
 			</div>
 	
 		</div>

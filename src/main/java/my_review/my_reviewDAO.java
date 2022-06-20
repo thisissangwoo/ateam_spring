@@ -27,8 +27,7 @@ public class my_reviewDAO implements my_reviewService {
 
 	@Override
 	public void review_delete(int id) {
-		// TODO Auto-generated method stub
-
+		sql.delete("my_review.mapper.delete" , id);
 	}
 
 	@Override

@@ -31,8 +31,6 @@
 			
 			<span style="line-height: 80px; font-size: 30px;">
 			
-			
-			
 				<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
 				<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
 			</span>
@@ -51,7 +49,7 @@
 		
 		<div>
 			<a class="btn-fill" href="review_modify.rev?id=${vo.rev_id }">수정하기</a>&nbsp;&nbsp;&nbsp;		
-			<a class="btn-empty" href="reviewDelete.rev?id=${vo.rev_id }">삭제하기</a>
+			<a class="btn-empty" href="review_delete.rev?id=${vo.rev_id }">삭제하기</a>
 		</div>
 		
 		

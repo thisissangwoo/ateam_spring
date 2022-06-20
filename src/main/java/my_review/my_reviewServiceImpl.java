@@ -23,8 +23,7 @@ public class my_reviewServiceImpl implements my_reviewService {
 
 	@Override
 	public void review_delete(int id) {
-		// TODO Auto-generated method stub
-
+		dao.review_delete(id);
 	}
 
 	@Override

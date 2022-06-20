@@ -71,7 +71,15 @@ public class My_ReviewController {
 		return "redirect:reviewDetail.rev?id=" + vo.getRev_id();
 	}
 	
-	
+	@RequestMapping("/review_delete.rev")
+	public String delete(Model model, int id) {
+
+		service.review_delete(id);
+		
+		
+		
+		return "redirect:list.rev";
+	}
 	
 	
 	
