@@ -4,7 +4,7 @@ public class ShopDetailVO {
 	
 
 	private int id, cnt, price, no;
-	private String user_id, name, tel, addr, coment, code, order_date,code_name;
+	private String user_id, name, tel, addr, coment, code, order_date, code_name;
 
 	
 	public String getCode_name() {

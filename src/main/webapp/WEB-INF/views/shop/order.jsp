@@ -323,11 +323,13 @@
       <input type="text" name="name" id="person_receive" style="position: absolute; width: 200px; height: 25px; left: 150px; top: 10px; border: 1px solid #d5d5d5; border-radius: 5px; font-size: 12px"/>
          
       <p id="phone_text">*연락처</p>
-      <input id="phone" type="text" name="tel" maxlength="3" style="position: absolute; width: 50px; height: 25px; left: 150px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
+      <select name="tel" style="position: absolute; width: 50px; height: 25px; left: 150px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;">
+      	<option value="010" >010</option>
+      	<option value="011">011</option>
+      </select>
       <p style="position: absolute; left: 205px; top: 46px;">-</p>
-      <input type="text" name="tel" maxlength="4" style="position: absolute; width: 60px; height: 25px; left: 215px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
-      <p style="position: absolute; left: 281px; top: 46px;">-</p>
-      <input type="text" name="tel" maxlength="4" style="position: absolute; width: 60px; height: 25px; left: 290px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
+      <input type="text" name="tel" id="phone" maxlength="8" style="position: absolute; width: 135px; height: 25px; left: 215px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
+      <span id="telmsg" style="position: absolute; width: 300px; height: 25px; left: 345px; top: 46px; font-size: 12px;">' - ' 를 제외하고 번호만 입력해주세요 예)01012345678</span>
       
       <p class="addr_receive_text">*받는주소</p>
       <button type="button" id="post_code" onclick="daum_post()">우편번호</button>
@@ -367,7 +369,7 @@
       </div>
    </div>
    
-   <button class="order_result" style="cursor: pointer;" onclick="orderChk()">주문하기</button>
+   <button type="button" class="order_result" style="cursor: pointer;" onclick="orderChk()">주문하기</button>
 
 </div>
 </form>
@@ -398,29 +400,39 @@ function daum_post() {
 
 function orderChk() {
 	
-	if($("#person_receive").val() == ""){
-		$("#person_receive").focus();
-		alert("받는 사람을 입력해주세요.");
-		return ;
+//	var regname = /[가-힣a-zA-Z]+$/;
+	var regname = /[^가-힣a-zA-Z]/g;
 	
+	var person = $("#person_receive").val();
+	if(person == ""){
+		alert("받는 사람을 입력해주세요.");
+		$("#person_receive").focus();
+		
+		return false;
+		
+	} else if(regname.test(person)) {
+		alert("이름은 한글 또는 영문으로 입력해주세요.");
+		$("#person_receive").focus();
+		return false;
 	} 
 	else if ($("#phone").val() == ""){
-		$("#phone").focus();
+		
 		alert("연락처를 입력해주세요.");
+		$("#phone").focus();
 		
 		return false;
 	
 	} 
 	else if ($("#default").val() == ""){
-		$("#default").focus();
 		alert("주소를 입력해주세요.");
+		$("#default").focus();
 	
 		return false;
 	}
 	else {
-//	    $("form").submit();
-		alert("주문이 정상적으로 처리되었습니다.");
-	    location.href="/anafor"
+	    $("form").submit();
+// 		alert("주문이 정상적으로 처리되었습니다."); → home.jsp 에 script 
+// 	    location.href="/anafor" controller redirect 에 미리 지정해주었음
 	}
 }
 </script>
