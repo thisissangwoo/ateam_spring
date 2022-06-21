@@ -14,7 +14,7 @@
 }
 
 #top_img{
-	width:1909px; 
+	width: 100%; 
 	height:372px; 
 	background: url("imgs/faq.png") center no-repeat; 
 	position:relative; 

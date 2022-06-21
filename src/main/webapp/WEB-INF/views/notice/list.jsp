@@ -12,7 +12,7 @@
 }
 
 #top_img {
-	width: 1902px;
+	width: 100%;
 	height: 372px;
 	background: url("imgs/notice.png") center no-repeat;
 	position: relative;
@@ -32,7 +32,7 @@
 }
 
 table {
-	width: 1000px;
+	width: 65%;
 	margin-bottom: 10px;
 }
 
@@ -40,7 +40,7 @@ table {
 	padding-top:115px;
 	padding-left:470px;
 	padding-right:220px;
-	width: 1000px;
+	width: 65%;
 	display: block;
 	margin: 0 auto;
 }

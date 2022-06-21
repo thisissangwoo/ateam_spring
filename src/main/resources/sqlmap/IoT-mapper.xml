@@ -12,7 +12,7 @@
 		select *
 		from IOT_BOX
 		where user_id = #{user_id}
-		order by box_id
+		order by case_time
 	</select>
 
 	<delete id="iot_delete">
