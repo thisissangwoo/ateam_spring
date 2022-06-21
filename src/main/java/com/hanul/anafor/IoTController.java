@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import IoT.GPSVO;
 import IoT.IoTVO;
+import user.UserVO;
 
 
 
@@ -79,36 +80,54 @@ public class IoTController {
 			}		
 	
 //============================================================================================
-	@ResponseBody
+	   @ResponseBody
 	   @RequestMapping(value="/iot_insert", produces = "application/json;charset=UTF-8")
 	   public String insert(HttpServletRequest req) {
-		
-	      IoTVO vo = new IoTVO();
-	     
-	      vo = gson.fromJson(req.getParameter("iot_insert"), IoTVO.class);
-	      sql.insert("IoT.mapper.iot_insert", vo);
-	      System.out.println(vo.getCase_date1());
-	      
+		  IoTVO vo = new IoTVO();
+		  vo.setUser_id(req.getParameter("user_id"));
+		  vo.setMemo(req.getParameter("memo"));
+		  vo.setCase_num(req.getParameter("case_num")); 
+		  vo.setCase_time(req.getParameter("case_time"));
+		  sql.insert("IoT.mapper.iot_insert", vo);
 	      return "";
 	   }  
 	
-	@ResponseBody
-	@RequestMapping(value ="/iot_list", produces = "application/json;charset=UTF-8")
-	public String list(HttpServletRequest req ) {
-		String data = req.getParameter("data");
-		System.out.println(data);
-		List<IoTVO> list = sql.selectList("IoT.mapper.iot_list",data);
-		return gson.toJson(list);
-	}
+	   @ResponseBody
+	   @RequestMapping(value="/iot_select", produces = "application/json;charset=UTF-8")
+	   public String select(HttpServletRequest req) {	   
+		  String user_id = req.getParameter("user_id"); 
+		  List<IoTVO> list = sql.selectList("IoT.mapper.iot_select", user_id ); 
+		  System.out.println(gson.toJson(list));
+		  return gson.toJson(list);
+	   }
 
+	   @ResponseBody
+	   @RequestMapping(value="/iot_delete", produces = "application/json;charset=UTF-8")
+	   public String delete(HttpServletRequest req) {
+		String box_id = req.getParameter("box_id");   
+		System.out.println(sql.delete("IoT.mapper.iot_delete", box_id));
+		return "";
+	  }
+	
+	   @ResponseBody
+	   @RequestMapping(value="/iot_modify", produces = "application/json;charset=UTF-8")
+	   public String modify(HttpServletRequest req) {
+		  IoTVO vo = new IoTVO();
+		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
+		  vo.setMemo(req.getParameter("memo"));
+		  vo.setCase_num(req.getParameter("case_num"));  
+		  vo.setCase_time(req.getParameter("case_time"));
+		  sql.update("IoT.mapper.iot_modify", vo);
+	      return "";  
+		}	   
 }
 
 
 
 
-
-
-
-
+                         
+                         
+                         
+                         
 
 
