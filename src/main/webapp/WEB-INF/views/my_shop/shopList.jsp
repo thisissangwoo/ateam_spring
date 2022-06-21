@@ -34,7 +34,7 @@
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
-					<td>${vo.order_date }</td>
+					<td><fmt:formatNumber value="${vo.order_date }" pattern="YYYY-MM-DD" /></td>
 					<td class="right" ><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
 					<td style="color: red; font-weight: bold;">
@@ -47,12 +47,11 @@
 							<c:when test="${vo.code eq 'so5' }">배송완료</c:when>
 						</c:choose>
 					</td>
-					
 			
 					<td>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">리뷰</a>
-						<a class="btn-fill" href="shopDetail.my?id=${vo.id }">문의</a>
+						<a class="btn-fill" href="new.cu?id=${vo.id }">문의</a>
 					</td>
 				</tr>
 			</c:forEach>

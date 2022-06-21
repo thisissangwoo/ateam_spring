@@ -224,7 +224,7 @@ input[type=number] {
          <p id="line">아나포 스마트 약통 AnaFor Smart Box IoT Model 1</p>
       </div>
       
-      <input class="cnt" type="number" value="1" name="bk_cnt" style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
+      <input class="cnt" type="number" value="1" name="bk_cnt" autofocus style="border: 1px solid #808080;"><p style="position: absolute; width: 50px; height: 25px; left: 1480px; top: 488px;">개</p>
       
       <div class="total">
          <p class="total_price">총 상품 금액</p>
