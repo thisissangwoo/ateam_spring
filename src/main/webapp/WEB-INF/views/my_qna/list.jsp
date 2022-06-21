@@ -25,12 +25,11 @@ body{
 }
 
 #list-board{
-   width:95%;
+   width:100%;
    height:85%;
-   margin:40px;
    border-radius: 5px;
    background-color: white;
-   padding-top: 10px;
+   margin-top: 40px;
    padding-bottom: 30px;
 }
 
@@ -41,7 +40,7 @@ body{
 
 table{
 	width:80%;
-	margin-top: 30px;
+	margin-top: 25px;
 }
 
 </style>
@@ -80,7 +79,7 @@ table{
 			      	 <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }   
 			         </c:forEach>
-			         <a href='detail.cu?id=${vo.id }'>${vo.title }</a>         
+			         <a id="vo_title" href='detail.cu?id=${vo.id }'>${vo.title }</a>         
 			      </td>
 			      <td>${vo.name}</td>
 			      <td>${vo.writedate}</td>

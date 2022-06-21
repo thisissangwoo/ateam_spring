@@ -252,3 +252,11 @@ a.btn-fill-s {
 a:hover { 
 	cursor: pointer; 
 }
+
+#vo_title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: 500px;
+  display: inline-block;
+}
