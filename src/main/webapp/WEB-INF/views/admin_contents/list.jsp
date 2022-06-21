@@ -9,6 +9,11 @@
 body{
    background-color: #E5E5E5;
 }
+
+#allPage{
+	padding: 20px;
+}
+
 #header {
    width:100%;
    height:59px;
@@ -24,9 +29,8 @@ body{
 }
 
 #list-top{
-   width:90%;
+   width:100%;
    height:80px;
-   margin:30px;
    border-radius: 5px;
    background-color: white;
    font-size: 18px;
@@ -51,9 +55,8 @@ body{
 
 
 #list-board{
-   width:90%;
+   width:100%;
    height:88%;
-   margin:30px;
    margin-top:15px;
    border-radius: 5px;
    background-color: white;
@@ -67,7 +70,7 @@ body{
 }
 
 #list-board table{
-   width:80%;
+   width:90%;
    margin-top:30px;
    margin-bottom:30px;
    border-top: 1px solid #e0e0e0;
@@ -77,7 +80,7 @@ body{
 	display:inline-block;
     padding: 10px;
 	width: 60%;
-	height: 50px;
+	height: 30px;
 }
 
 #list-page1 ul li{
@@ -91,8 +94,8 @@ body{
 #list-page2{
     padding: 10px;
 	display:inline-block;
-	width: 20%;
-	height: 50px;
+	width: 30%;
+	height: 30px;
 }
 a.btn-empty {
    background: #D9D9D9;
@@ -148,7 +151,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 }
 
 #page{
-	margin-bottom: -80px;
+	margin-bottom: -60px;
 }
 
 </style>
@@ -161,6 +164,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 </div>
 <form action="list.co" method="post">
 <input type="hidden" name='curPage' value="1" />
+<div id="allPage">
 <div id='list-top' >
    <div id='list-select'>       
       <ul>
@@ -286,6 +290,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
       <jsp:include page="/WEB-INF/views/include/page.jsp" />
       <!-- jsp 표준 include를 사용하여 설정 -->
    </div>
+</div>
 </div>
 </body>
 </html>
