@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import my_shop.my_ShopServiceImpl;
 import user.UserVO;
@@ -38,5 +40,13 @@ public class My_ShopController {
 		return "my_shop/shopDetail";
 	}
 //======================================================================================
+	@RequestMapping("/cancel.my")
+	public String cancel(int id, RedirectAttributes rttr) {
+		
+		service.order_cancel(id);
+		rttr.addFlashAttribute("cancel", "OK");
+		
+		return "redirect:shopList.my";
+	}
 	
 }
