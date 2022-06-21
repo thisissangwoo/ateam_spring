@@ -8,6 +8,7 @@
 <title>My 주문 목록</title>
 </head>
 <body>
+
 <div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
@@ -34,7 +35,8 @@
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
-					<td><fmt:formatNumber value="${vo.order_date }" pattern="YYYY-MM-DD" /></td>
+					<fmt:parseDate value="${vo.order_date }" var="date" pattern="YYYY-MM-dd HH:mm:ss"/>
+					<td><fmt:formatDate value="${date }" pattern="YYYY-MM-dd" /></td>
 					<td class="right" ><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
 					<td style="color: red; font-weight: bold;">
@@ -57,7 +59,6 @@
 			</c:forEach>
 		</table>
 	</div>
-	
 <script type="text/javascript">
 var cancel = '${cancel}';
 if (cancel === 'OK') {
