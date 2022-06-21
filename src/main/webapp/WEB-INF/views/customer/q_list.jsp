@@ -13,7 +13,7 @@
 }
 
 #top_img {
-	width: 1903px;
+	width: 100%;
 	height: 372px;
 	background: url("imgs/qna.png") center no-repeat;
 	position: relative;

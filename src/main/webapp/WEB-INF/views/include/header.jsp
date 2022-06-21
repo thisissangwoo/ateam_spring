@@ -85,7 +85,7 @@ header .category ul li a:hover, header .category ul li a.active {
          <c:if test="${ loginInfo.admin eq 'N' }">
             <ul>
                <li>
-                  <a href="mypage">아나플 ${loginInfo.user_name } 님</a>
+                  <a href="mypage">${loginInfo.user_name } 님</a>
                </li>
                <li>         
                   <a href='logout'>로그아웃</a>

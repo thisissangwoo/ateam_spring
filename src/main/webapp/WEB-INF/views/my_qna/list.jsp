@@ -40,8 +40,8 @@ body{
 }
 
 table{
-	width:70%;
-	margin-top: 50px;
+	width:80%;
+	margin-top: 30px;
 }
 
 </style>
@@ -54,7 +54,7 @@ table{
 </div>
 <input type="hidden" name="curPage" value="1" />  
    <div id="list-board">
-   	 <h3> < 나의 게시글 > </h3>
+   	 <h3> 나의 게시글 </h3>
        <table>
       	<thead>
 	        <tr>
