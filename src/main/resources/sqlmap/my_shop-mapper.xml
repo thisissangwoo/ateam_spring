@@ -17,4 +17,11 @@
 	where id = #{id}
 </select>
 
+<delete id="cancel">
+	delete 
+	from shop
+	where id = #{id}
+</delete>
+
+
 </mapper>
