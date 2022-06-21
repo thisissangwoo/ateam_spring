@@ -58,5 +58,13 @@
 			</c:forEach>
 		</table>
 	</div>
+	
+<script type="text/javascript">
+var cancel = '${cancel}';
+if (cancel === 'OK') {
+	alert("주문이 정상적으로 취소되었습니다.");
+}
+
+</script>
 </body>
 </html>

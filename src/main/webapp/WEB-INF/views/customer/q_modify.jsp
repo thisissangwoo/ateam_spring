@@ -75,7 +75,7 @@ table{margin-top:30px; margin-bottom: 20px;}
 				<option value="기타" ${vo.sort eq '기타' ? 'selected' : '' }>기타</option>
 			</select>
 		</td>
-	</tr>		
+	</tr>
 	<tr>
 		<th>내용</th>
 		<td><textarea name='content' class='chk' title='내용'>${vo.content}</textarea></td>

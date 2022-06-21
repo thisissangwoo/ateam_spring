@@ -25,4 +25,10 @@ public class my_ShopDAO implements my_ShopService {
 		List<ShopDetailVO> list = sql.selectList("my_shop.mapper.list", user_id);
 		return list;
 	}
+
+	@Override
+	public ShopDetailVO order_cancel(int id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("my_shop.mapper.cancel", id);
+	}
 }

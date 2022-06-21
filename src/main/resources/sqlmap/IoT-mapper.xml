@@ -4,15 +4,26 @@
 <mapper namespace="IoT.mapper">
 
 	<insert id="iot_insert">
-		INSERT INTO iot_box(user_id, memo, case_num1, case_num2, case_num3, case_num4, case_date1, case_date2, case_date3, case_date4)
-		VALUES (#{user_id}, #{memo}, #{case_num1}, #{case_num2}, #{case_num3}, #{case_num4}, #{case_date1, jdbcType=VARCHAR},
-		 #{case_date2, jdbcType=VARCHAR}, #{case_date3, jdbcType=VARCHAR}, #{case_date4, jdbcType=VARCHAR})
+		insert INTO IOT_BOX(user_id, memo, case_num, case_time)
+		values (#{user_id}, #{memo}, #{case_num}, #{case_time})
 	</insert>
 	
-	<select id="iot_list" resultType="IoT.IoTVO">
+	<select id="iot_select" resultType="IoT.IoTVO">
 		select *
 		from IOT_BOX
 		where user_id = #{user_id}
+		order by box_id
 	</select>
 
+	<delete id="iot_delete">
+		delete 
+		from IOT_BOX
+		where box_id = #{box_id}
+	</delete>
+	
+	<update id="iot_modify">
+		update IOT_BOX
+		set memo=#{memo}, case_num=#{case_num}, case_time=#{case_time}
+		where box_id = #{box_id}
+	</update>	
 </mapper>
