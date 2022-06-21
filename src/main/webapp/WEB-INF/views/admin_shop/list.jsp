@@ -5,6 +5,64 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform fieldset .align{
+    display: inline-block;
+    direction: ltr;
+    border:0;
+}
+
+.unchecked{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.checked{
+	font-size: 2em;
+    color: #fad000;    
+}
+
+#myform .hover:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform .hover:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,28 +82,51 @@
 				<td style="width: 200px;">별점</td>
 				<td style="width: 200px;">작성일</td>
 			</tr>
+			
+			
+			<c:forEach items="${vo.list }" var="vo">
+				<div style="height: 200px; text-align: left;">
+					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
+					<div style="height: 30px; font-size: 20px; line-height: 30px;">
+					</div>
+					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
+					<div
+						style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
+						${vo.rev_content }
+					</div>
+				</div>
+			</c:forEach>
+			
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td style="width: 50px;">${vo.user_id }</td>
-					<td style="width: 150px;">${vo.rev_title }</td>
-					<td style="width: 500px;"><a href="reviewDetail.sp?id=${vo.rev_id }">${vo.rev_content }</a></td>
+					<td style="width: 300px;">${vo.rev_title }</td>
+					<td style="width: 150px;">${vo.rev_content }</td>
 					<td>
-						<c:choose>
-							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
-							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
-						</c:choose>
+						<div style="height: 30px; font-size: 20px; line-height: 30px;" id="myform">
+							<fieldset>
+								<div class='align'>
+									<c:forEach begin="1" end="${vo.rev_grade }">
+										<span class='checked'>★</span>
+									</c:forEach>
+									<c:forEach begin="${vo.rev_grade+1}" end="5">
+										<span class='unchecked'>★</span>
+									</c:forEach>
+								</div>
+							</fieldset>
+						</div>
+
 					</td>
-					<td>
-						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
-						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
-					</td>
+					<td>${vo.rev_date }</td>
 				</tr>
 			</c:forEach>
 		</table>
 		</div>
+		
+		
+		
+		
 		<div style="margin-bottom: -120px;">
 			<form action="list.sp" method="post">
 				<input type="hidden" name="curPage" value="1" />

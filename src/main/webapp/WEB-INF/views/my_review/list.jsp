@@ -8,6 +8,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform fieldset .align{
+    display: inline-block;
+    direction: ltr;
+    border:0;
+}
+
+.unchecked{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.checked{
+	font-size: 2em;
+    color: #fad000;    
+}
+
+#myform .hover:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform .hover:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+
+
+</style>
 </head>
 <body>
 	<div style="width: 100%; height: 60px; padding: 20px; background-color: #929292; text-align: left;">
@@ -29,8 +88,9 @@
 				<tr>
 					<td style="width: 300px;">아나포 스마트 약통 AnaFor SmartBOX</td>
 					<td style="width: 150px;">${vo.rev_title }</td>
-					<td><a href="reviewDetail.rev?id=${vo.rev_id }">${vo.rev_content }</a></td>
-					<td style="width: 150px;">${vo.user_id }</td>
+					
+					<td style=" font-weight: bold;"><a href="reviewDetail.rev?id=${vo.rev_id }">${vo.rev_content }</a></td>
+					
 					<td style="width: 150px;">
 						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
 						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />

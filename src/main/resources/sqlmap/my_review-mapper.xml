@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="my_review.mapper">
+	
+	<!-- 매핑 추가 및 수정 ▼▼▼ -->
+	<insert id="insert">
+		insert into box_review (rev_title, rev_content, user_id, rev_grade)
+		values (#{rev_title}, #{rev_content}, #{user_id}, #{rev_grade})
+	</insert>
+
+	<update id="update">
+		update box_review set 	rev_content = #{rev_content},
+								rev_title = #{rev_title}, rev_date = sysdate, rev_grade = #{rev_grade}
+		where rev_id = #{rev_id}
+	</update>	
+	
+<!-- 여기까지 ▲▲▲ -->
+	
+
 
 	<select id="totalList" resultType="integer">
 		select count(*) from box_review	
@@ -19,6 +35,7 @@
 	    and user_id = #{user_id}
 	</select>
 
+
 		
 	<select id="detail" resultType="web_shop.WReviewVO">
 		select r.*, (select user_name from anafor_user where user_id = r.user_id) name
@@ -27,11 +44,7 @@
 	</select>	
 		
 		
-	<update id="update">
-		update box_review set 	rev_content = #{rev_content},
-								rev_title = #{rev_title}, rev_date = sysdate
-		where rev_id = #{rev_id}
-	</update>	
+		
 		
 	<delete id="delete">
 	delete from box_review

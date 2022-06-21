@@ -81,7 +81,17 @@ public class My_ReviewController {
 		return "redirect:list.rev";
 	}
 	
-	
+		@RequestMapping("/reviewNew.rev")
+	public String reviewNew() {
+		return "my_review/new";
+	}
+			@RequestMapping("/review_insert.rev")
+	public String reviewInsert(WReviewVO vo, HttpSession session) {
+		vo.setUser_id( ((UserVO) session.getAttribute("loginInfo")).getUser_id() );		
+		service.review_insert(vo);
+		
+		return "redirect:list.rev";
+	}
 	
 	
 	

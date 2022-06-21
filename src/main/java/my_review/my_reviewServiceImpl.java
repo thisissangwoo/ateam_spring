@@ -12,8 +12,7 @@ public class my_reviewServiceImpl implements my_reviewService {
 	
 	@Override
 	public void review_insert(WReviewVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.review_insert(vo);
 	}
 
 	@Override

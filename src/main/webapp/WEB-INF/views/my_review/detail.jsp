@@ -7,6 +7,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform fieldset .align{
+    display: inline-block;
+    direction: ltr;
+    border:0;
+}
+
+.unchecked{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.checked{
+	font-size: 2em;
+    color: #fad000;    
+}
+
+#myform .hover:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform .hover:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+
+
+</style>
 </head>
 <body>
 	<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
@@ -15,15 +74,18 @@
 
 	<div style="margin: 30px; background-color: white; width: 96.5%; height: 500px; padding: 20px;">
 	
-		<div style="text-align: left; width: 100%; height: 80px;">
+		<div style="text-align: left; width: 100%; height: 80px;" id="myform">
 			<span style="line-height: 80px; font-size: 30px;">
-				<c:choose>
-					<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
-					<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
-					<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
-					<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
-					<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
-				</c:choose>
+				<fieldset>
+					<div class='align'>
+						<c:forEach begin="1" end="${vo.rev_grade }">
+							<span class='checked'>★</span>
+						</c:forEach>
+						<c:forEach begin="${vo.rev_grade+1}" end="5">
+							<span class='unchecked'>★</span>
+						</c:forEach>
+					</div>
+				</fieldset>
 			</span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span style="line-height: 80px; font-size: 30px;">${vo.user_id }</span>
@@ -48,6 +110,7 @@
 		</div>
 		
 		<div>
+			<a class="btn-fill" href="list.rev?id=${vo.rev_id }">목록으로</a>&nbsp;&nbsp;&nbsp;		
 			<a class="btn-fill" href="review_modify.rev?id=${vo.rev_id }">수정하기</a>&nbsp;&nbsp;&nbsp;		
 			<a class="btn-empty" href="review_delete.rev?id=${vo.rev_id }">삭제하기</a>
 		</div>

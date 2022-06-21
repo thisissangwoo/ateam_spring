@@ -17,7 +17,7 @@ public class my_reviewDAO implements my_reviewService {
 	@Override
 	public void review_insert(WReviewVO vo) {
 		// TODO Auto-generated method stub
-
+		sql.insert("my_review.mapper.insert", vo);
 	}
 
 	@Override

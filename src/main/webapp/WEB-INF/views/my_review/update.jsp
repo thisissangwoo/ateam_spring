@@ -7,9 +7,68 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform fieldset .align{
+    display: inline-block;
+    direction: ltr;
+    border:0;
+}
+
+.unchecked{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.checked{
+	font-size: 2em;
+    color: #fad000;    
+}
+
+#myform .hover:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform .hover:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+
+
+</style>
 </head>
 <body>
-	<form action="review_update.rev" method="post">
+	<form action="review_update.rev" name="myform" id="myform" method="post">
 		<input type="hidden" name="rev_id" value="${vo.rev_id }"/>
 		<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
 			<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">리뷰 수정 화면</h3>
@@ -19,13 +78,14 @@
 		
 			<div style="text-align: left; width: 100%; height: 80px;">
 				<span style="line-height: 80px; font-size: 30px;">
-					<c:choose>
-						<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
-						<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
-						<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
-						<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
-						<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
-					</c:choose>
+					<fieldset>
+						<span class="text-bold">별점을 선택해주세요</span>
+						<input type="radio" name="rev_grade" value="5" ${vo.rev_grade eq 5 ? "checked" : ""} id="rate5"><label class='hover'  for="rate5">⭐</label>
+						<input type="radio" name="rev_grade" value="4" ${vo.rev_grade eq 4 ? "checked" : ""} id="rate4"><label class='hover'  for="rate4">⭐</label>
+						<input type="radio" name="rev_grade" value="3" ${vo.rev_grade eq 3 ? "checked" : ""} id="rate3"><label class='hover'  for="rate3">⭐</label>
+						<input type="radio" name="rev_grade" value="2" ${vo.rev_grade eq 2 ? "checked" : ""} id="rate2"><label class='hover'  for="rate2">⭐</label>
+						<input type="radio" name="rev_grade" value="1" ${vo.rev_grade eq 1 ? "checked" : ""} id="rate1"><label class='hover'  for="rate1">⭐</label>
+					</fieldset>
 				</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<span style="line-height: 80px; font-size: 30px;">${vo.user_id }</span>
