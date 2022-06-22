@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 #myform fieldset{
     display: inline-block;
@@ -66,13 +65,13 @@
 
 
 </style>
+<title>Insert title here</title>
 </head>
 <body>
-	<form action="review_update.rev" name="myform" id="myform" method="post">
-		<input type="hidden" name="rev_id" value="${vo.rev_id }"/>
-		
+		<form action="review_insert.rev" name="myform" id="myform" method="post">
+				
 		<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
-			<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">리뷰 수정 화면</h3>
+			<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">리뷰 쓰기</h3>
 		</div>
 	
 	
@@ -94,21 +93,22 @@
 			</td>
 			<th style="width: 100px;">작성자</th>
 			<td style="width: 200px;">
-				${vo.user_id }
+				${loginInfo.user_name}
+				<input type="hidden" name="user_id" value="${loginInfo.user_id }"/>
 			</td>
 			
 		</tr>
 		<tr>
 			<th>제목</th>
 			<td colspan="5" style="text-align: left;">
-				<input type="text" value="${vo.rev_title }" name="rev_title"  class="chk"
+				<input type="text"name="rev_title"  class="chk"
 				 style="height: 30px; font-size: 20px; line-height: 30px; text-align: left;" />
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td colspan="5" style="text-align: left; height: 450px; ">
-				<input type="text" value="${vo.rev_content }"  name="rev_content" class="chk"
+				<input type="text"  name="rev_content" class="chk"
 				style="text-align: left; height: 500px; margin-bottom: 20px; padding: 20px; font-size: 15px; width: 98.5%; margin-right: 20px; font-size: 15px;" />
 			</td>
 		</tr>
@@ -151,10 +151,11 @@
 			 
 			<div>
 				<a class="btn-fill" onclick=" if(emptyCheck() ) { $('form').submit() }">저장하기</a>&nbsp;&nbsp;&nbsp;	
-				<a class="btn-empty" href="reviewDetail.rev?id=${vo.rev_id }">취소하기</a>
+				<a class="btn-empty" href="shopList.my">취소하기</a>
 			</div>
 	
 		</div>
 	</form>	
+
 </body>
 </html>
