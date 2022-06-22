@@ -169,7 +169,7 @@
 <body>
 	<div id="AnaforLogo">
 		<span id="alogo">AnaFor</span><br/>
-		<span id="alogotitle">아픈 나를 위해 아나포</span>
+		<span id="alogotitle">아나플 나를 위해 아나포</span>
 	</div>	
 <form action="userjoinChk" method="post"> 
 	<div class="Anaforcenter">

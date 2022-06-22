@@ -9,6 +9,11 @@
 body{
    background-color: #E5E5E5;
 }
+
+#allPage{
+	padding: 20px;
+}
+
 #header {
    width:100%;
    height:59px;
@@ -24,9 +29,9 @@ body{
 }
 
 #list-top{
-   width:90%;
+   width:100%;
+   padding: 20px;
    height:80px;
-   margin:30px;
    border-radius: 5px;
    background-color: white;
    font-size: 18px;
@@ -39,7 +44,8 @@ body{
 }
 
 #list-select ul{
-	width:800px;
+	width:100%;
+	padding-left: 20%;
 }
 #list-select tr td{
    font-size: 20px;
@@ -51,10 +57,10 @@ body{
 
 
 #list-board{
-   width:90%;
-   height:88%;
-   margin:30px;
-   margin-top:15px;
+   width:100%;
+   height:auto;
+   min-height:770px;
+   margin-top:20px;
    border-radius: 5px;
    background-color: white;
    padding-top: 40px;
@@ -67,7 +73,7 @@ body{
 }
 
 #list-board table{
-   width:80%;
+   width:90%;
    margin-top:30px;
    margin-bottom:30px;
    border-top: 1px solid #e0e0e0;
@@ -77,7 +83,7 @@ body{
 	display:inline-block;
     padding: 10px;
 	width: 60%;
-	height: 50px;
+	height: 30px;
 }
 
 #list-page1 ul li{
@@ -91,8 +97,8 @@ body{
 #list-page2{
     padding: 10px;
 	display:inline-block;
-	width: 20%;
-	height: 50px;
+	width: 30%;
+	height: 30px;
 }
 a.btn-empty {
    background: #D9D9D9;
@@ -103,17 +109,13 @@ a.btn-empty {
    border: 1px solid #b0b0b0;
 }
 
-input[name=date1],input[name=date2]{
-   border: 1px solid #b0b0b0;
-   color: #b0b0b0;
-   margin-left: 20px;
-   font-size: 18px;
-}
-
 input[name=keyword] {
-    width: 800px;
+    width: 90%;
     height: 40px;
     font-size: 18px;
+    margin-right:15px;
+    margin-left:15px;
+    border-bottom: 1px solid #ccc;
 }
 
 table tr td:nth-child(7) img {
@@ -121,8 +123,8 @@ table tr td:nth-child(7) img {
 }
 
 #list-select select{
-   font-size: 18px; 
-   margin-right: 30px;
+   font-size: 18px;
+   margin-left: 15px; 
 }
 
 select[name=pageList],select[name=sort],select[name=reply]{
@@ -148,7 +150,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 }
 
 #page{
-	margin-bottom: -80px;
+	margin-bottom: -60px;
 }
 
 </style>
@@ -161,6 +163,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 </div>
 <form action="list.co" method="post">
 <input type="hidden" name='curPage' value="1" />
+<div id="allPage">
 <div id='list-top' >
    <div id='list-select'>       
       <ul>
@@ -268,7 +271,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			         <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }  
 			         </c:forEach>
-			         <a href='detail.co?id=${vo.id }'>${vo.title }</a>         
+			         <a id="vo_title" href='detail.co?id=${vo.id }'>${vo.title }</a>         
 			      </td>
 			      <td>${vo.name}</td>
 			      <td>${vo.writedate}</td>
@@ -286,6 +289,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
       <jsp:include page="/WEB-INF/views/include/page.jsp" />
       <!-- jsp 표준 include를 사용하여 설정 -->
    </div>
+</div>
 </div>
 </body>
 </html>

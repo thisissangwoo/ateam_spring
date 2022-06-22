@@ -7,6 +7,8 @@
 		select count(*) from box_review
 	</select>
 	
+	<!-- to_char(rev_date, 'YYYY-MM-DD') -->
+	
 	<select id="list" resultType="web_shop.WReviewVO">
 		select r.*, (select user_name from anafor_user where user_id = r.user_id) name
 	 	from BOX_REVIEW r	

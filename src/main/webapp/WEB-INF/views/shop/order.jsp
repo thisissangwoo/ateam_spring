@@ -320,7 +320,7 @@
    
    <div class="order_detail_category">
       <p id="person_receive_text">*받는사람</p>
-      <input type="text" name="name" id="person_receive" style="position: absolute; width: 200px; height: 25px; left: 150px; top: 10px; border: 1px solid #d5d5d5; border-radius: 5px; font-size: 12px"/>
+      <input type="text" name="name" id="person_receive" autofocus style="position: absolute; width: 200px; height: 25px; left: 150px; top: 10px; border: 1px solid #d5d5d5; border-radius: 5px; font-size: 12px;"/>
          
       <p id="phone_text">*연락처</p>
       <select name="tel" style="position: absolute; width: 50px; height: 25px; left: 150px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;">

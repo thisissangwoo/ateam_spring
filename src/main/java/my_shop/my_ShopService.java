@@ -11,5 +11,8 @@ public interface my_ShopService {
 	
 	// My 해당 주문 목록 상세 조회 (R) 
 	ShopDetailVO order_detail(int id);
+	
+	// My 해당 주문 쥐소 (D)
+	ShopDetailVO order_cancel(int id);
 
 }

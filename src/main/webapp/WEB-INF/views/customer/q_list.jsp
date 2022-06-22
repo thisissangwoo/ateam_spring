@@ -13,7 +13,7 @@
 }
 
 #top_img {
-	width: 1903px;
+	width: 100%;
 	height: 372px;
 	background: url("imgs/qna.png") center no-repeat;
 	position: relative;
@@ -252,7 +252,7 @@ select {
 						<c:forEach begin="1" end="${vo.indent }" var="i">
 							${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }
 						</c:forEach> 
-						<a href='detail.cu?id=${vo.id }'>${vo.title }</a>
+						<a id="vo_title" href='detail.cu?id=${vo.id }'>${vo.title }</a>
 					</td>
 					<td>${vo.name}</td>
 					<td>${vo.writedate}</td>

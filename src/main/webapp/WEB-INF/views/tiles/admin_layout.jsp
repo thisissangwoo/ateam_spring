@@ -45,8 +45,9 @@
 /* 	position: absolute; */
 /* 	left:15%; */
 	width: 85%;
-/* 	height: auto; */
-	
+  	height: auto;
+/*  	padding-bottom: 130px;  */
+	min-height: 1000px;
 /* 	height: 100%; */
 	background: #e5e5e5;
 /* 	float: right; */
