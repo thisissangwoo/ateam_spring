@@ -27,6 +27,12 @@ public class my_ShopDAO implements my_ShopService {
 	}
 
 	@Override
+	public void order_update(ShopDetailVO vo) {
+		// TODO Auto-generated method stub
+		sql.update("my_shop.mapper.update", vo);
+	}
+	
+	@Override
 	public ShopDetailVO order_cancel(int id) {
 		// TODO Auto-generated method stub
 		return sql.selectOne("my_shop.mapper.cancel", id);

@@ -35,8 +35,7 @@
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
-					<fmt:parseDate value="${vo.order_date }" var="date" pattern="YYYY-MM-dd HH:mm:ss"/>
-					<td><fmt:formatDate value="${date }" pattern="YYYY-MM-dd" /></td>
+					<td>${vo.order_date }</td>
 					<td class="right" ><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
 					<td style="color: red; font-weight: bold;">
@@ -63,6 +62,11 @@
 var cancel = '${cancel}';
 if (cancel === 'OK') {
 	alert("주문이 정상적으로 취소되었습니다.");
+}
+
+var result = '${result}';
+if (result === 'update'){
+    alert('주문 정보가 수정되었습니다.');
 }
 </script>
 </body>
