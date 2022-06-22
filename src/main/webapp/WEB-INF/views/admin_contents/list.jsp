@@ -30,6 +30,7 @@ body{
 
 #list-top{
    width:100%;
+   padding: 20px;
    height:80px;
    border-radius: 5px;
    background-color: white;
@@ -43,7 +44,8 @@ body{
 }
 
 #list-select ul{
-	width:800px;
+	width:100%;
+	padding-left: 20%;
 }
 #list-select tr td{
    font-size: 20px;
@@ -106,17 +108,13 @@ a.btn-empty {
    border: 1px solid #b0b0b0;
 }
 
-input[name=date1],input[name=date2]{
-   border: 1px solid #b0b0b0;
-   color: #b0b0b0;
-   margin-left: 20px;
-   font-size: 18px;
-}
-
 input[name=keyword] {
-    width: 800px;
+    width: 90%;
     height: 40px;
     font-size: 18px;
+    margin-right:15px;
+    margin-left:15px;
+    border-bottom: 1px solid #ccc;
 }
 
 table tr td:nth-child(7) img {
@@ -124,8 +122,8 @@ table tr td:nth-child(7) img {
 }
 
 #list-select select{
-   font-size: 18px; 
-   margin-right: 30px;
+   font-size: 18px;
+   margin-left: 15px; 
 }
 
 select[name=pageList],select[name=sort],select[name=reply]{
@@ -272,7 +270,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			         <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }  
 			         </c:forEach>
-			         <a href='detail.co?id=${vo.id }'>${vo.title }</a>         
+			         <a id="vo_title" href='detail.co?id=${vo.id }'>${vo.title }</a>         
 			      </td>
 			      <td>${vo.name}</td>
 			      <td>${vo.writedate}</td>
