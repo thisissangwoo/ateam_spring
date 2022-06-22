@@ -13,12 +13,12 @@
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: 800px; margin: 1%; max-height: 800px; padding: 10px;">
+	<div style=" background-color: white; height: 800px; margin: 20px; max-height: 800px; padding: 10px;">
 		<h3 style="font-weight: bold; font-size: 22px; margin-top: 15px;">주문자 목록</h3>
 
 		<table style="width: 100%; top: 20px;">
 			<tr>
-				<td class="w-px100">이름</td>
+				<td class="w-px120">이름</td>
 				<td class="w-px400">주소</td>
 				<td class="w-px160">연락처</td>
 				<td class="w-px180">주문일</td>
@@ -33,8 +33,7 @@
 					<td><a href="shopDetail.sp?id=${vo.id }">${vo.name }</a></td>
 					<td class="left">${vo.addr }</td>
 					<td>${vo.tel }</td>
-					<fmt:parseDate value="${vo.order_date }" var="date" pattern="YYYY-MM-dd HH:mm:ss"/>
-					<td><fmt:formatDate value="${date }" pattern="YYYY-MM-dd" /></td>
+					<td>${vo.order_date }</td>
 					<td>아나포 스마트 약통 AnaFor Smart Box IoT 알약 / 영양제 박스</td>
 					<td><fmt:formatNumber value="${vo.price }" pattern="#,##0원" /></td>
 					<td>${vo.cnt }</td>
