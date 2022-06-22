@@ -1,6 +1,8 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +62,63 @@ details div {
 	font-size: 30px;
 	font-weight: bold;
 	line-height: 40px;
+}
+
+/* ============================================ */
+
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform input[type=radio]{
+    display: none;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform fieldset .align{
+    display: inline-block;
+    direction: ltr;
+    border:0;
+}
+
+.unchecked{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.checked{
+	font-size: 2em;
+    color: #fad000;    
+}
+
+#myform .hover:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform .hover:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#reviewContents {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
 }
 </style>
 </head>
@@ -145,21 +204,28 @@ details div {
 					⭐⭐⭐⭐⭐
 				</div>
 			</div>
+			
+			
+			
+			
 			<div style="border-bottom: 1px solid; height: 1px; margin-bottom: 20px; margin-right: 20px;"></div>
 			<c:forEach items="${page.list }" var="vo">
-
 				<div style="height: 200px; text-align: left;">
 					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
-					<div style="height: 30px; font-size: 20px; line-height: 30px;">
-						<c:choose>
-							<c:when test="${vo.rev_grade eq 1 }">⭐☆☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 2 }">⭐⭐☆☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 3 }">⭐⭐⭐☆☆</c:when>
-							<c:when test="${vo.rev_grade eq 4 }">⭐⭐⭐⭐☆</c:when>
-							<c:when test="${vo.rev_grade eq 5 }">⭐⭐⭐⭐⭐</c:when>
-						</c:choose>
-					</div>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<span>${vo.rev_date }</span>
+						<div style="height: 30px; font-size: 20px; line-height: 30px;" id="myform">
+							<fieldset>
+								<div class='align'>
+									<c:forEach begin="1" end="${vo.rev_grade }">
+										<span class='checked'>★</span>
+									</c:forEach>
+									<c:forEach begin="${vo.rev_grade+1}" end="5">
+										<span class='unchecked'>★</span>
+									</c:forEach>
+								</div>
+								</fieldset>
+						</div>
 					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
 					<div
 						style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
@@ -168,6 +234,9 @@ details div {
 				</div>
 			</c:forEach>
 		</div>
+		
+		
+		
 		<form action="box.pr" method="post">
 			<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />

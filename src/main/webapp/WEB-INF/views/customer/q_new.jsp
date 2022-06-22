@@ -64,7 +64,7 @@ p{font-size:30px; margin-top:100px; font-weight: bold;}
 			<tr>
 				<th class='w-px120'>제목</th>
 				<td>
-					<input type="text" name="title" title="제목" class="chk" autofocus/>
+					<input type="text" name="title" title="제목" class="chk" maxlength="80" autofocus />
 				</td>
 			</tr>
 			<tr>

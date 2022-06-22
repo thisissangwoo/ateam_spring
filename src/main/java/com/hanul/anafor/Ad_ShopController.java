@@ -72,7 +72,7 @@ public class Ad_ShopController {
 
 
 	@RequestMapping("/list.sp")
-	public String list(HttpSession session, Model model, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "6") int pageList ) {
+	public String list(HttpSession session, Model model, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "15") int pageList ) {
 		session.setAttribute("category", "sp");
 		
 		page.setCurPage(curPage);
@@ -87,6 +87,29 @@ public class Ad_ShopController {
 		return "admin_shop/list";
 	}
 
+	
+	@RequestMapping("/reviewDetail.sp")
+	public String list(int id, Model model) {
+		
+	
+//		service.review_list();
+		service.review_detail(id);
+		
+		model.addAttribute("vo", service.review_detail(id));
+		
+		
+		
+		
+		
+		return "admin_shop/reviewDetail";
+	}
+
+	
+	
+	
+	
+	
+	
 }
 
 

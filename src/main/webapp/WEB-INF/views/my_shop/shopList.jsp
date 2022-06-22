@@ -51,7 +51,7 @@
 			
 					<td>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
-						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">리뷰</a>
+						<a class="btn-fill" href="reviewNew.rev?id=${vo.id }" style="margin: 5px;">리뷰</a>
 						<a class="btn-fill" href="new.cu?id=${vo.id }">문의</a>
 					</td>
 				</tr>

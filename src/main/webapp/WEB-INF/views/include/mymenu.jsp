@@ -61,7 +61,7 @@
 			<ul>
 				<li class="menu_title2">MY활동</li>
 				<li class="menu_2"><a href="list.qu"  ${category eq 'userjoin' ? 'class="active"' : '' }>문의내역 확인</a></li>
-				<li class="menu_3"><a>리뷰관리</a></li>
+				<li class="menu_3"><a href="list.rev"  ${category eq 'rev' ? 'class="active"' : '' }>리뷰관리</a></li>
 			</ul>	
 		</div>		
 		

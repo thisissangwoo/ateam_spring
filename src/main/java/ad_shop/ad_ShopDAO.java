@@ -35,6 +35,14 @@ public class ad_ShopDAO implements ad_ShopService {
 	}
 
 	
+	@Override
+	public WReviewVO review_detail(int id) {
+		return sql.selectOne("ad_shop.mapper.detail", id);
+	}
+	
+	
+	
+	
 //==================== 관리자 주문 목록 페이지 해당 id 상세 조회 ====================
 	@Override
 	public ShopDetailVO order_detail(int id) {
