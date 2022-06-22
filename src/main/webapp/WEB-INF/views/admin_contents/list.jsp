@@ -58,8 +58,9 @@ body{
 
 #list-board{
    width:100%;
-   height:88%;
-   margin-top:15px;
+   height:auto;
+   min-height:770px;
+   margin-top:20px;
    border-radius: 5px;
    background-color: white;
    padding-top: 40px;
