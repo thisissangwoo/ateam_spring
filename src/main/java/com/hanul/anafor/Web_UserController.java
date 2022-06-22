@@ -288,7 +288,9 @@ public class Web_UserController {
 				vo.setUser_pw(json.getString("email"));
 				vo.setUser_name(json.getString("name"));
 				vo.setSocial_id(json.getString("id"));
-				vo.setUser_tel(json.getString("mobile"));
+				String phone = json.getString("mobile"); //전화번호 하이픈 제거
+				phone=phone.replace("-", "");
+				vo.setUser_tel(phone);
 				
 				String birthday= json.getString("birthday");
 				birthday = birthday.replace("-", "");		//생년월일 날짜 하이픈 제거

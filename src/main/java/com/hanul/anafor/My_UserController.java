@@ -36,11 +36,17 @@ public class My_UserController {
 	@RequestMapping("/userinfoUpdate")
 	public String userInfoUpdate(HttpSession session,UserVO vo, String new_pw) {
 	
-		 if(!new_pw.equals("")) { vo.setUser_pw(new_pw);} 
-		  service.user_update(vo);
-		  session.setAttribute("loginInfo",service.user_login(vo));
-		 
-		return "redirect:userinfo.ur";
+		 if(!new_pw.equals("")) { //비밀번호 변경을 했을 경우 (재로그인 처리)
+			 vo.setUser_pw(new_pw);
+			  service.user_update(vo);
+			  session.setAttribute("loginInfo",null);
+			  return "redirect:userLogin";
+		 } 		
+		  else {						//비밀번호 변경 안 했을때
+			  service.user_update(vo);
+			  session.setAttribute("loginInfo",service.user_login(vo));
+			  return "redirect:userinfo.ur";
+		  }
 	}
 	
 	//회원탈퇴

@@ -9,9 +9,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 
-	#titlename{ width:100%; background:#929292; height:60px; padding:20px; }
+	#titlename{ 	   
+	   width:100%;
+	   height:60px;
+	   padding: 20px;
+	   background-color:#929292;
+	   border-bottom: 1px solid white;  }
 	#titlename h3{font-size:25px;  text-align:left; font-weight:bold; color:white;  }
-	#UserProfile{ margin:1%; height:100%;  max-height:850px; background-color: #FFFFFF; }
+	#UserProfile{ margin:20px; height: auto; min-height:870px; background-color: #FFFFFF; border-radius:5px;}
 	table{ width:90%; border:0px; }
 	td{font-size:14px; color:#929292;}
 	#totaluser{width:150px; height:40px; display:block; text-align:left; line-height:40px;	margin-left:30px; padding:10px; font-size:15px; font-weight:700; margin-top:15px; margin-bottom:15px;}

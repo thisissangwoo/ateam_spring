@@ -8,8 +8,21 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/join-check.js"></script>
 <style>
-	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
-	table { width: 70%;  }
+	#header {
+	   width:100%;
+	   height:60px;
+	   padding: 20px;
+	   background-color:#929292;
+	   border-bottom: 1px solid white; 
+	}
+	
+	#header h3{
+	   font-size: 25px;
+	   font-weight: bold;
+	   text-align: left;
+	   color: white;
+	}
+	table { width: 80%;  }
 	table th{width:20%;}
 	table td{width:80%;}
 	table th, table td {text-align:left;}
@@ -76,7 +89,9 @@
 </style>
 </head>
 <body>
-		<div id = "titlename">회원정보확인</div>
+		<div id="header">
+  				 <h3>회원정보 확인</h3>
+		</div>
 		<div id="userInfo">
 			<form action="userinfoUpdate" method="post">
 			<input type="hidden" name="user_pw" value="${loginInfo.user_pw}"/>
@@ -132,7 +147,11 @@
 				if(!item_check($('[name=new_pwchk]')))		return;
 				if(!item_check($('[name=user_name]')))		return;
 				if(!item_check($('[name=user_tel]'))) 		return;
-				alert("회원정보가 수정되었습니다!");
+				if($('[name=new_pw]').val()==""){
+					alert("회원정보가 수정되었습니다!");	
+				}else{
+					alert("비밀번호가 변경되어 로그아웃됩니다. 다시 로그인해주세요");	
+				}
 				$('form').submit();
 				
 			}

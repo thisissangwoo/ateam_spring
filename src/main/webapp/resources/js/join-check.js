@@ -76,7 +76,7 @@
 		else 				return this.id.unUsable;
 	}
 	, name_status : function (name){
-		var reg=/[^가-힣a-zA-Z]/g;
+		var reg=/[^가-힣]/g;
 		if(name=='') 			return this.name.empty;
 		else if(reg.test(name)) return this.name.invalid;
 		else 					return this.name.valid;
@@ -85,7 +85,7 @@
 	, name:{
 		empty:{code:'invalid',desc:'이름을 입력해주세요'},
 		valid:{code:'valid',desc:''},
-		invalid:{code:'invalid',desc:"한글과 영문 대/소문자만 입력가능합니다"}
+		invalid:{code:'invalid',desc:"한글만 입력이 가능합니다."}
 	}
 	, birth_status:function(birth){
 		var birthday = birth;
@@ -111,15 +111,15 @@
 		notAge :{code:'invalid',desc:"13살 이상만 가입이 가능합니다."}
 	}
 	, tel_status:function(tel){
-		var reg = /^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$/;
+		var reg = /^01([0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/;
 		if(tel=='') return this.tel.empty;
 		else if(reg.test(tel)) return this.tel.valid;
 		else return this.tel.invalid;
 	}
 	, tel:{
-		empty:{code:'invalid',desc:"휴대폰번호를 입력하세요. '-'을 입력해주세요 예)010-1234-5678"},
+		empty:{code:'invalid',desc:"휴대폰번호를 입력하세요. 예)01012345678"},
 		valid:{code:'valid',desc:''},
-		invalid:{code:'invalid',desc:"휴대폰번호를 형식에 맞게 입력해주세요. '-'을 입력해주세요 예)010-1234-5678"}
+		invalid:{code:'invalid',desc:"휴대폰번호를 형식에 맞게 입력해주세요 예)01012345678"}
 	}
 	, new_pw_status : function ( pw ) {
 		// 비밀번호를 영문 대/소문자, 숫자 외 입력시
