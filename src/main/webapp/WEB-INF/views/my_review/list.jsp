@@ -74,23 +74,23 @@
 	</div>
 	
 	<div style="background-color: white; height: 800px; margin: 1%; max-height: 800px; padding: 10px;">
-		<h3 style="font-weight: bold; font-size: 20px; text-align: left; margin: 20px;">리뷰 리스트</h3>							
+		<h3 style="font-weight: bold; font-size: 20px; margin: 20px;">리뷰 리스트</h3>							
 		
-		<table style="width: 100%;">
+		<table style="width: 80%;">
 			<tr>
 				<td style="width: 300px;">제품명</td>
-				<td style="width: 150px;">리뷰제목</td>
-				<td>리뷰내용</td>
+				<td style="width: 150px; text-align: left;">리뷰제목</td>
+				<td style="text-align: left;">리뷰내용</td>
 				<td style="width: 150px;">작성자</td>
 				<td style="width: 150px;">작성 일자</td>
 			</tr>		
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
-					<td style="width: 300px;">아나포 스마트 약통 AnaFor SmartBOX</td>
-					<td style="width: 150px;">${vo.rev_title }</td>
+					<td style="width: 300px;"><a style=" font-weight: bold;" href="reviewDetail.rev?id=${vo.rev_id }">아나포 스마트 약통 AnaFor SmartBOX</a></td>
+					<td style="width: 150px; text-align: left;">${vo.rev_title }</td>
 					
-					<td style=" font-weight: bold;"><a href="reviewDetail.rev?id=${vo.rev_id }">${vo.rev_content }</a></td>
-					
+					<td style="text-align: left;"><a href="reviewDetail.rev?id=${vo.rev_id }">${vo.rev_content }</a></td>
+					<td style="width: 150px;">${loginInfo.user_name }</td>
 					<td style="width: 150px;">
 						<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
 						<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
