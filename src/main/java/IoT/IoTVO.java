@@ -2,14 +2,14 @@ package IoT;
 
 public class IoTVO {
 	
-	private int box_id;
+	private int no;
 	private String user_id, memo, case_num, case_time;
 	
-	public int getBox_id() {
-		return box_id;
+	public int getNo() {
+		return no;
 	}
-	public void setBox_id(int box_id) {
-		this.box_id = box_id;
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -35,5 +35,7 @@ public class IoTVO {
 	public void setCase_time(String case_time) {
 		this.case_time = case_time;
 	}
+	
+
 
 }

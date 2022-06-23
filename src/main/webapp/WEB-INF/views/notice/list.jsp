@@ -21,8 +21,8 @@
 
 #top_img .text_box {
 	position: absolute;
-	right: 380px;
 	top: 200px;
+	right: 380px;
 }
 
 #top_img .text_box p {
