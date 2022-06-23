@@ -73,7 +73,7 @@
 		</div>
 		<div class="my_information">
 			<ul>
-				<li class="menu_title3">MYAnaforBox</li>
+				<li class="menu_title3">MYBox</li>
 				<li class="menu_4"><a href="iotmap" >약통위치경로</a></li>
 			</ul>	
 		</div>			
