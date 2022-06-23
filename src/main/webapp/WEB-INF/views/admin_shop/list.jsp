@@ -30,12 +30,12 @@
 }
 
 .unchecked{
-    font-size: 2em;
+    font-size: 1.5em;
     color: transparent;
     text-shadow: 0 0 0 #f0f0f0;
 }
 .checked{
-	font-size: 2em;
+	font-size: 1.5em;
     color: #fad000;    
 }
 
@@ -67,72 +67,77 @@
 </head>
 <body>
 
-<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
-	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
+<div style="width:100%;height:59px;padding: 20px;background-color:#929292; ">
+	<h3 style="font-size: 25px;font-weight: bold;text-align: left;color: white;">리뷰 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: 800px; margin: 1%; max-height: 800px; padding: 10px;">
-		<h3 style="font-weight: bold; font-size: 20px; text-align: left; margin: 20px;">리뷰 리스트</h3>
-	
-		<table style="width: 100%;">
-			<tr>
-				<td style="width: 100px;">이름</td>
-				<td>리뷰제목</td>
-				<td style="width: 700px;">리뷰내용</td>
-				<td style="width: 200px;">별점</td>
-				<td style="width: 200px;">작성일</td>
-			</tr>
-			
-			
-			<c:forEach items="${vo.list }" var="vo">
-				<div style="height: 200px; text-align: left;">
-					<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
-					<div style="height: 30px; font-size: 20px; line-height: 30px;">
-					</div>
-					<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
-					<div
-						style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
-						${vo.rev_content }
-					</div>
-				</div>
-			</c:forEach>
-			
-			<c:forEach items="${page.list }" var="vo">
+	<div style=" background-color: white; height: 800px; margin: 20px; min-height: 900px; padding: 10px; border-radius: 5px;">
+		<h3 style="font-weight: bold; font-size: 20px;  margin: 20px;">리뷰 리스트</h3>
+		<div style="height: 765px;">
+			<table style="width: 80%;">
 				<tr>
-					<td style="width: 50px;">${vo.user_id }</td>
-					<td style="width: 300px;">${vo.rev_title }</td>
-					<td style="width: 150px;">${vo.rev_content }</td>
-					<td>
-						<div style="height: 30px; font-size: 20px; line-height: 30px;" id="myform">
-							<fieldset>
-								<div class='align'>
-									<c:forEach begin="1" end="${vo.rev_grade }">
-										<span class='checked'>★</span>
-									</c:forEach>
-									<c:forEach begin="${vo.rev_grade+1}" end="5">
-										<span class='unchecked'>★</span>
-									</c:forEach>
-								</div>
-							</fieldset>
-						</div>
-
-					</td>
-					<td>${vo.rev_date }</td>
+					<td style="width: 100px;">아이디</td>
+					<td style="width: 150px;">리뷰제목</td>
+					<td style="width: 600px; text-align: left;">리뷰내용</td>
+					<td style="width: 250px;">별점</td>
+					<td style="width: 200px;">작성일</td>
 				</tr>
-			</c:forEach>
-		</table>
+				
+				
+				<%-- <c:forEach items="${page.list }" var="vo">
+					<div style="height: 200px; text-align: left;">
+						<span style="height: 20px; font-size: 20px; line-height: 20px;">${vo.user_id }</span>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>${vo.rev_date }</span>
+						<div style="height: 30px; font-size: 20px; line-height: 30px;">
+						</div>
+						<div style="height: 20px; font-size: 20px; line-height: 20px;">판매자 : AnaFor</div>
+						<div
+							style="height: 100px; margin-top: 10px; border-bottom: 1px solid; margin-right: 20px;">
+							${vo.rev_content }
+						</div>
+					</div>
+				</c:forEach> --%>
+				
+				<c:forEach items="${page.list }" var="vo">
+					<tr>
+						<td style="width: 50px; text-align: left;">${vo.user_id }</td>
+						<td style="width: 300px; text-align: left;">${vo.rev_title }</td>
+						<td style="width: 150px; text-align: left;">${vo.rev_content }</td>
+						<td style="text-align: left;">
+							<div style="height: 30px; font-size: 20px; line-height: 30px;" id="myform">
+								<fieldset>
+									<div class='align'>
+										<c:forEach begin="1" end="${vo.rev_grade }">
+											<span class='checked'>★</span>
+										</c:forEach>
+										<c:forEach begin="${vo.rev_grade+1}" end="5">
+											<span class='unchecked'>★</span>
+										</c:forEach>
+									</div>
+								</fieldset>
+							</div>
+	
+						</td>
+						<td>
+							<fmt:parseDate value="${vo.rev_date }" var="date" pattern="yyyy-MM-dd HH:mm:ss"/>
+							<fmt:formatDate value="${date }" pattern="YY-MM-dd" />
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
-		
-		
-		
-		
 		<div style="margin-bottom: -120px;">
 			<form action="list.sp" method="post">
 				<input type="hidden" name="curPage" value="1" />
 				<jsp:include page="/WEB-INF/views/include/page.jsp" />
 			</form>
 		</div>	
+		</div>
+		
+		
+		
+		
+		
 	
 </body>
 </html>
