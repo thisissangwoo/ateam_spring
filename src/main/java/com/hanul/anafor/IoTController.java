@@ -1,5 +1,6 @@
 package com.hanul.anafor;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,9 +72,9 @@ public class IoTController {
 			
 			//안드로이드에 지도 띄우기
 			@RequestMapping("/iotmobilemap")
-			public String userMapMobile(Model model) {
+			public String userMapMobile(Model model,HttpServletRequest req) {
 				GPSVO vo = new GPSVO();
-				vo.setUser_id("anafor@anafor.net");
+				vo.setUser_id(req.getParameter("user_id"));
 				List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
 				model.addAttribute("list", new Gson().toJson(list));
 				return "map/mobilemap";
