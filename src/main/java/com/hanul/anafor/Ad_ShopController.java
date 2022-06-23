@@ -77,9 +77,6 @@ public class Ad_ShopController {
 		
 		page.setCurPage(curPage);
 		page.setPageList(pageList);
-		
-		page.setCurPage(curPage);
-		page.setPageList(pageList);
 //		service.review_list();
 		
 		model.addAttribute("page", service.review_list(page));
