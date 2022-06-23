@@ -195,7 +195,7 @@
 			<span id="pwmsg2"></span>
 		</div>
 		<div id="username">
-			<input type="text" name="user_name" class="chk"  placeholder="이름 *"/><br/>
+			<input type="text" name="user_name" class="chk"  placeholder="이름 *" maxlength="10"/><br/>
 			<span id="namemsg"></span>
 		</div>
 		

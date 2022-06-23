@@ -40,16 +40,14 @@ public class IoTController {
 				UserVO user = (UserVO) session.getAttribute("loginInfo");
 				vo.setUser_id(user.getUser_id());
 				List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
-				if(list != null) {
-					session.setAttribute("category", "loc");
-					return "my_info/notAccept";
-				}else {
+				if(list != null && list.size()!= 0) {
 					model.addAttribute("list", new Gson().toJson(list));
 					session.setAttribute("category", "loc");
 					return "map/map";
+				}else {
+					session.setAttribute("category", "loc");
+					return "my_info/notAccept";
 				}
-				
-				
 			}
 			
 			//GPS 위치 받기

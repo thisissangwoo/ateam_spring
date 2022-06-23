@@ -27,7 +27,7 @@
 </div>
 
 <div id="webmap" style="width:80%; height:600px; margin:50px auto 5px auto;" ></div>    
-<div style="width:90%; text-align:right; font-size:11px;">*해당 위치는 3일 간격으로 갱신됩니다.</div>
+<div style="width:90%; text-align:right; font-size:11px;">*해당 경로는 현재 기준 3일전까지만 확인 가능합니다.</div>
  
 <script>
 var json = JSON.parse('${list}');
