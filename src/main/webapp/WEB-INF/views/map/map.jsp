@@ -3,21 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>원, 선, 사각형, 다각형 표시하기</title>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=681e977067d98d095ccfda23ca7c463c"></script>
     <style>
-    	#title{
-    		padding:10px;
-    		text-align:center;
-    	}
-    
+ 	#header {
+	   width:100%;
+	   height:60px;
+	   padding: 20px;
+	   background-color:#929292;
+	   border-bottom: 1px solid white; 
+	}
+	
+	#header h3{
+	   font-size: 25px;
+	   font-weight: bold;
+	   text-align: left;
+	   color: white;
+	}
     </style>
 </head>
 <body>
+<div id="header">
+  	<h3>약통위치경로</h3>
+</div>
 
-<div id="map" style="width:80%;height:800px; margin:auto;"></div>    
- 
+<div id="webmap" style="width:80%; height:600px; margin:50px auto 5px auto;" ></div>    
+<div style="width:90%; text-align:right; font-size:11px;">*해당 위치는 3일 간격으로 갱신됩니다.</div>
  
 <script>
 var json = JSON.parse('${list}');
@@ -31,14 +41,13 @@ for (var i=0; i<json.length; i++){
 			content: '<div id="title">'+textday+'<br/>'+texttime+'</div>',
 			latlng: new kakao.maps.LatLng(json[i].latitude, json[i].longitude)
 	};
-}
+} 
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+var mapContainer = document.getElementById('webmap'), // 지도를 표시할 div
  
 mapOption = {
- 
-center: first_positions[0].latlng, // 지도의 중심좌표
- 
+
+center: first_positions[0].latlng, // 지도의 중심좌표 */
 level: 1// 지도의 확대 레벨
  
 };
@@ -47,45 +56,12 @@ level: 1// 지도의 확대 레벨
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 
- var mapTypeControl = new kakao.maps.MapTypeControl(); // 지도에 컨트롤을 추가해야 지도위에 표시
+var mapTypeControl = new kakao.maps.MapTypeControl(); // 지도에 컨트롤을 추가해야 지도위에 표시
 // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT); // 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성
 var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-
-//첫번째 띄울 좌표
- /* 
-var first_positions = [
- 
-{
- 
-content: '<div id="title">배재대학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3206145, 127.3661757)
- 
-},
- 
-{
- 
-content: '<div id="title">목원대학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3261, 127.3389)
- 
-},
- 
-{
- 
-content: '<div id="title">대전 체육 고등학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3371, 127.3420)
- 
-} 
- 
-]; */
-
- 
- 
 // 첫번째 마커 생성
  
 for (var i = 0; i < first_positions.length; i ++) {
@@ -117,8 +93,6 @@ kakao.maps.event.addListener(marker, 'click', marker_click(map, marker, info
 }
  
 
- 
- 
 function marker_click(map, marker, infowindow){
  
 return function() {
@@ -158,10 +132,7 @@ strokeStyle: 'solid' // 선의 스타일입니다
 // 지도에 선을 표시합니다
  
 first_linePath.setMap(map);
- 
 
- 
- 
 </script>
 </body>
 </html>

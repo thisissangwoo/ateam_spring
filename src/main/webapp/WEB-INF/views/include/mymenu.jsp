@@ -60,21 +60,21 @@
 		<div class="my_activity">
 			<ul>
 				<li class="menu_title2">MY활동</li>
-				<li class="menu_2"><a href="list.qu"  ${category eq 'userjoin' ? 'class="active"' : '' }>문의내역 확인</a></li>
-				<li class="menu_3"><a href="list.rev"  ${category eq 'rev' ? 'class="active"' : '' }>리뷰관리</a></li>
+				<li class="menu_2"><a href="list.qu"  >문의내역 확인</a></li>
+				<li class="menu_3"><a href="list.rev" >리뷰관리</a></li>
 			</ul>	
 		</div>		
 		
 		<div class="my_information">
 			<ul>
 				<li class="menu_title3">MY정보</li>
-				<li class="menu_4"><a href="checkpw.ur"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
+				<li class="menu_4"><a href="checkpw.ur" >개인정보확인/수정</a></li>
 			</ul>	
 		</div>
 		<div class="my_information">
 			<ul>
-				<li class="menu_title3">MY정보</li>
-				<li class="menu_4"><a href="checkpw.ur"  ${category eq 'userjoin' ? 'class="active"' : '' }>개인정보확인/수정</a></li>
+				<li class="menu_title3">MYAnaforBox</li>
+				<li class="menu_4"><a href="iotmap" >약통위치경로</a></li>
 			</ul>	
 		</div>			
 		
