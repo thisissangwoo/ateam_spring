@@ -161,7 +161,7 @@ summary::-webkit-details-marker {
 	<input type="hidden" name="curPage" value="1" />
 	<div id="top_img">
 		<div class="text_box">
-			<p><b>아나포에서 여러분의<br>소리를 듣습니다</b></p>
+			<p><b>FAQ를 통해<br>궁금증을 해결하세요</b></p>
 		</div>
 	</div>
 	<div id="menu_form">

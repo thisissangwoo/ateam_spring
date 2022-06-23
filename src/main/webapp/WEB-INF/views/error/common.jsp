@@ -3,7 +3,7 @@
 
 <div class='center' style='width:800px; margin : 0 auto;'>
 	<div class='left' style='height:60px;'>
-		<a href='<c:url value="/" />'><img src="imgs/clcd_logo.png" /></a>
+		<a href='<c:url value="/" />'><img src="imgs/error_anafor" /></a>
 	</div>
 	<hr>
 	<div class='left'>
@@ -13,5 +13,6 @@
 		<br>
 		<pre>입력하신 주소가 정확한지 다시 한번 확인해 주시기 바랍니다.</pre>
 		<pre>관련 문의사항은 AnaFor 고객센터에 알려주시면 친절하게 안내해 드리겠습니다.</pre>
+		${msg }
 	</div>
 </div>
