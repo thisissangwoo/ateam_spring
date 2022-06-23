@@ -14,7 +14,6 @@
 	<c:when test="${category eq 'bo' }"><c:set var='title' value='대시보드' /></c:when>
 	<c:when test="${category eq 'sp' }"><c:set var='title' value='shop관리' /></c:when>
 	<c:when test="${category eq 'ur' }"><c:set var='title' value='사용자관리' /></c:when>
-
 </c:choose>
 
 <!DOCTYPE html>
