@@ -67,7 +67,7 @@
 	, common : {
 		empty : { code : 'invalid', desc : '입력하세요!' }
 		, space : {code : 'invalid', desc : '공백없이 입력하세요'}
-		, max : { code : 'invalid', desc : '최대 16자 이하로 입력하세요'}
+		, max : { code : 'invalid', desc : '최대 20자 이하로 입력하세요'}
 		, min : { code : 'invalid', desc : '최소 8자 이상 입력하세요'}		
 	}
 	
@@ -130,7 +130,7 @@
 			else if ( pw.match(space))		return this.common.space;
 			else if (reg.test(pw))			return this.n_pw.invalid;
 			else if (pw.length > 0 && pw.length < 8 )		return this.common.min;
-			else if (pw.length > 16)		return this.common.max;
+			else if (pw.length > 20)		return this.common.max;
 			else if (!upper.test(pw) || !lower.test(pw) || !digit.test(pw))	return this.n_pw.lack;
 			else							return this.n_pw.valid;
 		}else{
