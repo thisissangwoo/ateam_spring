@@ -5,22 +5,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,  initial-scale=1">
-    <title>원, 선, 사각형, 다각형 표시하기</title>
+    <title>약통위치경로</title>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=681e977067d98d095ccfda23ca7c463c"></script>
     <style>
     	#title{
     		padding:10px;
     		text-align:center;
     	}
-    
     </style>
 </head>
 <body>
 
 <div id="map" style="height:800px"></div>    
- 
- 
+
 <script>
+
 var json = JSON.parse('${list}');
 var first_positions = [];
 var textday ,texttime;
@@ -55,38 +54,6 @@ var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 
-//첫번째 띄울 좌표
- /* 
-var first_positions = [
- 
-{
- 
-content: '<div id="title">배재대학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3206145, 127.3661757)
- 
-},
- 
-{
- 
-content: '<div id="title">목원대학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3261, 127.3389)
- 
-},
- 
-{
- 
-content: '<div id="title">대전 체육 고등학교</div>',
- 
-latlng: new kakao.maps.LatLng(36.3371, 127.3420)
- 
-} 
- 
-]; */
-
- 
- 
 // 첫번째 마커 생성
  
 for (var i = 0; i < first_positions.length; i ++) {
@@ -159,10 +126,8 @@ strokeStyle: 'solid' // 선의 스타일입니다
 // 지도에 선을 표시합니다
  
 first_linePath.setMap(map);
- 
 
- 
- 
+
 </script>
 </body>
 </html>

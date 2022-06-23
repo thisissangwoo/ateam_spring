@@ -3,6 +3,8 @@ package com.hanul.anafor;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,19 +32,22 @@ public class IoTController {
 	@Autowired @Qualifier ("ateam") SqlSession sql;
 	Gson gson = new Gson();
 
-	//스프링에 지도 띄우기
+			//스프링에 지도 띄우기
 			@RequestMapping("/iotmap")
-			public String userMap(Model model) {
+			public String userMap(Model model,HttpSession session) {
 				//우선 디비에 임의로 저장해놓은 데이터의 box_id와 user_id로 조회 (이 부분 추후 수정)
 				GPSVO vo = new GPSVO();
-				vo.setBox_id(2222);
-				vo.setUser_id("testabc");
-				
-				  List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
-				  model.addAttribute("list", new Gson().toJson(list));
-				 
-				return "map/map";
-				
+				UserVO user = (UserVO) session.getAttribute("loginInfo");
+				vo.setUser_id(user.getUser_id());
+				List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
+				if(list != null && list.size()!= 0) {
+					model.addAttribute("list", new Gson().toJson(list));
+					session.setAttribute("category", "loc");
+					return "map/map";
+				}else {
+					session.setAttribute("category", "loc");
+					return "my_info/notAccept";
+				}
 			}
 			
 			//GPS 위치 받기
@@ -53,30 +58,25 @@ public class IoTController {
 				double lat = (Double.parseDouble(req.getParameter("latitude"))/1000000); 
 				double lon = (Double.parseDouble(req.getParameter("longitude"))/1000000);
 				GPSVO vo = new GPSVO();
-				//추후 아이디도 로라통신으로 주고 받아야함
-				vo.setUser_id("testabc");
-				System.out.println(req.getParameter("equipment_id")); //2222 > 이것도 나중에 db iot_box에 미리 데이터를 추가해야함
-				vo.setBox_id(Integer.parseInt(req.getParameter("equipment_id")));
+				System.out.println(req.getParameter("equipment_id")); 
+				int box_id = Integer.parseInt(req.getParameter("equipment_id"));
+				String user_id = sql.selectOne("iotmap.mapper.findId",box_id);		//box_id와 일치하는 user_id 찾기
+				vo.setUser_id(user_id);
 				vo.setLatitude(lat);
 				vo.setLongitude(lon);
-				sql.insert("iot.mapper.insert",vo);
-				System.out.println(lat);
-				System.out.println(lon);
+				sql.insert("iotmap.mapper.insert",vo);
+				System.out.println(lat+","+lon);
 			}
+			
 			
 			//안드로이드에 지도 띄우기
 			@RequestMapping("/iotmobilemap")
 			public String userMapMobile(Model model) {
-				//우선 디비에 임의로 저장해놓은 데이터의 box_id와 user_id로 조회 (이 부분 추후 수정)
 				GPSVO vo = new GPSVO();
-				vo.setBox_id(2222);
-				vo.setUser_id("testabc");
-				
-				  List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
-				  model.addAttribute("list", new Gson().toJson(list));
-				 
+				vo.setUser_id("anafor@anafor.net");
+				List<GPSVO> list = sql.selectList("iotmap.mapper.webSelect",vo);
+				model.addAttribute("list", new Gson().toJson(list));
 				return "map/mobilemap";
-				
 			}		
 	
 //============================================================================================
