@@ -19,6 +19,10 @@
 #chart_wrap .chart h3::after{content:'';display:block;height:1px;width:100%;background:#929292;}
 /* #chart_wrap .chart #myChart{position: absolute; width: 500px; height: 400px; background: #fff; border-radius: 0px 0px 10px 10px; padding: 10px; border-top: 1px solid #929292;} */
 
+#chart_pie{width: 100%; height: 400; box-sizing: border-box; padding: 20px; position: relative; }
+#chart_pie .age_Chart{width: 40%; height: auto; background: #fff; border-radius: 10px 10px 10px 10px;/*   position: absolute; top: 0px; left: 20;  */}
+#chart_pie .gender_Chart{width: 40%; height: auto; background: #fff; border-radius: 10px 10px 10px 10px; float: left;  text-align: left; padding-left: 100px;/*  position: absolute; top: 0px; right: 20; */}
+
 
 
 </style>
@@ -35,12 +39,63 @@
 		<!--차트가 그려질 부분-->
 		<h3>통계 그래프</h3>
 		<canvas id="myChart" width="900" height="200"></canvas>
+		
 	</div>  
+</div>	
 
+<div id="chart_pie">
 
-
+		<div class="age_Chart">
+	   		<canvas id="pie-chart" width="100" height="100"></canvas>
+	   		
+		</div>
+		<script type="text/javascript">
+		new Chart(document.getElementById("pie-chart"), {
+		    type: 'pie',
+		    data: {
+		      labels: ["10~20대", "30~40대", "50~60대", "70 이상"],
+		      datasets: [{
+		        label: "Population (millions)",
+		        backgroundColor: ["#caa9a9", "#9eb7d5","#68509b","#da4f70"],
+		        data: [10,20,5,1]
+		      }]
+		    },
+		    options: {
+		      title: {
+		        display: true,
+		        text: '나이별 사용자 그래프'
+		      }
+		    }
+		});  
+		</script>
+		
+		<div class="gender_Chart">
+	   		<canvas id="genderChart" width="500" height="500"></canvas>
+		</div>
+	
+		<script type="text/javascript">
+		new Chart(document.getElementById("genderChart"), {
+		    type: 'pie',
+		    data: {
+		      labels: ["남", "여"],
+		      datasets: [{
+		        label: "Population (millions)",
+		        backgroundColor: ["#8aabd8", "#da4f70"],
+		        data: [2478,5267]
+		      }]
+		    },
+		    options: {
+		      title: {
+		        display: true,
+		        text: '성별 사용자 비율'
+		      }
+		    }
+		});  
+		</script>
 
 </div>
+
+
 <script>
 	var usergraph = JSON.parse('${list}'); //조회한 데이터(json type)
 	var aweek = JSON.parse('${aweek}');		//일주일 날짜
