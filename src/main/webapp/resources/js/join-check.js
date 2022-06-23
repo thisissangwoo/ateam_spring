@@ -98,8 +98,8 @@
 		if(birth.length!=0 && dt.getDate()!=d ) return this.birth.invalid;
 		else if(birth.length!=0 && dt.getMonth()+1 != m )  return this.birth.invalid;
 		else if(birth.length!=0 && dt.getFullYear() != y)  return this.birth.invalid;
-		else if(y < 1922 || y >today.getFullYear()-13)			 return this.birth.invalid;
-		else if((y == today.getFullYear() && m > today.getMonth()+1)|| (y == today.getFullYear() && m == today.getMonth()+1 && d > today.getDate() ))  return this.birth.notAge;
+		else if(y < 1922 || y >today.getFullYear()-14)			 return this.birth.notAge;
+		else if((y == today.getFullYear() && m > today.getMonth()+1)|| (y == today.getFullYear() && m == today.getMonth()+1 && d > today.getDate() ))  return this.birth.notAge; 
 		else if(birth=='') return this.birth.empty;
 		else return this.birth.valid;
 		
@@ -108,7 +108,7 @@
 		empty:{code:'invalid',desc:'생년월일을 입력하세요. 예)19990101'},
 		valid:{code:'valid',desc:''},
 		invalid:{code:'invalid',desc:"생년월일을 형식에 맞게 입력해주세요. 예)19990101"},
-		notAge :{code:'invalid',desc:"13살 이상만 가입이 가능합니다."}
+		notAge :{code:'invalid',desc:"만 13세 이상만 가입이 가능합니다."}
 	}
 	, tel_status:function(tel){
 		var reg = /^01([0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/;
