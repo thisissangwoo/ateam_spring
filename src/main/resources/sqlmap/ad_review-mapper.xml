@@ -10,9 +10,13 @@
 	
 
 	<select id="list" resultType="web_shop.WReviewVO">
-		select r.*, (select user_name from anafor_user where user_id = r.user_id) name
-	 	from BOX_REVIEW r	
-		where rev_id between #{beginList} and #{endList}	
+		select * 
+		from (select rownum no, r.*, (select user_name from anafor_user where user_id = r.user_id) name  
+	    	  from (select * 
+	      			from BOX_REVIEW 
+                	order by rev_id desc) r           
+	   		  order by no desc)
+	    where no between #{beginList} and #{endList}	
 	</select>
 
 	

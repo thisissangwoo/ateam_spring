@@ -171,7 +171,7 @@ html, body{min-height: 100%; height: 100%;}
       <div id="bottom">
          <div class="text_bot">
             <h3>AnaFor</h3>
-            <p><b>아나플</b> 나를 위한</p>
+            <p><b>아픈</b> 나를 위한</p>
             <p><b>아나포</b>를 지금<b>만나보세요!</b></p>
          </div>
        
