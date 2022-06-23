@@ -17,11 +17,15 @@
 	where id = #{id}
 </select>
 
+<update id="update">
+	update shop set name = #{name}, tel = #{tel}, addr = #{addr}, coment = #{coment}, cnt = #{cnt}, price = #{price}
+	where id = #{id}
+</update>	
+
 <delete id="cancel">
 	delete 
 	from shop
 	where id = #{id}
 </delete>
-
 
 </mapper>
