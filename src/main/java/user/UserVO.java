@@ -3,8 +3,17 @@ package user;
 public class UserVO {
     private String user_id, user_pw, user_name, user_birth, user_gender, user_tel, user_kakao, user_naver, admin, 
     				social_type, social_id, memo, join_date;
-    private int brCnt, qCnt,no;  //br:구매평, q:q&A
+    private int brCnt, qCnt,no,box_id;  //br:구매평, q:q&A
+      
     
+	public int getBox_id() {
+		return box_id;
+	}
+
+	public void setBox_id(int box_id) {
+		this.box_id = box_id;
+	}
+
 	public int getNo() {
 		return no;
 	}

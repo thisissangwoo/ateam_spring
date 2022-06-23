@@ -51,7 +51,7 @@
 	</select>
 	
 	<insert id="socialJoin">
-		insert into anafor_user (user_id, user_name, user_gender) 
-		values (#{user_id},#{user_name},#{user_gender})
+		insert into anafor_user (user_id, user_pw, user_name, user_gender) 
+		values (#{user_id},#{user_id},#{user_name},#{user_gender})
 	</insert>
 </mapper>

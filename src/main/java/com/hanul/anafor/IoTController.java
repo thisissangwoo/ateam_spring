@@ -104,8 +104,8 @@ public class IoTController {
 	   @ResponseBody
 	   @RequestMapping(value="/iot_delete", produces = "application/json;charset=UTF-8")
 	   public String delete(HttpServletRequest req) {
-		String box_id = req.getParameter("box_id");   
-		System.out.println(sql.delete("IoT.mapper.iot_delete", box_id));
+		String no = req.getParameter("no");   
+		System.out.println(sql.delete("IoT.mapper.iot_delete", no));
 		return "";
 	  }
 	
@@ -113,7 +113,7 @@ public class IoTController {
 	   @RequestMapping(value="/iot_modify", produces = "application/json;charset=UTF-8")
 	   public String modify(HttpServletRequest req) {
 		  IoTVO vo = new IoTVO();
-		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
+		  vo.setNo(Integer.parseInt(req.getParameter("no")));
 		  vo.setMemo(req.getParameter("memo"));
 		  vo.setCase_num(req.getParameter("case_num"));  
 		  vo.setCase_time(req.getParameter("case_time"));
