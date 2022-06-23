@@ -14,6 +14,7 @@
 	<c:when test="${category eq 'userjoin'}"><c:set var='title' value="회원정보수정"/></c:when>
 	<c:when test="${category eq 'rev'}"><c:set var='title' value="리뷰관리"/></c:when>
 	<c:when test="${category eq 'loc'}"><c:set var='title' value="위치정보"/></c:when>
+	<c:when test="${category eq 'my'}"><c:set var='title' value="주문/배송조회"/></c:when>
 </c:choose>
 
 <!DOCTYPE html>
