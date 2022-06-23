@@ -316,7 +316,7 @@
    <div class="order_detail">
       <p id="detail">주문자 정보</p>
       <c:if test="${vo.code eq 'so0' || vo.code eq 'so1' || vo.code eq 'so2'}">
-		<a class="btn-fill" style="margin-left: 920px;">수정</a>
+		<a class="btn-fill" href="shopModify.my?id=${vo.id }" style="margin-left: 920px;">수정</a>
 		
       </c:if>
       

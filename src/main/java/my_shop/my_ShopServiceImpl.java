@@ -23,7 +23,13 @@ public class my_ShopServiceImpl implements my_ShopService {
 		// TODO Auto-generated method stub
 		return dao.order_detail(id);
 	}
-//==================== My 해당 주문 취소 =================
+//==================== My 해당 주문 수정 ===========================
+	@Override
+	public void order_update(ShopDetailVO vo) {
+		// TODO Auto-generated method stub
+		dao.order_update(vo);
+	}
+//==================== My 해당 주문 취소 ===========================
 	@Override
 	public ShopDetailVO order_cancel(int id) {
 		// TODO Auto-generated method stub

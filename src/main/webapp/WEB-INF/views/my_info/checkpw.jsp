@@ -6,12 +6,25 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#titlename{ width:100%; background:#929292; height:60px; text-align:left; font-size:20px; font-weight:700; line-height:60px; padding: 0px 10px; color:#FFFFFF; }
+	#header {
+	   width:100%;
+	   height:60px;
+	   padding: 20px;
+	   background-color:#929292;
+	   border-bottom: 1px solid white; 
+	}
+	
+	#header h3{
+	   font-size: 25px;
+	   font-weight: bold;
+	   text-align: left;
+	   color: white;
+	}
 	#spanid,#id{ color:#696AAD; font-weight:800;}
-
-	#msg_user{width:90%; height:40px; margin-top:40px; text-align:left; margin-left:100px; }
+	#spanid { margin-left:60px; }
+	#msg_user{width:80%; height:40px; margin-top:40px; text-align:left; margin-left:100px; }
 	table{
-		width:90%;
+		width:80%;
 	}
 	td{
 		text-align:left;
@@ -43,7 +56,9 @@
 </style>
 </head>
 <body>
-	<div id = "titlename">회원정보확인</div>
+	<div id="header">
+  		<h3>회원정보 확인</h3>
+	</div>
 	<div id = "msg_user">
 		<span id="spanid">${loginInfo.user_name}</span>
 		<span>&nbsp;님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.(* 소셜로그인의 경우 비밀번호란에 아이디를 그대로 입력하시면 됩니다.)</span>
@@ -56,7 +71,7 @@
 			</tr>		
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="userpw" id="userpw" /></td>
+				<td><input type="password" name="userpw" id="userpw" onkeypress="if (event.keyCode == 13) checkpw()" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align:center; border:0px"><input type="button" value="확인" onclick="checkpw()"/><input type="button"  value="취소"/></td>
