@@ -22,13 +22,19 @@ body{
 	color: white;
 }
 
+#write_page{
+	margin:20px;
+}
+
 #list-board{
-	width:90%;
-	height:85%;
-	margin:30px;
-	border-radius: 5px;
-	background-color: white;
-	padding-top: 20px;
+   width:100%;
+   height:auto;
+   min-height:870px;
+   margin-top:20px;
+   border-radius: 5px;
+   background-color: white;
+   padding-top: 40px;
+   padding-bottom: 30px;
 }
 
 table{
@@ -79,7 +85,8 @@ input[type=file], #delete-file { display: none; }
 	<div id="header">
 		<h3>컨텐츠 관리 > 글쓰기</h3>
 	</div>
-	<div id="list-board">
+	<div id="write_page">
+		<div id="list-board">
 		<form action="insert.co" method="post" enctype="multipart/form-data">
 		<p>${vo.category} 글쓰기</p>
 			<table>
@@ -125,6 +132,7 @@ input[type=file], #delete-file { display: none; }
 			<a class='btn-empty' onclick=" if(emptyCheck() ) { $('form').submit() }">등록</a>
 			<a class='btn-empty' href='list.co?id=${vo.id }'>취소</a>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

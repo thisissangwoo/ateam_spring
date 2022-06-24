@@ -80,10 +80,10 @@ p {
 		</c:if>
 		<c:if test="${loginInfo.user_id eq vo.writer and vo.reply eq 'N'}">
 			<a class='btn-empty' href='modify.cu?id=${vo.id}'>수정</a>					
-			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
+			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}&curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }&code=${page.code}&sort=${page.sort}&reply=${page.reply}'}">삭제</a>
 		</c:if>
 		<c:if test="${loginInfo.user_id eq vo.writer and vo.reply eq 'Y'}">			
-			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}'}">삭제</a>
+			<a class='btn-empty' onclick="if(confirm('정말 삭제하시겠습니까?')){href='delete.cu?id=${vo.id}&curPage=${page.curPage }&search=${page.search}&keyword=${page.keyword }&code=${page.code}&sort=${page.sort}&reply=${page.reply}'}">삭제</a>
 		</c:if>
 	</div>
 

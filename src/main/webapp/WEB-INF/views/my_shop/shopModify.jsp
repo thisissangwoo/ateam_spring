@@ -160,9 +160,41 @@
    letter-spacing: 0.5px;
 }
 
+#post_code {
+   position: absolute; 
+   background: #696aad; 
+   color: white; 
+   width: 80px; 
+   height: 25px; 
+   left: 150px; 
+   top: 110px; 
+   cursor: pointer; 
+   border: none; 
+   letter-spacing: 0.7px; 
+   font-size: 13px;
+}
+
+#default_addr_text {
+   position: absolute; 
+   left: 545px; 
+   font-size: 11px; 
+   color: #808080; 
+   width: 60px; 
+   top: 127px;
+}
+
+#detail_addr_text {
+   position: absolute; 
+   left: 550px; 
+   font-size: 11px; 
+   color: #808080; 
+   width: 60px; 
+   top: 158px;
+}
+
 #delivery_request_text {
    position: absolute; 
-   top: 150px; 
+   top: 196px; 
    left: 30px; 
    font-size: 14px; 
    font-weight: bold;
@@ -171,7 +203,7 @@
 #textarea {
    position: absolute;    
    border: 1px solid #d5d5d5; 
-   top: 162px; 
+   top: 210px; 
    left: 150px; 
    width: 400px; 
    height: 25px; 
@@ -183,7 +215,7 @@
    position: absolute; 
    width: 85px; 
    height: 46px; 
-   top: 200px; 
+   top: 250px; 
    font-weight: bold; 
    font-size: 20px; 
    line-height: 50px; 
@@ -202,7 +234,7 @@
 #bank_text {
    position: absolute; 
    height: 46px; 
-   top: 250px; 
+   top: 300px; 
    font-size: 13px; 
    line-height: 50px; 
    letter-spacing: -0.05em; 
@@ -353,13 +385,18 @@
    <div class="order_detail_category">
       <p id="person_receive_text">*받는사람</p>
       <input type="text"  name="name" id="person_receive" style="position: absolute; width: 105px; height: 25px; left: 150px; top: 10px; border: 1px solid #d5d5d5; border-radius: 5px; font-size: 12px" autofocus  />
-         
+      
       <p id="phone_text">*연락처</p>
       <input id="phone" value="${vo.tel }" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" name="tel" maxlength="11" style="position: absolute; width: 105px; height: 25px; left: 150px; top: 60px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
       <span id="telmsg" style="position: absolute; width: 300px; height: 25px; left: 250px; top: 48px; font-size: 12px;">' - ' 를 제외하고 번호만 입력해주세요 예)01012345678</span>
       
       <p class="addr_receive_text">*받는주소</p>
-      <input type="text" value="${vo.addr }" id="default" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 110px; height: 25px; width: 400px; "/><br/>
+      <button type="button" id="post_code" onclick="daum_post()">우편번호</button>
+         <input type="text" name="post" value="${vo.addr_post }" style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
+         <p id="default_addr_text">기본주소</p>
+         <input type="text" id="default" value="${vo.addr }" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
+         <p id="detail_addr_text">나머지주소</p>
+         <input type="text" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
    
       <p id="delivery_request_text">배송요청사항</p>
       <input style="border: 1px solid #d5d5d5;" id="textarea" name="coment" value="${vo.coment }" />
@@ -367,7 +404,7 @@
       <p id="payment_text">결제 수단</p>
       <p id="bank_text">농협은행(무통장입금)</p>
       
-      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 252px; background: #C4C4C4;">
+      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 302px; background: #C4C4C4;">
          <div style="width: 93px; height: 93px; left: 987px; top: 866px;">
             <p id="total_result_text">총 상품가격</p>
             <p id="delivery_text">배송비</p>
@@ -380,8 +417,8 @@
          </div>
       </div>
       
-      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 345px; background: #C4C4C4;">
-         <div style="height: 93px; left: 987px; top: 866px;">
+      <div style="position: absolute; width: 400px; height: 93px; left: 600px; top: 395px; background: #C4C4C4;">
+         <div style="height: 93px; left: 987px; top: 916px;">
             <p id="bank_number_text">농협은행(무통장입금)</p>
             <p id="total_detail_result_text">총 결제금액</p>
          </div>
@@ -393,15 +430,33 @@
          </div>
       </div>
       
-      <div style="position: absolute; left: 400px; top: 450px; width: 100%;" >
+      <div style="position: absolute; left: 400px; top: 500px; width: 100%;" >
       	<a class='btn-fill' onclick="emptyCheck()" style="border-radius: 5px; margin: 10px;">수정</a>
       	<a class='btn-empty' href="shopDetail.my?id=${vo.id }" style="border-radius: 5px;">취소</a>
       </div>
    </div>
 </div>
 </form>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
 
-<script>
+function daum_post() {
+	   
+	   new daum.Postcode({
+	      oncomplete: function(data) {
+	         $("[name=post]").val(data.zonecode);
+	         
+	         // 지번, 도로명 구분
+	         var addr = data.userSelectedType == "J" ? data.jibunAddress : data.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
+	         // name 이 addr 인 태그의 0 번지에 addr 값을 할당
+	         
+	         // 건물명이 있을 경우 기존 주소의 건물명 값을 추가
+	         if(data.buildingName != "") addr += '(' + data.buildingName + ')';
+	           
+	         $("[name=addr]").eq(0).val(addr);
+	      }
+	   }).open();
+	}
 
 $(document).ready(function () {
 	$(".cnt").on("keyup", function() {
@@ -414,14 +469,12 @@ $(document).ready(function () {
 
 function emptyCheck() {
 	
-//	var regname = /[가-힣a-zA-Z]+$/;
 	var regname = /[^가-힣a-zA-Z]/g;
 	
 	var person = $("#person_receive").val();
 	if(person == ""){
 		alert("받는 사람을 입력해주세요.");
 		$("#person_receive").focus();
-		
 		return false;
 		
 	} else if(regname.test(person)) {
@@ -430,17 +483,14 @@ function emptyCheck() {
 		return false;
 	} 
 	else if ($("#phone").val() == ""){
-		
 		alert("연락처를 입력해주세요.");
 		$("#phone").focus();
-		
 		return false;
 	
 	} 
 	else if ($("#default").val() == ""){
 		alert("주소를 입력해주세요.");
 		$("#default").focus();
-	
 		return false;
 	}
 	else {
@@ -458,11 +508,10 @@ function emptyCheck() {
    }
 }; */
 
-	// 1번째 input 태그 처리
-   const $input = document.getElementById('person_receive');
-   $input.value = "${vo.name }"; // 새로 value를 설정 해줘야 커서가 뒤로 간다.
+// 1번째 input 태그 처리
+const $input = document.getElementById('person_receive');
+$input.value = "${vo.name }"; // 새로 value를 설정 해줘야 커서가 뒤로 간다.
 
 </script>
-
 </body>
 </html>

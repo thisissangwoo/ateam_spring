@@ -65,7 +65,12 @@ table{
 	           <th class="w-px100">조회수</th>
 	        </tr>
 	     </thead>
-		<tbody> 
+		<tbody>
+			<c:if test="${ empty page.list }">
+				<tr>
+					<td colspan="7">게시글 정보가 없습니다.</td>
+				</tr>
+			</c:if> 
 			<c:forEach items="${page.list }" var="vo">
 			   <tr>
 			      <td>${vo.no }</td>

@@ -173,7 +173,7 @@
 	<div class="Anaforcenter">
 		<div id="AnaforLogo">
 			<span id="alogo">AnaFor</span><br/>
-			<span id="alogotitle">아나플 나를 위해 아나포</span>
+			<span id="alogotitle">아픈 나를 위해 아나포</span>
 		</div>
 		<div id="login">
 			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
