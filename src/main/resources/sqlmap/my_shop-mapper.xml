@@ -18,7 +18,7 @@
 </select>
 
 <update id="update">
-	update shop set name = #{name}, tel = #{tel}, addr = #{addr}, coment = #{coment}, cnt = #{cnt}, price = #{price}
+	update shop set name = #{name}, tel = #{tel}, addr = #{addr}, addr_post = #{addr_post}, coment = #{coment}, cnt = #{cnt}, price = #{price}
 	where id = #{id}
 </update>	
 
