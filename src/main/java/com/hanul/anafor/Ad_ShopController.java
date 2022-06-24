@@ -40,13 +40,13 @@ public class Ad_ShopController {
 	}
 //============================== 관리자 주문 목록 ==============================		
 	@RequestMapping("/shopList.sp")
-	public String shop(HttpSession session, @RequestParam (defaultValue = "1") 
-	int curPage, Model model) {
+	public String shop(HttpSession session, @RequestParam (defaultValue = "1") int curPage, @RequestParam(defaultValue = "15") int pageList, Model model) {
 		
 		session.setAttribute("category", "sp");
 		
 		// curPage를 입력받지 않았지만 @RequestParam 어노테이션을 통해 기본값 1을 부여
 		page1.setCurPage(curPage); // 현재 페이지에 대한 정보를 담기 위한 처리
+		page1.setPageList(pageList);
 		model.addAttribute("page1", service.order_list(page1));
 		
 		return "admin_shop/shopList";
