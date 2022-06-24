@@ -30,6 +30,8 @@
 
 </style>
 
+
+<link rel="AnaFor icon"  href="imgs/AnaFor_icon.png" type="image/x-icon">
 <!-- <link rel='stylesheet' type='text/css' href="resources/css/common.css"> -->
 <link rel='stylesheet' type='text/css' href="css/common.css?v=<%=new Date().getTime() %>">
 

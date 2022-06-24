@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -19,11 +20,10 @@
 #chart_wrap .chart h3::after{content:'';display:block;height:1px;width:100%;background:#929292;}
 /* #chart_wrap .chart #myChart{position: absolute; width: 500px; height: 400px; background: #fff; border-radius: 0px 0px 10px 10px; padding: 10px; border-top: 1px solid #929292;} */
 
-#chart_pie{width: 100%; height: 400; box-sizing: border-box; padding: 20px; position: relative; }
-#chart_pie .age_Chart{width: 40%; height: auto; background: #fff; border-radius: 10px 10px 10px 10px;/*   position: absolute; top: 0px; left: 20;  */}
-#chart_pie .gender_Chart{width: 40%; height: auto; background: #fff; border-radius: 10px 10px 10px 10px; float: left;  text-align: left; padding-left: 100px;/*  position: absolute; top: 0px; right: 20; */}
-
-
+#chart_pie{width: 100%; height: 400px;  padding: 20px; box-sizing: border-box; position: relative;}
+#chart_pie .donut1 .age_Chart{width:30%; top: 300px; position: absolute; top: 20px; left: 250px;}
+#chart_pie .donut2 {margin-left: 20px;}
+#chart_pie .donut2 .gender_Chart{width: 30%; top: 300px; position: absolute; top: 20px; right: 250px;}
 
 </style>
 
@@ -41,12 +41,12 @@
 		<canvas id="myChart" width="900" height="200"></canvas>
 		
 	</div>  
-</div>	
+	
 
 <div id="chart_pie">
-
+	<div class="donut1">
 		<div class="age_Chart">
-	   		<canvas id="pie-chart" width="100" height="100"></canvas>
+	   		<canvas id="pie-chart" width="500" height="500"></canvas>
 	   		
 		</div>
 		<script type="text/javascript">
@@ -68,7 +68,10 @@
 		    }
 		});  
 		</script>
-		
+	</div>	
+
+		<!-- ------------------------------------------------------------------------ -->
+	<div class="donut2">	
 		<div class="gender_Chart">
 	   		<canvas id="genderChart" width="500" height="500"></canvas>
 		</div>
@@ -92,9 +95,9 @@
 		    }
 		});  
 		</script>
-
+	</div>
 </div>
-
+</div>
 
 <script>
 	var usergraph = JSON.parse('${list}'); //조회한 데이터(json type)
