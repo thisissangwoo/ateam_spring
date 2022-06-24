@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import IoT.GPSVO;
+import IoT.IoTDAO;
 import IoT.IoTVO;
+import common.CommonService;
+import user.UserDAO;
 import user.UserVO;
 
 
@@ -32,6 +35,7 @@ public class IoTController {
 	
 	@Autowired @Qualifier ("ateam") SqlSession sql;
 	Gson gson = new Gson();
+	@Autowired IoTDAO dao;
 
 			//스프링에 지도 띄우기
 			@RequestMapping("/iotmap")
@@ -81,6 +85,8 @@ public class IoTController {
 			}		
 	
 //============================================================================================
+	  
+	   /*아나포박스 알람 등록*/ 		
 	   @ResponseBody
 	   @RequestMapping(value="/iot_insert", produces = "application/json;charset=UTF-8")
 	   public String insert(HttpServletRequest req) {
@@ -93,6 +99,7 @@ public class IoTController {
 	      return "";
 	   }  
 	
+	   /*아나포박스 알람 목록 조회*/ 	
 	   @ResponseBody
 	   @RequestMapping(value="/iot_select", produces = "application/json;charset=UTF-8")
 	   public String select(HttpServletRequest req) {	   
@@ -102,6 +109,7 @@ public class IoTController {
 		  return gson.toJson(list);
 	   }
 
+	   /*아나포박스 알람 삭제*/
 	   @ResponseBody
 	   @RequestMapping(value="/iot_delete", produces = "application/json;charset=UTF-8")
 	   public String delete(HttpServletRequest req) {
@@ -110,6 +118,7 @@ public class IoTController {
 		return "";
 	  }
 	
+	   /*아나포박스 알람 수정*/
 	   @ResponseBody
 	   @RequestMapping(value="/iot_modify", produces = "application/json;charset=UTF-8")
 	   public String modify(HttpServletRequest req) {
@@ -120,8 +129,28 @@ public class IoTController {
 		  vo.setCase_time(req.getParameter("case_time"));
 		  sql.update("IoT.mapper.iot_modify", vo);
 	      return "";  
-		}	   
-}
+		}	
+   
+		/* 아나포박스 아이디 중복확인 */
+		@ResponseBody
+		@RequestMapping(value = "/box_id_chk", produces = "application/json;charset=UTF-8")
+		public String box_id_check(HttpServletRequest req) {
+			String box_id = req.getParameter("box_id");
+			boolean i = dao.box_id_chk(box_id);
+			System.out.println(gson.toJson(i));
+			return gson.toJson(i);
+			}
+		
+	   @ResponseBody
+	   @RequestMapping(value="/box_id_insert", produces = "application/json;charset=UTF-8")
+	   public String box_id_insert(HttpServletRequest req) {
+		  UserVO vo = new UserVO();
+		  vo.setUser_id(req.getParameter("user_id"));
+		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
+		  sql.insert("IoT.mapper.box_id_insert", vo);
+	      return "";
+	   }  
+	}
 
 
 
