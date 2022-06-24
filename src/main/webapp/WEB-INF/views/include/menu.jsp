@@ -44,6 +44,11 @@
 #dormammu ul li a:hover, #dormammu ul li a:active {font-weight: bold; color : #b0b0b0;}
 #dormammu ul{text-decoration: none;}
 
+.img_icon{
+	margin-top: 5px;
+	margin-left: 2px;
+}
+
 </style>
 
 
@@ -67,15 +72,15 @@
 	<div id="container">
 			
 			<ul id="nav-v1">
-				<li class="menu-v1"><img alt="" src="imgs/dash.png"><a href="admin" ${category eq 'bo' ? 'class="active"' : '' } >대시보드</a>
+				<li class="menu-v1"><img class="img_icon" alt="" src="imgs/dash.png"><a href="admin" ${category eq 'bo' ? 'class="active"' : '' } >대시보드</a>
 					
 				</li>
 				
-				<li class="menu-v1"><img alt="" src="imgs/person.png"><a href="user.ur" ${category eq 'ur' ? 'class="active"' : '' }>사용자관리</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/person.png"><a href="user.ur" ${category eq 'ur' ? 'class="active"' : '' }>사용자관리</a>
 
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/note.png"><a href="list.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/note.png"><a href="list.co"  ${category eq 'co' ? 'class="active"' : '' }>컨텐츠관리</a>
 					<!-- <ul class="submenu">
 						<li><a href="#">Q&A</a></li>
 						<li><a href="#">FAQ</a></li>
@@ -83,13 +88,13 @@
 						<li><a href="#">공지사항</a></li>
 					</ul> -->				
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="shopList.sp">Shop관리</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/cart.png"><a href="shopList.sp">Shop관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/cart.png"><a href="list.sp">리뷰관리</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/cart.png"><a href="list.sp">리뷰관리</a>
 									
 				</li>
-				<li class="menu-v1"><img alt="" src="imgs/Group.png"><a href="statistics.st">통계</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/Group.png"><a href="statistics.st">통계</a>
 									
 				</li>
 			</ul>	

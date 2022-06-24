@@ -260,3 +260,6 @@ a:hover {
   width: 500px;
   display: inline-block;
 }
+
+#preview { height: 36px; display: inline-block;}
+#preview-img { max-height: 34px;}
