@@ -78,7 +78,7 @@
 				<tr>
 					<td style="width: 100px;">아이디</td>
 					<td style="width: 150px;">리뷰제목</td>
-					<td style="width: 600px; text-align: left;">리뷰내용</td>
+					<td style="width: 600px;">리뷰내용</td>
 					<td style="width: 250px;">별점</td>
 					<td style="width: 200px;">작성일</td>
 				</tr>
@@ -100,7 +100,7 @@
 				
 				<c:forEach items="${page.list }" var="vo">
 					<tr>
-						<td style="width: 50px; text-align: left;">${vo.user_id }</td>
+						<td style="width: 50px; text-align: left;"><a style=" font-weight: bold;" href="reviewDetail.sp?id=${vo.rev_id }">${vo.user_id }</a></td>
 						<td style="width: 300px; text-align: left;">${vo.rev_title }</td>
 						<td style="width: 150px; text-align: left;">${vo.rev_content }</td>
 						<td style="text-align: left;">
