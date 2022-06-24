@@ -149,6 +149,7 @@
 			</ul>
 		</div>
 		</form>
+		<div style="height:765px;">
 		<table>
 			<tr>
 				<th>No</th>
@@ -181,6 +182,7 @@
 					</tr>
 			</c:forEach>	
 		</table>
+		</div>
 		<div id="modal">
 			<div id="memo_content">
 				<a id="close-btn"><i class="fa-solid fa-xmark"></i></a>
@@ -192,9 +194,9 @@
 				</div>
 			</div> 
 		</div>
-		<div id="pagenum">
-		<!-- jsp 표준 include를 사용하여 설정 -->
-		<jsp:include page="/WEB-INF/views/include/page.jsp" />
+		<div id="pagenum" style="margin-bottom:-100px;">
+			<!-- jsp 표준 include를 사용하여 설정 -->
+			<jsp:include page="/WEB-INF/views/include/page.jsp" />
 		</div>
 	</div>
 <script>
