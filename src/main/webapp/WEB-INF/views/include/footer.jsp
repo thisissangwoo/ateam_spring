@@ -37,8 +37,7 @@ footer div {
 
 <footer >
 	<div class="logo" style="margin-bottom: 5px;">AnaFor</div>
-	<div class="company" style="margin-bottom: 5px;">주식회사 아나포</div>
-	<div class="company" style="margin-bottom: 5px;">광주광역시 서구 경열로 3     |    공동대표 : 김상우, 박천일, 신보배, 이정민, 탁은영    |     대표번호 : 062-123-4567
-    |    이메일 : anafor@anafor.co.kr</div>
-	<div class="Copyright">Copyright 2022</div>
+	<div class="company" style="margin-top: 15px; marmargin-bottom: 5px;">광주광역시 서구 경열로 3     |    김상우, 박천일, 신보배, 이정민, 탁은영    |     대표번호 : 062-123-4567
+    |    이메일 : anafor@anafor.com</div>
+	<div class="Copyright">	<div><b>AnaFor</b> Copyright ⓒ AnaFor Corp. All Rights Reserved.</div></div>
 </footer>

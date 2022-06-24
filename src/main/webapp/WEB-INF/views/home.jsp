@@ -103,7 +103,7 @@ html, body{min-height: 100%; height: 100%;}
    <div id="header">
       <div class="text_box">
          <h3>나는 오늘 <b>아나포</b></h3>
-         <p>병원/약국 찾기부터 모바일 상담/계획 관리까지</p>
+         <p>병원/약 성분 찾기부터 모바일 상담/계획 관리까지</p>
       </div>
       <div class="btn_app">
          <a href=""><img src="imgs/btn_app.png"></a>
@@ -149,7 +149,7 @@ html, body{min-height: 100%; height: 100%;}
    <!-- jungle -->
    <div id="jungle">
       <div class="text_jungle">
-         <h3><b>AnaFor</b> 앱으로 스마트하게 건강관리하세요</h3>
+         <h3><b>AnaFor</b> 앱으로 스마트한 건강관리하세요</h3>
          <p>나의 일상생활에 딱맞게 울리는 복약알림, AnaFor 띵동!</p>
       </div>
       <div class="img_jungle">
