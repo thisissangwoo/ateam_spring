@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -20,9 +21,9 @@
 /* #chart_wrap .chart #myChart{position: absolute; width: 500px; height: 400px; background: #fff; border-radius: 0px 0px 10px 10px; padding: 10px; border-top: 1px solid #929292;} */
 
 #chart_pie{width: 100%; height: 400px;  padding: 20px; box-sizing: border-box; position: relative;}
-#chart_pie .donut1 .age_Chart{width: 50%; top: 50%; position: absolute; top: 20px; left: 0px;}
+#chart_pie .donut1 .age_Chart{width:30%; top: 300px; position: absolute; top: 20px; left: 250px;}
 #chart_pie .donut2 {margin-left: 20px;}
-#chart_pie .donut2 .gender_Chart{width: 50%; top: 50%; position: absolute; top: 20px; right: 0px;}
+#chart_pie .donut2 .gender_Chart{width: 30%; top: 300px; position: absolute; top: 20px; right: 250px;}
 
 </style>
 
@@ -68,6 +69,7 @@
 		});  
 		</script>
 	</div>	
+
 		<!-- ------------------------------------------------------------------------ -->
 	<div class="donut2">	
 		<div class="gender_Chart">
