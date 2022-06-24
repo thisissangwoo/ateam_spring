@@ -36,4 +36,20 @@
 		insert into anafor_user (user_id, box_id) 
 		values (#{user_id},#{box_id})
 	</insert>	
+	
+	<update id="update">
+		update IOT_BOX
+		set  pill_chk = 'N'
+		where user_id = #{user_id}
+		and case_num = #{case_num}
+	</update>
+		
+	<select id="iot_recode_select" resultType="IoT.IoTVO">
+		select *
+		from IOT_BOX
+		where user_id = #{user_id}
+		and pill_chk = 'N'
+	</select>
+	
+	
 </mapper>
