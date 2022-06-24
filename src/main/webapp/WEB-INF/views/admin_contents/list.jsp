@@ -153,6 +153,9 @@ select[name=pageList],select[name=sort],select[name=reply]{
 	margin-bottom: -60px;
 }
 
+#td_title img{
+	float: left;
+}
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
@@ -267,7 +270,7 @@ select[name=pageList],select[name=sort],select[name=reply]{
 			      <td>${vo.sort }</td>
 			      <td>${vo.reply}</td>
 			 </c:if>
-			      <td class="left">
+			      <td class="left" id="td_title">
 			         <c:forEach begin="1" end="${vo.indent }" var="i">      
 			            ${i eq vo.indent ? "<img src='imgs/re.png' />" : "&nbsp;&nbsp;" }  
 			         </c:forEach>
