@@ -326,6 +326,9 @@
       <select name="tel" style="position: absolute; width: 50px; height: 25px; left: 150px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;">
       	<option value="010" >010</option>
       	<option value="011">011</option>
+      	<option value="011">017</option>
+      	<option value="011">018</option>
+      	<option value="011">019</option>
       </select>
       <p style="position: absolute; left: 205px; top: 46px;">-</p>
       <input type="text" name="tel" id="phone" maxlength="8" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="position: absolute; width: 135px; height: 25px; left: 215px; top: 58px; border: 1px solid #d5d5d5; border-radius: 5px;"/>
@@ -333,11 +336,12 @@
       
       <p class="addr_receive_text">*받는주소</p>
       <button type="button" id="post_code" onclick="daum_post()">우편번호</button>
-         <input type="text" name="post" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
+         <input type="text" name="addr_post" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
          <p id="default_addr_text">기본주소</p>
          <input type="text" id="default" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
          <p id="detail_addr_text">나머지주소</p>
          <input type="text" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
+         
       <p id="delivery_request_text">배송요청사항</p>
       <textarea id="textarea" name="coment" ></textarea>
       
@@ -374,7 +378,6 @@
 </div>
 </form>
 
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -383,7 +386,7 @@ function daum_post() {
    
    new daum.Postcode({
       oncomplete: function(data) {
-         $("[name=post]").val(data.zonecode);
+         $("[name=addr_post]").val(data.zonecode);
          
          // 지번, 도로명 구분
          var addr = data.userSelectedType == "J" ? data.jibunAddress : data.roadAddress;   // 선택 한 것이 J 인지 (Jibun 지번)
@@ -400,14 +403,12 @@ function daum_post() {
 
 function orderChk() {
 	
-//	var regname = /[가-힣a-zA-Z]+$/;
 	var regname = /[^가-힣a-zA-Z]/g;
 	
 	var person = $("#person_receive").val();
 	if(person == ""){
 		alert("받는 사람을 입력해주세요.");
 		$("#person_receive").focus();
-		
 		return false;
 		
 	} else if(regname.test(person)) {
@@ -416,17 +417,13 @@ function orderChk() {
 		return false;
 	} 
 	else if ($("#phone").val() == ""){
-		
 		alert("연락처를 입력해주세요.");
 		$("#phone").focus();
-		
 		return false;
-	
 	} 
 	else if ($("#default").val() == ""){
 		alert("주소를 입력해주세요.");
 		$("#default").focus();
-	
 		return false;
 	}
 	else {

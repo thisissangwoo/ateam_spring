@@ -58,7 +58,7 @@
 
 <!-- <link rel='stylesheet' type='text/css' href="resources/css/common.css"> -->
 <link rel='stylesheet' type='text/css' href="css/common.css?v=<%=new Date().getTime() %>">
-
+<link rel="AnaFor icon"  href="imgs/AnaFor_icon.png" type="image/x-icon">
 <!-- jQuery 라이브러리 CDN 방식 연결 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>

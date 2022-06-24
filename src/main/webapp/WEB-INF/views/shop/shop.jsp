@@ -214,7 +214,7 @@ input[type=number] {
       
       <div class="b">
          <p id="price">30,000원</p>
-         <p>대한통운</p>
+         <p>무료 배송</p>
          <p>AnaFor Smart Box Model 1</p>
          <p>AnaFor</p>
          <p>대한민국</p>
@@ -237,7 +237,7 @@ input[type=number] {
       
    </div>
 	   <button type="button" class="order" onclick="order()">주문하기</button>
-	   <button type="button" class="buy_insert" onclick="basket()">장바구니담기</button>
+	   <!-- <button type="button" class="buy_insert" onclick="basket()">장바구니담기</button> -->
 </form>
 
 
@@ -252,7 +252,6 @@ $(document).ready(function () {
       $(".money_result").text(total + "원");
    });
 });
-
 
 function order() {
 	 
@@ -269,14 +268,12 @@ function order() {
 		   alert("주문 페이지로 이동합니다.");
 		   $("form").submit();
 		}
-		
 	} 
 	else{
 		alert("로그인 후 이용하실 수 있습니다.");
 		location = "<c:url value='userLogin'/>";
 	}
 }
-
 
 function basket() {
 	 
@@ -292,7 +289,6 @@ function basket() {
 		   alert("장바구니로 이동합니다.");
 		   $("form").attr("action", "b.pr");
 		   $("form").submit();
-		   
 		}
 	}
 	else{

@@ -80,7 +80,7 @@ html, body{min-height: 100%; height: 100%;}
    
    #bottom{width:100%;height:260px;background: #f5f5f5;position:relative;box-sizing: border-box;}
    #bottom .text_bot{position:absolute;left:60px;top:50px;text-align: left;}
-   #bottom .text_bot h3{font-size:28px;font-weight:900;color:#696aad;line-height: 60px;}
+   #bottom .text_bot h3{font-size:28px;font-weight:800;color:#696aad;line-height: 60px;}
    #bottom .text_bot p{font-size:24px;color:#000; line-height: 30px; font-weight:200;margin: 0px auto;}
    #bottom .btn_appbot{position: absolute;right:120px;bottom:90px;}
    #bottom .btn_appbot a{width:200px;height:55px;display:block;border-radius:55px;overflow:hidden;border: 2px solid #696aad;}
