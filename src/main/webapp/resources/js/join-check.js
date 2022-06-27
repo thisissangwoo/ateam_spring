@@ -76,7 +76,7 @@
 		else 				return this.id.unUsable;
 	}
 	, name_status : function (name){
-		var reg=/[^가-힣]/g;
+		var reg=/[^가-힣a-zA-Z]/g;
 		if(name=='') 			return this.name.empty;
 		else if(reg.test(name)) return this.name.invalid;
 		else 					return this.name.valid;
@@ -85,7 +85,7 @@
 	, name:{
 		empty:{code:'invalid',desc:'이름을 입력해주세요'},
 		valid:{code:'valid',desc:''},
-		invalid:{code:'invalid',desc:"한글만 입력이 가능합니다."}
+		invalid:{code:'invalid',desc:"한글 또는 영문 이름을 입력해주세요"}
 	}
 	, birth_status:function(birth){
 		var birthday = birth;
