@@ -67,12 +67,16 @@
 <script type="text/javascript">
 function go_detail(code, id) {
 	
+	var msg = $("select[name=code] option:selected").text();
+	// text 값은 가져올 때 해당 자식인 option의 선택된 개체를 가져와야 하는데
+	// option:selected 해당 옵션이 없으면 select 자식으로 들어간 option값 전부를 가져오게 됨
+	
 	$.ajax({	// 주문 진행 상황 변경을 위한 ajax 통신 설정
 		url : "order_state_update.sp",
 		data : {id:id, code:code.value},
 		success : function (response) {	// success 는 통신이 잘 됐는지 안 됐는지 여부 판단
 			if( response ){
-				alert("진행상황 변경성공");
+				alert(msg + " 변경성공");
 			}else {
 				alert("진행상황 변경실패");				
 			}//if
