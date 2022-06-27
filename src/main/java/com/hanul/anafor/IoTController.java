@@ -146,7 +146,31 @@ public class IoTController {
 		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
 		  sql.update("IoT.mapper.box_id_insert", vo);
 	      return "";
-	   }  
+	   }
+	   
+	   @ResponseBody
+	   @RequestMapping(value="/iot_recode_select", produces = "application/json;charset=UTF-8")
+	   public String recode_select(HttpServletRequest req) {	   
+		  String user_id = req.getParameter("user_id"); 
+		  List<IoTVO> list = sql.selectList("IoT.mapper.iot_recode_select", user_id ); 
+		  System.out.println(gson.toJson(list));
+		  return gson.toJson(list);
+	   }	
+
+
+		//복용 기록
+		@ResponseBody
+		@RequestMapping("/iot_recode")
+		public void recde(Model model,HttpServletRequest req) {
+			
+			IoTVO vo = new IoTVO();
+			
+			vo.setUser_id(req.getParameter("user_id"));
+			vo.setCase_num(req.getParameter("case_number"));
+			
+			
+			sql.update("IoT.mapper.update", vo);
+		}
 	}
 
 
