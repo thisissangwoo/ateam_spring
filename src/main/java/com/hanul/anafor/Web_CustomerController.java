@@ -196,17 +196,19 @@ public class Web_CustomerController {
 	
 	/*페이징처리된 FAQ 목록*/
 	@RequestMapping ("/f_list.cu")
-	public String f_list(HttpSession session, @RequestParam (defaultValue = "1") 
-		int curPage, Model model, String search, String keyword) {
+	public String f_list(HttpSession session, Model model, 
+			@RequestParam (defaultValue = "1") int curPage,
+            @RequestParam(defaultValue = "5") int pageList,  
+		  String search, String keyword) {
 		
 		session.setAttribute("category", "cu");
 				
 		// curPage를 입력받지 않았지만 @RequestParam 어노테이션을 통해 기본값 1을 부여
 		page.setCurPage(curPage); // 현재 페이지에 대한 정보를 담기 위한 처리
 		// 검색조건, 검색어 정보를 담음
-		page.setSearch(search);
-		
+		page.setSearch(search);	
 		page.setKeyword(keyword);
+	    page.setPageList(pageList);   // 페이지당 보여질 글 목록 수
 		
 		model.addAttribute("page",service.faq_list(page));
 		return "customer/f_list";

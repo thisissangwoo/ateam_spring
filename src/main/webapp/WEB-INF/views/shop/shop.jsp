@@ -237,7 +237,7 @@ input[type=number] {
       
    </div>
 	   <button type="button" class="order" onclick="order()">주문하기</button>
-	   <button type="button" class="buy_insert" onclick="basket()">장바구니담기</button>
+	   <!-- <button type="button" class="buy_insert" onclick="basket()">장바구니담기</button> -->
 </form>
 
 

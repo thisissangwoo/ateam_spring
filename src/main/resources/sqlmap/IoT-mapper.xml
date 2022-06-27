@@ -25,5 +25,31 @@
 		update IOT_BOX
 		set memo=#{memo}, case_num=#{case_num}, case_time=#{case_time}
 		where no = #{no}
+	</update>
+	
+	<select id="box_id_chk" resultType="integer">
+		select count(*) from anafor_user
+		where box_id = #{box_id}
+	</select>
+
+	<update id="box_id_insert">
+		update anafor_user 
+		set box_id = #{box_id}
+		where user_id = #{user_id}
 	</update>	
+	
+	<update id="update">
+		update IOT_BOX
+		set  pill_chk = 'N'
+		where user_id = #{user_id}
+		and case_num = #{case_num}
+	</update>
+		
+	<select id="iot_recode_select" resultType="IoT.IoTVO">
+		select *
+		from IOT_BOX
+		where user_id = #{user_id}
+		and pill_chk = 'N'
+	</select>
+
 </mapper>
