@@ -315,14 +315,12 @@
 
    <div class="order_detail">
       <p id="detail">주문자 정보</p>
+      
       <c:if test="${vo.code eq 'so0' || vo.code eq 'so1' || vo.code eq 'so2'}">
 		<a class="btn-fill" href="shopModify.my?id=${vo.id }" style="margin-left: 920px;">수정</a>
-		
+      	<a class="btn-fill" style="margin: 20px;" onclick="if(confirm('주문을 취소하시겠습니까?')){href='cancel.my?id=${vo.id}'}">주문취소</a>
       </c:if>
-      
-      <c:if test="${vo.code eq 'so0'}">
-      <a class="btn-fill" style="margin: 20px;" onclick="if(confirm('주문을 취소하시겠습니까?')){href='cancel.my?id=${vo.id}'}">주문취소</a>
-      </c:if>
+
       
    </div>
    

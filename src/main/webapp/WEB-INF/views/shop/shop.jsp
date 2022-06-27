@@ -119,9 +119,9 @@
 
 .order {
 	position: absolute;
-	width: 200px;
+	width: 460px;
 	height: 80px;
-	left: 1008px;
+	left: 1000px;
 	top: 595px;
 	background: #696aad;
 	border-radius: 20px;
