@@ -48,7 +48,7 @@
 	
 	<!-- 찜한 병원 전체 조회 -->
 	<select id="selectheart" resultType="user.UserChoiceVO">
-		select choice.hp_code, user_id, hp_addr, hp_name ,hp_tel
+		select choice.hp_code, user_id, hp_addr, hp_name ,hp_tel,filepath,filename
 		from choice Left outer join hp 
 		on hp.hp_code = choice.hp_code 
 		where user_id=#{user_id} order by ch_date desc
