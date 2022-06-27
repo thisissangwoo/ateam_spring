@@ -51,5 +51,11 @@
 		where user_id = #{user_id}
 		and pill_chk = 'N'
 	</select>
-
+	
+	<select id="iot_select_pill" resultType="IoT.IoTVO">
+		select case_num
+		from IOT_BOX
+		where user_id = #{user_id}
+		and pill_chk = 'Y'
+	</select>
 </mapper>
