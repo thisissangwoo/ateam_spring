@@ -1,7 +1,5 @@
 package com.hanul.anafor;
 
-import java.net.http.HttpRequest;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,8 +18,6 @@ import com.google.gson.Gson;
 import IoT.GPSVO;
 import IoT.IoTDAO;
 import IoT.IoTVO;
-import common.CommonService;
-import user.UserDAO;
 import user.UserVO;
 
 
@@ -38,34 +33,7 @@ public class IoTController {
 	@Autowired @Qualifier ("ateam") SqlSession sql;
 	Gson gson = new Gson();
 	@Autowired IoTDAO dao;
-			
-		   @ResponseBody
-		   @RequestMapping(value="/iot_recode_select", produces = "application/json;charset=UTF-8")
-		   public String recode_select(HttpServletRequest req) {	   
-			  String user_id = req.getParameter("user_id"); 
-			  List<IoTVO> list = sql.selectList("IoT.mapper.iot_recode_select", user_id ); 
-			  System.out.println(gson.toJson(list));
-			  return gson.toJson(list);
-		   }	
-	
-	
-			//복용 기록
-			@ResponseBody
-			@RequestMapping("/iot_recode")
-			public void recde(Model model,HttpServletRequest req) {
-				
-				IoTVO vo = new IoTVO();
-				
-				vo.setUser_id(req.getParameter("user_id"));
-				vo.setCase_num(req.getParameter("case_number"));
-				
-				
-				sql.update("IoT.mapper.update", vo);
-			}
-	
-	
-	
-	
+
 			//스프링에 지도 띄우기
 			@RequestMapping("/iotmap")
 			public String userMap(Model model,HttpSession session) {
@@ -172,15 +140,38 @@ public class IoTController {
 		
 	   @ResponseBody
 	   @RequestMapping(value="/box_id_insert", produces = "application/json;charset=UTF-8")
-	   public String box_id_insert(HttpServletRequest req) {
+	   public String box_id_update(HttpServletRequest req) {
 		  UserVO vo = new UserVO();
 		  vo.setUser_id(req.getParameter("user_id"));
 		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
-		  sql.insert("IoT.mapper.box_id_insert", vo);
+		  sql.update("IoT.mapper.box_id_insert", vo);
 	      return "";
-	   }  
-	}
+	   }
+	   
+	   @ResponseBody
+	   @RequestMapping(value="/iot_recode_select", produces = "application/json;charset=UTF-8")
+	   public String recode_select(HttpServletRequest req) {	   
+		  String user_id = req.getParameter("user_id"); 
+		  List<IoTVO> list = sql.selectList("IoT.mapper.iot_recode_select", user_id ); 
+		  System.out.println(gson.toJson(list));
+		  return gson.toJson(list);
+	   }	
 
+
+		//복용 기록
+		@ResponseBody
+		@RequestMapping("/iot_recode")
+		public void recde(Model model,HttpServletRequest req) {
+			
+			IoTVO vo = new IoTVO();
+			
+			vo.setUser_id(req.getParameter("user_id"));
+			vo.setCase_num(req.getParameter("case_number"));
+			
+			
+			sql.update("IoT.mapper.update", vo);
+		}
+	}
 
 
 
