@@ -392,7 +392,7 @@
       
       <p class="addr_receive_text">*받는주소</p>
       <button type="button" id="post_code" onclick="daum_post()">우편번호</button>
-         <input type="text" name="post" value="${vo.addr_post }" style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
+         <input type="text" name="addr_post" value="${vo.addr_post }" style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
          <p id="default_addr_text">기본주소</p>
          <input type="text" id="default" value="${vo.addr }" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
          <p id="detail_addr_text">나머지주소</p>

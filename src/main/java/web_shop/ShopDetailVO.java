@@ -3,13 +3,13 @@ package web_shop;
 public class ShopDetailVO {
 	
 
-	private int id, cnt, price, no, addr_post;
-	private String user_id, name, tel,addr, coment, code, order_date, code_name;
+	private int id, cnt, price, no;
+	private String user_id, name, tel,addr, coment, code, order_date, code_name, addr_post;
 	
-	public int getAddr_post() {
+	public String getAddr_post() {
 		return addr_post;
 	}
-	public void setAddr_post(int addr_post) {
+	public void setAddr_post(String addr_post) {
 		this.addr_post = addr_post;
 	}
 	public String getCode_name() {
