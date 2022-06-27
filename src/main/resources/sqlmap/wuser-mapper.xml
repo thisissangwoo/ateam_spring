@@ -64,7 +64,7 @@ select *
    from(select rownum no, a.user_id, a.user_name, a.admin, to_char(a.join_date, 'YYYY-MM-DD') join_date, a.memo, 
    (select count(*) from notice n where a.user_id = n.writer and code='N03' ) qCnt, 
    (select count(*) from box_review b where a.user_id = b.user_id) brCnt
-    from  (select * from anafor_user <include refid="where_search" /> order by join_date ) a  order by no desc ) 
+    from  (select * from anafor_user <include refid="where_search" /> order by admin, join_date ) a  order by no desc ) 
    where no between #{beginList} and #{endList} 
 </select>
 
