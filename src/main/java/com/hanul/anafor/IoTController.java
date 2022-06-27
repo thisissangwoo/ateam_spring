@@ -140,7 +140,7 @@ public class IoTController {
 		
 	   @ResponseBody
 	   @RequestMapping(value="/box_id_insert", produces = "application/json;charset=UTF-8")
-	   public String box_id_insert(HttpServletRequest req) {
+	   public String box_id_update(HttpServletRequest req) {
 		  UserVO vo = new UserVO();
 		  vo.setUser_id(req.getParameter("user_id"));
 		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));

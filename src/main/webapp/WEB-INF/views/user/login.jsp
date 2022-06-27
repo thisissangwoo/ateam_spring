@@ -176,7 +176,7 @@
 			<span id="alogotitle">아픈 나를 위해 아나포</span>
 		</div>
 		<div id="login">
-			<input type="text" id="userid" placeholder="이메일을 입력하세요" autofocus/>
+			<input type="text" id="userid" placeholder="이메일을 입력하세요" onkeyup="chkCharCode(event)" autofocus/>
 			<i class="fa-solid fa-user" id="usericon"></i><br/>
 			<input type="password" id="userpw" placeholder="비밀번호를 입력하세요" onkeypress="if (event.keyCode == 13) loginChk()" />
 			<i class="fa-solid fa-lock" id="pwicon"></i><br/>
@@ -245,6 +245,14 @@
 		
 		location="<c:url value='/' />";
 	});
+	
+	function chkCharCode(event) {
+		const regExp = /[\ㄱ-ㅎㅏ-ㅣ가-힇]/g;
+		const ele = event.target;
+		if (regExp.test(ele.value)) {
+		  ele.value = ele.value.replace(regExp, '');
+		}
+	};
 	
 </script>	
 </body>

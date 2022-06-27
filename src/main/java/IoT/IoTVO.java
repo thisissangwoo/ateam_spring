@@ -3,8 +3,17 @@ package IoT;
 public class IoTVO {
 	
 	private int no;
-	private String user_id, memo, case_num, case_time;
+	private String user_id, memo, case_num, case_time, pill_chk;
 	
+	
+	
+	
+	public String getPill_chk() {
+		return pill_chk;
+	}
+	public void setPill_chk(String pill_chk) {
+		this.pill_chk = pill_chk;
+	}
 	public int getNo() {
 		return no;
 	}
