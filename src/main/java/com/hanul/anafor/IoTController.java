@@ -1,6 +1,5 @@
 package com.hanul.anafor;
 
-import java.net.http.HttpRequest;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +18,6 @@ import com.google.gson.Gson;
 import IoT.GPSVO;
 import IoT.IoTDAO;
 import IoT.IoTVO;
-import common.CommonService;
-import user.UserDAO;
 import user.UserVO;
 
 
@@ -147,11 +144,10 @@ public class IoTController {
 		  UserVO vo = new UserVO();
 		  vo.setUser_id(req.getParameter("user_id"));
 		  vo.setBox_id(Integer.parseInt(req.getParameter("box_id")));
-		  sql.insert("IoT.mapper.box_id_insert", vo);
+		  sql.update("IoT.mapper.box_id_insert", vo);
 	      return "";
 	   }  
 	}
-
 
 
 

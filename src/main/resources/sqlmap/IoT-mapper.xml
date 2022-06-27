@@ -32,8 +32,9 @@
 		where box_id = #{box_id}
 	</select>
 	
-	<insert id="box_id_insert">
-		insert into anafor_user (user_id, box_id) 
-		values (#{user_id},#{box_id})
-	</insert>	
+	<update id="box_id_insert">
+		update anafor_user 
+		set box_id = #{box_id}
+		where user_id = #{user_id}
+	</update>	
 </mapper>
