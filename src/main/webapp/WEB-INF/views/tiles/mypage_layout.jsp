@@ -22,6 +22,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${title}</title>
+<link rel="AnaFor icon"  href="imgs/AnaFor_icon.png" type="image/x-icon">
 <style type="text/css">
 	/* #wrap { display: flex; flex-direction: column; height: 100%; } */
 
