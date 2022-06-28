@@ -19,9 +19,9 @@
 	<div style="height: 770px;">
 		<table style="width: 80%; top: 20px;">
 			<tr>
-				<td class="w-px120">이름</td>
-				<td class="w-px300">주소</td>
-				<td class="w-px160">연락처</td>
+				<td class="w-px100">이름</td>
+				<td class="w-px340">주소</td>
+				<td class="w-px140">연락처</td>
 				<td class="w-px100">주문일</td>
 				<td>제품명</td>
 				<td class="w-px120">금액</td>

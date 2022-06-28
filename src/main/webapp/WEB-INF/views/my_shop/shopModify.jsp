@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -394,9 +395,10 @@
       <button type="button" id="post_code" onclick="daum_post()">우편번호</button>
          <input type="text" name="addr_post" value="${vo.addr_post }" style="border: 1px solid #d5d5d5; position: absolute; left: 240px; top: 110px; height: 25px; width: 60px; text-align: center"/><br />
          <p id="default_addr_text">기본주소</p>
-         <input type="text" id="default" value="${vo.addr }" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
+         <c:set var="address" value="${fn:split(vo.addr, ',')}" />
+         <input type="text" id="default" value="${ address[0] }" name="addr" readonly style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 140px; height: 25px; width: 400px;"/><br/>
          <p id="detail_addr_text">나머지주소</p>
-         <input type="text" name="addr" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
+         <input type="text" name="addr" value="${address[1]} ${address[2]}" style="border: 1px solid #d5d5d5; position: absolute; left: 150px; top: 170px; height: 25px; width: 400px; font-size: 12px;"/><br/>
    
       <p id="delivery_request_text">배송요청사항</p>
       <input style="border: 1px solid #d5d5d5;" id="textarea" name="coment" value="${vo.coment }" />
