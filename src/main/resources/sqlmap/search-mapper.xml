@@ -33,16 +33,16 @@
       HP_X ) )	* cos( RADIANS( HP_Y) - RADIANS(35.1535583) ) + sin( RADIANS(126.8879957) ) * sin( RADIANS( HP_X) ) ) ) AS distanceXY ,H.*
 		FROM HP H
 		WHERE
-		hp_name like '%'||#{hp_name}||'%'
+		hp_name like '%'||'내과'||'%' 
       AND H.sido_name ='광주'
 		order by 1 asc
 		) H
     ) H LEFT OUTER JOIN ( SELECT HP_CODE , NVL(COUNT(*) ,0) rv_cnt FROM REVIEW  GROUP BY HP_CODE ) R ON h.hp_code = r.hp_code
 			WHERE
-		hp_name like '%'||#{hp_name}||'%'
+			hp_name like '%'||'내과'||'%'
       AND H.sido_name ='광주'
      order by cnt desc
-
+     
 	</select>
 
 </mapper>
