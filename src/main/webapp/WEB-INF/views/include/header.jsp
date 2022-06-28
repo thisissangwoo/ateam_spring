@@ -51,7 +51,7 @@ header .category ul li a:hover, header .category ul li a.active {
       <div class="menu">
          <ul>
             <li><a href='box.pr'  ${category eq 'pr' ? 'class="active"' : '' }>제품소개</a></li>      
-            <li><a href='list.cu' ${category eq 'cu' ? 'class="active"' : '' }>고객센터</a></li>      
+            <li><a href='f_list.cu' ${category eq 'cu' ? 'class="active"' : '' }>고객센터</a></li>      
             <li><a href='list.no' ${category eq 'no' ? 'class="active"' : '' }>공지사항</a></li>      
          </ul>   
       </div>
