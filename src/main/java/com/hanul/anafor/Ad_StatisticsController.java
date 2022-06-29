@@ -51,7 +51,7 @@ public class Ad_StatisticsController {
 		model.addAttribute("aweek",new Gson().toJson(aweek));  //한번만
 		model.addAttribute("list",new Gson().toJson(service.search(map)));
 		model.addAttribute("order",new Gson().toJson(service.search2(map)));
-
+		model.addAttribute("gender",service.search3());
 		
 		session.setAttribute("category", "st");
 		return "admin_statistics/statistics";

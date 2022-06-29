@@ -46,4 +46,10 @@ public class GraphServiceImpl implements GraphService {
 		return dao.newuser(date);
 	}
 
+	@Override
+	public graphVO search3() {
+		// TODO Auto-generated method stub
+		return dao.search3();
+	}
+
 }

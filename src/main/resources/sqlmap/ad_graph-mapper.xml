@@ -37,6 +37,9 @@
 		select rownum no, user_name, user_id, user_gender, to_Char(join_date,'YYYY-MM-dd') join_date from anafor_user where to_char(join_date,'YYYY-MM-DD') = #{date} 
 	</select>
 
+	<select id="select6" resultType="ad_main.graphVO">
+		select count(Decode(user_gender ,'남', 1)) male, count(Decode(user_gender ,'여', 1)) female from anafor_user
+	</select>
 
 </mapper>
 

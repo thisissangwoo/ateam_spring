@@ -14,4 +14,5 @@ public interface GraphService {
 	List<ShopDetailVO> sorder(String date);
 	List<CustomerVO> inquiry(String date);
 	List<UserVO> newuser(String date);
+	graphVO search3();
 }
