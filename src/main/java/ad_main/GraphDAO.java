@@ -49,8 +49,14 @@ public class GraphDAO implements GraphService {
 	}
 
 	@Override
-	public graphVO search3() {
+	public graphVO searchGen() {
 		
 		return sql.selectOne("ad_graph.mapper.select6");
+	}
+
+	@Override
+	public graphVO searchAge() {
+		
+		return sql.selectOne("ad_graph.mapper.select7");
 	}	
 }

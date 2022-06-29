@@ -30,26 +30,32 @@ public class GraphServiceImpl implements GraphService {
 
 	@Override
 	public List<ShopDetailVO> sorder(String date) {
-		// TODO Auto-generated method stub
+	
 		return dao.sorder(date);
 	}
 
 	@Override
 	public List<CustomerVO> inquiry(String date) {
-		// TODO Auto-generated method stub
+		
 		return dao.inquiry(date);
 	}
 
 	@Override
 	public List<UserVO> newuser(String date) {
-		// TODO Auto-generated method stub
+		
 		return dao.newuser(date);
 	}
 
 	@Override
-	public graphVO search3() {
-		// TODO Auto-generated method stub
-		return dao.search3();
+	public graphVO searchGen() {
+		
+		return dao.searchGen();
+	}
+
+	@Override
+	public graphVO searchAge() {
+		
+		return dao.searchAge();
 	}
 
 }

@@ -57,7 +57,7 @@
 		      datasets: [{
 		        label: "Population (millions)",
 		        backgroundColor: ["#caa9a9", "#9eb7d5","#68509b","#da4f70"],
-		        data: [10,20,5,1]
+		        data: [${age.cnt1},${age.cnt2},${age.cnt3},${age.cnt4}]
 		      }]
 		    },
 		    options: {
