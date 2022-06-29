@@ -83,7 +83,12 @@
 				<td style="text-align: left;">리뷰내용</td>
 				<td style="width: 150px;">작성자</td>
 				<td style="width: 150px;">작성 일자</td>
-			</tr>		
+			</tr>
+			<c:if test="${empty page.list }">
+				<tr>
+					<td colspan="5" style="font-weight:500; font-size:14px; color:black">리뷰 정보가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
 					<td style="width: 300px;"><a style=" font-weight: bold;" href="reviewDetail.rev?id=${vo.rev_id }">아나포 스마트 약통 AnaFor SmartBOX</a></td>
