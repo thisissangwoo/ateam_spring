@@ -129,7 +129,7 @@ public class Web_UserController {
 			StringBuffer url = new StringBuffer("https://kauth.kakao.com/oauth/authorize?response_type=code");
 			url.append("&client_id=").append(kakao_client_id);
 			url.append("&state=").append(state);
-			url.append("&redirect_uri=http://localhost/anafor/kakao_callback");		
+			url.append("&redirect_uri=http://192.168.0.16/anafor/kakao_callback");		
 			
 			return "redirect:"+url.toString();
 		}
