@@ -171,13 +171,22 @@ public class IoTController {
 			
 			sql.update("IoT.mapper.update", vo);
 		}
+		
+	      
+        /*아나포박스 미복용 case_num조회*/    
+        @ResponseBody
+        @RequestMapping(value="/iot_select_pill", produces = "application/json;charset=UTF-8")
+        public String iot_select_pill(HttpServletRequest req) {      
+          String user_id = req.getParameter("user_id"); 
+          List<IoTVO> list = sql.selectList("IoT.mapper.iot_select_pill", user_id ); 
+          System.out.println( "넘버확인"+ gson.toJson(list));
+          return gson.toJson(list);
+        }
 	}
 
 
 
-                         
-                         
-                         
+
                          
 
 

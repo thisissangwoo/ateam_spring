@@ -25,9 +25,10 @@ body{
 }
 
 #list-board{
-	width:90%;
-	height:85%;
-	margin:30px;
+	width:97.5%;
+	height:auto;
+	min-height:870px;
+	margin:20px;
 	border-radius: 5px;
 	background-color: white;
 	padding-top: 20px;
