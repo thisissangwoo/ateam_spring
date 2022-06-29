@@ -234,8 +234,10 @@ select[name=pageList],select[name=sort],select[name=reply]{
       </div>
       <div id="list-page2">
       	<ul>
-      	  <c:if test="${loginInfo.admin eq 'Y' }">      
-            <li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li>
+      	  <c:if test="${loginInfo.admin eq 'Y' }">
+      	    <c:if test="${page.code ne 'N03'}">  
+            	<li id="write" class="right"><a class='btn-empty' href='new.co'>글쓰기</a></li>
+            </c:if>
           </c:if>
       	</ul>  	
       </div>   

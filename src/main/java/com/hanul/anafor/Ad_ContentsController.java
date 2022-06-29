@@ -132,7 +132,7 @@ public class Ad_ContentsController {
 	@RequestMapping("/delete.co")
 	public String delete(int id, int root, HttpSession session, Model model,
 				        @RequestParam (defaultValue = "1") int curPage, 
-				        @RequestParam(defaultValue = "10") int pageList,                  
+				        @RequestParam (defaultValue = "10") int pageList,                  
 				        String search, String keyword, String code, 
 				        @RequestParam (defaultValue = "all") String sort, 
 				        @RequestParam (defaultValue = "all") String reply) {
@@ -175,21 +175,31 @@ public class Ad_ContentsController {
 		return "admin_contents/reply";
 	}
 
+
 	
-	/* 답글 저장처리 요청 */
-	@RequestMapping ("/reply_insert.co")
-	public String reply_insert(ContentsVO vo, MultipartFile file, HttpSession session) {
-		// 첨부 파일이 있을 경우
-		if ( ! file.isEmpty()) {
-			vo.setFilename(file.getOriginalFilename());
-			vo.setFilepath( common.fileUpload("contents", file, session) );
-		}
-		
-		// 로그인 된 사용자의 id를 가져와 글쓴이(writer) 에 담기 위한 처리
-		vo.setWriter( ((UserVO)session.getAttribute("loginInfo")).getUser_id() );
-		service.con_reply_insert(vo);
-		return "redirect:list.co";
-	}
+   /* 답글 저장처리 요청 */
+   @RequestMapping ("/reply_insert.co")
+   public String reply_insert(ContentsVO vo, MultipartFile file, HttpSession session, Model model,
+           @RequestParam (defaultValue = "1") int curPage, 
+           @RequestParam(defaultValue = "10") int pageList,                  
+           String search, String keyword, String code, 
+           @RequestParam (defaultValue = "all") String sort, 
+           @RequestParam (defaultValue = "all") String reply) {
+      // 첨부 파일이 있을 경우
+      if ( ! file.isEmpty()) {
+         vo.setFilename(file.getOriginalFilename());
+         vo.setFilepath( common.fileUpload("contents", file, session) );
+      }
+      
+      // 로그인 된 사용자의 id를 가져와 글쓴이(writer) 에 담기 위한 처리
+      vo.setWriter( ((UserVO)session.getAttribute("loginInfo")).getUser_id() );
+      service.con_reply_insert(vo);
+      page.setReply("all");
+      model.addAttribute("url", "list.co");   
+      model.addAttribute("page", page);
+      
+      return "admin_contents/redirect";
+   }
 	
 	/* 입력(글쓰기) 화면 요청 */ 
 	@RequestMapping ("/new.co")
@@ -199,7 +209,12 @@ public class Ad_ContentsController {
 	
 	/* 글 등록*/
 	@RequestMapping ("/insert.co")
-	public String insert(ContentsVO vo, MultipartFile file, HttpSession session) {
+	public String insert(ContentsVO vo, MultipartFile file, HttpSession session, Model model,
+					    @RequestParam (defaultValue = "1") int curPage, 
+					    @RequestParam(defaultValue = "10") int pageList,                  
+					    String search, String keyword, String code, 
+					    @RequestParam (defaultValue = "all") String sort, 
+					    @RequestParam (defaultValue = "all") String reply) {
 		// 로그인된 사용자의 id를 가져와 글쓴이(writer)에 담기 위한 처리	
 		UserVO user = (UserVO) session.getAttribute("loginInfo");
 		vo.setWriter(user.getUser_id());
@@ -213,9 +228,13 @@ public class Ad_ContentsController {
 		
 		// 화면에서 입력한 정보를 DB에 저장한 후 화면으로 연결
 		service.con_insert(vo);
-		return "redirect:list.co";	// 리턴시 공지사항 목록 조회 화면으로 이동 처리
+		
+	    model.addAttribute("url", "list.co");   
+	    model.addAttribute("page", page);
+	    
+	    return "admin_contents/redirect";	// 리턴시 공지사항 목록 조회 화면으로 이동 처리
 	}
-	
+		
 	/*첨부 파일 다운로드 요청*/
 	@RequestMapping ("/download.co")
 	public void download(int id, HttpSession session, HttpServletResponse response) {
