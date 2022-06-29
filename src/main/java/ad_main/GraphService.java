@@ -14,4 +14,6 @@ public interface GraphService {
 	List<ShopDetailVO> sorder(String date);
 	List<CustomerVO> inquiry(String date);
 	List<UserVO> newuser(String date);
+	graphVO searchGen();	//성별 통계
+	graphVO searchAge();	//연령대 통계
 }

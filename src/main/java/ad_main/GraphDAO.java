@@ -46,5 +46,17 @@ public class GraphDAO implements GraphService {
 	public List<UserVO> newuser(String date) {
 		// TODO Auto-generated method stub
 		return sql.selectList("ad_graph.mapper.select5",date);
+	}
+
+	@Override
+	public graphVO searchGen() {
+		
+		return sql.selectOne("ad_graph.mapper.select6");
+	}
+
+	@Override
+	public graphVO searchAge() {
+		
+		return sql.selectOne("ad_graph.mapper.select7");
 	}	
 }

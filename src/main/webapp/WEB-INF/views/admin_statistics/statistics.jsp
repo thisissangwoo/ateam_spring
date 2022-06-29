@@ -37,7 +37,7 @@
 	
  	<div class="chart" >
 		<!--차트가 그려질 부분-->
-		<h3>통계 그래프</h3>
+		<h3>주간 그래프</h3>
 		<canvas id="myChart" width="900" height="200"></canvas>
 		
 	</div>  
@@ -57,7 +57,7 @@
 		      datasets: [{
 		        label: "Population (millions)",
 		        backgroundColor: ["#caa9a9", "#9eb7d5","#68509b","#da4f70"],
-		        data: [10,20,5,1]
+		        data: [${age.cnt1},${age.cnt2},${age.cnt3},${age.cnt4}]
 		      }]
 		    },
 		    options: {
@@ -84,7 +84,7 @@
 		      datasets: [{
 		        label: "Population (millions)",
 		        backgroundColor: ["#8aabd8", "#da4f70"],
-		        data: [2478,5267]
+		        data: [${gender.male},${gender.female}]
 		      }]
 		    },
 		    options: {
