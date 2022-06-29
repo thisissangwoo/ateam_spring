@@ -188,7 +188,7 @@
 		</div>
 		<div id="userpw">
 			<input type="password" name="user_pw" class="chk" placeholder="비밀번호 *"/><br/>
-			<span id="pwmsg">8~16자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span>
+			<span id="pwmsg">8~20자 이내로 영문 대/소문자와 숫자를 포함하여 입력해주세요</span>
 		</div>
 		<div id="userpwchk">
 			<input type="password" name="pwchk" class="chk"  placeholder="비밀번호 확인*"/><br/>

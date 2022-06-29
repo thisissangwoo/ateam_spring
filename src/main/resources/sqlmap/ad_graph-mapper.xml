@@ -37,6 +37,24 @@
 		select rownum no, user_name, user_id, user_gender, to_Char(join_date,'YYYY-MM-dd') join_date from anafor_user where to_char(join_date,'YYYY-MM-DD') = #{date} 
 	</select>
 
+	<!-- 전체 사용자 성별 조회 -->
+	<select id="select6" resultType="ad_main.graphVO">
+		select count(Decode(user_gender ,'남', 1)) male, count(Decode(user_gender ,'여', 1)) female from anafor_user
+	</select>
 
+	<!--  전체 사용자 연령대 조회 -->
+	<select id="select7" resultType="ad_main.graphVO">
+	<![CDATA[	
+		SELECT  
+            count (CASE  WHEN age >= 10 AND age < 30 THEN 1 end) as cnt1
+            ,count (CASE  WHEN age >= 30 AND age < 50 THEN 1 end) as cnt2
+            ,count (CASE  WHEN age >= 50 AND age < 70 THEN 1 end) as cnt3
+            ,count (CASE  WHEN age > 70 THEN 1 end) as cnt4
+          FROM (SELECT  MONTHS_BETWEEN(TRUNC(SYSDATE,'YEAR'),
+                      TRUNC(TO_DATE(to_char(user_birth,'YYYYMMDD'),'YYYYMMDD'),'YEAR')) /12 +1 age
+                FROM anafor_user
+                )
+     ]]>
+	</select>
 </mapper>
 
