@@ -69,7 +69,7 @@
 </style>
 </head>
 <body>
-	<div style="width: 100%; height: 60px; padding: 20px; background-color: #929292; text-align: left;">
+	<div style="width: 100%; height: 59px; padding: 20px; background-color: #929292; text-align: left;">
 		<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">리뷰 내역</h3>
 	</div>
 	

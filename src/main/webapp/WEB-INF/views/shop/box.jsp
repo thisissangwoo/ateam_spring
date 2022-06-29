@@ -200,8 +200,8 @@ details div {
 		<div id="review">
 			<div style="height: 80px; text-align: left;">
 				<div style="height: 20px; font-size: 20px; line-height: 20px;">상품리뷰</div>
-				<div style="height: 30px; font-size: 20px; line-height: 30px;">
-					⭐⭐⭐⭐⭐
+				<div class="checked" style="height: 30px; font-size: 30px; line-height: 30px;">
+					★★★★★
 				</div>
 			</div>
 			

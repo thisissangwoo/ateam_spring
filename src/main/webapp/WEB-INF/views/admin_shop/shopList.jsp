@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
+<div style="background-color:#929292; width: 100%; height: 59px; padding: 20px;">
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: 800px; margin: 20px; min-height: 900px; padding: 10px;">
+	<div style=" background-color: white; height: 800px; margin: 20px; min-height: 900px; padding: 10px; border-radius: 5px;">
 		<h3 style="font-weight: bold; font-size: 22px; margin-top: 15px;">주문자 목록</h3>
 
 	<div style="height: 770px;">
