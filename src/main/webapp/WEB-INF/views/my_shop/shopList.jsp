@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
+<div style="background-color:#929292; width: 100%; height: 59px; padding: 20px;">
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
@@ -51,7 +51,9 @@
 			
 					<td>
 						<a class="btn-fill" href="shopDetail.my?id=${vo.id }" style="margin: 5px;">조회</a>
-						<a class="btn-fill" href="reviewNew.rev?id=${vo.id }" style="margin: 5px;">리뷰</a>
+						<c:if test="${vo.code eq 'so5' }">
+							<a class="btn-fill" href="reviewNew.rev?id=${vo.id }" style="margin: 5px;">리뷰</a>
+						</c:if>
 						<a class="btn-fill" href="new.cu?id=${vo.id }">문의</a>
 					</td>
 				</tr>
