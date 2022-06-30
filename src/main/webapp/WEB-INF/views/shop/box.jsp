@@ -134,7 +134,7 @@ details div {
 		</div>
 		
 		<div>
-			<img src="imgs/boxmain.jpg" style="width: 80%;">
+			<img src="imgs/box1.png" style="width: 80%;">
 		</div>
 
 		<br /><br />
