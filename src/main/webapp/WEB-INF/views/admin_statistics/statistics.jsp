@@ -11,11 +11,11 @@
 
 <style type="text/css">
 
-#dashboard{width: 100%; height: 60px; background: #929292; }
-#dashboard h3{color: #fff; font-size: 20px; line-height: 60px; text-align: left; font-weight: 600; padding-left: 15px;}
+#dashboard{width: 100%; height: 59px; background: #929292; }
+#dashboard h3{color: #fff; font-size: 25px; line-height: 59px; text-align: left; font-weight: 600; padding-left: 20px;}
 
 #chart_wrap{width: 100%; height: auto; /* box-sizing: border-box; */ padding: 20px;  }
-#chart_wrap .chart{position:relative; background: #fff; width: 100%; height: auto;  border-radius: 10px 10px 10px 10px; text-align: left; }	
+#chart_wrap .chart{position:relative; background: #fff; width: 100%; height: auto;  border-radius: 5px; text-align: left; }	
 #chart_wrap .chart h3{font-size: 18px; color: #929292; padding: 10px; font-weight: 500;}
 #chart_wrap .chart h3::after{content:'';display:block;height:1px;width:100%;background:#929292;}
 /* #chart_wrap .chart #myChart{position: absolute; width: 500px; height: 400px; background: #fff; border-radius: 0px 0px 10px 10px; padding: 10px; border-top: 1px solid #929292;} */

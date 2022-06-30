@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div style="background-color:#929292; width: 100%; height: 60px; padding: 20px;">
+<div style="background-color:#929292; width: 100%; height: 59px; padding: 20px;">
 	<h3 style="font-size: 25px; font-weight: bold; text-align: left; color: white;">shop 관리</h3>
 </div>
 
-	<div style=" background-color: white; height: 800px; margin: 20px; min-height: 900px; padding: 10px;">
+	<div style=" background-color: white; height: 800px; margin: 20px; min-height: 900px; padding: 10px; border-radius: 5px;">
 		<h3 style="font-weight: bold; font-size: 22px; margin-top: 15px;">주문자 목록</h3>
 
 	<div style="height: 770px;">
@@ -66,24 +66,20 @@
 	
 <script type="text/javascript">
 function go_detail(code, id) {
-	
-	var msg = $("select[name=code] option:selected").text();
-	// text 값은 가져올 때 해당 자식인 option의 선택된 개체를 가져와야 하는데
-	// option:selected 해당 옵션이 없으면 select 자식으로 들어간 option값 전부를 가져오게 됨
-	
-	$.ajax({	// 주문 진행 상황 변경을 위한 ajax 통신 설정
-		url : "order_state_update.sp",
-		data : {id:id, code:code.value},
-		success : function (response) {	// success 는 통신이 잘 됐는지 안 됐는지 여부 판단
-			if( response ){
-				alert(msg + " 변경성공");
-			}else {
-				alert("진행상황 변경실패");				
-			}//if
-		}, error : function (req, text) {
-			alert(text + " : " + req.status);
-		}
-	});
+    var msg = $("select[name=code] option:selected").html();
+// text값은 가져올 때 해당 자식인 option의 선택된 개체를 가져와야 하는데 option:selected 해당 옵션이 없으면 select 자식으로 들어간 option값 전부를 가져오게 됨.
+    $.ajax({   // 주문 진행 상황 변경을 위한 ajax 통신 설정
+      url : "order_state_update.sp",
+      data : {id:id, code:code.value},
+      success : function (response) {   // success 는 통신이 잘 됐는지 안 됐는지 여부 판단
+   if( response ){
+       alert(msg + " 변경완료");
+   }else {
+       alert("진행상황 변경실패");         }//if
+       }, error : function (req, text) {
+   alert(text + " : " + req.status);
+       }
+});
 /* 	$('[name=id]').val(id);	
 	$('form').attr('action', 'order_state_update.sp');
 	$('form').submit(); */
