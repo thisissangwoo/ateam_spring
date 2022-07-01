@@ -49,7 +49,7 @@
 				</td>
 			<th style="width: 100px;">작성자</th>
 			<td style="width: 200px;">
-				${loginInfo.user_name}
+				${vo.user_id}
 			</td>
 			<th style="width: 100px;">작성일자</th>
 			<td style="width: 200px;">
