@@ -88,7 +88,7 @@
 						<li><a href="#">공지사항</a></li>
 					</ul> -->				
 				</li>
-				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/cart.png"><a href="shopList.sp">Shop관리</a>
+				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/cart.png"><a href="shopList.sp">주문관리</a>
 									
 				</li>
 				<li class="menu-v1"><img class="img_icon"  alt="" src="imgs/cart.png"><a href="list.sp">리뷰관리</a>

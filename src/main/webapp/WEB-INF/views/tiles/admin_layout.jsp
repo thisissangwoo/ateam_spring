@@ -74,7 +74,6 @@
 
 
 
-
 	<div id="admin_content">
 		<tiles:insertAttribute name="content" />
 	</div>
